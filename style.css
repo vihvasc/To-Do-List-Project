@@ -1,0 +1,10 @@
+body {
+    font-family: sans-serif;
+}
+
+#funcionamento {
+    color: rgb(64, 68, 68);
+    opacity: 80%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size:20px;
+}
