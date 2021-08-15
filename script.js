@@ -1,6 +1,8 @@
 let inputText = document.getElementById("texto-tarefa"); 
 let ordenadeList = document.getElementById("lista-tarefas");
 const buttonAdd = document.getElementById("criar-tarefa");
+const buttonClearAll = document.getElementById("apaga-tudo");
+
 buttonAdd.addEventListener("click",addList);
 function addList() {
   const createLi = document.createElement("li");
@@ -20,11 +22,14 @@ function changeBackgroundColor(event) {
     event.target.classList.add("selected");
   }
 }
+
 ordenadeList.addEventListener("dblclick", completedList);
 function completedList(event) {
-  const completed = document.querySelector("completed")
+  const completed = document.querySelector(".completed");
   if (!completed) {
     event.target.classList.add("completed");
+  }else{
+    event.target.classList.remove("completed");
   }
 }
 
