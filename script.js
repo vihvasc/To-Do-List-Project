@@ -2,11 +2,13 @@ const textoTarefa = document.getElementById('texto-tarefa');
 const criarTarefa = document.getElementById('criar-tarefa');
 const listaTarefas = document.getElementById('lista-tarefas');
 const apagaTudo = document.getElementById('apaga-tudo');
+const removerFinalizados = document.getElementById('remover-finalizados');
 
 criarTarefa.addEventListener('click', taskAdd);
 listaTarefas.addEventListener('click', taskSelected);
 listaTarefas.addEventListener('dblclick', taskCompleted);
 apagaTudo.addEventListener('click', removeAll);
+removerFinalizados.addEventListener('click', removeFinished);
 
 function taskAdd() {
   const tarefa = document.createElement('li');
@@ -36,4 +38,11 @@ function taskCompleted(event) {
 
 function removeAll() {
   listaTarefas.innerHTML = '';
+}
+
+function removeFinished() {
+  const finished = document.querySelectorAll('.completed');
+  for (let index = 0; index < finished.length; index += 1) {
+    listaTarefas.removeChild(finished[index]);
+  }
 }
