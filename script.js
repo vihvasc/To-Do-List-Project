@@ -5,6 +5,8 @@ const buttonAdd = document.getElementById("criar-tarefa");
 const buttonClearAll = document.getElementById("apaga-tudo");
 const buttonClearCompleted = document.getElementById("remover-finalizados");
 const buttonSaveTask = document.getElementById("salvar-tarefas");
+const buttonMoveUp = document.getElementById("mover-cima");
+const buttonMoveDown = document.getElementById("mover-baixo");
 
 function loadSaveList() {
   if (localStorage.getItem("lista-ordenada")) {
@@ -12,7 +14,6 @@ function loadSaveList() {
   }
 }
 loadSaveList();
-
 
 buttonAdd.addEventListener("click",addList);
 function addList() {
@@ -65,4 +66,27 @@ function clearCompleted() {
 buttonSaveTask.addEventListener("click", saveTasks);
 function saveTasks() {
   localStorage.setItem("lista-ordenada",ordenadeList.innerHTML)
+}
+
+buttonMoveUp.addEventListener("click", moveUp)
+function moveUp() {
+  let textUp = document.querySelector(".selected").previousElementSibling.innerHTML;
+  let textDown = document.querySelector(".selected");
+  let textStorage = document.createElement("li");
+  ordenadeList.appendChild(textStorage)
+  textStorage.className = "deleted"
+
+  textStorage.innerHTML = textUp;
+  textUp = textDown;
+  textDown = textStorage;
+    
+  document.querySelector(".selected").previousElementSibling.innerHTML = textUp.innerHTML;
+  document.querySelector(".selected").innerHTML = textDown.innerHTML;
+
+  ordenadeList.removeChild(textStorage)
+}
+
+buttonMoveDown.addEventListener("click", moveDown);
+function moveDown() {
+  
 }
