@@ -2,7 +2,7 @@ window.onload= function (){
     document.addEventListener('click',addToList);
     document.addEventListener('click', inFocus);
     document.addEventListener('dblclick',completeMark);
-    window.getSelection().removeAllRanges();
+    document.addEventListener('click', clearList);
 }
 
 function addToList(event){
@@ -43,4 +43,13 @@ function completeMark(element){
         }
     }
     
+}
+
+function clearList(event){
+    if(event.target.id === 'apaga-tudo'){
+        let list = document.querySelectorAll('.item');
+        for (let i = 0; i < list.length; i += 1){
+            list[i].remove();
+        }
+    }
 }
