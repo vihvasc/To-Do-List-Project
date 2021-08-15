@@ -33,3 +33,7 @@ function completedList(event) {
   }
 }
 
+buttonClearAll.addEventListener("click", clearAll);
+function clearAll() {
+  ordenadeList.innerHTML = "";
+}
