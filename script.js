@@ -3,6 +3,7 @@ window.onload= function (){
     document.addEventListener('click', inFocus);
     document.addEventListener('dblclick',completeMark);
     document.addEventListener('click', clearList);
+    document.addEventListener('click',removeFinished)
 }
 
 function addToList(event){
@@ -48,6 +49,17 @@ function completeMark(element){
 function clearList(event){
     if(event.target.id === 'apaga-tudo'){
         let list = document.querySelectorAll('.item');
+        for (let i = 0; i < list.length; i += 1){
+            list[i].remove();
+        }
+    }
+}
+
+function removeFinished(event){
+
+    if (event.target.id === 'remover-finalizados'){
+        console.log('teste');
+        let list = document.querySelectorAll('.completed');
         for (let i = 0; i < list.length; i += 1){
             list[i].remove();
         }
