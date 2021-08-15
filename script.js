@@ -1,14 +1,18 @@
 window.onload= function (){
-    document.addEventListener('click',addToList);
+    let buttonTarefa = document.querySelector('#criar-tarefa');
+    let buttonClear = document.getElementById('apaga-tudo');
+    let buttonClearFinished = document.getElementById('remover-finalizados');
+    
+    buttonTarefa.addEventListener('click',addToList);
+    buttonClear.addEventListener('click', clearList);
+    buttonClearFinished.addEventListener('click',removeFinished);
     document.addEventListener('click', inFocus);
-    document.addEventListener('dblclick',completeMark);
-    document.addEventListener('click', clearList);
-    document.addEventListener('click',removeFinished)
+    document.addEventListener('dblclick',completeMark);    
+    
 }
 
 function addToList(event){
     
-    if(event.target.id === 'criar-tarefa'){
 
         let li = document.createElement('li');
             let input = document.querySelector('#texto-tarefa');
@@ -21,7 +25,6 @@ function addToList(event){
         }
     }
 
-}
 
 function inFocus(element){
     if(element.target.classList.contains('item')){
@@ -47,21 +50,18 @@ function completeMark(element){
 }
 
 function clearList(event){
-    if(event.target.id === 'apaga-tudo'){
+    
         let list = document.querySelectorAll('.item');
         for (let i = 0; i < list.length; i += 1){
             list[i].remove();
         }
-    }
 }
 
 function removeFinished(event){
-
-    if (event.target.id === 'remover-finalizados'){
+        
         console.log('teste');
         let list = document.querySelectorAll('.completed');
         for (let i = 0; i < list.length; i += 1){
             list[i].remove();
         }
-    }
 }
