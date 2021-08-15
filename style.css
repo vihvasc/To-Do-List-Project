@@ -2,9 +2,27 @@ body {
     font-family: sans-serif;
 }
 
+li {
+    width:20rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+li:hover {
+    cursor: pointer;
+}
+
 #funcionamento {
     color: rgb(64, 68, 68);
     opacity: 80%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size:20px;
 }
+
+.mark {
+    background-color: rgb(128,128,128);
+}
+
+.completed {
+    text-decoration: line-through;
+}
+
