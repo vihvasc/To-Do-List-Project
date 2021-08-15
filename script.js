@@ -1,8 +1,18 @@
+
 let inputText = document.getElementById("texto-tarefa"); 
 let ordenadeList = document.getElementById("lista-tarefas");
 const buttonAdd = document.getElementById("criar-tarefa");
 const buttonClearAll = document.getElementById("apaga-tudo");
 const buttonClearCompleted = document.getElementById("remover-finalizados");
+const buttonSaveTask = document.getElementById("salvar-tarefas");
+
+function loadSaveList() {
+  if (localStorage.getItem("lista-ordenada")) {
+    ordenadeList.innerHTML = localStorage.getItem("lista-ordenada");
+  }
+}
+loadSaveList();
+
 
 buttonAdd.addEventListener("click",addList);
 function addList() {
@@ -50,4 +60,9 @@ function clearCompleted() {
   for (const key of completed) {
     ordenadeList.removeChild(key)
   }
+}
+
+buttonSaveTask.addEventListener("click", saveTasks);
+function saveTasks() {
+  localStorage.setItem("lista-ordenada",ordenadeList.innerHTML)
 }
