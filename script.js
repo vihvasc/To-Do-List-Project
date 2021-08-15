@@ -4,6 +4,7 @@ const listaTarefas = document.getElementById('lista-tarefas');
 const apagaTudo = document.getElementById('apaga-tudo');
 const removerFinalizados = document.getElementById('remover-finalizados');
 const salvarTarefas = document.getElementById('salvar-tarefas');
+const removerSelecionado = document.getElementById('remover-selecionado');
 
 if (localStorage.getItem('content')) {
   listaTarefas.innerHTML = localStorage.getItem('content');
@@ -15,6 +16,7 @@ listaTarefas.addEventListener('dblclick', taskCompleted);
 apagaTudo.addEventListener('click', removeAll);
 removerFinalizados.addEventListener('click', removeFinished);
 salvarTarefas.addEventListener('click', taskSave);
+removerSelecionado.addEventListener('click', removeSelected);
 
 function taskAdd() {
   const tarefa = document.createElement('li');
@@ -55,4 +57,11 @@ function removeFinished() {
 
 function taskSave() {
   localStorage.setItem('content', listaTarefas.innerHTML);
+}
+
+function removeSelected() {
+  const selected = document.querySelector('.selected');
+  if (selected) {
+    listaTarefas.removeChild(selected);
+  }
 }
