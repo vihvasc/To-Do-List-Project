@@ -1,28 +1,53 @@
-window.onload= function (){
+window.onload = function (){
     let buttonTarefa = document.querySelector('#criar-tarefa');
     let buttonClear = document.getElementById('apaga-tudo');
     let buttonClearFinished = document.getElementById('remover-finalizados');
+    let buttonSaveList = document.getElementById('salvar-tarefas');
     
-    buttonTarefa.addEventListener('click',addToList);
+    
+    buttonTarefa.addEventListener('click',addSession);
     buttonClear.addEventListener('click', clearList);
     buttonClearFinished.addEventListener('click',removeFinished);
+    buttonSaveList.addEventListener('click',saveList);
     document.addEventListener('click', inFocus);
     document.addEventListener('dblclick',completeMark);    
     
 }
 
-function addToList(event){
+let input = document.querySelector('#texto-tarefa');
+
+function addSession(){
     
+    if (sessionStorage.getItem('lista') === null){
+        sessionStorage.setItem('lista', JSON.stringify([]));
+    }
 
-        let li = document.createElement('li');
-            let input = document.querySelector('#texto-tarefa');
-            let listItem = document.querySelector('#lista-tarefas');            
-            li.className = 'item';
+    let oldList = JSON.parse(sessionStorage.getItem('lista'));
+    if(input.value !== '' && oldList.includes(input.value) === false){
+        listItemText = input.value;
+        oldList.push(listItemText);
+        sessionStorage.setItem('lista', JSON.stringify(oldList));
+        addToList();
+    
+    } else if (oldList.includes(input.value) === true){
+        alert('A tarefa já está presente na lista');
+        input.value = '';
+    }
+    
+    
+    
+}
 
-        if(input.value !== ''){            
-            listItem.appendChild(li).innerText = input.value;
-            input.value = '';
-        }
+function addToList(){    
+    let arraySession = JSON.parse(sessionStorage.getItem('lista'));
+    let li = document.createElement('li');        
+    let listItem = document.querySelector('#lista-tarefas');
+    let textPosition = arraySession.length - 1;            
+    li.className = 'item';  
+    
+    listItem.appendChild(li).innerText = arraySession[textPosition];
+    input.value = '';
+
     }
 
 
@@ -49,7 +74,7 @@ function completeMark(element){
     
 }
 
-function clearList(event){
+function clearList(){
     
         let list = document.querySelectorAll('.item');
         for (let i = 0; i < list.length; i += 1){
@@ -57,11 +82,14 @@ function clearList(event){
         }
 }
 
-function removeFinished(event){
-        
-        console.log('teste');
+function removeFinished(){
+
         let list = document.querySelectorAll('.completed');
         for (let i = 0; i < list.length; i += 1){
             list[i].remove();
         }
+}
+
+function saveList(){
+
 }
