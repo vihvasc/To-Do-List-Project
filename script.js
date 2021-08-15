@@ -9,4 +9,5 @@ function adicionarTarefa() {
   console.log(textoTarefa.value);
   tarefa.innerText = textoTarefa.value;
   listaTarefas.appendChild(tarefa);
+  textoTarefa.value = '';
 }
