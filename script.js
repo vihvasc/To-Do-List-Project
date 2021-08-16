@@ -15,12 +15,19 @@ botao.addEventListener('click', button);
 
 function mudaFundo(event) {
   const mudaCorLi = event.target;
-  const removePaint = document.querySelectorAll('.classLi');
+  const allList = document.querySelectorAll('.classLi');
 
-  for (let index = 0; index < removePaint.length; index += 1) {
-    removePaint[index].classList.remove('paint');
+  for (let index = 0; index < allList.length; index += 1) {
+    allList[index].classList.remove('paint');
   }
   mudaCorLi.classList.add('paint');
 }
 
 lista.addEventListener('click', mudaFundo);
+
+function riscaTarefas(event) {
+  const riscaItem = event.target;
+  riscaItem.classList.toggle('completed');
+}
+
+lista.addEventListener('dblclick', riscaTarefas);
