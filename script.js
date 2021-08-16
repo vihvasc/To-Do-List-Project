@@ -5,6 +5,8 @@ window.onload = function (){
     let buttonClearFinished = document.getElementById('remover-finalizados');
     let buttonSaveList = document.getElementById('salvar-tarefas');
     let buttonClearSelect = document.getElementById('remover-selecionado');
+    let buttonUp = document.getElementById('mover-cima');
+    let buttonDown = document.getElementById('mover-baixo');
 
     if (localStorage.getItem('history') === null){
 
@@ -19,6 +21,8 @@ window.onload = function (){
     buttonClearFinished.addEventListener('click',removeFinished);
     buttonClearSelect.addEventListener('click', removeSelect);
     buttonSaveList.addEventListener('click',saveList);
+    buttonUp.addEventListener('click',moveUp);
+    buttonDown.addEventListener('click', moveDown);
     document.addEventListener('click', inFocus);
     document.addEventListener('dblclick',completeMark);
 
@@ -135,4 +139,35 @@ function recoverySave() {
         li.classList = historyListClass[i];
         list.appendChild(li);
     }
+}
+
+function moveUp(){
+    
+    if(document.querySelector('.mark') === document.getElementById('lista-tarefas').firstElementChild){
+    } else {
+
+        let move = document.querySelector('.mark').cloneNode(true);
+
+        fatherNode = document.getElementById('lista-tarefas');
+        brtNode = document.querySelector('.mark').previousElementSibling;
+        fatherNode.insertBefore(move,brtNode);
+        document.querySelectorAll('.mark')[1].remove();
+
+        
+    }
+}
+
+function moveDown(){
+
+    if(document.querySelector('.mark') === document.getElementById('lista-tarefas').lastElementChild){
+    
+    } else {
+        let move = document.querySelector('.mark').cloneNode(true);
+
+        fatherNode = document.getElementById('lista-tarefas');
+        brtNode = document.querySelector('.mark').nextElementSibling.nextElementSibling;
+        fatherNode.insertBefore(move,brtNode);
+        document.querySelector('.mark').remove();
+    }
+
 }
