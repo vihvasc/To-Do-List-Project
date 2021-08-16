@@ -11,11 +11,23 @@ function changeBgColor(event) {
   const eventClicked = event.target;
   eventClicked.style.backgroundColor = 'rgb(128, 128, 128)';
 }
+
+// Requisito 9
+function completed(event) {
+  const eventClicked = event.target;
+  if (eventClicked.className === 'completed') {
+    eventClicked.classList.remove('completed');
+  } else {
+    eventClicked.classList.add('completed');
+  }
+}
+
 // Requisitos 5 e 6
 function addTasks() {
   const li = document.createElement('li');
   li.innerText = input.value;
   li.addEventListener('click', changeBgColor);
+  li.addEventListener('dblclick', completed);
   listTasks.appendChild(li);
   input.value = '';
 }
