@@ -47,15 +47,33 @@ function clearCompletedTasks() {
   }
 }
 
+function saveTasks() {
+  const taskList = document.getElementById(TASK_LIST_ID);
+
+  localStorage.setItem('tasks', JSON.stringify(taskList.innerHTML));
+}
+
+function loadTasks() {
+  const taskList = document.getElementById(TASK_LIST_ID);
+
+  if (localStorage.getItem('tasks') !== null) {
+    taskList.innerHTML = JSON.parse(localStorage.getItem('tasks'));
+  }
+}
+
 window.onload = () => {
+  loadTasks();
+
   const addTaskButton = document.getElementById('criar-tarefa');
   const taskList = document.getElementById(TASK_LIST_ID);
   const clearTaskListButton = document.getElementById('apaga-tudo');
   const clearCompletedTasksButton = document.getElementById('remover-finalizados');
+  const saveButton = document.getElementById('salvar-tarefas');
 
   addTaskButton.addEventListener('click', addTask);
   taskList.addEventListener('click', handleTaskListItemClick);
   taskList.addEventListener('dblclick', handleTaskListItemDoubleClick);
   clearTaskListButton.addEventListener('click', clearTaskList);
   clearCompletedTasksButton.addEventListener('click', clearCompletedTasks);
+  saveButton.addEventListener('click', saveTasks);
 };
