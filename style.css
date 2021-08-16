@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: yellow;
+}
+
+main {
+    margin-top: 40px;
+    margin-left: 50px;
+    width: 900px;
+    height: 300px;
+    padding: 5%;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 40px;
+}
+
+header {
+    position: relative;
+    margin-top: -10px;
+}
+
+header p {
+    color: rgb(160, 157, 157);
+}
+
+#texto-tarefa {
+    margin-top: 20px;
+}
