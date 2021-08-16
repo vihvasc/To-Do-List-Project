@@ -66,3 +66,14 @@ function addTask() {
 }
 
 addBtn.addEventListener('click', addTask);
+
+const clearBtn = document.createElement('button');
+
+function clearTasks() {
+  taskList.innerHTML = '';
+}
+
+clearBtn.addEventListener('click', clearTasks);
+clearBtn.id = 'apaga-tudo';
+clearBtn.innerText = 'Apagar Tudo';
+document.body.appendChild(clearBtn);
