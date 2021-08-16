@@ -5,6 +5,32 @@ const body = document.querySelector('body');
 let clickCount = 0;
 const clearTasksBtn = document.getElementById('apaga-tudo');
 const removeDoneBtn = document.getElementById('remover-finalizados');
+const saveListBtn = document.getElementById('salvar-tarefas');
+
+function checkClasses(currentItem, userClasses, counter) {
+  if (userClasses[counter] === ('completed')) {
+    currentItem.classList.add('completed');
+  }
+}
+
+// povoa lista com dados do local storage
+function fillList(dict) {
+  if (dict) {
+    const userTasks = dict.tasks;
+    const userClasses = dict.classes;
+    for (let counter = 0; counter < userTasks.length; counter += 1) {
+      const currentItem = document.createElement('li');
+      currentItem.innerText = userTasks[counter];
+      checkClasses(currentItem, userClasses, counter);
+      taskList.appendChild(currentItem);
+    }
+  }
+}
+
+window.onload = function initialize() {
+  const savedDict = JSON.parse(localStorage.getItem('userTasks'));
+  fillList(savedDict);
+};
 
 // adiciona tarefa à lista
 function addTask() {
@@ -46,7 +72,7 @@ function countClicks(element) {
   addSelected(element);
   if (clickCount === 1) {
     // aguarda 175ms para zerar clickCount
-    singleClickTimer = setTimeout(() => { clickCount = 0; }, 175);
+    singleClickTimer = setTimeout(() => { clickCount = 0; }, 200);
   } else if (clickCount === 2) {
     clearTimeout(singleClickTimer);
     clickCount = 0;
@@ -63,14 +89,15 @@ function checkItem(originEvent) {
 }
 body.addEventListener('click', checkItem);
 
-// apaga lista de tarefas
+// apaga tarefas
 function clearTaskList() {
   taskList.innerHTML = '';
 }
 clearTasksBtn.addEventListener('click', clearTaskList);
 
+// apaga tarefas concluídas
 function removeDone() {
-  // tasks será usado no loop
+  // tasks será usada no loop
   const tasks = Array.from(taskList.children);
   for (let counter = 0; counter < tasks.length; counter += 1) {
     if (tasks[counter].classList.contains('completed')) {
@@ -80,3 +107,22 @@ function removeDone() {
   }
 }
 removeDoneBtn.addEventListener('click', removeDone);
+
+function saveList() {
+  const userList = Array.from(taskList.children);
+  const savedDict = {
+    tasks: [],
+    classes: [],
+  };
+  for (let counter = 0; counter < userList.length; counter += 1) {
+    const userTask = userList[counter].innerText;
+    savedDict.tasks.push(userTask);
+    if (userList[counter].classList.contains('completed')) {
+      savedDict.classes.push('completed');
+    } else {
+      savedDict.classes.push('');
+    }
+  }
+  localStorage.setItem('userTasks', JSON.stringify(savedDict));
+}
+saveListBtn.addEventListener('click', saveList);
