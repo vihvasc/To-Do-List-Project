@@ -2,3 +2,8 @@ h1 , p {
   font-family: sans-serif;
   text-align: center;
 }
+
+.selected {
+  background-color: rgb(128 , 128 , 128);
+  width: fit-content;
+}
