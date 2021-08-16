@@ -1,5 +1,7 @@
-const taskList = document.getElementById('lista-tarefas');
 const taskInput = document.getElementById('texto-tarefa');
+const buttonsContainer = document.getElementById('buttons-container');
+const taskList = document.getElementById('lista-tarefas');
+const task = JSON.parse(localStorage.getItem('taskList'));
 
 function selectTask(event) {
   const currentTask = document.getElementById('selected');
@@ -9,6 +11,7 @@ function selectTask(event) {
   }
 
   const selectedTask = event.target;
+  console.log(selectedTask);
   selectedTask.id = 'selected';
 }
 
@@ -37,10 +40,31 @@ function clearInput() {
   taskInput.value = '';
 }
 
+function createTaskButton() {
+  const taskButton = document.createElement('button');
+
+  taskButton.id = 'criar-tarefa';
+  taskButton.addEventListener('click', () => {
+    createTask(taskInput.value);
+    clearInput();
+  });
+
+  buttonsContainer.appendChild(taskButton);
+}
+
 function clearAll() {
   while (taskList.firstChild) {
     taskList.removeChild(taskList.firstChild);
   }
+}
+
+function createClearButton() {
+  const clearButton = document.createElement('button');
+
+  clearButton.id = 'apaga-tudo';
+  clearButton.addEventListener('click', clearAll);
+
+  buttonsContainer.appendChild(clearButton);
 }
 
 function removeDoneTasks() {
@@ -50,6 +74,15 @@ function removeDoneTasks() {
   while (doneTasks.length > 0) {
     doneTasks[index].remove();
   }
+}
+
+function createRemoveDoneButton() {
+  const removeDoneButton = document.createElement('button');
+
+  removeDoneButton.id = 'remover-finalizados';
+  removeDoneButton.addEventListener('click', removeDoneTasks);
+
+  buttonsContainer.appendChild(removeDoneButton);
 }
 
 function saveTasks() {
@@ -72,32 +105,30 @@ function saveTasks() {
   localStorage.setItem('taskList', JSON.stringify(tasksArray));
 }
 
+function createSaveButton() {
+  const saveButton = document.createElement('button');
+
+  saveButton.id = 'salvar-tarefas';
+  saveButton.addEventListener('click', saveTasks);
+
+  buttonsContainer.appendChild(saveButton);
+}
+
 function removeSelectedTask() {
   const selectedTask = document.getElementById('selected');
   selectedTask.remove();
 }
 
-const taskButton = document.getElementById('criar-tarefa');
-taskButton.addEventListener('click', () => {
-  createTask(taskInput.value);
-  clearInput();
-});
+function createRemoveSelectedButton() {
+  const removeSelectedButton = document.createElement('button');
 
-const clearButton = document.getElementById('apaga-tudo');
-clearButton.addEventListener('click', clearAll);
+  removeSelectedButton.id = 'remover-selecionado';
+  removeSelectedButton.addEventListener('click', removeSelectedTask);
 
-const removeDoneButton = document.getElementById('remover-finalizados');
-removeDoneButton.addEventListener('click', removeDoneTasks);
+  buttonsContainer.appendChild(removeSelectedButton);
+}
 
-const saveButton = document.getElementById('salvar-tarefas');
-saveButton.addEventListener('click', saveTasks);
-
-const removeSelectedButton = document.getElementById('remover-selecionado');
-removeSelectedButton.addEventListener('click', removeSelectedTask);
-
-const task = JSON.parse(localStorage.getItem('taskList'));
-
-if (task) {
+function getStoredTasks() {
   for (let index = 0; index < task.length; index += 1) {
     if (task[index].completed) {
       createTask(task[index].text, 'completed');
@@ -106,3 +137,17 @@ if (task) {
     }
   }
 }
+function generateStoredTasks() {
+  if (task) {
+    getStoredTasks();
+  }
+}
+
+window.onload = () => {
+  createTaskButton();
+  createClearButton();
+  createRemoveDoneButton();
+  createSaveButton();
+  createRemoveSelectedButton();
+  generateStoredTasks();
+};
