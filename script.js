@@ -17,16 +17,19 @@ function addTarefa (){
 function addEventoItemLista (){
     for (let index = 0; index < itemLista.length; index++) {
         itemLista[index].addEventListener('click', mudaFundo);
+        itemLista[index].addEventListener('dblclick', riscaItem);
     }
 }
 
 function mudaFundo(item){
-    let itemList = document.getElementsByTagName('li');
-    for (let index = 0; index < itemList.length; index++) {
-        console.log(itemList[index]);
-        if(itemList[index].style.backgroundColor){
-            itemList[index].style.backgroundColor = '';
+    for (let index = 0; index < itemLista.length; index++) {
+        if(itemLista[index].style.backgroundColor){
+            itemLista[index].style.backgroundColor = '';
         }
     }
     item.target.style.backgroundColor = 'rgb(128,128,128)';
+}
+
+function riscaItem (item){
+    item.target.classList.toggle('completed');
 }
