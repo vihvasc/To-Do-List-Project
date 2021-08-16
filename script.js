@@ -48,6 +48,7 @@ function handleRemoveAll() {
 removeAllBtn.addEventListener('click', handleRemoveAll);
 
 function handleRemoveDone() {
+  // Não sei como resolver  verificado que, ao clicar no botão, todos os elementos marcados como feitos são removidos da lista
   const completedTasks = document.getElementsByClassName('completed');
 
   while (completedTasks.length !== 0) {
@@ -55,5 +56,6 @@ function handleRemoveDone() {
       item.remove();
     }
   }
+  console.log(completedTasks);
 }
 removeDoneBtn.addEventListener('click', handleRemoveDone);
