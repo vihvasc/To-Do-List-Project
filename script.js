@@ -8,6 +8,7 @@ function addTask() {
   let li = document.createElement('li');
   ol.appendChild(li).innerText = input.value;
   input.value = '';
+  addListener()
 }
 
 let li = document.getElementsByTagName('li');
@@ -26,5 +27,19 @@ function markTask(event) {
 function cleanMark() {
   for (let i = 0; i < li.length; i += 1) {
     li[i].style.backgroundColor = 'white';
+  }
+}
+
+function addListener() {
+  for (let index = 0; index < li.length; index += 1) {
+    li[index].addEventListener('dblclick',throughTask);
+  }
+}
+function throughTask(event) {
+  let clicked = event.target;
+  if (clicked.classList.contains('completed')) {
+    clicked.classList.remove('completed');
+  } else {
+    clicked.classList.add('completed');
   }
 }
