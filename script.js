@@ -1,4 +1,4 @@
-const tags = ['body', 'header', 'h1', 'div', 'p'];
+const tags = ['body', 'header', 'h1', 'div', 'p', 'main', 'section', 'input'];
 // const ids = [''];
 // const classes = [''];
 
@@ -36,6 +36,9 @@ function createPageStructure() {
   createElements([tags[0], 0, tags[3], '', '', '']);
   createElements([tags[3], 0, tags[4], 'funcionamento', '', 'Clique duas vezes' +
     ' em um item para marcá-lo como completo']);
+  createElements([tags[0], 0, tags[5], '', '', '']);
+  createElements([tags[5], 0, tags[6], '', '', '']);
+  createElements([tags[6], 0, tags[7], 'texto-tarefa', '', '']);
 }
 
 createPageStructure();
