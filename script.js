@@ -4,6 +4,7 @@ const deleteCompletedTaskBtn = document.querySelector('#remover-finalizados');
 const deleteAllTasksBtn = document.querySelector('#apaga-tudo');
 const saveTasksBtn = document.querySelector('#salvar-tarefas');
 const deleteSelectedTaskBtn = document.querySelector('#remover-selecionado');
+const tasks = document.getElementsByClassName('task');
 
 function handleSaveTasksBtn() {
   const contentToSave = taskList.innerHTML;
@@ -18,9 +19,8 @@ function handleDeleteCompletedTaskBtn() {
 }
 
 function handleDeleteAllTasksBtn() {
-  const allTasks = document.getElementsByClassName('task');
-  for (let index = 0; index < allTasks.length; index += 1) {
-    allTasks[index].remove();
+  for (let index = 0; index < tasks.length; index += 1) {
+    tasks[index].remove();
     index -= 1;
   }
 }
@@ -54,12 +54,16 @@ function handleInput() {
   return newTaskText;
 }
 
+function addListenerToTask(task) {
+  task.addEventListener('click', handleTaskClick);
+  task.addEventListener('dblclick', handleTaskDblClick);
+}
+
 function createNewListItem(taskText) {
   const newListItem = document.createElement('li');
   newListItem.innerText = taskText;
   newListItem.classList.add('task');
-  newListItem.addEventListener('click', handleTaskClick);
-  newListItem.addEventListener('dblclick', handleTaskDblClick);
+  addListenerToTask(newListItem);
   return newListItem;
 }
 
@@ -70,6 +74,9 @@ function handleAddTaskBtn() {
 function addOldTasks() {
   if (localStorage.tasks !== undefined) {
     taskList.innerHTML = localStorage.getItem('tasks');
+  }
+  for (let index = 0; index < tasks.length; index += 1) {
+    addListenerToTask(tasks[index]);
   }
 }
 
