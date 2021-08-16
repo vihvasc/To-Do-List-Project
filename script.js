@@ -8,4 +8,5 @@ function adicionaTarefa(){
     tarefa.innerText = criarTarefa
     listaTarefa.appendChild(tarefa)
     criarTarefa = document.getElementById("texto-tarefa").value = ""
+    
 }
