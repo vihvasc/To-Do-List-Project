@@ -11,16 +11,26 @@ function addTask() {
   inputText.value = ''
 }
 function changeLiColor(e) {
-  let element = e.target
-  let selected = document.querySelector('.selected')
+  const element = e.target
+  const selected = document.querySelector('.selected')
 
   if (selected) {
-    selected.classList.remove('selected')
     selected.style.backgroundColor = ''
-
+    selected.classList.remove('selected')
   }
   element.classList.add('selected')
   element.style.backgroundColor = 'rgb(128, 128, 128)'
 }
+function scratchTask(e){
+  const element = e.target
+  const completed = element.classList.contains('completed')
+
+  if(completed){
+    element.classList.remove('completed')
+  } else {
+    element.classList.add('completed')
+  }
+}
 addButton.addEventListener('click', addTask)
 list.addEventListener('click', changeLiColor)
+list.addEventListener('dblclick', scratchTask)
