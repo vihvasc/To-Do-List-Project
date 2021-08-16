@@ -5,7 +5,7 @@ const buttonClearAll = document.getElementById('apaga-tudo');
 const removeFinalizados = document.getElementById('remover-finalizados');
 const salvaTarefas = document.getElementById('salvar-tarefas');
 const removerSelecionado = document.getElementById('remover-selecionado');
- 
+
 if (localStorage.getItem('salvar')) {
   chamaLista.innerHTML = localStorage.getItem('salvar');
 }
@@ -57,8 +57,8 @@ function salvandoTarefas() {
 }
 
 function removeItemSelecionado() {
-    const removeItem = document.querySelectorAll('.selected');
-    for (let index = 0; index < removeItem.length; index += 1) {
-        chamaLista.removeChild(removeItem[index]);
-    }
+  const removeItem = document.querySelectorAll('.selected');
+  for (let index = 0; index < removeItem.length; index += 1) {
+    chamaLista.removeChild(removeItem[index]);
+  }
 }
