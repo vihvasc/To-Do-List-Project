@@ -5,9 +5,23 @@ const botaoCriarTarefa = document.getElementById('criar-tarefa');
 // Adiciona tarefa a lista
 function adicionarTarefa() {
   const tarefas = document.createElement('li');
+  tarefas.className = 'tarefa';
   tarefas.innerText = textoTarefa.value;
   listaTarefas.appendChild(tarefas);
   textoTarefa.value = '';
 }
 
 botaoCriarTarefa.addEventListener('click', adicionarTarefa);
+
+// Adiciona cor de fundo para item selecionado
+function adicionaFundoItem(event) {
+  const itemSelecionado = document.querySelector('.selecionado');
+  if (itemSelecionado == null) {
+    event.target.classList.add('selecionado');
+  } else {
+    itemSelecionado.classList.remove('selecionado');
+    event.target.classList.add('selecionado');
+  }
+}
+
+listaTarefas.addEventListener('click', adicionaFundoItem);
