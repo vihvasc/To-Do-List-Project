@@ -21,16 +21,27 @@ function createParagraph() {
 createParagraph();
 
 function createListItem() {
-    let listItem = document.createElement('li');
-    listItem.innerHTML = `${input.value}`;
-    ol.appendChild(listItem);
-    input.value = '';
+  let listItem = document.createElement('li');
+  listItem.innerHTML = `${input.value}`;
+  listItem.className = 'list-item';
+  ol.appendChild(listItem);
+  input.value = '';
 }
 
 button.addEventListener('click', createListItem);
 
+
 function targetItem(event) {
-    event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+  const listItens = document.getElementsByClassName('list-item');
+  for (let index = 0; index < listItens.length; index += 1) {
+    if (listItens[index].classList.contains('target')) {
+        listItens[index].classList.remove('target');
+        listItens[index].style.backgroundColor = '#fff';
+    }
+    
+  event.target.classList.add('target');
+  event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+  }
 }
 
 ol.addEventListener('click', targetItem);
