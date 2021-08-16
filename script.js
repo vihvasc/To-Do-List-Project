@@ -28,10 +28,17 @@ addBtn.id = 'criar-tarefa';
 addBtn.innerText = 'Adicionar!';
 document.body.appendChild(addBtn);
 
+const selectedBackground = 'rgb(128, 128, 128)';
+function changeBackground(event) {
+  const listItem = event.target;
+  listItem.style.background = selectedBackground;
+}
+
 function addTask() {
   const taskContent = input.value;
   const taskItem = document.createElement('li');
   taskItem.innerText = taskContent;
+  taskItem.addEventListener('click', changeBackground);
   taskList.appendChild(taskItem);
   input.value = '';
 }
