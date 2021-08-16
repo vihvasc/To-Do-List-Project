@@ -14,7 +14,17 @@ function addList() {
   listItem.value = '';
 }
 
-const elements = document.getElementsByTagName('ol')[0];
-elements.addEventListener('click', function (event) {
-    event.target.style.backgroundColor = 'rgb(128, 128, 128)';
-  });
+const element = document.getElementsByTagName('ol')[0];
+element.addEventListener('click', function (event) {
+  clearBackground();
+  event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+});
+
+function clearBackground() {
+  const elements = document.getElementsByTagName('li');
+  for (let index = 0; index < elements.length; index += 1) {
+    let listElement = elements[index];
+    listElement.style.backgroundColor = '';
+  }
+
+}
