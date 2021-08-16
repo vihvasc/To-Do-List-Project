@@ -29,11 +29,22 @@ adicionaParagrafo();
 // ***** Será verificada a existência de um elemento do tipo input com o id texto-tarefa.
 
 function adicionaInput() {
-    const elementoInput = document.createElement('input');
-    elementoInput.id = 'texto-tarefa';
-    body.appendChild(elementoInput);
+  const elementoInput = document.createElement('input');
+  elementoInput.id = 'texto-tarefa';
+  body.appendChild(elementoInput);
 }
 adicionaInput();
+
+// 04 - Adicione uma lista ordenada de tarefas com o id="lista-tarefas"
+// *** O que será verificado:
+// ***** Será verificada a existência de um elemento ol com o id lista-tarefas.
+
+function criaLO() {
+  const listaOrdenada = document.createElement('ol');
+  listaOrdenada.id = 'lista-tarefas';
+  body.appendChild(listaOrdenada);
+}
+criaLO();
 
 // 0
 // *** 
