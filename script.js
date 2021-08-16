@@ -1,6 +1,7 @@
 let createTaskBtn = document.getElementById('criar-tarefa');
 let input = document.getElementById('texto-tarefa');
 let taskList = document.getElementById('lista-tarefas');
+let removeAllBtn = document.getElementById('apaga-tudo');
 
 function handleAddTask() {
   let li = document.createElement('li');
@@ -39,3 +40,11 @@ function handleDoubleClickItem(event) {
     isCompleted = false;
   }
 }
+
+function handleRemoveAll() {
+  while (taskList.children.length !== 0) {
+    // ou enquanto taskList.firstChild existir
+    taskList.lastChild.remove();
+  }
+}
+removeAllBtn.addEventListener('click', handleRemoveAll);
