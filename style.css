@@ -63,6 +63,11 @@ ol li {
   display: inline-block;
 }
 
+#list {
+  display: inline-block;
+  position: absolute;
+}
+
 #apaga-tudo {
   background-image: url('https://t3.ftcdn.net/jpg/01/45/20/02/360_F_145200273_450ViYipr5uU3WIwqzwjsRDHYTMcUH9P.jpg');
   width: 50px;
