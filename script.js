@@ -19,6 +19,16 @@ function changeLiColor(event) {
     originEvent.style.backgroundColor = "rgb(128,128,128)"
 }
 
+function completeTask(event) {
+    let originEvent = event.target
+
+    if(originEvent.classList.contains("completed")) {
+        originEvent.classList.remove("completed")
+    } else {
+        originEvent.classList.add("completed")
+    }
+}
+
 window.onload = function() {
     let createTskBtn = document.querySelector("#criar-tarefa")
     createTskBtn.addEventListener("click", addTask)
@@ -26,5 +36,8 @@ window.onload = function() {
     let listItem = document.querySelectorAll("#lista-tarefas")
     for(let counter = 0; counter < listItem.length; counter += 1) {
         listItem[counter].addEventListener("click", changeLiColor)
+        listItem[counter].addEventListener("dblclick", completeTask)
     }
+
+
 }
