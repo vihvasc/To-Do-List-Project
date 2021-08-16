@@ -1,4 +1,19 @@
-// Desafio 5 - Cria uma lista de taferas em sequencia e limpa a entrada do input
+// Desafio 7 -Altera cor de fundo do item da lista selecionado
+function selectedItemList() {
+  const selectedItem = document.querySelectorAll('.itens');
+  const selectedColor = 'rgb(128, 128, 128)';
+
+  for (let i = 0; i < selectedItem.length; i += 1) {
+    const checkItem = selectedItem[i];
+
+    checkItem.addEventListener('click', () => {
+      checkItem.classList.add('selected');
+      checkItem.style.backgroundColor = selectedColor;
+    });
+  }
+}
+
+// Desafio 5 e 6- Cria uma lista de taferas em sequencia e limpa a entrada do input
 function addToList() {
   const button = document.getElementById('criar-tarefa');
   const input = document.getElementById('texto-tarefa');
@@ -13,6 +28,7 @@ function addToList() {
     oList.appendChild(item);
 
     input.value = '';
+    selectedItemList();
   });
 }
 
