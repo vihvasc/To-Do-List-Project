@@ -4,8 +4,12 @@ const taskList = document.getElementById('lista-tarefas');
 
 // Seleciona uma tarefa.
 function selectTask(event) {
-  const task = event.target;
-  task.style.backgroundColor = 'rgb(128,128,128)';
+  const actualSelected = event.target;
+  const previousSelected = document.querySelector('.selected');
+  if (previousSelected !== null && previousSelected !== actualSelected) {
+    previousSelected.classList.remove('selected');
+  }
+  actualSelected.classList.toggle('selected');
 }
 
 // Cria uma nova <li> de tarefa.
