@@ -16,36 +16,21 @@ function createTask() {
   getCreateTaskButton.addEventListener('click', verifyInputValueEmpty);
 }
 
-function createNotification() {
-  const notificationDiv = document.querySelector('#notification');
-  notificationDiv.className = 'notification';
-  setTimeout(() => {
-    notificationDiv.className = 'display-none';
-  }, 2000);
-}
-
-function verifyAddBackground() {
-  const getClass = 'selected';
-  const getClassSelected = document.getElementsByClassName(getClass);
-  if (getClassSelected.length === 1) {
-    createNotification();
+function changeBackgroundColor(event) {
+  const selected = document.querySelector('.selected');
+  if (!selected) {
+    event.target.classList.add('selected');
   } else {
-    event.target.classList.add(getClass);
+    selected.classList.remove('selected');
+    event.target.classList.add('selected');
   }
 }
+getOrdenedList.addEventListener('click', changeBackgroundColor);
 
-function addBackground() {
-  const getClass = 'selected';
-  getOrdenedList.addEventListener('click', (e) => {
-    if (e.target.classList.contains(getClass)) {
-      e.target.classList.remove(getClass);
-    } else {
-      verifyAddBackground();
-    }
-  });
-}
+/*
+* Código acima foi feito com a ajuda do Aluno Iury Roque da tribo B
+*/
 
 window.onload = () => {
   createTask();
-  addBackground();
 };
