@@ -15,3 +15,13 @@ function addTask(event) {
 }
 
 criarTarefa.addEventListener('click', addTask);
+
+function selectTask(event) {
+  const allTasks = document.querySelectorAll('#lista-tarefas li');
+  for (let i = 0; i < allTasks.length; i += 1) {
+    allTasks[i].classList.remove('selected');
+  }
+  event.target.classList.toggle('selected');
+}
+
+listaTarefas.addEventListener('click', selectTask);
