@@ -4,6 +4,7 @@ const infoInput = document.getElementById('texto-tarefa');
 const listTasks = document.getElementById('lista-tarefas');
 const arrTasks = document.getElementsByClassName('taskAdd');
 const clearAll = document.getElementById('apaga-tudo');
+
 /*Adicionando novas tarefas*/
 buttonOne.addEventListener('click', newTask);
 function newTask() {
@@ -16,10 +17,12 @@ function newTask() {
   infoInput.value = '';
 }
 
-function changeBackColor() {
-  anotherTask.style.changeBackColor = 'pink';
+/*Mudar o fundo do item*/
+function changeBackColor(event) {
+  event.target.style.backgroundColor = 'rgb(128, 128, 128)';
 }
 
+/*Botão para limpar a lista de tarefas */
 clearAll.addEventListener('click', clearItens);
 function clearItens() {
   listTasks.innerHTML = '';
