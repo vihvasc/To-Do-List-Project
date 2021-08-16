@@ -1,9 +1,10 @@
 const tags = ['body', 'header', 'h1', 'div', 'p', 'main', 'section', 'input', 'ol', 'button',
   'li'];
 const ids = ['', 'header', 'funcionamento', 'texto-tarefa', 'lista-tarefas', 'criar-tarefa',
-  'apaga-tudo'];
+  'apaga-tudo', 'remover-finalizados'];
 const innerTexts = ['', 'Minha Lista de Tarefas', 'Clique duas vezes em um item para marcá-lo'
-  + ' como completo', 'Nova', '[AVISO] - Digite o nome da tarefa para continuar...', 'Apagar'];
+  + ' como completo', 'Nova', '[AVISO] - Digite o nome da tarefa para continuar...', 'Apagar',
+  'Remover Finalizados'];
 const classes = ['', 'selected', 'completed'];
 
 function createList(myArray) {
@@ -47,6 +48,7 @@ function createPageStructure() {
   createElements([tags[5], 0, tags[6], ids[0], classes[0], innerTexts[0]]);
   createElements([tags[6], 2, tags[9], ids[5], classes[0], innerTexts[3]]);
   createElements([tags[6], 2, tags[9], ids[6], classes[0], innerTexts[5]]);
+  createElements([tags[6], 2, tags[9], ids[7], classes[0], innerTexts[6]]);
 }
 
 createPageStructure();
@@ -106,7 +108,7 @@ function dblclickListItem() {
 
 dblclickListItem();
 
-function eraseList() {
+function removeList() {
   const olListaTarefas = document.getElementById(ids[4]);
   const numItensList = olListaTarefas.childElementCount;
   for (let index = 0; index < numItensList; index += 1) {
@@ -114,9 +116,26 @@ function eraseList() {
   }
 }
 
-function btnEraseList() {
+function btnRemoveList() {
   const btnApagaTudo = document.getElementById(ids[6]);
-  btnApagaTudo.addEventListener('click', eraseList);
+  btnApagaTudo.addEventListener('click', removeList);
 }
 
-btnEraseList();
+btnRemoveList();
+
+function removeSelected() {
+  const olListaTarefas = document.getElementById(ids[4]);
+  const numItensList = olListaTarefas.childElementCount;
+  for (let index = (numItensList - 1); index >= 0; index -= 1) {
+    if (olListaTarefas.children[index].className.includes(classes[2])) {
+      olListaTarefas.removeChild(olListaTarefas.children[index]);
+    }
+  }
+}
+
+function btnRemoveSelected() {
+  const btnRemoverFinalizados = document.getElementById(ids[7]);
+  btnRemoverFinalizados.addEventListener('click', removeSelected);
+}
+
+btnRemoveSelected();
