@@ -1,13 +1,12 @@
-
-let inputText = document.getElementById("texto-tarefa"); 
-let ordenadeList = document.getElementById("lista-tarefas");
-const buttonAdd = document.getElementById("criar-tarefa");
-const buttonClearAll = document.getElementById("apaga-tudo");
-const buttonClearCompleted = document.getElementById("remover-finalizados");
-const buttonSaveTask = document.getElementById("salvar-tarefas");
-const buttonMoveUp = document.getElementById("mover-cima");
-const buttonMoveDown = document.getElementById("mover-baixo");
-const buttonClearElement = document.getElementById("remover-selecionado");
+const inputText = document.getElementById("texto-tarefa");
+const ordenadeList = document.getElementById('lista-tarefas');
+const buttonAdd = document.getElementById('criar-tarefa');
+const buttonClearAll = document.getElementById('apaga-tudo');
+const buttonClearCompleted = document.getElementById('remover-finalizados');
+const buttonSaveTask = document.getElementById('salvar-tarefas');
+const buttonMoveUp = document.getElementById('mover-cima');
+const buttonMoveDown = document.getElementById('mover-baixo');
+const buttonClearElement = document.getElementById('remover-selecionado');
 
 
 //Puxa a lista salva no local storage
@@ -33,8 +32,8 @@ function addList() {
     let placeholder = inputText.placeholder = "Lista vazia!";
   }
 }
-//Marca a atividade com a class completed e desmarca a anterior para ter somente uma
-ordenadeList.addEventListener("click", changeBackgroundColor);
+//Marca a atividade com a class selected e desmarca a anterior para ter somente uma
+orderedList.addEventListener("click", changeBackgroundColor);
 function changeBackgroundColor(event) {
   const selected = document.querySelector(".selected")
   if (!selected) {
@@ -45,7 +44,7 @@ function changeBackgroundColor(event) {
   }
 }
 //Marca a atividade com a class completed
-ordenadeList.addEventListener("dblclick", completedList);
+orderedList.addEventListener("dblclick", completedList);
 function completedList(event) {
   if (event.target.classList.contains("completed")) {
     event.target.classList.remove("completed");
@@ -56,23 +55,23 @@ function completedList(event) {
 //Limpa todas as atividades
 buttonClearAll.addEventListener("click", clearAll);
 function clearAll() {
-  ordenadeList.innerHTML = "";
+  orderedList.innerHTML = "";
 }
 //Limpa as atividades que tem a class completed
 buttonClearCompleted.addEventListener("click",clearCompleted)
 function clearCompleted() {
   let completed = document.querySelectorAll(".completed");
   for (const key of completed) {
-    ordenadeList.removeChild(key)
+    orderedList.removeChild(key)
   }
 }
 //Salva a lista no local storage
 buttonSaveTask.addEventListener("click", saveTasks);
 function saveTasks() {
-  localStorage.setItem("lista-ordenada",ordenadeList.innerHTML)
+  localStorage.setItem("lista-ordenada",orderedList.innerHTML)
 }
 //Mover elemento para cima
-buttonMoveUp.addEventListener("click", moveUp)
+buttonMoveUp.addEventListener("click", moveUp);
 function moveUp() {
   let elementSelected = document.getElementsByClassName("selected")[0];
   let list = document.querySelectorAll(".lista");
