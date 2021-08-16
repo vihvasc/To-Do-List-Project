@@ -1,1 +1,21 @@
+body {
+  background-color: rgb(35, 19, 43);
+}
 
+#section-header {
+  border: 2px solid rgb(88, 48, 252);
+  border-radius: 20px;
+  color: rgb(46, 61, 242);
+  background-color: rgb(133, 147, 245);
+}
+
+#section-main {
+  border: 2px solid rgb(235, 155, 162);
+  border-radius: 20px;
+  color: rgb(242, 150, 246);
+  background-color: rgb(212, 129, 177);
+}
+
+#tasks-container *{
+  color: rgb(197, 255, 255);
+}
