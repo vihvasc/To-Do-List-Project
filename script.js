@@ -1,31 +1,13 @@
 function finalizedClean() {
   const buttonFinalized = document.getElementById('remover-finalizados');
   const taksfinalized = document.querySelectorAll('.completed');
+  localStorage.clear();
   buttonFinalized.addEventListener('click', () => {
     for (let key = 0; key < taksfinalized.length; key += 1) {
       taksfinalized[key].remove();
     }
   });
 }
-
-function salve() {
-  const buttonSalve = document.getElementById('salvar-tarefas');
-  const salveLi = document.querySelectorAll('li');
-  const objeto = [];
-  buttonSalve.addEventListener('click', () => {
-    for (let key = 0; key < salveLi.length; key += 1) {
-        let cont = 0;
-      const value = salveLi[key].innerText;
-      if (cont === 0) {
-        objeto.push({ item: value, classe: salveLi[key].classList.value });
-        localStorage.setItem('list', JSON.stringify(objeto));
-        cont = 1;
-      }
-    }
-
-  });
-}
-salve();
 
 function clean() {
   const buttonClean = document.getElementById('apaga-tudo');
@@ -60,7 +42,7 @@ taskComplete();
 function cleanBackgrood() {
   const li = document.querySelectorAll('li');
   for (let key = 0; key < li.length; key += 1) {
-    li[key].style.backgroundColor = 'white';
+    li[key].style.backgroundColor = '#1a1a1d ';
   }
 }
 
@@ -75,6 +57,19 @@ function listColor() {
 }
 listColor();
 
+function salve() {
+  const buttonSalve = document.getElementById('salvar-tarefas');
+  const salveLi = document.querySelectorAll('li');
+  const objeto = [];
+  buttonSalve.addEventListener('click', () => {
+    for (let key = 0; key < salveLi.length; key += 1) {
+      const value = salveLi[key].innerText;
+      objeto.push({ item: value, classe: salveLi[key].classList.value });
+      localStorage.setItem('list', JSON.stringify(objeto));
+    }
+  });
+}
+
 function addTaks() {
   const button = document.getElementById('criar-tarefa');
   button.addEventListener('click', () => {
@@ -86,9 +81,9 @@ function addTaks() {
     list.appendChild(li);
     listColor();
     taskComplete();
+    localStorage.clear();
     salve();
     clean();
-    localStorage.clear();
   });
 }
 addTaks();
