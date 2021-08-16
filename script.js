@@ -1,5 +1,7 @@
 let getOl = document.getElementById('lista-tarefas');
 let getInput = document.getElementById('texto-tarefa');
+let getButtonClear = document.querySelector('#apaga-tudo');
+
 function addLi() {
     let setLi = document.createElement('li');
     setLi.className = 'tarefas';
@@ -42,3 +44,13 @@ getOl.addEventListener('dblclick', function(e) {
         }
     }
 })
+
+function clearList() {
+    let getLis = document.querySelectorAll('li');
+    for (let i = 0; i < getLis.length; i += 1) {
+        getLis[i].remove();
+        }
+    }
+getButtonClear.addEventListener('click', clearList)
+
+
