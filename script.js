@@ -8,7 +8,18 @@ function addTask() {
     input.value = ""
 }
 
+function changeLiColor(event) {
+    let originEvent = event.target
+    originEvent.style.setProperty("background-color", "rgb(128,128,128)")
+
+}
+
 window.onload = function() {
     let createTskBtn = document.querySelector("#criar-tarefa")
     createTskBtn.addEventListener("click", addTask)
+
+    let listItem = document.querySelectorAll("#lista-tarefas")
+    for(let counter = 0; counter < listItem.length; counter += 1) {
+        listItem[counter].addEventListener("click", changeLiColor)
+    }
 }
