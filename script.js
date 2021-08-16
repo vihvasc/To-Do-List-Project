@@ -8,19 +8,19 @@ function addItemList() {
     alert('Digite uma tarefa no campo abaixo!');
     return false;
   }
-  const creatLiItem = document.createElement('li');
-  creatLiItem.innerText = inputValue.value;
-  creatLiItem.classList.add('li-list');
-  theList.appendChild(creatLiItem);
+  const creatListItem = document.createElement('li');
+  creatListItem.innerText = inputValue.value;
+  creatListItem.classList.add('li-list');
+  theList.appendChild(creatListItem);
   inputValue.value = '';
 }
 button.addEventListener('click', addItemList);
 
 // 7 - 8. Created function for change background-color and select one item
 theList.addEventListener('click', (event) => {
-  const liItem = document.querySelectorAll('li');
-  for (let i = 0; i < liItem.length; i += 1) {
-    liItem[i].style.backgroundColor = 'white';
+  const listItem = document.querySelectorAll('li');
+  for (let i = 0; i < listItem.length; i += 1) {
+    listItem[i].style.backgroundColor = 'white';
   }
   event.target.style.backgroundColor = 'rgb(128, 128, 128)';
 });
