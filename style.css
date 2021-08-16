@@ -1,0 +1,29 @@
+body {
+    background-color: palevioletred;
+    padding: 5%;
+    font-size: 18px;
+    font-family: serif;
+}
+#main-section {
+    background-color: white;
+    border-radius: 20%;
+    border: 5px solid rgb(204, 5, 121);
+    width: 60%;
+    padding: 5%;
+    margin-left: 15%;
+}
+
+#funcionamento {
+    font-size: 1em;
+    font-weight: normal;
+}
+
+#criar-tarefa{
+    background-color: rgb(88, 170, 236);
+    border-radius: 20%;
+    padding: 0.5%;
+    width: 15%;
+    border: none;
+    color: white;
+    font-weight: bold;
+}

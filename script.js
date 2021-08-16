@@ -25,3 +25,15 @@ function changeBackgroundColor(e){
     }
 }
 getOl.addEventListener('click', changeBackgroundColor);
+
+getOl.addEventListener('dblclick', function(e) {    
+    if(e.target.classList.contains('tarefas')) {
+        if (e.target.classList.contains('completed')) {
+            e.target.classList.remove('completed');
+            e.target.style.textDecoration = 'none';
+        } else {
+            e.target.classList.add('completed');
+            e.target.style.textDecoration = 'line-through';
+        }
+    }
+})
