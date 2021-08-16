@@ -11,7 +11,6 @@ function selectTask(event) {
   }
 
   const selectedTask = event.target;
-  console.log(selectedTask);
   selectedTask.id = 'selected';
 }
 
@@ -25,11 +24,11 @@ function toggleCompletion(event) {
   }
 }
 
-function createTask(taskDescription, taskClass) {
+function createTask(taskDescription, classString) {
   const newTask = document.createElement('li');
 
   newTask.innerText = taskDescription;
-  newTask.className = taskClass;
+  newTask.className = classString;
   newTask.addEventListener('click', selectTask);
   newTask.addEventListener('dblclick', toggleCompletion);
 
@@ -44,6 +43,7 @@ function createTaskButton() {
   const taskButton = document.createElement('button');
 
   taskButton.id = 'criar-tarefa';
+  taskButton.innerText = 'Criar tarefa';
   taskButton.addEventListener('click', () => {
     createTask(taskInput.value);
     clearInput();
@@ -62,6 +62,7 @@ function createClearButton() {
   const clearButton = document.createElement('button');
 
   clearButton.id = 'apaga-tudo';
+  clearButton.innerText = 'Apagar tudo';
   clearButton.addEventListener('click', clearAll);
 
   buttonsContainer.appendChild(clearButton);
@@ -80,9 +81,16 @@ function createRemoveDoneButton() {
   const removeDoneButton = document.createElement('button');
 
   removeDoneButton.id = 'remover-finalizados';
+  removeDoneButton.innerText = 'Remover finalizados';
   removeDoneButton.addEventListener('click', removeDoneTasks);
 
   buttonsContainer.appendChild(removeDoneButton);
+}
+
+function transformElementToObject(element) {
+  const Object = { text: element.innerText, class: element.className };
+
+  return Object;
 }
 
 function saveTasks() {
@@ -91,13 +99,7 @@ function saveTasks() {
   const tasksArray = [];
 
   for (let index = 0; index < tasks.length; index += 1) {
-    const taskObject = { text: tasks[index].innerText };
-
-    if (tasks[index].classList.contains('completed')) {
-      taskObject.completed = true;
-    } else {
-      taskObject.completed = false;
-    }
+    const taskObject = transformElementToObject(tasks[index]);
 
     tasksArray.push(taskObject);
   }
@@ -109,9 +111,60 @@ function createSaveButton() {
   const saveButton = document.createElement('button');
 
   saveButton.id = 'salvar-tarefas';
+  saveButton.innerText = 'Salvar';
   saveButton.addEventListener('click', saveTasks);
 
   buttonsContainer.appendChild(saveButton);
+}
+
+function moveTaskUp() {
+  const selectedElement = document.getElementById('selected');
+  const targetElement = selectedElement.previousElementSibling;
+  const selectedObject = transformElementToObject(selectedElement);
+  const targetObject = transformElementToObject(targetElement);
+
+  selectedElement.innerText = targetObject.text;
+  selectedElement.className = targetObject.class;
+  selectedElement.id = '';
+
+  targetElement.innerText = selectedObject.text;
+  targetElement.className = selectedObject.class;
+  targetElement.id = 'selected';
+}
+
+function createMoveUpButton() {
+  const moveUpButton = document.createElement('button');
+
+  moveUpButton.id = 'mover-cima';
+  moveUpButton.innerText = 'Mover para cima';
+  moveUpButton.addEventListener('click', moveTaskUp);
+
+  buttonsContainer.appendChild(moveUpButton);
+}
+
+function moveTaskDown() {
+  const selectedElement = document.getElementById('selected');
+  const targetElement = selectedElement.nextElementSibling;
+  const selectedObject = transformElementToObject(selectedElement);
+  const targetObject = transformElementToObject(targetElement);
+
+  selectedElement.innerText = targetObject.text;
+  selectedElement.className = targetObject.class;
+  selectedElement.id = '';
+
+  targetElement.innerText = selectedObject.text;
+  targetElement.className = selectedObject.class;
+  targetElement.id = 'selected';
+}
+
+function createMoveDownButton() {
+  const moveUpButton = document.createElement('button');
+
+  moveUpButton.id = 'mover-baixo';
+  moveUpButton.innerText = 'Mover para baixo';
+  moveUpButton.addEventListener('click', moveTaskDown);
+
+  buttonsContainer.appendChild(moveUpButton);
 }
 
 function removeSelectedTask() {
@@ -123,6 +176,7 @@ function createRemoveSelectedButton() {
   const removeSelectedButton = document.createElement('button');
 
   removeSelectedButton.id = 'remover-selecionado';
+  removeSelectedButton.innerText = 'Remover tarefa selecionada';
   removeSelectedButton.addEventListener('click', removeSelectedTask);
 
   buttonsContainer.appendChild(removeSelectedButton);
@@ -130,13 +184,12 @@ function createRemoveSelectedButton() {
 
 function getStoredTasks() {
   for (let index = 0; index < task.length; index += 1) {
-    if (task[index].completed) {
-      createTask(task[index].text, 'completed');
-    } else {
-      createTask(task[index].text);
+    if (task[index].class) {
+      createTask(task[index].text, task[index].class);
     }
   }
 }
+
 function generateStoredTasks() {
   if (task) {
     getStoredTasks();
@@ -148,6 +201,8 @@ window.onload = () => {
   createClearButton();
   createRemoveDoneButton();
   createSaveButton();
+  createMoveUpButton();
+  createMoveDownButton();
   createRemoveSelectedButton();
   generateStoredTasks();
 };
