@@ -12,23 +12,32 @@
   <header>
     <h1>Minha Lista de Tarefas</h1>
     <p id="funcionamento"> Clique duas vezes em um item para marcá-lo como completo </p>
+    <p id="funcionamento2"> Clique uma vez para selecionar o item </p>
   </header> 
 
   <section>
-    <input id="texto-tarefa">
-    <ol id="lista-tarefas"></ol>
 
-    <button id="criar-tarefa"></button>
-    <button id="apaga-tudo"></button>
-    <button id="remover-finalizados"></button>
-    <button id="salvar-tarefas"></button>
-    <button id="mover-cima"></button>
-    <button id="mover-baixo"></button>
-    <button id="remover-selecionado" ></button>
-
+    <form class='listaTarefas'>
+      <label for="texto-tarefa"> Adicione com a tarefa:  </label> 
+      <input id="texto-tarefa">
+      <ol id="lista-tarefas"></ol>
+    </form>
+    
+  <grid id="botoes">
+    <button id="criar-tarefa">Adicionar Tarefa</button>
+    <button id="apaga-tudo">Limpar Lista </button>
+    <button id="remover-finalizados">Remove Itens Finalizados</button>
+    <button id="salvar-tarefas">Salvar as Lista de Tarefas</button>
+    <button id="mover-cima">Mover Item para Cima</button>
+    <button id="mover-baixo">Mover Item para Baixo</button>
+    <button id="remover-selecionado" >Remover Item Selecionado</button>
+  </grid>
+    
   </section>
  
-
+<footer>
+  <p>Página do Projeto To Do List - by: Danielen Cestari Nunes.</p>
+</footer>
 <script src="script.js"></script>
 </body>
 </html>
