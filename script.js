@@ -7,6 +7,7 @@ const removeButton = document.querySelector('#remover-finalizados');
 const saveButton = document.querySelector('#salvar-tarefas');
 const upButton = document.querySelector('#mover-cima');
 const downButton = document.querySelector('#mover-baixo');
+const removeSelectedButton = document.querySelector('#remover-selecionado');
 const main = document.querySelector('main');
 
 // Event Listeners
@@ -16,6 +17,7 @@ removeButton.addEventListener("click", removeFinishedTasks);
 saveButton.addEventListener("click", saveTasks);
 upButton.addEventListener("click", moveUp);
 downButton.addEventListener("click", moveDown);
+removeSelectedButton.addEventListener("click", removeSelected);
 
 // Funções
 generateList();
@@ -126,8 +128,8 @@ function moveUp() {
   if (liCurrent != null) {
   let liAbove = document.querySelector(".selected").previousSibling;
 
-  if (liCurrent === null) {
-    return "";
+  if (liAbove === null) {
+    return;
   }
 
   taskList.insertBefore(liCurrent,liAbove);
@@ -141,10 +143,13 @@ function moveDown() {
     let liBelow = document.querySelector(".selected").nextSibling;
 
     if (liBelow === null) {
-      liCurrent = document.querySelector("#lista-tarefas li");
-      liBelow = document.querySelector(".selected");
+      return;
     }
   
     taskList.insertBefore(liBelow,liCurrent);
   }
+}
+
+function removeSelected() {
+  document.querySelector('.selected').remove();
 }
