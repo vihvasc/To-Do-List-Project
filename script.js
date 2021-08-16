@@ -19,13 +19,14 @@ function requisito5e6() {
 
 function requisito7() {
   const listasLi = document.querySelectorAll('.colors');
-  console.log(listasLi);
   for (let key of listasLi) {
     key.addEventListener('click', changeColor);
   }
 
   function changeColor(event) {
-    console.log('ola');
+    for (let key of listasLi) {
+      key.style.backgroundColor = 'white';
+    }
     const evento = event.target;
     evento.style.backgroundColor = 'gray';
   }
