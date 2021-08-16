@@ -14,6 +14,7 @@ function requisito5e6() {
     input.value = '';
     requisito7e8();
     requisito9();
+    requisito10();
   }
 }
 
@@ -34,17 +35,37 @@ function requisito7e8() {
 
 function requisito9() {
   const listasLi = document.getElementsByTagName('li');
-  console.log(listasLi);
   for (let key of listasLi) {
     key.addEventListener('dblclick', changeTextDecoration);
   }
 
   function changeTextDecoration(event) {
-    console.log();
-    for (let key of listasLi) {
-      key.classList.remove('completed');
-    }
     const evento = event.target;
-    evento.classList = 'completed';
+    const classeEvento = evento.className;
+    if (classeEvento === 'completed') {
+      for (let key of listasLi) {
+        key.classList.remove('completed');
+      }
+    }
+    if (evento.className !== 'completed') {
+      evento.classList = 'completed';
+    }
+  }
+
+  //   function changeTextDecoration2(event) {
+  //     const evento = event.target;
+  //     evento.classList.remove('completed');
+}
+function requisito10() {
+  let buttonClear = document.getElementById('apaga-tudo');
+  console.log(buttonClear);
+  buttonClear.addEventListener('click', clearList);
+
+  function clearList() {
+    const paiLi = document.getElementById('lista-tarefas');
+    const listasLi = document.getElementsByTagName('li');
+    for (let key of listasLi) {
+      paiLi.removeChild(key);
+    }
   }
 }
