@@ -143,7 +143,7 @@ criaTarefa();
 // ***** Será verificado que existe um elemento button com o id apaga-tudo
 // ***** Será verificado que, dado que uma lista possui tarefas, um clique no botão a deixa vazia
 
-function limpaLista () {
+function limpaLista() {
     const botaoLimpar = document.createElement('button');
     botaoLimpar.id = 'apaga-tudo';
     botaoLimpar.textContent = 'Limpar Lista';
@@ -155,11 +155,33 @@ function limpaLista () {
         }
     })
     body.appendChild(botaoLimpar);
-    
-
-    
 }
 limpaLista();
+
+// 11 - Adicione um botão com id="remover-finalizados" que quando clicado remove somente os elementos finalizados da sua lista
+// *** O que será verificado:
+// ***** Será verificado que existe um elemento button com o id remover-finalizados
+// ***** Será verificado que, ao clicar no botão, todos os elementos marcados como feitos são removidos da lista
+
+function removerFinalizados() {
+  //
+  const botaoRemover = document.createElement('button');
+  botaoRemover.id = 'remover-finalizados';
+  botaoRemover.textContent = 'Apaga Finalizados';
+  body.appendChild(botaoRemover);
+  botaoRemover.addEventListener('click', function () {
+    const checaElementos = document.querySelectorAll('li');
+    for (let index = 0; index < checaElementos.length; index += 1 ) {
+      if ( checaElementos[index].className.endsWith('completed') ) {
+        console.log('Apagando Elemento: ' + checaElementos[index].textContent );
+        checaElementos[index].remove();
+      }
+    }
+    
+  })
+
+}
+removerFinalizados();
 
 // 1
 // ***
