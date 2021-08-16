@@ -105,3 +105,18 @@ function dblclickListItem() {
 }
 
 dblclickListItem();
+
+function eraseList() {
+  const olListaTarefas = document.getElementById(ids[4]);
+  const numItensList = olListaTarefas.childElementCount;
+  for (let index = 0; index < numItensList; index += 1) {
+    olListaTarefas.removeChild(olListaTarefas.lastChild);
+  }
+}
+
+function btnEraseList() {
+  const btnApagaTudo = document.getElementById(ids[6]);
+  btnApagaTudo.addEventListener('click', eraseList);
+}
+
+btnEraseList();
