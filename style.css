@@ -1,0 +1,23 @@
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+  background-color: rgb(228, 210, 51, 0.4);
+}
+
+input {
+  border: 1px solid rgb(13,13,13);
+}
+
+body {
+	font-family: "Open Sans", sans-serif;
+	font-size: 25px
+}
+
+ul, ol, li {
+	list-style: none;
+}
+
+button {
+  border: 1px solid rgb(13,13,13);
+}
