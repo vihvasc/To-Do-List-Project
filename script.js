@@ -34,11 +34,7 @@ function handleDeleteSelectedTaskBtn() {
 
 function handleTaskDblClick(event) {
   const currentTask = event.target;
-  if (currentTask.classList.contains('completed')) {
-    currentTask.classList.remove('completed');
-  } else {
-    currentTask.classList.add('completed');
-  }
+  currentTask.classList.toggle('completed');
 }
 
 function handleTaskClick(event) {
@@ -46,7 +42,7 @@ function handleTaskClick(event) {
   if (previousSelected !== null) {
     previousSelected.classList.remove('selected');
   }
-  event.target.classList.add('selected');
+  event.target.classList.toggle('selected');
 }
 
 function handleInput() {
@@ -84,17 +80,21 @@ function addOldTasks() {
 
 function moveTaskUp() {
   const taskToMove = document.querySelector('.selected');
-  const previousTask = taskToMove.previousElementSibling;
-  if (previousTask !== null && taskToMove !== null) {
-    taskToMove.parentElement.insertBefore(taskToMove, previousTask);
+  if (taskToMove !== null) {
+    const previousTask = taskToMove.previousElementSibling;
+    if (previousTask !== null) {
+      taskToMove.parentElement.insertBefore(taskToMove, previousTask);
+    }
   }
 }
 
 function moveTaskDown() {
   const taskToMove = document.querySelector('.selected');
-  const nextTask = taskToMove.nextElementSibling;
-  if (nextTask !== null && taskToMove !== null) {
-    taskToMove.parentElement.insertBefore(taskToMove, nextTask.nextElementSibling);
+  if (taskToMove !== null) {
+    const nextTask = taskToMove.nextElementSibling;
+    if (nextTask !== null) {
+      taskToMove.parentElement.insertBefore(taskToMove, nextTask.nextElementSibling);
+    }
   }
 }
 
