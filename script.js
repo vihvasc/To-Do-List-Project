@@ -1,5 +1,6 @@
 const header = document.querySelector('#header');
 const input = document.querySelector('#texto-tarefa');
+const button = document.querySelector('#criar-tarefa');
 const ol = document.querySelector('#lista-tarefas');
 
 function createTitle() {
@@ -18,3 +19,16 @@ function createParagraph() {
 }
 
 createParagraph();
+
+function createListItem() {
+    let listItem = document.createElement('li');
+    listItem.innerHTML = `${input.value}`;
+    ol.appendChild(listItem);
+    input.value = '';
+}
+
+button.addEventListener('click', createListItem);
+
+
+
+
