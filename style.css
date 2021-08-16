@@ -85,3 +85,7 @@ input {
   font-weight: 700;
   padding: 10px;
 }
+
+.grey {
+  background: rgb(128, 128, 128);
+}

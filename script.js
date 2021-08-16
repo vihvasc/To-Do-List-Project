@@ -1,31 +1,33 @@
 window.onload = function () {
-  //digito texto no input
-  //clico no botão
-  //texto do input vai para a ol
-
   let tasks = [];
+  let input = document.getElementById('texto-tarefa'); //pega o input
+  let list = document.getElementById('lista-tarefas'); //pega a ol
+  let button = document.getElementById('criar-tarefa'); //pega o button
+  let li = document.getElementsByClassName('task')[0]; //pega o li
 
-  let list = document.getElementById('lista-tarefas');
-  for (i = 0; i < 5; i += 1) {
-    let listItems = document.createElement('li');
-    listItems.className = "task";
-    list.appendChild(listItems);
-  }
-
-  let input = document.getElementById('texto-tarefa');
-
-  let button = document.getElementById('criar-tarefa');
-  button.addEventListener('click', renderTasks);
+  button.addEventListener('click', function () {
+    tasks.push(input.value);
+    input.value = '';
+    renderTasks();
+  });
 
   function renderTasks() {
-    //quando clicar no botão, quero que o innertext da li seja igual ao value do input
-    //quero repetir a operação a cada novo texto no input
-    
-    let inputText = input.value;
-    let task = document.getElementsByClassName("task")[0];
-    task.innerText = inputText;
-    input.value = "";
+    let listTasks = '';
+    for (let i = 0; i < tasks.length; i += 1) {
+      listTasks += '<li class="task">' + tasks[i] + '</li>';
+    }
+    list.innerHTML = listTasks;
   }
 
-  renderTasks();
+  
+
+  //TENTATIVA DE REFATORAR A RENDERTASKS()
+  // function renderTasks() {
+  //   for (let i = 0; i < tasks.length; i += 1) {
+  //     let listTasks = document.createElement('li');
+  //     listTasks.className = "task";
+  //     listTasks.innerText += tasks[i];
+  //   }
+  //   list.appendChild = listTasks;
+  // }
 };
