@@ -2,6 +2,7 @@ const header = document.querySelector('#header');
 const input = document.querySelector('#texto-tarefa');
 const button = document.querySelector('#criar-tarefa');
 const ol = document.querySelector('#lista-tarefas');
+const listItens = document.getElementsByClassName('list-item');
 
 function createTitle() {
   const title = document.createElement('h1');
@@ -21,7 +22,7 @@ function createParagraph() {
 createParagraph();
 
 function createListItem() {
-  let listItem = document.createElement('li');
+  const listItem = document.createElement('li');
   listItem.innerHTML = `${input.value}`;
   listItem.className = 'list-item';
   ol.appendChild(listItem);
@@ -30,20 +31,27 @@ function createListItem() {
 
 button.addEventListener('click', createListItem);
 
-
 function targetItem(event) {
-  const listItens = document.getElementsByClassName('list-item');
   for (let index = 0; index < listItens.length; index += 1) {
     if (listItens[index].classList.contains('target')) {
-        listItens[index].classList.remove('target');
-        listItens[index].style.backgroundColor = '#fff';
+      listItens[index].classList.remove('target');
+      listItens[index].style.backgroundColor = '#fff';
     }
-    
-  event.target.classList.add('target');
-  event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+
+    event.target.classList.add('target');
+    event.target.style.backgroundColor = 'rgb(128, 128, 128)';
   }
 }
 
 ol.addEventListener('click', targetItem);
 
+function setCompleted(event) {
+  if (event.target.classList.contains('completed')) {
+      event.target.classList.remove('completed');
+  }
+  else {
+    event.target.classList.add('completed');
+  }  
+}
 
+ol.addEventListener('dblclick', setCompleted);
