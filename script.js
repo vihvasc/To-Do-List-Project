@@ -146,12 +146,14 @@ function moveUp(){
     if(document.querySelector('.mark') === document.getElementById('lista-tarefas').firstElementChild){
     } else {
 
-        let move = document.querySelector('.mark').cloneNode(true);
+        if (document.querySelector('.mark')){
+            let move = document.querySelector('.mark').cloneNode(true);
 
-        fatherNode = document.getElementById('lista-tarefas');
-        brtNode = document.querySelector('.mark').previousElementSibling;
-        fatherNode.insertBefore(move,brtNode);
-        document.querySelectorAll('.mark')[1].remove();
+            fatherNode = document.getElementById('lista-tarefas');
+            brtNode = document.querySelector('.mark').previousElementSibling;
+            fatherNode.insertBefore(move,brtNode);
+            document.querySelectorAll('.mark')[1].remove();
+        }
 
         
     }
@@ -162,12 +164,14 @@ function moveDown(){
     if(document.querySelector('.mark') === document.getElementById('lista-tarefas').lastElementChild){
     
     } else {
-        let move = document.querySelector('.mark').cloneNode(true);
+        if (document.querySelector('.mark')){
+            let move = document.querySelector('.mark').cloneNode(true);
 
-        fatherNode = document.getElementById('lista-tarefas');
-        brtNode = document.querySelector('.mark').nextElementSibling.nextElementSibling;
-        fatherNode.insertBefore(move,brtNode);
-        document.querySelector('.mark').remove();
+            fatherNode = document.getElementById('lista-tarefas');
+            brtNode = document.querySelector('.mark').nextElementSibling.nextElementSibling;
+            fatherNode.insertBefore(move,brtNode);
+            document.querySelector('.mark').remove();
+        }
     }
 
 }
