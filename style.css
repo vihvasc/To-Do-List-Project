@@ -46,6 +46,11 @@ h2 {
 	font-size: 32px;
 	border: 1px solid gray;
 	border-radius: 24px;
+  cursor: pointer;
+}
+
+#add-list:active {
+	transform: translateY(4px);
 }
 
 #list-section {
@@ -71,11 +76,11 @@ h2 {
 }
 
 #list-container {
-	margin-top: 30px;
+  margin-top: 30px;
 }
 
 ol li {
-	text-align: left;
+  text-align: left;
 	list-style: decimal;
 	list-style-position: inside;
 	margin-left: 150px;
@@ -90,14 +95,14 @@ ol li {
 }
 
 #remover-selecionado {
-	background-color: rgb(231, 111, 81);
-	border: 1px solid gray;
-	border-radius: 25px;
-	color: white;
-	font-weight: 700;
-	width: 160px;
-	height: 35px;
-	margin-bottom: 14px;
+  background-color: rgb(231, 111, 81);
+  border: 1px solid gray;
+  border-radius: 25px;
+  color: white;
+  font-weight: 700;
+  width: 160px;
+  height: 35px;
+  margin-bottom: 14px;
 }
 
 #mover-cima {
@@ -155,5 +160,14 @@ ol li {
 }
 
 i {
-	margin-right: 8px;
+  margin-right: 8px;
+}
+
+.button:hover {
+  cursor: pointer;
+  box-shadow: 1px 1px 4px 2px rgba(115 , 115 , 115 , 0.75);
+}
+
+.button:active {
+  transform: translateY(4px);
 }
