@@ -29,8 +29,19 @@ function createTask() {
   newTask.addEventListener('click', selectTask);
   newTask.addEventListener('dblclick', toggleCompletion);
   taskList.appendChild(newTask);
+
   taskInput.value = '';
+}
+
+function clearAll() {
+  const taskList = document.getElementById('lista-tarefas');
+  while (taskList.firstChild) {
+    taskList.removeChild(taskList.firstChild);
+  }
 }
 
 const taskButton = document.getElementById('criar-tarefa');
 taskButton.addEventListener('click', createTask);
+
+const clearButton = document.getElementById('apaga-tudo');
+clearButton.addEventListener('click', clearAll)
