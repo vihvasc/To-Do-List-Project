@@ -14,6 +14,7 @@ function createTask(){
   let addLi = document.createElement('li');
   let getOl = document.getElementById('lista-tarefas')
   getOl.appendChild(addLi);
+  addLi.addEventListener('dblclick', addCompletedTask)
   addLi.innerText = getInputText;
   clearText ();
   
@@ -25,12 +26,16 @@ addLi.addEventListener('click',removeBackground);
 }
 
 function removeBackground(event){
-let x = document.querySelector('.item-lista');
-if(x !== null){
-x.classList.remove('item-lista');}
-if(event.target.className !== 'item-lista'){
-event.target.className = 'item-lista';
+let itemListaClasse = document.querySelector('.item-lista');
+if(itemListaClasse !== null){
+itemListaClasse.classList.remove('item-lista');}
+if(event.target.classList.contains('item-lista')){  
+event.target.classList.remove('item-lista');
 } else {
-event.target.className = '';
+event.target.classList.add('item-lista');
 }
+}
+
+function addCompletedTask(event){
+event.target.classList.toggle('completed');
 }
