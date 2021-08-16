@@ -72,12 +72,16 @@ ol li {
 
 #remover-finalizados {
   border-radius: 10px;
-  width: 100px;
+  width: 120px;
   white-space: pre-wrap;
   background-color: yellow;
   font-weight: 900;
 }
 
 #remover-selecionado {
-  
+  border-radius: 10px;
+  width: 120px;
+  white-space: pre-wrap;
+  background-color: gray;
+  font-weight: 900;
 }
