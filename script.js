@@ -24,29 +24,21 @@ function removeClass() {
 }
 
 function changeColor(event) {
-  if (event.target.className === 'item') {
+  const eventItem = event.target;
+  if (eventItem.className === 'item' || eventItem.className === 'item completed') {
     removeClass();
-    event.target.classList.add('selected');
+    eventItem.classList.add('selected');
   }
 }
 
 tasks.addEventListener('click', changeColor);
 
 // marca task como completa
-// function add(event) {
-//   event.target.style.textDecoration = 'line-through';
-// }
-// function remove(event) {
-//   event.target.style.textDecoration = '';
-// }
-
 function addRemoveLineThrough(event) {
   const itemEvent = event.target;
-  if (itemEvent.className === 'item selected completed') {
-    // itemEvent.style.textDecoration = 'line-through';
+  if (itemEvent.className === 'item completed selected') {
     itemEvent.classList.remove('completed');
   } else {
-    // itemEvent.style.textDecoration = '';
     itemEvent.classList.add('completed');
   }
 }
