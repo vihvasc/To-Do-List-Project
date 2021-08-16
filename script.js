@@ -14,12 +14,11 @@ function addItemToLocal(item) {
 // Function to change color of element
 function changeElementColor(eventoDeOrigem) {
   const element = eventoDeOrigem.target;
-  const elementBackgroundColor = element.style.backgroundColor;
-  if (elementBackgroundColor === 'rgb(128, 128, 128)') {
-    element.style.backgroundColor = 'white';
-  } else {
-    element.style.backgroundColor = 'rgb(128, 128, 128)';
-  }
+  const selectedClass = document.querySelector('.selected');
+  if (selectedClass !== null) {
+    selectedClass.className = '';
+  };
+  element.className = 'selected';
 }
 
 // Function to add an item to ol
@@ -55,4 +54,4 @@ window.onload = function startPage() {
   } else {
     fillWithLocal();
   }
-}
+};
