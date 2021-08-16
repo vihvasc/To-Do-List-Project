@@ -2,20 +2,27 @@
 const inputTarefa = document.querySelector('#texto-tarefa');
 const listaTarefas = document.querySelector('#lista-tarefas');
 const botaoCriaTarefa = document.querySelector('#criar-tarefa');
-const botaoApagaTudo = document.querySelector('#apaga-tudo');
+/* const botaoApagaTudo = document.querySelector('#apaga-tudo');
 const botaoRemoveFinalizadas = document.querySelector('#remover-finalizados');
 const botaoSalvarTarefas = document.querySelector('#salvar-tarefas');
 const botaoMoverCima = document.querySelector('#mover-cima');
 const botaoMoverBaixo = document.querySelector('#mover-baixo');
-const botaoRemoveSelecionado = document.querySelector('#remover-selecionado');
+const botaoRemoveSelecionado = document.querySelector('#remover-selecionado'); */
+
 
 function criaTarefa() {
-  const itemAdd = document.createElement('li');
-  itemAdd.innerText = inputTarefa.value;
-  listaTarefas.appendChild(itemAdd);
-  inputTarefa.value = ''
+  const itemLista = document.createElement('li');
+  itemLista.innerText = inputTarefa.value;
+  listaTarefas.appendChild(itemLista);
+  inputTarefa.value = '';
+  itemLista.addEventListener('click', corFundo);
+  console.log(itemLista)
 }
 
+function corFundo(event){
+  let evento = event.target;
+  evento.style.backgroundColor = 'gray';
+}
 
 //ativo as variáveis para receber o click 
 botaoCriaTarefa.addEventListener('click', criaTarefa);
