@@ -92,22 +92,30 @@ criaTarefa();
 // *** O que será verificado:
 // **** Três itens serão criados na lista e será checado se eles estão ordenados por ordem de criação - ou seja, primeiro o primeiro item criado, depois o segundo, e assim por diante.
 
-// 07 - Clicar em um item da lista deve alterar a cor de fundo do item para cinza rgb(128,128,128)
+// 07 - Clicar em um item da lista deve alterar a cor de fundo do item para cinza rgb(128,128,128) [OK]
 // *** O que será verificado:
 // ***** Será verificado que, ao se carregar a página, os itens da lista não tem o estilo CSS background-color: rgb(128, 128, 128)
 // ***** Será verificado que, ao se clicar em um item da lista, ele passa a ter o estilo CSS background-color: rgb(128, 128, 128)
 
-// 08 - Não deve ser possível selecionar mais de um elemento da lista ao mesmo tempo
+// 08 - Não deve ser possível selecionar mais de um elemento da lista ao mesmo tempo [OK]
 // *** O que será verificado:
 // ***** Será verificado que, quando um elemento da lista é selecionado, o elemento selecionado previamente deixa de sê-lo. Isso é verificado através da presença ou não do estilo background-color: rgb(128, 128, 128) no elemento.
 
 // 09 - Clicar duas vezes em um item, faz com que ele seja riscado, indicando que foi completo. Deve ser possível desfazer essa ação clicando novamente duas vezes no item
+// *** O que será verificado:
+// ***** Será verificado que, antes da ação ser disparada, o elemento adicionado à lista não tem nem a classe completed nem o estilo line-through solid rgb(0, 0, 0).
+// ***** Será verificado que a ação pedida é disparada mediante duplo clique no elemento da lista e que os elementos da lista completos tem em si a classe completed e a propriedade text-decoration com o valor line-through solid rgb(0, 0, 0)
+
 // *** Pontos importantes sobre este requisito:
 // ***** Crie uma classe CSS com o nome "completed" e defina a propriedade "text-decoration" com o valor "line-through".
 // ***** Utilize a classe CSS "completed" para adicionar o efeito de letra tachada (riscada) às tarefas finalizadas.
 
 function itemConcluido() {
-  //
+  // Deve-se usar o querySelectorAll para identificar os item a serem adicionada a ação dbclick;
+  // Deve-se adicionar a class completed e text-decoration quando o dbclick é realizado;
+  // Deve ser possível desfazer essa seleção caso o item já tenha sido selecionado;
+  // Ou seja, quando o dbclick rodar, preciso verificar a class do elemento para decidir o que fazer com ele.
+
 }
 itemConcluido();
 
