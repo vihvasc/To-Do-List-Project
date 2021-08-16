@@ -16,7 +16,10 @@ createTaskBtn.addEventListener('click', handleAddTask);
 
 function handleClickItem(event) {
   for (item of taskList.children) {
+    item.classList.remove('selected');
+    item.style.background = '';
+
     event.target.style.background = 'rgb(128, 128, 128)';
-    console.log(item);
+    event.target.classList.add('selected');
   }
 }
