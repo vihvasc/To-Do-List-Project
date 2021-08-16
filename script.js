@@ -55,3 +55,13 @@
      listaTarefa.innerText = "";
   }
   document.getElementById("apaga-tudo").addEventListener("click", apagaLista);
+
+  function removeFinalizados(){
+    let arrayLista = Array.from(listaTarefa.children);
+      for(let index = 0; index < arrayLista.length; index += 1){
+          if(arrayLista[index].classList.contains("completed")){
+              listaTarefa.removeChild(arrayLista[index]);
+          }
+      }
+  }
+  document.getElementById("remover-finalizados").addEventListener("click", removeFinalizados);
