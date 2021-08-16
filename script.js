@@ -31,3 +31,13 @@ function checkCompletedTask (receivedEvent) {
   (classOfElement !== 'completed') ? selectedTask.classList.add('completed') : selectedTask.classList.remove('completed');
   console.log(classOfElement);
 }
+
+function clearTaskList () {
+  const clearButton = document.getElementById('apaga-tudo');
+  const taskList = document.querySelector('#lista-tarefas');
+  clearButton.addEventListener('click', (receivedEvent) => {
+      taskList.innerHTML = '';
+  });
+}
+
+clearTaskList();

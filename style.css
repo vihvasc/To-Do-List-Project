@@ -27,8 +27,19 @@ body {
   margin-left: 15px;
 }
 
+button {
+  padding: 10px;
+  background-color: rgb(212, 104, 152);
+  font-size: 12px;
+  border-radius: 15px;
+  border: 0.5px solid rgb(88, 48, 252);
+  box-shadow: none;
+}
+
 label {
   margin-left: 15px;
+  margin-bottom: 10px;
+  display: block;
 }
 
 .completed {
