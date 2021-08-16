@@ -1,11 +1,17 @@
 const takeBtnNewTask = document.getElementById('criar-tarefa');
+const takeBtnClearAll = document.getElementById('apaga-tudo');
+const takeBtnClearDone = document.getElementById('remover-finalizados');
 const input = document.getElementById('texto-tarefa');
 const taskList = document.getElementById('lista-tarefas');
-const takeBtnClearAll = document.getElementById('apaga-tudo');
+
+function pegaListaAtual() {
+  const listaAtual = document.querySelectorAll('#lista-tarefas li');
+
+  return listaAtual;
+}
 
 function removeAllClass(classe) {
-  const currentList = document.querySelectorAll('#lista-tarefas li');
-
+  const currentList = pegaListaAtual();
   for (let i = 0; i < currentList.length; i += 1) {
     currentList[i].classList.remove(classe);
   }
@@ -44,16 +50,28 @@ function appendNewTask() {
 }
 
 function clearTaskList() {
-  const currentList = document.querySelectorAll('#lista-tarefas li');
+  const currentList = pegaListaAtual();
 
   for (let i = 0; i < currentList.length; i += 1) {
     currentList[i].remove();
   }
 }
 
+function clearDoneTasks() {
+  const currentList = pegaListaAtual();
+
+  for (let i = 0; i < currentList.length; i += 1) {
+    const concluida = currentList[i].classList.contains('completed');
+    if (concluida) {
+      currentList[i].remove();
+    }
+  }
+}
+
 function afterLoad() {
   takeBtnNewTask.addEventListener('click', appendNewTask);
   takeBtnClearAll.addEventListener('click', clearTaskList);
+  takeBtnClearDone.addEventListener('click', clearDoneTasks);
 }
 
 window.onload = afterLoad;
