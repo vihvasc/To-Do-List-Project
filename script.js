@@ -1,176 +1,149 @@
-window.onload = function() {
+const buttonTarefa = document.querySelector('#criar-tarefa');
+const buttonClear = document.getElementById('apaga-tudo');
+const buttonClearFinished = document.getElementById('remover-finalizados');
+const buttonSaveList = document.getElementById('salvar-tarefas');
+const buttonClearSelect = document.getElementById('remover-selecionado');
+const buttonUp = document.getElementById('mover-cima');
+const buttonDown = document.getElementById('mover-baixo');
+const input = document.querySelector('#texto-tarefa');
 
-let buttonTarefa = document.querySelector('#criar-tarefa');
-let buttonClear = document.getElementById('apaga-tudo');
-let buttonClearFinished = document.getElementById('remover-finalizados');
-let buttonSaveList = document.getElementById('salvar-tarefas');
-let buttonClearSelect = document.getElementById('remover-selecionado');
-let buttonUp = document.getElementById('mover-cima');
-let buttonDown = document.getElementById('mover-baixo');
+function addSession() {
+  if (sessionStorage.getItem('lista') === null) {
+    sessionStorage.setItem('lista', JSON.stringify([]));
+  }
 
-if(localStorage.getItem('history') === null) {
+  function addToList() {
+    const arraySession = JSON.parse(sessionStorage.getItem('lista'));
+    const li = document.createElement('li');
+    const listItem = document.querySelector('#lista-tarefas');
+    const textPosition = arraySession.length - 1;
+    li.className = 'item';
 
-} else {
-  clearList();
-	recoverySave();
-}
-
-    
-  buttonTarefa.addEventListener('click',addSession);
-  buttonClear.addEventListener('click', clearList);
-  buttonClearFinished.addEventListener('click',removeFinished);
-  buttonClearSelect.addEventListener('click', removeSelect);
-  buttonSaveList.addEventListener('click',saveList);
-  buttonUp.addEventListener('click',moveUp);
-  buttonDown.addEventListener('click', moveDown);
-  document.addEventListener('click', inFocus);
-  document.addEventListener('dblclick',completeMark);
-
-}
-let input = document.querySelector('#texto-tarefa');
-
-function addSession(){
-    
-    if (sessionStorage.getItem('lista') === null){
-        sessionStorage.setItem('lista', JSON.stringify([]));
-    }
-
-    let oldList = JSON.parse(sessionStorage.getItem('lista'));
-    if(input.value !== ''){
-        listItemText = input.value;
-        oldList.push(listItemText);
-        sessionStorage.setItem('lista', JSON.stringify(oldList));
-        addToList();
-    
-    }
-    
-    
-}
-
-function addToList(){    
-    let arraySession = JSON.parse(sessionStorage.getItem('lista'));
-    let li = document.createElement('li');        
-    let listItem = document.querySelector('#lista-tarefas');
-    let textPosition = arraySession.length - 1;            
-    li.className = 'item';  
-    
     listItem.appendChild(li).innerText = arraySession[textPosition];
     input.value = '';
+  }
 
+  const oldList = JSON.parse(sessionStorage.getItem('lista'));
+  if (input.value !== '') {
+    const listItemText = input.value;
+    oldList.push(listItemText);
+    sessionStorage.setItem('lista', JSON.stringify(oldList));
+    addToList();
+  }
+}
+
+function inFocus(element) {
+  const elementOperate = element;
+  if (elementOperate.target.classList.contains('item')) {
+    if (document.querySelectorAll('.mark').length === 0) {
+      elementOperate.target.className += ' mark';
+    } else {
+      document.querySelector('.mark').classList.remove('mark');
+      elementOperate.target.className += ' mark';
     }
+  }
+}
 
-
-function inFocus(element){
-    if(element.target.classList.contains('item')){
-        if(document.querySelectorAll('.mark').length === 0){
-                element.target.className += ' mark';
-        } else {
-            document.querySelector('.mark').classList.remove('mark');
-            element.target.className += ' mark';
-        }
+function completeMark(element) {
+  const elementToOperate = element;
+  if (elementToOperate.target.classList.contains('item')) {
+    if (elementToOperate.target.classList.contains('completed')) {
+      elementToOperate.target.classList.remove('completed');
+    } else {
+      elementToOperate.target.className += ' completed';
     }
+  }
 }
 
-function completeMark(element){
-
-    if (element.target.classList.contains('item')){
-        if(element.target.classList.contains('completed')){
-            element.target.classList.remove('completed');
-        } else {
-            element.target.className += ' completed';
-        }
-    }
-    
+function clearList() {
+  const list = document.querySelectorAll('.item');
+  for (let i = 0; i < list.length; i += 1) {
+    list[i].remove();
+  }
 }
 
-function clearList(){
-    
-        let list = document.querySelectorAll('.item');
-        for (let i = 0; i < list.length; i += 1){
-            list[i].remove();
-        }
+function removeFinished() {
+  const list = document.querySelectorAll('.completed');
+  for (let i = 0; i < list.length; i += 1) {
+    list[i].remove();
+  }
 }
 
-function removeFinished(){
-
-        let list = document.querySelectorAll('.completed');
-        for (let i = 0; i < list.length; i += 1){
-            list[i].remove();
-        }
+function removeSelect() {
+  const list = document.querySelector('.mark');
+  list.remove();
 }
 
-function removeSelect(){
+function saveList() {
+  const listToSave = document.querySelectorAll('.item');
+  localStorage.setItem('history', JSON.stringify([]));
+  localStorage.setItem('classToSave', JSON.stringify([]));
 
-    let list = document.querySelector('.mark');
-    list.remove();
-}
+  const historyList = JSON.parse(localStorage.getItem('history'));
+  const historyListClass = JSON.parse(localStorage.getItem('classToSave'));
 
-function saveList(){
-    let listToSave = document.querySelectorAll('.item');
+  for (let i = 0; i < listToSave.length; i += 1) {
+    historyList.push(listToSave[i].innerText);
+    historyListClass.push(listToSave[i].className);
+  }
 
-        localStorage.setItem('history', JSON.stringify([]));
-        localStorage.setItem('classToSave', JSON.stringify([]));
-
-    let historyList = JSON.parse(localStorage.getItem('history'));
-    let historyListClass = JSON.parse(localStorage.getItem('classToSave'));   
-
-    for(let i = 0; i < listToSave.length; i += 1){
-        historyList.push(listToSave[i].innerText);
-        historyListClass.push(listToSave[i].className);
-
-    }
-
-    localStorage.setItem('history', JSON.stringify(historyList));
-    localStorage.setItem('classToSave', JSON.stringify(historyListClass));
-    
+  localStorage.setItem('history', JSON.stringify(historyList));
+  localStorage.setItem('classToSave', JSON.stringify(historyListClass));
 }
 
 function recoverySave() {
+  const list = document.querySelector('#lista-tarefas');
+  const historyList = JSON.parse(localStorage.getItem('history'));
+  const historyListClass = JSON.parse(localStorage.getItem('classToSave'));
 
-    let list = document.querySelector('#lista-tarefas');
-    let historyList = JSON.parse(localStorage.getItem('history'));
-    let historyListClass = JSON.parse(localStorage.getItem('classToSave'));
-    
-
-    for (let i = 0; i < historyList.length; i += 1){
-        let li = document.createElement('li');
-        li.innerText = historyList[i];
-        li.classList = historyListClass[i];
-        list.appendChild(li);
-    }
+  for (let i = 0; i < historyList.length; i += 1) {
+    const li = document.createElement('li');
+    li.innerText = historyList[i];
+    li.classList = historyListClass[i];
+    list.appendChild(li);
+  }
 }
 
-function moveUp(){
-    
-    if(document.querySelector('.mark') === document.getElementById('lista-tarefas').firstElementChild){
-    } else {
+function moveUp() {
+  const mark = document.querySelector('.mark');
+  const listaTarefas = document.getElementById('lista-tarefas');
 
-        if (document.querySelector('.mark')){
-            let move = document.querySelector('.mark').cloneNode(true);
-
-            fatherNode = document.getElementById('lista-tarefas');
-            brtNode = document.querySelector('.mark').previousElementSibling;
-            fatherNode.insertBefore(move,brtNode);
-            document.querySelectorAll('.mark')[1].remove();
-        }
-
-        
+  if (listaTarefas.firstElementChild.classList.contains('mark') === false) {
+    if(mark){
+      const move = mark.cloneNode(true);
+      const fatherNode = listaTarefas;
+      const brtNode = mark.previousElementSibling;
+      fatherNode.insertBefore(move, brtNode);
+      document.querySelectorAll('.mark')[1].remove();
     }
+  }
 }
 
-function moveDown(){
-
-    if(document.querySelector('.mark') === document.getElementById('lista-tarefas').lastElementChild){
-    
-    } else {
-        if (document.querySelector('.mark')){
-            let move = document.querySelector('.mark').cloneNode(true);
-
-            fatherNode = document.getElementById('lista-tarefas');
-            brtNode = document.querySelector('.mark').nextElementSibling.nextElementSibling;
-            fatherNode.insertBefore(move,brtNode);
-            document.querySelector('.mark').remove();
-        }
+function moveDown() {
+  const mark = document.querySelector('.mark');
+  const listaTarefas = document.getElementById('lista-tarefas');
+  if (listaTarefas.lastElementChild.classList.contains('mark') === false) {
+    if (mark) {
+      const move = mark.cloneNode(true);
+      const fatherNode = listaTarefas;
+      const brtNode = mark.nextElementSibling.nextElementSibling;
+      fatherNode.insertBefore(move, brtNode);
+      document.querySelector('.mark').remove();
     }
-
+  }
 }
+
+if (localStorage.getItem('history')) {
+  clearList();
+  recoverySave();
+}
+
+buttonTarefa.addEventListener('click', addSession);
+buttonClear.addEventListener('click', clearList);
+buttonClearFinished.addEventListener('click', removeFinished);
+buttonClearSelect.addEventListener('click', removeSelect);
+buttonSaveList.addEventListener('click', saveList);
+buttonUp.addEventListener('click', moveUp);
+buttonDown.addEventListener('click', moveDown);
+document.addEventListener('click', inFocus);
+document.addEventListener('dblclick', completeMark);
