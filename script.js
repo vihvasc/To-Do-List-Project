@@ -1,3 +1,11 @@
+// utils
+
+function addEventListenerToArray(array, eventType, func) {
+  for (let element of array) {
+    element.addEventListener(eventType, func);
+  };
+};
+
 function removeInputText(input) {
   input.value = "";
 }
@@ -42,17 +50,33 @@ function addTaskToList() {
   removeInputText(input);
 };
 
-function addEventListenerToArray(array, eventType, func) {
-  for (let element of array) {
-    element.addEventListener(eventType, func);
+//10
+
+function wipeAllTasks() {
+  let tasksList = document.getElementById("lista-tarefas");
+  tasksList.innerHTML = "";
+};
+
+// 11
+
+function wipeCompletedTasks() {
+  let completedTasks = document.getElementsByClassName("completed");
+  let completedLength = completedTasks.length;
+  for (let index = 0; index < completedLength; index += 1) {
+    completedTasks[0].remove();
   };
 };
 
-function siteStart() {
+
+function buttonsStart() {
   let taskButton = document.getElementById("criar-tarefa");
   taskButton.addEventListener("click", addTaskToList);
+  let wipeAllButton = document.getElementById("apaga-tudo");
+  wipeAllButton.addEventListener("click", wipeAllTasks)
+  let wipeCompletedTasksButton = document.getElementById("remover-finalizados");
+  wipeCompletedTasksButton.addEventListener("click", wipeCompletedTasks)
 };
 
 window.onload = function () {
-  siteStart();
+  buttonsStart();
 };
