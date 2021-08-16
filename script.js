@@ -1,9 +1,10 @@
 const tags = ['body', 'header', 'h1', 'div', 'p', 'main', 'section', 'input', 'ol', 'button',
   'li'];
-const ids = ['', 'header', 'funcionamento', 'texto-tarefa', 'lista-tarefas', 'criar-tarefa'];
+const ids = ['', 'header', 'funcionamento', 'texto-tarefa', 'lista-tarefas', 'criar-tarefa',
+  'apaga-tudo'];
 const innerTexts = ['', 'Minha Lista de Tarefas', 'Clique duas vezes em um item para marcá-lo'
-  + ' como completo', 'Nova', '[AVISO] - Digite o nome da tarefa para continuar...'];
-const classes = ['', 'selected'];
+  + ' como completo', 'Nova', '[AVISO] - Digite o nome da tarefa para continuar...', 'Apagar'];
+const classes = ['', 'selected', 'completed'];
 
 function createList(myArray) {
   const titlesList = {
@@ -45,6 +46,7 @@ function createPageStructure() {
   createElements([tags[6], 1, tags[8], ids[4], classes[0], innerTexts[0]]);
   createElements([tags[5], 0, tags[6], ids[0], classes[0], innerTexts[0]]);
   createElements([tags[6], 2, tags[9], ids[5], classes[0], innerTexts[3]]);
+  createElements([tags[6], 2, tags[9], ids[6], classes[0], innerTexts[5]]);
 }
 
 createPageStructure();
@@ -87,3 +89,19 @@ function clickListItem() {
 }
 
 clickListItem();
+
+function dblListItem(event) {
+  const liListItem = event;
+  if (liListItem.target.className.includes(classes[2])) {
+    liListItem.target.classList.remove(classes[2]);
+  } else {
+    liListItem.target.classList.add(classes[2]);
+  }
+}
+
+function dblclickListItem() {
+  const olListaTarefas = document.getElementById(ids[4]);
+  olListaTarefas.addEventListener('dblclick', dblListItem);
+}
+
+dblclickListItem();
