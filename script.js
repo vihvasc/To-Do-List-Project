@@ -1,5 +1,10 @@
-function buttonConfg(value) {
-
+function listColor() {
+  const li = document.querySelectorAll('li');
+  for (let key = 0; key < li.length; key += 1) {
+    li[key].addEventListener('click', () => {
+      li[key].style.backgroundColor = 'rgb(128, 128, 128)';
+    });
+  }
 }
 
 function addTaks() {
@@ -11,6 +16,7 @@ function addTaks() {
     li.innerText = valueInpt.value;
     valueInpt.value = '';
     list.appendChild(li);
+    listColor();
   });
 }
 addTaks();
