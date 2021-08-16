@@ -1,4 +1,4 @@
-function addTarefa(){
+function addTarefa() {
     let lista = document.getElementById("lista-tarefas")
     let Tarefa = document.getElementById("texto-tarefa")
     let novaTarefa = Tarefa.value
@@ -6,6 +6,15 @@ function addTarefa(){
     lista.appendChild(addLista)
     addLista.innerText = novaTarefa
     Tarefa.value = ""
+    addLista.addEventListener('click', alteraCor)
+
+    function alteraCor(event) {
+        let branco = document.getElementsByTagName("li")
+        for(let i = 0; i < branco.length; i += 1) {
+            branco[i].style.backgroundColor = "white"
+        }
+        event.target.style.backgroundColor = 'rgb(128,128,128)'
+    } 
 }
 
 let button = document.getElementById("criar-tarefa")
