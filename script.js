@@ -7,7 +7,12 @@ function createTask() {
   const taskContainer = document.querySelector('#lista-tarefas');
 
   listItem.innerHTML = input;
+  // requisito 7
+  listItem.addEventListener('click', (event) => {
+    event.target.style.backgroundColor = 'rgb(128,128,128)';
+  });
   taskContainer.appendChild(listItem);
+
   document.querySelector('#texto-tarefa').value = '';
 }
 
