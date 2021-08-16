@@ -31,3 +31,14 @@ function completedTask(event) {
 }
 
 listaTarefas.addEventListener('dblclick', completedTask);
+
+const botaoApagaTudo = document.getElementById('apaga-tudo');
+
+function clearAll() {
+  const allTasks = document.querySelectorAll('#lista-tarefas li');
+  for (let i = 0; i < allTasks.length; i += 1) {
+    listaTarefas.removeChild(allTasks[i]);
+  }
+}
+
+botaoApagaTudo.addEventListener('click', clearAll);
