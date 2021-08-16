@@ -29,17 +29,31 @@
 
 // addEventButton();
 
-const input = document.querySelector('#texto-tarefa');
-const olList = document.querySelector('#lista-tarefas');
-const button = document.querySelector('#criar-tarefa');
+const input = document.getElementById('texto-tarefa');
+const olList = document.getElementById('lista-tarefas');
+const button = document.getElementById('criar-tarefa');
+const liSelect = document.getElementsByTagName('li');
 
 function addInputValue () {
   button.addEventListener('click', function() {
   const li = document.createElement('li');
   li.innerText = input.value;
+  li.className = 'tarefas';
   olList.appendChild(li);
   input.value = '';
+  liBackgroundColor();
   })
 }
 
 addInputValue();
+
+function liBackgroundColor() {
+  for (let index = 0; index < liSelect.length; index += 1) {
+    liSelect[index].addEventListener('click', function () {
+    liSelect[index].style.backgroundColor = 'rgb(128, 128, 128)';
+  })
+}
+}
+
+
+
