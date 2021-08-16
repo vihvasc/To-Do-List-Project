@@ -6,4 +6,11 @@ function criarTarefa(){
     novoItem.innerHTML = texto;
     itemLista.appendChild(novoItem);
     input.value = "";
+
+    novoItem.addEventListener('click', alteraCor);
+    function alteraCor(evento) {
+        evento.target.style.backgroundColor = 'rgb(128,128,128)'
+    }
+        
+    
 }
