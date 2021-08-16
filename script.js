@@ -7,7 +7,6 @@ const saveListButton = document.querySelector('#salvar-tarefas');
 const moveUpButton = document.querySelector('#mover-cima');
 const moveDownButton = document.querySelector('#mover-baixo');
 const removeSelectedButton = document.querySelector('#remover-selecionado');
-// const tasks = document.querySelectorAll('#lista-tarefas li');
 
 const createLi = () => {
   const li = document.createElement('li');
@@ -26,6 +25,8 @@ taskButton.addEventListener('click', () => {
 taskList.addEventListener('click', (e) => {
   const el = e.target;
   const selected = document.querySelector('.selected');
+
+  if (el.classList.contains('selected')) return;
   if (el.classList.contains('task')) {
     el.style.backgroundColor = 'rgb(128,128,128)';
     el.classList.add('selected');
@@ -69,8 +70,7 @@ taskList.addEventListener('dblclick', (e) => {
 // addTaskEventdblclick();
 
 clearButton.addEventListener('click', () => {
-  const tasks = document.querySelectorAll('#lista-tarefas li');
-  tasks.forEach((task) => task.remove());
+  taskList.innerHTML = '';
 });
 
 clearCompletedButton.addEventListener('click', () => {
@@ -86,7 +86,7 @@ removeSelectedButton.addEventListener('click', () => {
 // Fonte https://stackoverflow.com/questions/34913953/move-an-element-one-place-up-or-down-in-the-dom-tree-with-javascript
 moveUpButton.addEventListener('click', () => {
   const selected = document.querySelector('.selected');
-
+  if (!selected) return;
   if (selected.previousSibling) {
     selected.parentNode.insertBefore(selected, selected.previousElementSibling);
   }
@@ -94,16 +94,17 @@ moveUpButton.addEventListener('click', () => {
 
 moveDownButton.addEventListener('click', () => {
   const selected = document.querySelector('.selected');
+  if (!selected) return;
   if (selected.nextElementSibling) {
     selected.parentNode.insertBefore(selected.nextElementSibling, selected);
   }
 });
 
 function getCompletedIndex() {
-  const tasks = document.querySelectorAll('#lista-tarefas li');
+  const children = Array.from(taskList.children);
   const completedIndex = [];
 
-  tasks.forEach((task, i) => {
+  children.forEach((task, i) => {
     if (task.classList.contains('completed')) {
       completedIndex.push(i);
     } else {
@@ -114,9 +115,9 @@ function getCompletedIndex() {
 }
 
 saveListButton.addEventListener('click', () => {
-  const tasks = document.querySelectorAll('#lista-tarefas li');
+  const tasksChildren = Array.from(taskList.children);
   const list = [];
-  tasks.forEach((task) => {
+  tasksChildren.forEach((task) => {
     list.push(task.innerHTML);
   });
 
@@ -134,17 +135,15 @@ function getSavedList() {
     const li = createLi();
     li.innerText = task;
     li.classList.add('task');
-    console.log(li, typeof i, typeof index[i]);
     if (i === index[i]) li.classList.add('completed');
     taskList.appendChild(li);
   });
 }
 
 function setCompletedLineTr() {
-  const tasks = document.querySelectorAll('#lista-tarefas li');
-  if (!tasks) return;
-  tasks.forEach((task) => {
-    console.log(task);
+  const children = Array.from(taskList.children);
+  if (!children) return;
+  children.forEach((task) => {
     if (task.classList.contains('completed')) {
       task.style.textDecoration = 'line-through solid rgb(0, 0, 0)';
     }
