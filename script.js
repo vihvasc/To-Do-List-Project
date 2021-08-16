@@ -74,12 +74,12 @@ function criaTarefa() {
 
       // Deve-se fazer um for alterando as propriedades de todos os elementos (Class e backgroundColor)
       for (let index = 0; index < elementosDaLista.length; index += 1) {
-        elementosDaLista[index].className = 'item-lista ';
+        // elementosDaLista[index].className = 'item-lista ';
         elementosDaLista[index].style.backgroundColor = '';
       }
       // Deve-se, ao sair do for, adicionar a propriedade selected e rgb(125,128,128) ao item Selecionado
       novoItem.style.backgroundColor = 'rgb(128,128,128)';
-      novoItem.className = 'item-lista selected';
+      // novoItem.className = 'item-lista selected';
     })
     // Faz-se o appendChild desse elemento li dentro da ol
     listaDeTarefas.appendChild(novoItem);
@@ -112,12 +112,27 @@ criaTarefa();
 
 function itemConcluido() {
   // Deve-se usar o querySelectorAll para identificar os item a serem adicionada a ação dbclick;
-  // Deve-se adicionar a class completed e text-decoration quando o dbclick é realizado;
-  // Deve ser possível desfazer essa seleção caso o item já tenha sido selecionado;
-  // Ou seja, quando o dbclick rodar, preciso verificar a class do elemento para decidir o que fazer com ele.
+  const elementosDaLista = document.querySelectorAll('li');
+  console.log(elementosDaLista);
+  
+  for (let index = 0; index < elementosDaLista.length; index += 1){
+    elementosDaLista[index].addEventListener('dblclick', function () {
+      // Deve-se adicionar a class completed e text-decoration quando o dbclick é realizado;
+      // Deve ser possível desfazer essa seleção caso o item já tenha sido selecionado;
+      // Ou seja, quando o dbclick rodar, preciso verificar a class do elemento para decidir o que fazer com ele.
+      if (elementosDaLista[index].className === '') {
+        
+        elementosDaLista[index].className = 'completed';
+        elementosDaLista[index].style.textDecoration = 'line-through solid rgb(0,0,0)';
+      } else {
+        
+        elementosDaLista[index].className = '';
+        elementosDaLista[index].style.textDecoration = '';
+      }
 
+    })
+  }
 }
-itemConcluido();
 
 // 0
 // ***
