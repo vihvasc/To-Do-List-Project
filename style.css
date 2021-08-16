@@ -20,8 +20,8 @@ ol li {
   background-image: url('https://e7.pngegg.com/pngimages/341/867/png-clipart-white-check-with-green-background-illustration-fingerprint-comcast-circle-symbol-technology-tick-miscellaneous-angle.png');
   background-size: cover;
   border-radius: 50%;
-  width: 35px;
-  height: 35px;
+  width: 50px;
+  height: 50px;
   border: 1px solid green;
 }
 
@@ -33,8 +33,8 @@ ol li {
 #salvar-tarefas {
   background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEMzHE4Czaayu-j6rY_pzl1WTLd3zY89Mw4g&usqp=CAU');
   background-size: cover;
-  width: 35px;
-  height: 35px;
+  width: 50px;
+  height: 50px;
   border-radius: 20%;
   border: 1px solid blue;
 }
@@ -93,4 +93,13 @@ ol li {
   border-radius: 50%;
   background-size: cover;
   border: 1px solid green;
+}
+
+#mover-baixo {
+  background-image: url('https://image.shutterstock.com/image-vector/arrow-down-vector-rounded-icon-260nw-478761646.jpg');
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-size: cover;
+  border: 1px solid red;
 }
