@@ -1,6 +1,6 @@
 const header = document.querySelector('#header');
 const input = document.querySelector('#texto-tarefa');
-
+const ol = document.querySelector('#lista-tarefas');
 
 function createTitle() {
   const title = document.createElement('h1');
