@@ -4,6 +4,7 @@ const taskList = document.getElementById('lista-tarefas');
 const body = document.querySelector('body');
 let clickCount = 0;
 const clearTasksBtn = document.getElementById('apaga-tudo');
+const removeDoneBtn = document.getElementById('remover-finalizados');
 
 // adiciona tarefa à lista
 function addTask() {
@@ -67,3 +68,15 @@ function clearTaskList() {
   taskList.innerHTML = '';
 }
 clearTasksBtn.addEventListener('click', clearTaskList);
+
+function removeDone() {
+  // tasks será usado no loop
+  const tasks = Array.from(taskList.children);
+  for (let counter = 0; counter < tasks.length; counter += 1) {
+    if (tasks[counter].classList.contains('completed')) {
+      // remove list item tasks[counter]
+      taskList.removeChild(tasks[counter]);
+    }
+  }
+}
+removeDoneBtn.addEventListener('click', removeDone);
