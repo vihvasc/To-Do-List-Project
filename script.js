@@ -84,21 +84,17 @@ function addOldTasks() {
 
 function moveTaskUp() {
   const taskToMove = document.querySelector('.selected');
-  if (taskToMove !== null) {
-    const previousTask = taskToMove.previousElementSibling;
-    if (previousTask !== null) {
-      taskToMove.parentElement.insertBefore(taskToMove, previousTask);
-    }
+  const previousTask = taskToMove.previousElementSibling;
+  if (previousTask !== null && taskToMove !== null) {
+    taskToMove.parentElement.insertBefore(taskToMove, previousTask);
   }
 }
 
 function moveTaskDown() {
   const taskToMove = document.querySelector('.selected');
-  if (taskToMove) {
-    const nextTask = taskToMove.nextElementSibling;
-    if (nextTask !== null) {
-      taskToMove.parentElement.insertBefore(taskToMove, nextTask.nextElementSibling);
-    }
+  const nextTask = taskToMove.nextElementSibling;
+  if (nextTask !== null && taskToMove !== null) {
+    taskToMove.parentElement.insertBefore(taskToMove, nextTask.nextElementSibling);
   }
 }
 
