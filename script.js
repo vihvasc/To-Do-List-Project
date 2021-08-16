@@ -16,7 +16,6 @@ botao.addEventListener('click', button);
 function mudaFundo(event) {
   const mudaCorLi = event.target;
   const removePaint = document.querySelectorAll('.classLi');
-  console.log(removePaint);
 
   for (let index = 0; index < removePaint.length; index += 1) {
     removePaint[index].classList.remove('paint');
