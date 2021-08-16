@@ -32,16 +32,22 @@ function recebeClick(item){
 
 //Função para riscar um item da lista
 function recebeDbClick(item){
-    let itens = document.getElementsByClassName("tarefa")
-    for(let index = 0; index < itens.length; index += 1){
-        if(itens[index].classList.contains("completed")){
-            itens[index].classList.toggle("completed")
-            item.target.style.textDecoration = "none"
-        }else {
-            itens[index].classList.toggle("completed")
-            item.target.style.textDecoration = "line-through solid rgb(0, 0, 0)"
-        }
+    let lineThrough = item.target.style.textDecoration;
+    item.target.classList.toggle("completed")
+    
+    if(lineThrough === "line-through solid rgb(0, 0, 0)"){
+        item.target.style.textDecoration = "none"
+    }else if(item.target.classList.contains("completed")){
+        item.target.style.textDecoration = "line-through solid rgb(0, 0, 0)"
     }
-    
-    
+}
+
+//funçao para apagar lista
+let lista = document.getElementById("lista-tarefas")
+let btnClear = document.getElementById("apaga-tudo")
+btnClear.addEventListener("click", apagarLista)
+
+function apagarLista(){
+   lista.innerHTML = '';
+
 }
