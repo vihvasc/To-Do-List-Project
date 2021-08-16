@@ -1,86 +1,86 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;600;700&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-html{
-    font-family: Nunito, sans-serif;
-    font-size: 1.2rem;
+html {
+  font-family: Nunito, sans-serif;
+  font-size: 1.2rem;
 }
-body{
-    background-color: rgb(238, 234, 234);
-    min-height: 100vh;
+body {
+  background-color: linen;
+  min-height: 100vh;
 }
-header{
-    font-size: 1rem;
-    min-height: 20vh;
-    display: block;
-    position: relative;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-}
-
-span{
-    color: purple;
-}
-h1{
-    text-align: center;
-    margin-top: 2rem;
-}
-main{
-    position: relative;
-    display: block;
-}
-form{
-    position: relative;
-    justify-content: center;
-    align-items: center;
-}
-form input{
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;  
-    height: 2rem;
-    width: 80%;
-    right: .25rem;
-    padding: .5rem;
-}
-form button{
-    position: absolute;
-    justify-content: center;
-    align-items: center;    
-    cursor: pointer;
-    border: none;
-    font-size: 2rem;   
-    color: rgb(10, 10, 10);  
-    transition: all 0.3s ease;     
+header {
+  font-size: 1rem;
+  min-height: 20vh;
+  display: block;
+  position: relative;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
 }
 
-form button:hover{  
-    color: rgb(8, 109, 30);  
+span {
+  color: purple;
+}
+h1 {
+  text-align: center;
+  margin-top: 2rem;
+}
+main {
+  position: relative;
+  display: block;
+}
+form {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+form input {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;  
+  height: 2rem;
+  width: 80%;
+  right: 0.25rem;
+  padding: 0.5rem;
+}
+form button {
+  position: absolute;
+  justify-content: center;
+  align-items: center;    
+  cursor: pointer;
+  border: none;
+  font-size: 2rem;   
+  color: rgb(10, 10, 10);  
+  transition: all 0.3s ease;     
 }
 
-.container{  
-    position: relative; 
-    justify-content: center;
-    align-items: center; 
-    left: 25%;   
-    right: 25%; 
-    padding: 4rem;
-    width: 60%;   
+form button:hover {  
+   color: rgb(8, 109, 30);  
+}
+
+.container {  
+  position: relative; 
+  justify-content: center;
+  align-items: center; 
+  left: 25%;   
+  right: 25%; 
+  padding: 4rem;
+  width: 60%;   
 }
   
   .rodape {
-    width: 100%;    
-    position: absolute;
-    bottom: 0;    
-    padding: 2px;
-    background-color: #212121;
-    color: #fff;
-    text-align: center;
-    font-size: 16px;
-    z-index: 1000;    
+  width: 100%;    
+  position: absolute;
+  bottom: 0;    
+  padding: 2px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  z-index: 1000;    
   }
