@@ -67,13 +67,25 @@ function addTask() {
 
 addBtn.addEventListener('click', addTask);
 
-const clearBtn = document.createElement('button');
-
 function clearTasks() {
   taskList.innerHTML = '';
 }
 
+const clearBtn = document.createElement('button');
 clearBtn.addEventListener('click', clearTasks);
 clearBtn.id = 'apaga-tudo';
 clearBtn.innerText = 'Apagar Tudo';
 document.body.appendChild(clearBtn);
+
+function removeDoneTasks() {
+  const doneTask = document.querySelectorAll('.completed');
+  for (let i = 0; i < doneTask.length; i += 1) {
+    doneTask[i].remove();
+  }
+}
+
+const removeDoneTasksBtn = document.createElement('button');
+removeDoneTasksBtn.addEventListener('click', removeDoneTasks);
+removeDoneTasksBtn.id = 'remover-finalizados';
+removeDoneTasksBtn.innerText = 'Remover finalizados';
+document.body.appendChild(removeDoneTasksBtn);
