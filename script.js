@@ -4,6 +4,7 @@ window.onload = function (){
     let buttonClear = document.getElementById('apaga-tudo');
     let buttonClearFinished = document.getElementById('remover-finalizados');
     let buttonSaveList = document.getElementById('salvar-tarefas');
+    let buttonClearSelect = document.getElementById('remover-selecionado');
 
     if (localStorage.getItem('history') === null){
 
@@ -16,6 +17,7 @@ window.onload = function (){
     buttonTarefa.addEventListener('click',addSession);
     buttonClear.addEventListener('click', clearList);
     buttonClearFinished.addEventListener('click',removeFinished);
+    buttonClearSelect.addEventListener('click', removeSelect);
     buttonSaveList.addEventListener('click',saveList);
     document.addEventListener('click', inFocus);
     document.addEventListener('dblclick',completeMark);
@@ -92,6 +94,12 @@ function removeFinished(){
         for (let i = 0; i < list.length; i += 1){
             list[i].remove();
         }
+}
+
+function removeSelect(){
+
+    let list = document.querySelector('.mark');
+    list.remove();
 }
 
 function saveList(){
