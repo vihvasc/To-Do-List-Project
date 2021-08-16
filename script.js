@@ -9,9 +9,16 @@ function addToList() {
   li.innerHTML = inputTask.value
   taskList.appendChild(li)
   inputTask.value = ''
+  li.className = 'li'
   li.addEventListener('click', changeColor)
 }
 
 function changeColor(event) {
-  event.target.style.backgroundColor = 'rgb(128, 128, 128)'
+  let list = document.querySelectorAll('.li')
+  for (let i = 0; i < list.length; i += 1) {
+    if (list[i].classList.contains('selected')) {
+      list[i].classList.remove('selected')
+    }
+  }
+  event.target.classList.toggle('selected')
 }

@@ -1,0 +1,26 @@
+body {
+  background-color: #8AA399;
+  font-family: 'Roboto', sans-serif;;
+}
+
+header {
+  padding: 30px;
+  max-width: 60%;
+  max-height: 80%;
+  background-color: white;
+  /* text-align: center; */
+  border: 1px solid black;
+  margin: auto;
+}
+
+.selected {
+  background-color: rgb(128, 128, 128);
+}
+
+#funcionamento {
+  font-style: italic;
+}
+
+/* #criar-tarefa {
+
+} */
