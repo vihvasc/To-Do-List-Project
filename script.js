@@ -2,7 +2,6 @@ window.onload = criaListaTarefas;
 
 function criaListaTarefas() {
   geraItemList();
-  selecionaItemList();
 }
 
 let list = document.getElementById('lista-tarefas');
@@ -20,6 +19,15 @@ function adicionaItemLista() {
   itemList.addEventListener('click', changeBackgroundColor)
   list.appendChild(itemList);
 }
+
+// let selectedItem = document.querySelector('.selected');
 function changeBackgroundColor(event) {
-  event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+  let itemList = document.querySelectorAll('.item-list');
+  for(let index = 0; index < itemList.length; index += 1) {
+    
+    if(itemList[index].classList.contains('selected')) {
+      itemList[index].classList.remove('selected'); 
+    }
+      event.target.classList.add('selected');
+  }
 }
