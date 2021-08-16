@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f7f0b6;
+  font-family: 'Karla', sans-serif;
+  font-size: 1.3em;
+}
+
+header {
+}
+
+h1 {
+  font-weight: 700;
+  padding: 25px;
+}
+
+input {
+  font-family: 'Karla', sans-serif;
+  font-weight: 700;
+  padding: 5px;
+  margin-left: 12px;
+  margin-top: 15px;
+  border: 2px solid #bb8af0;
+  border-radius: 5px;
+  width: 250px;
+}
+
+.container {
+  background: #effad5;
+  width: 800px;
+  height: 500px;
+  margin: 80px auto;
+  border-radius: 15px;
+}
+
+#funcionamento {
+  padding: 10px;
+  margin-left: 5px;
+}
+
+#criar-tarefa {
+  font-family: 'Karla', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  background: #e9d5ff;
+  padding: 5px 14px;
+  margin: 0 5px;
+  border-radius: 15px;
+  margin-left: 10px;
+}
+
+#lista-tarefas {
+  font-family: 'Karla', sans-serif;
+  margin-top: 20px;
+  margin-left: 25px;
+}
+
+#apaga-tudo {
+  font-family: 'Karla', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  background: #e9d5ff;
+  padding: 5px 14px;
+  border-radius: 15px;
+  margin-top: 25px;
+  margin-left: 10px;
+}
+
+#remover-finalizados {
+  font-family: 'Karla', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  background: #e9d5ff;
+  padding: 5px 14px;
+  margin: 0 5px;
+  border-radius: 15px;
+}
+
+.task {
+  font-weight: 700;
+  padding: 10px;
+}
