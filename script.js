@@ -34,11 +34,24 @@ listaTarefas.addEventListener('dblclick', completedTask);
 
 const botaoApagaTudo = document.getElementById('apaga-tudo');
 
-function clearAll() {
+function clearAllTasks(event) {
   const allTasks = document.querySelectorAll('#lista-tarefas li');
   for (let i = 0; i < allTasks.length; i += 1) {
     listaTarefas.removeChild(allTasks[i]);
   }
+  event.preventDefault();
 }
 
-botaoApagaTudo.addEventListener('click', clearAll);
+botaoApagaTudo.addEventListener('click', clearAllTasks);
+
+const botaoRemoverFinalizados = document.getElementById('remover-finalizados');
+
+function clearCompletedTasks(event) {
+  const completedTasks = document.querySelectorAll('.completed');
+  for (let i = 0; i < completedTasks.length; i += 1) {
+    listaTarefas.removeChild(completedTasks[i]);
+  }
+  event.preventDefault();
+}
+
+botaoRemoverFinalizados.addEventListener('click', clearCompletedTasks);
