@@ -7,7 +7,7 @@ function adicionaTexto() {
   body.appendChild(novoInput);
 }
 adicionaTexto();
-
+const textoAtual = document.getElementById('texto-tarefa');
 function criaLista() {
   const novaLista = document.createElement('ol');
   novaLista.id = 'lista-tarefas';
@@ -26,7 +26,6 @@ function criaBotao() {
 criaBotao();
 
 function adicionaTarefa() {
-  const textoAtual = document.getElementById('texto-tarefa');
   const texto = textoAtual.value;
   const li = document.createElement('li');
   li.innerText = texto;
@@ -39,7 +38,6 @@ const botaoAdiciona = document.getElementById('criar-tarefa');
 botaoAdiciona.addEventListener('click', adicionaTarefa);
 
 function apagaTexto() {
-  const textoAtual = document.getElementById('texto-tarefa');
   textoAtual.value = '';
 }
 botaoAdiciona.addEventListener('click', apagaTexto);
