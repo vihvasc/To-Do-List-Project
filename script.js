@@ -38,3 +38,15 @@ function taskDone(event) {
     event.target.classList.add('completed');
   }
 }
+
+let clearButton = document.getElementById("apaga-tudo");
+clearButton.addEventListener("click", clearAll);
+
+function clearAll (){  
+  listaOrdenada = document.getElementById('lista-tarefas').children;
+  listaOrdenada2 = document.getElementById('lista-tarefas')
+  if (listaOrdenada.length > 0){
+    listaOrdenada2.innerHTML = " "    
+  };
+};
+
