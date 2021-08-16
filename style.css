@@ -2,4 +2,112 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: white;
 }
+
+html, body {
+  background-color: #202020;
+  font-family: sans-serif;
+}
+
+header {
+  width: 80%;
+  background-color: #202020;
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+}
+
+.task-creation-container{
+  width: 80%;
+  margin: auto;
+}
+
+.task-creation-container input{
+  width: 200px;
+  height: 30px;
+  border: 0;
+  outline: 0;
+  font-size: 18px;
+  background-color: rgb(51, 51, 51);
+  padding-left: 10px;
+}
+
+.task-creation-container button {
+  vertical-align: top;
+  width: 30px;
+  height: 30px;
+  color:rgb(24, 24, 24);
+  font-size: 20px;
+  font-weight: 900;
+  background-color: rgb(92, 201, 92);
+  border: 0;
+  cursor: pointer;
+}
+
+.task-creation-container label {
+  display: block;
+  font-size: 20px;
+  font-weight: 800;
+  margin: 10px 0;
+
+}
+
+.task-container {
+  padding: 20px;
+  padding-left: 60px;
+  margin: auto;
+  width: 80%;
+  margin-top: 20px;
+  min-height: 300px;
+  background-color: #2b2b2b;
+  border-radius: 10px;
+}
+.task-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.task-container li {
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+.selected {
+  background-color: rgb(128, 128, 128);
+}
+
+.notification{
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 400px;
+  height: 50px;
+  background-color: #2b2b2b;
+  border-left: #3d3d3d 10px solid;
+  text-align: center;
+  border-radius: 5px;
+  animation: opacity-notification 2s;
+}
+
+.notification p {
+  display: inline-block;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  text-transform: uppercase;
+}
+
+.display-none {
+  display: none;
+}
+
+
+@keyframes opacity-notification {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.2;
+  }
+}
+
