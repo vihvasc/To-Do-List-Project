@@ -22,3 +22,8 @@ header {
   display: flex;
   justify-content: center;
 }
+
+#todo {
+  display: flex;
+  justify-content: center;
+}
