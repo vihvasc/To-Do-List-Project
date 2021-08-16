@@ -59,19 +59,35 @@ function criaTarefa() {
   botaoCriarTarefa.textContent = 'Adicionar Tarefa';
   body.appendChild(botaoCriarTarefa);
   // Ao se clickar no botão, captura-se o texto do input e armazena em uma variável
-  botaoCriarTarefa.addEventListener('click', function() {
-      const textoAAdicionar = document.getElementById('texto-tarefa');
-      const listaDeTarefas = document.getElementById('lista-tarefas');
-      // Ao se clickar no botão, cria-se uma 'const' li com o conteúdo dessa variável.
-      const novoItem = document.createElement('li');
-      novoItem.innerHTML = textoAAdicionar.value;
-      // Faz-se o appendChild desse elemento li dentro da ol
-      listaDeTarefas.appendChild(novoItem);
-      textoAAdicionar.value = '';
+  botaoCriarTarefa.addEventListener('click', function () {
+    const textoAAdicionar = document.getElementById('texto-tarefa');
+    const listaDeTarefas = document.getElementById('lista-tarefas');
+    // Ao se clickar no botão, cria-se uma 'const' li com o conteúdo dessa variável.
+    const novoItem = document.createElement('li');
+    novoItem.innerHTML = textoAAdicionar.value;
+    novoItem.className = 'item-lista ';
+    // Faz-se o appendChild desse elemento li dentro da ol
+    listaDeTarefas.appendChild(novoItem);
+    textoAAdicionar.value = '';
   })
 }
 criaTarefa();
 
+// 06 - Ordene os itens da lista de tarefas por ordem de criação [OK]
+// *** O que será verificado:
+// **** Três itens serão criados na lista e será checado se eles estão ordenados por ordem de criação - ou seja, primeiro o primeiro item criado, depois o segundo, e assim por diante.
+
+// 07 - Clicar em um item da lista deve alterar a cor de fundo do item para cinza rgb(128,128,128)
+// *** O que será verificado:
+// ***** Será verificado que, ao se carregar a página, os itens da lista não tem o estilo CSS background-color: rgb(128, 128, 128)
+// ***** Será verificado que, ao se clicar em um item da lista, ele passa a ter o estilo CSS background-color: rgb(128, 128, 128)
+
+function selecionaElemento() {
+    const elementoSelecionado = document.getElementsByClassName('item-lista');
+    
+}
+selecionaElemento();
+
 // 0
-// *** 
-// ***** 
+// ***
+// *****
