@@ -26,8 +26,8 @@ function mudaFundo(event) {
 lista.addEventListener('click', mudaFundo);
 
 function riscaTarefas(event) {
-  const riscaItem = event.target;
-  riscaItem.classList.toggle('completed');
+  const eventTarget = event.target;
+  eventTarget.classList.toggle('completed');
 }
 
 lista.addEventListener('dblclick', riscaTarefas);
