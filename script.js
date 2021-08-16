@@ -2,6 +2,7 @@
   let criarTarefa = document.getElementById("criar-tarefa");
   let listaTarefa = document.getElementById("lista-tarefas");
   let body = document.querySelector('body');
+  
 
   criarTarefa.addEventListener("click", adicionaTarefa);
 
@@ -49,4 +50,8 @@
   }
   body.addEventListener("dblclick", checkItem2);
 
-  
+
+  function apagaLista(){
+     listaTarefa.innerText = "";
+  }
+  document.getElementById("apaga-tudo").addEventListener("click", apagaLista);
