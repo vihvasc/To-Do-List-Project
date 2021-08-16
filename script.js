@@ -1,5 +1,6 @@
 const addButton = document.getElementById('criar-tarefa')
 const list = document.getElementById('lista-tarefas')
+const delButton = document.getElementById('apaga-tudo')
 
 function addTask() {
   const inputText = document.getElementById('texto-tarefa')
@@ -21,16 +22,30 @@ function changeLiColor(e) {
   element.classList.add('selected')
   element.style.backgroundColor = 'rgb(128, 128, 128)'
 }
-function scratchTask(e){
+function scratchTask(e) {
   const element = e.target
   const completed = element.classList.contains('completed')
 
-  if(completed){
+  if (completed) {
     element.classList.remove('completed')
   } else {
     element.classList.add('completed')
   }
 }
+function deleteAll() {
+  const elementsList = list.childNodes
+  const arrayWithElements = []
+
+  for (let element of elementsList) {
+    arrayWithElements.push(element)
+  }
+  
+  for(let element of arrayWithElements){
+    element.remove()
+  }
+
+}
 addButton.addEventListener('click', addTask)
 list.addEventListener('click', changeLiColor)
 list.addEventListener('dblclick', scratchTask)
+delButton.addEventListener('click', deleteAll)
