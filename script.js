@@ -25,3 +25,15 @@ function adicionaFundoItem(event) {
 }
 
 listaTarefas.addEventListener('click', adicionaFundoItem);
+
+// Adiciona item riscado ao clicar duas vezes
+function adicionaItemCompleto(event) {
+  const itemSelecionado = document.querySelector('.completed');
+  if (itemSelecionado == null) {
+    event.target.classList.add('completed');
+  } else {
+    event.target.classList.remove('completed');
+  }
+}
+
+listaTarefas.addEventListener('dblclick', adicionaItemCompleto);
