@@ -1,3 +1,17 @@
+function salve() {
+  const buttonSalve = document.getElementById('salvar-tarefas');
+  const salveLi = document.querySelectorAll('li');
+  const objeto = [];
+  buttonSalve.addEventListener('click', () => {
+    for (let key = 0; key < salveLi.length; key += 1) {
+      const value = salveLi[key].innerText;
+      objeto.push({ item: value, classe: salveLi[key].classList.value });
+      localStorage.setItem('list', JSON.stringify(objeto));
+    }
+  });
+}
+salve();
+
 function finalizedClean() {
   const buttonFinalized = document.getElementById('remover-finalizados');
   const taksfinalized = document.querySelectorAll('.completed');
@@ -12,11 +26,13 @@ function clean() {
   const buttonClean = document.getElementById('apaga-tudo');
   const li = document.querySelectorAll('li');
   buttonClean.addEventListener('click', () => {
+    localStorage.clear();
     for (let key = 0; key < li.length; key += 1) {
       li[key].remove();
     }
   });
 }
+clean();
 
 function taskComplete() {
   const li = document.querySelectorAll('li');
@@ -34,6 +50,7 @@ function taskComplete() {
     });
   }
 }
+taskComplete();
 
 function cleanBackgrood() {
   const li = document.querySelectorAll('li');
@@ -51,6 +68,7 @@ function listColor() {
     });
   }
 }
+listColor();
 
 function addTaks() {
   const button = document.getElementById('criar-tarefa');
@@ -63,7 +81,26 @@ function addTaks() {
     list.appendChild(li);
     listColor();
     taskComplete();
+    salve();
     clean();
   });
 }
 addTaks();
+
+function getLocalStorage() {
+  const get = JSON.parse(localStorage.getItem('list'));
+  if (get) {
+    const list = document.getElementById('lista-tarefas');
+    for (let key = 0; key < get.length; key += 1) {
+      const li = document.createElement('li');
+      if (get[key].classe === 'completed') {
+        li.className = get[key].classe;
+      }
+      li.innerText = get[key].item;
+      list.appendChild(li);
+      taskComplete();
+      listColor();
+    }
+  }
+}
+getLocalStorage();
