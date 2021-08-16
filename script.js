@@ -5,6 +5,8 @@ const deleteAllTasksBtn = document.querySelector('#apaga-tudo');
 const saveTasksBtn = document.querySelector('#salvar-tarefas');
 const deleteSelectedTaskBtn = document.querySelector('#remover-selecionado');
 const tasks = document.getElementsByClassName('task');
+const moveUpBtn = document.querySelector('#mover-cima');
+const moveDownBtn = document.querySelector('#mover-baixo');
 
 function handleSaveTasksBtn() {
   const contentToSave = taskList.innerHTML;
@@ -80,6 +82,26 @@ function addOldTasks() {
   }
 }
 
+function moveTaskUp() {
+  const taskToMove = document.querySelector('.selected');
+  if (taskToMove !== null) {
+    const previousTask = taskToMove.previousElementSibling;
+    if (previousTask !== null) {
+      taskToMove.parentElement.insertBefore(taskToMove, previousTask);
+    }
+  }
+}
+
+function moveTaskDown() {
+  const taskToMove = document.querySelector('.selected');
+  if (taskToMove) {
+    const nextTask = taskToMove.nextElementSibling;
+    if (nextTask !== null) {
+      taskToMove.parentElement.insertBefore(taskToMove, nextTask.nextElementSibling);
+    }
+  }
+}
+
 function load() {
   addOldTasks();
   addTaskBtn.addEventListener('click', handleAddTaskBtn);
@@ -87,6 +109,8 @@ function load() {
   deleteAllTasksBtn.addEventListener('click', handleDeleteAllTasksBtn);
   deleteCompletedTaskBtn.addEventListener('click', handleDeleteCompletedTaskBtn);
   saveTasksBtn.addEventListener('click', handleSaveTasksBtn);
+  moveUpBtn.addEventListener('click', moveTaskUp);
+  moveDownBtn.addEventListener('click', moveTaskDown);
 }
 
 load();
