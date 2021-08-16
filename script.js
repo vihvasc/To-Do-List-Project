@@ -19,6 +19,21 @@ const input = document.createElement('input');
 input.id = 'texto-tarefa';
 document.body.appendChild(input);
 
-const tarefas = document.createElement('ol');
-tarefas.id = 'lista-tarefas';
-document.body.appendChild(tarefas);
+const taskList = document.createElement('ol');
+taskList.id = 'lista-tarefas';
+document.body.appendChild(taskList);
+
+const addBtn = document.createElement('button');
+addBtn.id = 'criar-tarefa';
+addBtn.innerText = 'Adicionar!';
+document.body.appendChild(addBtn);
+
+function addTask() {
+  const taskContent = input.value;
+  const taskItem = document.createElement('li');
+  taskItem.innerText = taskContent;
+  taskList.appendChild(taskItem);
+  input.value = '';
+}
+
+addBtn.addEventListener('click', addTask);
