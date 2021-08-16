@@ -14,9 +14,19 @@ function createTask(){
   let getOl = document.getElementById('lista-tarefas')
   getOl.appendChild(addLi);
   addLi.innerText = getInputText;
-  console.log(getInputText);
-  
   clearText ();
+
+function addBackgroundColor (evento){
+  addLi.classList = 'item-lista';
+}
+addLi.addEventListener('click', addBackgroundColor);
 }
 
 getButton.addEventListener('click', createTask);
+
+// let x = document.getElementsByClassName('item-lista')[0]
+
+// function addBackgroundColor (evento){
+// console.log(evento.target);
+// }
+// x.addEventListener('click', addBackgroundColor);
