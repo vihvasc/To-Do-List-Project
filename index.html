@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bruno's todo list</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
   <header>
@@ -14,9 +15,12 @@
     <input id="texto-tarefa" type="text">
     <button id="criar-tarefa">Adicionar</button>
     <ol id="lista-tarefas"></ol>
-    <button id="remover-finalizados">Apagar completos</button>
-    <button id="apaga-tudo">Limpar Lista</button>
-    <button id="salvar-tarefas">Salvar Lista</button>
+      <button id="remover-selecionado"><i class="fas fa-times"></i></button>
+      <button id="mover-cima"><i class="fas fa-arrow-up"></i></button>
+      <button id="mover-baixo"><i class="fas fa-arrow-down"></i></button>
+      <button id="remover-finalizados">Limpar completos</button>
+      <button id="apaga-tudo">Limpar Lista</button>
+      <button id="salvar-tarefas">Salvar Lista</button>
   </header>
   <script src="script.js"></script>
 </body>

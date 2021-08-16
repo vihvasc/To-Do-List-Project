@@ -28,3 +28,48 @@ header {
 #lista-tarefas {
   padding: 2em;
 }
+
+button {
+  padding: 0.4em 1em;
+  border-radius: 1em;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+  padding: 0.5em 1.2em;
+}
+
+button + button {
+  margin-left: 1.2em;
+}
+
+#criar-tarefa {
+  background-color: rgb(6, 175, 241);
+}
+
+#remover-selecionado {
+  background-color: rgb(238, 68, 38);
+}
+
+#mover-cima {
+  background-color:rgb(233, 152, 3);
+}
+
+#mover-baixo {
+  background-color:rgb(233, 152, 3);
+}
+
+#remover-finalizados {
+  background-color: rgb(6, 175, 241);
+}
+
+#apaga-tudo {
+  background-color: rgb(238, 68, 38);
+}
+
+#salvar-tarefas {
+  background-color: rgb(26, 211, 26);
+}
