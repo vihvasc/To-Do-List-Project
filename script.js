@@ -55,3 +55,13 @@ function clearCompletedTasks(event) {
 }
 
 botaoRemoverFinalizados.addEventListener('click', clearCompletedTasks);
+
+const removerSelecionado = document.getElementById('remover-selecionado');
+
+function clearSelectedTask(event) {
+  const selectedTask = document.querySelector('.selected');
+  listaTarefas.removeChild(selectedTask);
+  event.preventDefault();
+}
+
+removerSelecionado.addEventListener('click', clearSelectedTask);
