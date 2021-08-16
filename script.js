@@ -40,3 +40,11 @@ function apagaTudo() {
   }
 }
 document.querySelector('#apaga-tudo').addEventListener('click', apagaTudo)
+function removeFinalizados() {
+  let finalizados = document.getElementsByClassName('completed')
+  let finalizadosTamanho = finalizados.length - 1
+  for (let index = finalizadosTamanho; index >-1; index -= 1) {
+    finalizados[index].remove()
+  } 
+}
+document.querySelector('#remover-finalizados').addEventListener('click', removeFinalizados)
