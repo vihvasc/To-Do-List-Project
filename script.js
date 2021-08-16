@@ -1,32 +1,31 @@
-window.onload = function (){
+window.onload = function() {
 
-    let buttonTarefa = document.querySelector('#criar-tarefa');
-    let buttonClear = document.getElementById('apaga-tudo');
-    let buttonClearFinished = document.getElementById('remover-finalizados');
-    let buttonSaveList = document.getElementById('salvar-tarefas');
-    let buttonClearSelect = document.getElementById('remover-selecionado');
-    let buttonUp = document.getElementById('mover-cima');
-    let buttonDown = document.getElementById('mover-baixo');
+let buttonTarefa = document.querySelector('#criar-tarefa');
+let buttonClear = document.getElementById('apaga-tudo');
+let buttonClearFinished = document.getElementById('remover-finalizados');
+let buttonSaveList = document.getElementById('salvar-tarefas');
+let buttonClearSelect = document.getElementById('remover-selecionado');
+let buttonUp = document.getElementById('mover-cima');
+let buttonDown = document.getElementById('mover-baixo');
 
-    if (localStorage.getItem('history') === null){
+if(localStorage.getItem('history') === null) {
 
-    } else {
-        clearList();
-        recoverySave();
-    }
-
-    
-    buttonTarefa.addEventListener('click',addSession);
-    buttonClear.addEventListener('click', clearList);
-    buttonClearFinished.addEventListener('click',removeFinished);
-    buttonClearSelect.addEventListener('click', removeSelect);
-    buttonSaveList.addEventListener('click',saveList);
-    buttonUp.addEventListener('click',moveUp);
-    buttonDown.addEventListener('click', moveDown);
-    document.addEventListener('click', inFocus);
-    document.addEventListener('dblclick',completeMark);
+} else {
+  clearList();
+	recoverySave();
+}
 
     
+  buttonTarefa.addEventListener('click',addSession);
+  buttonClear.addEventListener('click', clearList);
+  buttonClearFinished.addEventListener('click',removeFinished);
+  buttonClearSelect.addEventListener('click', removeSelect);
+  buttonSaveList.addEventListener('click',saveList);
+  buttonUp.addEventListener('click',moveUp);
+  buttonDown.addEventListener('click', moveDown);
+  document.addEventListener('click', inFocus);
+  document.addEventListener('dblclick',completeMark);
+
 }
 let input = document.querySelector('#texto-tarefa');
 
