@@ -16,9 +16,20 @@ function changeElementColor(eventoDeOrigem) {
   const element = eventoDeOrigem.target;
   const selectedClass = document.querySelector('.selected');
   if (selectedClass !== null) {
-    selectedClass.className = '';
-  };
-  element.className = 'selected';
+    selectedClass.classList.remove('selected');
+  }
+  element.classList.add('selected');
+}
+
+// Function to change decoration of element
+function changeElementDecoration(eventoDeOrigem) {
+  const element = eventoDeOrigem.target;
+  const elementClass = element.classList;
+  if (elementClass.contains('completed')) {
+    element.classList.remove('completed');
+  } else {
+    element.classList.add('completed');
+  }
 }
 
 // Function to add an item to ol
@@ -27,6 +38,7 @@ function addItemToList() {
   const newItemElement = document.createElement('li');
   addItemToLocal(newItemText);
   newItemElement.innerText = newItemText;
+  newItemElement.addEventListener('dblclick', changeElementDecoration);
   newItemElement.addEventListener('click', changeElementColor);
   itemList.appendChild(newItemElement);
   inputAddItem.value = '';
@@ -42,6 +54,7 @@ function fillWithLocal() {
     const newItemText = listaItemsLocal[i];
     const newItemElement = document.createElement('li');
     newItemElement.innerText = newItemText;
+    newItemElement.addEventListener('dblclick', changeElementDecoration);
     newItemElement.addEventListener('click', changeElementColor);
     itemList.appendChild(newItemElement);
   }
