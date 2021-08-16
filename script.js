@@ -34,31 +34,36 @@ const olList = document.getElementById('lista-tarefas');
 const button = document.getElementById('criar-tarefa');
 const liSelect = document.getElementsByTagName('li');
 
-function addInputValue () {
-  button.addEventListener('click', function() {
-  const li = document.createElement('li');
-  li.innerText = input.value;
-  li.className = 'tarefas';
-  olList.appendChild(li);
-  input.value = '';
-  paintingLiBackground();
+function addInputValue() {
+  button.addEventListener('click', function () {
+    const li = document.createElement('li');
+    li.innerText = input.value;
+    li.className = 'tarefas';
+    olList.appendChild(li);
+    input.value = '';
+    paintingLiBackground();
   })
 }
 
 function paintingLiBackground() {
   for (let index = 0; index < liSelect.length; index += 1) {
-    liSelect[index].addEventListener('click', function () {
+    liSelect[index].addEventListener('click', function (event) {
       removeColor();
       liSelect[index].style.backgroundColor = 'rgb(128, 128, 128)';
+      console.log('dfd');
     })
+    liSelect[index].addEventListener('dblclick', lineTrough);
   }
+}
+
+function lineTrough(event) {
+  event.target.className = 'completed';
 }
 
 addInputValue();
 
-function removeColor () {
+function removeColor() {
   for (let index = 0; index < liSelect.length; index += 1) {
     liSelect[index].style.backgroundColor = '';
   }
 }
-
