@@ -20,10 +20,31 @@ window.onload = function () {
       }
       li.target.style.backgroundColor = 'rgb(' + 128 + ',' + 128 + ',' + 128 + ')'
     }
-    
     li.addEventListener("click", changeBg, false)
-})
+    
+    limpar = document.querySelector("#apaga-tudo");
+    
+    limpar.addEventListener("click", clearList)
+
+    function clearList () {
+      selectList = document.querySelector("#lista-tarefas");
+
+      selectList.innerHTML = '';
+    }
+    
+
+
+
+
+
+  })
+
+
+  
 
 }
+
+
+
 
 
