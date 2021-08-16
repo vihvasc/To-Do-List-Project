@@ -9,9 +9,14 @@ function addTask() {
 }
 
 function changeLiColor(event) {
+    let listItem = document.querySelector("#lista-tarefas")
+    let li = listItem.children
     let originEvent = event.target
-    originEvent.style.setProperty("background-color", "rgb(128,128,128)")
 
+    for(let counter = 0; counter < li.length; counter += 1) {
+        li[counter].style.backgroundColor = "white"
+    }
+    originEvent.style.backgroundColor = "rgb(128,128,128)"
 }
 
 window.onload = function() {
