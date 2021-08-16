@@ -17,9 +17,12 @@ function createTask() {
         }
       }
       createItem.style.backgroundColor = 'rgb(128, 128, 128)';
-    });//aproveitei a criação dos itens e "embuti" para colocar a cor de fundo ao clicar, porém sempre dá para separar e melhorar paraa leitura. Mas como não ficou complexo, vou deixar assim.
+    });
+    createItem.addEventListener('dblclick', () => {
+      createItem.classList.toggle('completed');
+    }); //fonte: https://qastack.com.br/programming/5497073/how-to-differentiate-single-click-event-and-double-click-event
   });
 }
 createTask();
 
-//o item que eu clicar é o único que deve ter background
+// revesar entre clicar duas vezes no Item da lista seja riscado
