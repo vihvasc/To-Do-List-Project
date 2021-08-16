@@ -65,16 +65,17 @@ function criaTarefa() {
     // Ao se clickar no botão, cria-se uma 'const' li com o conteúdo dessa variável.
     const novoItem = document.createElement('li');
     novoItem.innerHTML = textoAAdicionar.value;
-    novoItem.className = 'item-lista ';
-    novoItem.addEventListener('click', function (){
+    // novoItem.className = 'item-lista ';
+    novoItem.addEventListener('click', function () {
       // Ao clicar no elemento, ele deve ser selecionado, e os demais devem retornar a não possuirem cor de fundo;
       // Deve-se listar todos os elementos da lista com getElementsByClassName
-      const elementosDaLista = document.getElementsByClassName('item-lista');
+      // const elementosDaLista = document.getElementsByClassName('item-lista');
+      const elementosDaLista = document.querySelectorAll('li');
 
       // Deve-se fazer um for alterando as propriedades de todos os elementos (Class e backgroundColor)
-      for (index = 0; index < elementosDaLista.length; index += 1) {
-          elementosDaLista[index].className = 'item-lista ';
-          elementosDaLista[index].style.backgroundColor = '';
+      for (let index = 0; index < elementosDaLista.length; index += 1) {
+        elementosDaLista[index].className = 'item-lista ';
+        elementosDaLista[index].style.backgroundColor = '';
       }
       // Deve-se, ao sair do for, adicionar a propriedade selected e rgb(125,128,128) ao item Selecionado
       novoItem.style.backgroundColor = 'rgb(128,128,128)';
@@ -95,6 +96,20 @@ criaTarefa();
 // *** O que será verificado:
 // ***** Será verificado que, ao se carregar a página, os itens da lista não tem o estilo CSS background-color: rgb(128, 128, 128)
 // ***** Será verificado que, ao se clicar em um item da lista, ele passa a ter o estilo CSS background-color: rgb(128, 128, 128)
+
+// 08 - Não deve ser possível selecionar mais de um elemento da lista ao mesmo tempo
+// *** O que será verificado:
+// ***** Será verificado que, quando um elemento da lista é selecionado, o elemento selecionado previamente deixa de sê-lo. Isso é verificado através da presença ou não do estilo background-color: rgb(128, 128, 128) no elemento.
+
+// 09 - Clicar duas vezes em um item, faz com que ele seja riscado, indicando que foi completo. Deve ser possível desfazer essa ação clicando novamente duas vezes no item
+// *** Pontos importantes sobre este requisito:
+// ***** Crie uma classe CSS com o nome "completed" e defina a propriedade "text-decoration" com o valor "line-through".
+// ***** Utilize a classe CSS "completed" para adicionar o efeito de letra tachada (riscada) às tarefas finalizadas.
+
+function itemConcluido() {
+  //
+}
+itemConcluido();
 
 // 0
 // ***
