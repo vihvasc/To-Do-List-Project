@@ -81,6 +81,33 @@ function criaTarefa() {
       novoItem.style.backgroundColor = 'rgb(128,128,128)';
       // novoItem.className = 'item-lista selected';
     })
+    novoItem.addEventListener('dblclick', function () {
+        // Deve-se adicionar a class completed e text-decoration quando o dbclick é realizado;
+        // Deve ser possível desfazer essa seleção caso o item já tenha sido selecionado;
+        // Ou seja, quando o dbclick rodar, preciso verificar a class do elemento para decidir o que fazer com ele.
+        
+        //Deve-se verificar se o item já está selecionado como Completed
+        let comparaClasse = novoItem.className;
+        const elementosLista = document.querySelectorAll('li');
+
+        //   //Deve-se verificar se o item já está selecionado como Completed
+        //     // Se não, deve-se adicionar a class completed e text-decoration quando o dbclick é realizado;
+        //     elementosLista[index].className = 'completed';
+        //     elementosLista[index].style.textDecoration = 'line-through solid rgb(0,0,0)';
+
+        if (comparaClasse.endsWith('selected') ) {
+            novoItem.className = '';
+            novoItem.style.textDecoration = '';
+
+        } else {
+            console.log('ELEMENTO FOI SELECIONADO');
+            novoItem.className = 'selected';
+            novoItem.style.textDecoration = 'line-through solid rgb(0,0,0)';
+        }
+        // const elementosLista = document.querySelectorAll('li');
+        // console.log(novoItem.textContent);
+      })
+
     // Faz-se o appendChild desse elemento li dentro da ol
     listaDeTarefas.appendChild(novoItem);
     textoAAdicionar.value = '';
@@ -109,30 +136,6 @@ criaTarefa();
 // *** Pontos importantes sobre este requisito:
 // ***** Crie uma classe CSS com o nome "completed" e defina a propriedade "text-decoration" com o valor "line-through".
 // ***** Utilize a classe CSS "completed" para adicionar o efeito de letra tachada (riscada) às tarefas finalizadas.
-
-function itemConcluido() {
-  // Deve-se usar o querySelectorAll para identificar os item a serem adicionada a ação dbclick;
-  const elementosDaLista = document.querySelectorAll('li');
-  console.log(elementosDaLista);
-  
-  for (let index = 0; index < elementosDaLista.length; index += 1){
-    elementosDaLista[index].addEventListener('dblclick', function () {
-      // Deve-se adicionar a class completed e text-decoration quando o dbclick é realizado;
-      // Deve ser possível desfazer essa seleção caso o item já tenha sido selecionado;
-      // Ou seja, quando o dbclick rodar, preciso verificar a class do elemento para decidir o que fazer com ele.
-      if (elementosDaLista[index].className === '') {
-        
-        elementosDaLista[index].className = 'completed';
-        elementosDaLista[index].style.textDecoration = 'line-through solid rgb(0,0,0)';
-      } else {
-        
-        elementosDaLista[index].className = '';
-        elementosDaLista[index].style.textDecoration = '';
-      }
-
-    })
-  }
-}
 
 // 0
 // ***
