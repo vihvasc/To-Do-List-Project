@@ -31,18 +31,21 @@ function changeColor (){
   selected.style.backgroundColor = "rgb(128, 128, 128)";
  }
 
+ //função que adiciona decoração no texto
  function addStripe(index) {
   let items = document.querySelectorAll("li");
   items[index].style.textDecoration = "line-through";
   items[index].classList.add("completed");
  }
 
+ // função que remove a decoração do texto
  function removeStripe(index){
   let items = document.querySelectorAll("li")
   items[index].style.textDecoration = "none";
   items[index].classList.remove("completed");
 
  }
+ // função que verifica se um item tem a classe completed
  function verifyCompleted(){
   let items = document.querySelectorAll("li");
   for(let i = 0; i < items.length; i ++){
@@ -56,24 +59,45 @@ function changeColor (){
       }
     }
   }
-  //  let items = document.querySelectorAll("li");
-  //  for(let i = 0; items.length; i++){
-  //    if(items[i].classList.contains("completed")){
-  //       removeStripe(i);
-  //       break;
-  //    } else {
-  //      addStripe(i);
-  //      break;
-  //    }
-  //  }
+ }
+ //função que apaga todos os items da lista
+ function clearList (){
+   let items = document.querySelectorAll("li");
+   for(let key of items){
+     key.remove();
+   }
  }
 
-// função para criar eventos 
+ // função que apaga items riscados
+ function clearCompleted(){
+   let items = document.querySelectorAll(".completed");
+   for(let key of items){
+     key.remove();
+   }
+ }
+
+//  //função para salvar lista de tarefas
+//  function saveList(){
+//    var todoList = document.querySelectorAll("li");
+//    console.log(todoList);
+//  }
+
+// função para criar eventos gerais
 function createEvent(){
   const button = document.getElementById('criar-tarefa');
   button.addEventListener('click', addValue);
+
+  const clearbutton = document.getElementById("apaga-tudo");
+  clearbutton.addEventListener('click', clearList);
+
+  const clearCompletedList = document.getElementById("remover-finalizados");
+  clearCompletedList.addEventListener('click', clearCompleted);
+
+  const saveItems = document.getElementById("salvar-tarefas");
+  saveItems.addEventListener("click", saveList);
 }
 
+// função para selecionar um elemento da lista
 function selectElement(){
   const items = document.querySelectorAll('li');
   for(let i = 0; i < items.length; i ++){
@@ -86,15 +110,7 @@ function selectElement(){
   changeColor();
 }
 
-function dblTarget(){
-  let items = document.querySelectorAll("li");
-   for( let i = 0; i < items.length; i ++){
-    if(items[i] === event.target){
-      items[i].classList.add("completed");
-    }
-   }
-}
-
+//função para criar eventos de clique e double click em items da lista
 function createListEvents(){
   const listItem = document.querySelectorAll(".item-list");
   for(let i = 0; i < listItem.length; i ++){
