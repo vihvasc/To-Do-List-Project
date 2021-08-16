@@ -1,8 +1,9 @@
 const inputTask = document.getElementById('texto-tarefa');
-const createTask = document.getElementById('criar-tarefa');
+const createTaskBtn = document.getElementById('criar-tarefa');
 const taskList = document.getElementById('lista-tarefas');
 const body = document.querySelector('body');
 let clickCount = 0;
+const clearTasksBtn = document.getElementById('apaga-tudo');
 
 // adiciona tarefa à lista
 function addTask() {
@@ -12,10 +13,11 @@ function addTask() {
   taskList.appendChild(newTask);
   inputTask.value = '';
 }
-createTask.addEventListener('click', addTask);
+createTaskBtn.addEventListener('click', addTask);
 
 // seleciona a tarefa
 function addSelected(element) {
+  // força recálculo de taskList (agora, com itens adicionados)
   const tasks = Array.from(taskList.children);
   for (let counter = 0; counter < tasks.length; counter += 1) {
     const currentTask = tasks[counter];
@@ -59,3 +61,9 @@ function checkItem(originEvent) {
   }
 }
 body.addEventListener('click', checkItem);
+
+// apaga lista de tarefas
+function clearTaskList() {
+  taskList.innerHTML = '';
+}
+clearTasksBtn.addEventListener('click', clearTaskList);
