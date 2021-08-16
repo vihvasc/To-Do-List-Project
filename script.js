@@ -18,3 +18,7 @@ document.body.appendChild(inputDiv);
 const input = document.createElement('input');
 input.id = 'texto-tarefa';
 document.body.appendChild(input);
+
+const tarefas = document.createElement('ol');
+tarefas.id = 'lista-tarefas';
+document.body.appendChild(tarefas);
