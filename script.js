@@ -13,3 +13,8 @@ function addList() {
   orderlist.appendChild(element);
   listItem.value = '';
 }
+
+const elements = document.getElementsByTagName('ol')[0];
+elements.addEventListener('click', function (event) {
+    event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+  });
