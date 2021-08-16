@@ -18,11 +18,21 @@ function addListener() {
   }
 }
 
+function doubleClick(event) {
+  const eventClicked = event.target;
+  if (eventClicked.className === 'task completed') {
+    eventClicked.classList.remove('completed');
+  } else {
+    eventClicked.classList.add('completed');
+  }
+}
+
 function createTask() {
   addButtonTask.addEventListener('click', () => {
     const li = document.createElement('li');
     li.innerText = input.value;
     li.className = 'task';
+    li.addEventListener('dblclick', doubleClick);
     input.value = '';
     listOrdernd.appendChild(li);
     addListener();
