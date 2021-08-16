@@ -46,10 +46,12 @@ ol li {
 
 #buttons {
   display: inline-block;
+  width: 150px;
 }
 
 #buttons button {
   display: block;
+  margin: 20px auto;
 }
 
 #buttons button:hover {
@@ -72,18 +74,20 @@ ol li {
 
 #remover-finalizados {
   border-radius: 10px;
-  width: 120px;
+  width: 100px;
   white-space: pre-wrap;
   background-color: yellow;
   font-weight: 900;
+  font-size: 10px;
 }
 
 #remover-selecionado {
   border-radius: 10px;
-  width: 120px;
+  width: 100px;
   white-space: pre-wrap;
   background-color: gray;
   font-weight: 900;
+  font-size: 10px;
 }
 
 #mover-cima {
