@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Montserrat , sans-serif;
+}
+
+header , p {
+  text-align: center;
+}
+
+header {
+  background-color: lightcoral;
+  color: white;
+  font-size: 36px;
+  font-weight: 900;
+}
+
+p , input , button , ol {
+  color: #525252;
+  margin: 10px;
+}
+
+input {
+  width: 300px;
+}
+
+ol {
+  list-style-position: inside;
+}
+
+.selected {
+  background-color: #808080;
+}
