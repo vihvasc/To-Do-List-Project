@@ -51,6 +51,18 @@ function clearList() {
         getLis[i].remove();
         }
     }
-getButtonClear.addEventListener('click', clearList)
+getButtonClear.addEventListener('click', clearList);
+
+function clearCompleted () {
+    let getClassCompleted = document.querySelectorAll('.completed');
+    for (let i = 0; i < getClassCompleted.length; i += 1) {
+        getClassCompleted[i].remove();
+    }
+}
+function buttonCompleted() {
+    let getButtonCompleted = document.getElementById('remover-finalizados');
+    getButtonCompleted.addEventListener('click', clearCompleted);
+}
+buttonCompleted()
 
 
