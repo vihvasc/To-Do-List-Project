@@ -76,16 +76,88 @@ function changeColor (){
    }
  }
 
-//  //função para salvar lista de tarefas
-//  function saveList(){
-//    var todoList = document.querySelectorAll("li");
-//    console.log(todoList);
-//  }
+ //função para salvar lista de tarefas
+ function saveList(){
+   var todoList = document.querySelectorAll("li");
+   console.log(todoList);
+ }
 
 //função para remover item selcionado
 function removeSelected(){
   let selected = document.querySelector(".selected");
   selected.remove();
+}
+
+//função para mudar item selecionado
+function changesSelected(selected, changed){
+  let items = document.querySelectorAll("li");
+  for(let key of items){
+    if(key === selected){
+      key.classList.remove("selected");
+    }
+    if(key === changed){
+      key.classList.add("selected");
+    }
+  }
+}
+
+//função para encontrar a posição
+function getPosition(){
+  const list = document.querySelectorAll("li");
+  const selected = document.querySelector(".selected");
+  let positionPreviousLater = [];
+
+  for(let i = 0; i < list.length; i ++){
+    if(list[i] === selected){
+      positionPreviousLater[0] = i;
+      positionPreviousLater[1] = list[i - 1];
+      positionPreviousLater[2] = list[i + 1];
+      break;
+    }
+  }
+  console.log(positionPreviousLater);
+  return positionPreviousLater;
+}
+
+//função para mover item para cima
+function moveUp(){
+  const list = document.querySelectorAll("li");
+  let selected = document.querySelector(".selected");
+  const selectedText = selected.innerText;
+  console.log(selectedText);
+  let positionPrevious = getPosition();
+  let positionPreviousText = positionPrevious[1].innerText
+
+  for(let i = 0; i < list.length; i ++){
+
+    if(i === positionPrevious[0] - 1){
+      list[i].innerText = selectedText;
+      list[i + 1 ].innerText = positionPreviousText;
+    } 
+  }
+
+  changesSelected(selected, positionPrevious[1]);
+  changeColor();
+}
+
+//função para mover para baixo
+function moveDown(){
+  const list = document.querySelectorAll("li");
+  let selected = document.querySelector(".selected");
+  let positionLater = getPosition();
+
+  let selectedText = selected.innerText;
+  let positionLaterText = positionLater[2].innerText;
+
+  for(let i = 0; i < list.length; i ++){
+
+    if(i === positionLater[0] + 1){
+      list[i].innerText = selectedText;
+      list[i - 1].innerText = positionLaterText;
+    } 
+  }
+  changesSelected(selected, positionLater[2]);
+  changeColor();
 }
 
 // função para criar eventos gerais
@@ -99,8 +171,14 @@ function createEvent(){
   const clearCompletedList = document.getElementById("remover-finalizados");
   clearCompletedList.addEventListener('click', clearCompleted);
 
-  // const saveItems = document.getElementById("salvar-tarefas");
-  // saveItems.addEventListener("click", saveList);
+  const saveItems = document.getElementById("salvar-tarefas");
+  saveItems.addEventListener("click", saveList);
+
+  const moveUpButton = document.getElementById("mover-cima");
+  moveUpButton.addEventListener('click', moveUp);
+
+  const moveDownButton = document.getElementById("mover-baixo");
+  moveDownButton.addEventListener('click', moveDown);
 
   const removeSelectedButton = document.getElementById("remover-selecionado");
   removeSelectedButton.addEventListener('click', removeSelected);
