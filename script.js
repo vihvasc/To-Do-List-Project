@@ -37,3 +37,14 @@ function adicionaItemCompleto(event) {
 }
 
 listaTarefas.addEventListener('dblclick', adicionaItemCompleto);
+
+// Botao de limpar lista
+const botaoApagar = document.getElementById('apaga-tudo');
+
+function apagarLista() {
+  while (listaTarefas.firstChild) {
+    listaTarefas.removeChild(listaTarefas.firstChild);
+  }
+}
+
+botaoApagar.addEventListener('click', apagarLista);
