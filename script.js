@@ -1,3 +1,19 @@
+function taskComplete() {
+  const li = document.querySelectorAll('li');
+  for (let key = 0; key < li.length; key += 1) {
+    let cont = 0;
+    li[key].addEventListener('dblclick', () => {
+      if (cont === 0) {
+        li[key].className = 'completed';
+        cont = 1;
+      } else {
+        li[key].classList.remove('completed');
+        cont = 0;
+      }
+    });
+  }
+}
+
 function cleanBackgrood() {
   const li = document.querySelectorAll('li');
   for (let key = 0; key < li.length; key += 1) {
@@ -25,6 +41,7 @@ function addTaks() {
     valueInpt.value = '';
     list.appendChild(li);
     listColor();
+    taskComplete();
   });
 }
 addTaks();
