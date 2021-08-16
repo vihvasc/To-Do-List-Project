@@ -13,8 +13,6 @@ function button() {
 
 botao.addEventListener('click', button);
 
-// REQUISITO 7 (ADICIONA BACKGROUND AO CLICAR EM UM ITEM DA LISTA)
-
 function mudaFundo(event) {
   const mudaCorLi = event.target;
   const removePaint = document.querySelectorAll('.classLi');
