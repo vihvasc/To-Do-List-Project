@@ -28,8 +28,12 @@ adicionaParagrafo();
 // *** O que será verificado:
 // ***** Será verificada a existência de um elemento do tipo input com o id texto-tarefa.
 
-
-
+function adicionaInput() {
+    const elementoInput = document.createElement('input');
+    elementoInput.id = 'texto-tarefa';
+    body.appendChild(elementoInput);
+}
+adicionaInput();
 
 // 0
 // *** 
