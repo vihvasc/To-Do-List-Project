@@ -39,3 +39,10 @@ event.target.classList.add('item-lista');
 function addCompletedTask(event){
 event.target.classList.toggle('completed');
 }
+let getButton2 = document.getElementById('apaga-tudo')
+function removeTask(){
+  let ol = document.getElementById('lista-tarefas');
+  for(i = 0; i < ol.children.length; i = 0)
+  ol.removeChild(ol.childNodes[i]);
+}
+getButton2.addEventListener('click', removeTask);
