@@ -24,10 +24,19 @@ function handleTaskListItemClick(event) {
   }
 }
 
+function handleTaskListItemDoubleClick(event) {
+  if (event.target.classList.contains(TASK_LIST_ITEM_CLASS)) {
+    const task = event.target;
+
+    task.classList.toggle('completed');
+  }
+}
+
 window.onload = () => {
   const addTaskButton = document.getElementById('criar-tarefa');
   const taskList = document.getElementById('lista-tarefas');
 
   addTaskButton.addEventListener('click', addTask);
   taskList.addEventListener('click', handleTaskListItemClick);
+  taskList.addEventListener('dblclick', handleTaskListItemDoubleClick);
 };
