@@ -4,12 +4,13 @@ const taskList = document.getElementById('lista-tarefas');
 
 function changeColor(evento) {
   const backColor = evento.target;
+  const currentList = document.querySelectorAll('#lista-tarefas li');
 
-  if (backColor.style.backgroundColor === '') {
-    backColor.style.backgroundColor = 'rgb(128,128,128)';
-  } else {
-    backColor.style.backgroundColor = '';
+  for (let i = 0; i < currentList.length; i += 1) {
+    currentList[i].classList.remove('selected');
   }
+
+  backColor.className = 'selected';
 }
 
 function appendNewTask() {
