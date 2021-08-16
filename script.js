@@ -29,6 +29,16 @@ function completeTask(event) {
     }
 }
 
+function cleanList() {
+    let listItem = document.querySelector("#lista-tarefas")
+    let li = document.querySelectorAll("li")
+
+    for(let counter = 0; counter < li.length; counter += 1) {
+        let remove = li[counter]
+        listItem.removeChild(remove)
+    }
+}
+
 window.onload = function() {
     let createTskBtn = document.querySelector("#criar-tarefa")
     createTskBtn.addEventListener("click", addTask)
@@ -39,5 +49,6 @@ window.onload = function() {
         listItem[counter].addEventListener("dblclick", completeTask)
     }
 
-
+    let cleanBtn = document.querySelector("#apaga-tudo")
+    cleanBtn.addEventListener("click", cleanList)
 }
