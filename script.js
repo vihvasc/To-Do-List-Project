@@ -95,13 +95,14 @@ function criaTarefa() {
         //     elementosLista[index].className = 'completed';
         //     elementosLista[index].style.textDecoration = 'line-through solid rgb(0,0,0)';
 
-        if (comparaClasse.endsWith('selected') ) {
+        if (comparaClasse.endsWith('completed') ) {
+            console.log('ELEMENTO \''+ novoItem.textContent + '\' FOI DESELECIONADO');
             novoItem.className = '';
             novoItem.style.textDecoration = '';
 
         } else {
-            console.log('ELEMENTO FOI SELECIONADO');
-            novoItem.className = 'selected';
+            console.log('ELEMENTO \''+ novoItem.textContent + '\' FOI SELECIONADO');
+            novoItem.className = 'completed';
             novoItem.style.textDecoration = 'line-through solid rgb(0,0,0)';
         }
         // const elementosLista = document.querySelectorAll('li');
@@ -136,6 +137,7 @@ criaTarefa();
 // *** Pontos importantes sobre este requisito:
 // ***** Crie uma classe CSS com o nome "completed" e defina a propriedade "text-decoration" com o valor "line-through".
 // ***** Utilize a classe CSS "completed" para adicionar o efeito de letra tachada (riscada) às tarefas finalizadas.
+// https://pt.stackoverflow.com/questions/9605/detectar-se-um-elemento-cont%C3%A9m-uma-classe-com-javascript-puro
 
 // 0
 // ***
