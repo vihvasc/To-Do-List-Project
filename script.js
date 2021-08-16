@@ -30,3 +30,11 @@ function scratched(event) {
   event.target.classList.toggle('completed');
 }
 theList.addEventListener('dblclick', scratched);
+
+// 10. Delete everything
+function deleteEverything() {
+  const listOl = document.querySelector('ol');
+  listOl.innerHTML = '';
+}
+const buttonDelete = document.querySelector('#apaga-tudo');
+buttonDelete.addEventListener('click', deleteEverything);
