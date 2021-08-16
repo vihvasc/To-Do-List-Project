@@ -1,17 +1,3 @@
-function salve() {
-  const buttonSalve = document.getElementById('salvar-tarefas');
-  const salveLi = document.querySelectorAll('li');
-  const objeto = [];
-  buttonSalve.addEventListener('click', () => {
-    for (let key = 0; key < salveLi.length; key += 1) {
-      const value = salveLi[key].innerText;
-      objeto.push({ item: value, classe: salveLi[key].classList.value });
-      localStorage.setItem('list', JSON.stringify(objeto));
-    }
-  });
-}
-salve();
-
 function finalizedClean() {
   const buttonFinalized = document.getElementById('remover-finalizados');
   const taksfinalized = document.querySelectorAll('.completed');
@@ -21,6 +7,25 @@ function finalizedClean() {
     }
   });
 }
+
+function salve() {
+  const buttonSalve = document.getElementById('salvar-tarefas');
+  const salveLi = document.querySelectorAll('li');
+  const objeto = [];
+  buttonSalve.addEventListener('click', () => {
+    for (let key = 0; key < salveLi.length; key += 1) {
+        let cont = 0;
+      const value = salveLi[key].innerText;
+      if (cont === 0) {
+        objeto.push({ item: value, classe: salveLi[key].classList.value });
+        localStorage.setItem('list', JSON.stringify(objeto));
+        cont = 1;
+      }
+    }
+
+  });
+}
+salve();
 
 function clean() {
   const buttonClean = document.getElementById('apaga-tudo');
@@ -83,6 +88,7 @@ function addTaks() {
     taskComplete();
     salve();
     clean();
+    localStorage.clear();
   });
 }
 addTaks();
@@ -93,13 +99,12 @@ function getLocalStorage() {
     const list = document.getElementById('lista-tarefas');
     for (let key = 0; key < get.length; key += 1) {
       const li = document.createElement('li');
-      if (get[key].classe === 'completed') {
-        li.className = get[key].classe;
-      }
+      li.className = get[key].classe;
       li.innerText = get[key].item;
       list.appendChild(li);
       taskComplete();
       listColor();
+      finalizedClean();
     }
   }
 }
