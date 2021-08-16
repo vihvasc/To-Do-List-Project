@@ -13,10 +13,12 @@ botaoCriarTarefa.addEventListener('click', function() {
   lista.appendChild(criarLi);
   inputTexto.value = null;
 
-  criarLi.addEventListener('click', function(){    
-      criarLi.style.backgroundColor = 'rgb(128,128,128)'
-    
+  // Adiciona cor de fundo
+  criarLi.addEventListener('click', function(){      
+    let removerCor = document.querySelectorAll('.linhasLista');
+    for (let index = 0; index < removerCor.length; index += 1) {
+      removerCor[index].style.backgroundColor = 'white';
+    }
+    criarLi.style.backgroundColor = 'rgb(128,128,128)';
   })
-  
 })
-
