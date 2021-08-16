@@ -29,9 +29,20 @@ addBtn.innerText = 'Adicionar!';
 document.body.appendChild(addBtn);
 
 const selectedBackground = 'rgb(128, 128, 128)';
+
+function applyBackground(selectedItem) {
+  const oldSelected = document.querySelector('.selected');
+  if (oldSelected) {
+    oldSelected.style.background = '';
+  }
+  const item = selectedItem;
+  item.style.background = selectedBackground;
+  item.className = 'selected';
+}
+
 function changeBackground(event) {
-  const listItem = event.target;
-  listItem.style.background = selectedBackground;
+  const theTarget = event.target;
+  applyBackground(theTarget);
 }
 
 function addTask() {
