@@ -11,8 +11,14 @@ window.onload = function () {
     li.className = "color"
     campoDigitado.value = '';
     
-    function changeBg(){
-      li.style.backgroundColor = 'rgb(' + 128 + ',' + 128 + ',' + 128 + ')'
+    function changeBg(li){
+      
+      let deixarBranco = document.querySelectorAll(".color");
+
+      for(count = 0; count < deixarBranco.length; count ++){
+        deixarBranco[count].style.backgroundColor = "red"
+      }
+      li.target.style.backgroundColor = 'rgb(' + 128 + ',' + 128 + ',' + 128 + ')'
     }
     
     li.addEventListener("click", changeBg, false)
