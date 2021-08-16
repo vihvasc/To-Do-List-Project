@@ -1,6 +1,7 @@
 const header = document.querySelector('#header');
 const input = document.querySelector('#texto-tarefa');
 const button = document.querySelector('#criar-tarefa');
+const buttonClear = document.querySelector('#apaga-tudo');
 const ol = document.querySelector('#lista-tarefas');
 const listItens = document.getElementsByClassName('list-item');
 
@@ -55,3 +56,9 @@ function setCompleted(event) {
 }
 
 ol.addEventListener('dblclick', setCompleted);
+
+function clearAll() {
+    ol.innerHTML = '';
+}
+
+buttonClear.addEventListener('click', clearAll);
