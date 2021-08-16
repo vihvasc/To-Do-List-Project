@@ -25,4 +25,9 @@ function createTask() {
 }
 createTask();
 
-// revesar entre clicar duas vezes no Item da lista seja riscado
+//botão apaga todos os itens da lista de uma vez
+const btnDeleteAllList = document.getElementById('apaga-tudo');
+btnDeleteAllList.addEventListener('click', function () {
+  while (taskList.firstChild)
+    taskList.removeChild(taskList.lastChild);
+}); //fonte: https://qastack.com.br/programming/3955229/remove-all-child-elements-of-a-dom-node-in-javascript
