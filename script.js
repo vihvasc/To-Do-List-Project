@@ -67,6 +67,21 @@ function wipeCompletedTasks() {
   };
 };
 
+//12 
+
+function saveTasks() {
+  let tasksList = document.getElementById("lista-tarefas");
+  let tasksToSave = tasksList.innerHTML;
+  localStorage.setItem("listItens", tasksToSave);
+}
+
+function loadSavedTasks() {
+  let tasksList = document.getElementById("lista-tarefas");
+  let savedTasks = localStorage.getItem("listItens");
+  if (savedTasks) {
+    tasksList.innerHTML = savedTasks;
+  };
+};
 
 function buttonsStart() {
   let taskButton = document.getElementById("criar-tarefa");
@@ -75,8 +90,11 @@ function buttonsStart() {
   wipeAllButton.addEventListener("click", wipeAllTasks)
   let wipeCompletedTasksButton = document.getElementById("remover-finalizados");
   wipeCompletedTasksButton.addEventListener("click", wipeCompletedTasks)
+  let saveTasksButton = document.getElementById("salvar-tarefas");
+  saveTasksButton.addEventListener("click", saveTasks)
 };
 
 window.onload = function () {
   buttonsStart();
+  loadSavedTasks();
 };
