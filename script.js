@@ -63,3 +63,22 @@ function checkedTask() {
   }
  
   checkedTask();
+
+  function clearAll() {
+    let clear = document.getElementById('apaga-tudo');
+
+    function removeAll() {
+      let list = document.getElementById('lista-tarefas');
+      // acessador aqui https://qastack.com.br/programming/3955229/remove-all-child-elements-of-a-dom-node-in-javascript
+       while (list.firstElementChild) {
+         list.removeChild(list.firstElementChild)
+      // ....
+       }
+     }
+
+    clear.addEventListener('click', removeAll);
+
+  }
+
+  clearAll();
+
