@@ -31,3 +31,24 @@ function changeColor(event) {
 }
 
 tasks.addEventListener('click', changeColor);
+
+// marca task como completa
+// function add(event) {
+//   event.target.style.textDecoration = 'line-through';
+// }
+// function remove(event) {
+//   event.target.style.textDecoration = '';
+// }
+
+function addRemoveLineThrough(event) {
+  const itemEvent = event.target;
+  if (itemEvent.className === 'item selected completed') {
+    // itemEvent.style.textDecoration = 'line-through';
+    itemEvent.classList.remove('completed');
+  } else {
+    // itemEvent.style.textDecoration = '';
+    itemEvent.classList.add('completed');
+  }
+}
+
+itens.addEventListener('dblclick', addRemoveLineThrough);
