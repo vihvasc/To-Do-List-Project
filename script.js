@@ -118,6 +118,13 @@ function moveTaskDown() {
   };
 };
 
+function removeSelectedTask() {
+  let task = document.querySelector(".selected-item");
+  if (task) {
+    task.remove();
+  };
+};
+
 function buttonsStart() {
   let taskButton = document.getElementById("criar-tarefa");
   taskButton.addEventListener("click", addTaskToList);
@@ -131,6 +138,8 @@ function buttonsStart() {
   moveTaskUpButton.addEventListener("click", moveTaskUp);
   let moveTaskDownButton = document.getElementById("mover-baixo");
   moveTaskDownButton.addEventListener("click", moveTaskDown);
+  let removeSelectedButton = document.getElementById("remover-selecionado");
+  removeSelectedButton.addEventListener("click", removeSelectedTask)
 };
 
 window.onload = function () {
