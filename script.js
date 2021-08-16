@@ -6,7 +6,8 @@ const mainList = document.getElementById("lista-tarefas");
 function createTask (event){
     let taskList = document.createElement("li");
     taskList.innerHTML = textAssignment.value;
-    taskList.addEventListener("click", clickBackground)
+    taskList.addEventListener("click", clickBackground);
+    taskList.addEventListener("dblclick", listStrip);
     mainList.appendChild(taskList)
     textAssignment.value = "";
 }
@@ -23,4 +24,9 @@ function clearBackgroundClick (){
     for (let index = 0; index < listClear.length; index += 1){
         listClear[index].classList.remove("selected");
     }
+}
+
+function listStrip (event){
+    let listTarget = event.target;
+    listTarget.classList.toggle("completed");
 }
