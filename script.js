@@ -23,7 +23,7 @@ document.body.appendChild(divList);
 let list = document.createElement('ol');
 list.id = 'lista-tarefas';
 divList.appendChild(list);
-//requisito 5
+//requisito 5 e 6
 //criei botão
 let divButton = document.createElement('div');
 document.body.appendChild(divButton);
@@ -34,15 +34,20 @@ divButton.appendChild(button);
 function addNewItem() {
   button.addEventListener('click', function () {
     let newItem = document.getElementById('texto-tarefa').value;
-
     let completeList = [];
     for (let index = 0; index <= completeList.length; index += 1) {
-      let ListItem = document.createElement('li');
-      ListItem.className = 'list-item';
-      ListItem.innerText = newItem;
-      list.appendChild(ListItem);
+      let listItem = document.createElement('li');
+      listItem.innerText = newItem;
+      list.appendChild(listItem);
+      listItem.addEventListener('click', changeListItemBackgroundColor);
       input.value = '';
     }
   });
 }
 addNewItem();
+//requisito 7
+// item = document.getElementsByClassName("list-item")
+function changeListItemBackgroundColor(event) {
+  let li = event.target;
+  li.style.backgroundColor = 'rgb(128, 128, 128)';
+}
