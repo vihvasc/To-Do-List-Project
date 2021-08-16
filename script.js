@@ -1,9 +1,21 @@
 const taskInput = document.getElementById('texto-tarefa');
 const btnAddTask = document.getElementById('criar-tarefa');
 const btnEraseAllTasks = document.getElementById('apaga-tudo');
+const btnEraseCompleteTasks = document.getElementById('remover-finalizados');
 const taskList = document.getElementById('lista-tarefas');
 
-// Apagando todos os itens da lista.
+// Apaga os itens concluídos da lista.
+function eraseCompleteTasks() {
+  const tasks = taskList.children;
+  for (let index = tasks.length - 1; index >= 0; index -= 1) {
+    const element = tasks[index];
+    if (element.classList.contains('completed')) {
+      element.remove();
+    }
+  }
+}
+
+// Apaga todos os itens da lista.
 function eraseAllTasks() {
   taskList.innerHTML = '';
 }
@@ -44,6 +56,7 @@ function addTask() {
 function addAllListeners() {
   btnAddTask.addEventListener('click', addTask);
   btnEraseAllTasks.addEventListener('click', eraseAllTasks);
+  btnEraseCompleteTasks.addEventListener('click', eraseCompleteTasks);
 }
 
 function init() {
