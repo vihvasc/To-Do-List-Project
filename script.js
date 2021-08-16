@@ -13,7 +13,14 @@ function createTask (event){
 buttonAssignment.addEventListener("click", createTask)
 
 function clickBackground (event){
-    let colorBackground = "rgb(128, 128, 128)";
     let listTarget = event.target;
-    listTarget.style.background = colorBackground;
+    clearBackgroundClick()
+    event.target.classList.add("selected");
+}
+
+function clearBackgroundClick (){
+    let listClear = document.querySelectorAll(".selected");
+    for (let index = 0; index < listClear.length; index += 1){
+        listClear[index].classList.remove("selected");
+    }
 }
