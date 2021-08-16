@@ -7,13 +7,13 @@ button.addEventListener("click", addTask)
 
 // Funções
 function addTask() {
-  let value = document.querySelector('#texto-tarefa').value;
+  let input = document.querySelector('#texto-tarefa');
   
-  if (value != '') {
+  if (input.value != '') {
     let newTask = document.createElement('li');
-    newTask.innerText = value;
+    newTask.innerText = input.value;
     taskList.appendChild(newTask);
-    value = "";
+    input.value = "";
   } else {
     window.alert('Você não digitou nada!')
   }
