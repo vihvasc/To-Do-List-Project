@@ -49,6 +49,11 @@ function removeDoneTasks() {
   }
 }
 
+function removeSelectedTask() {
+  const selectedTask = document.getElementById('selected');
+  selectedTask.remove();
+}
+
 const taskButton = document.getElementById('criar-tarefa');
 taskButton.addEventListener('click', createTask);
 
@@ -57,3 +62,6 @@ clearButton.addEventListener('click', clearAll);
 
 const removeDoneButton = document.getElementById('remover-finalizados');
 removeDoneButton.addEventListener('click', removeDoneTasks);
+
+const removeSelectedButton = document.getElementById('remover-selecionado');
+removeSelectedButton.addEventListener('click', removeSelectedTask);
