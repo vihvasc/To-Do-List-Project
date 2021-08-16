@@ -42,7 +42,7 @@ function handleTaskClick(event) {
   if (previousSelected !== null) {
     previousSelected.classList.remove('selected');
   }
-  event.target.classList.toggle('selected');
+  event.target.classList.add('selected');
 }
 
 function handleInput() {
