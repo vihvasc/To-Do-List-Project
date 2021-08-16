@@ -25,3 +25,9 @@ function selectTask(event) {
 }
 
 listaTarefas.addEventListener('click', selectTask);
+
+function completedTask(event) {
+  event.target.classList.toggle('completed');
+}
+
+listaTarefas.addEventListener('dblclick', completedTask);
