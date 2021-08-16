@@ -4,8 +4,7 @@ let lista = document.querySelector('#lista-tarefas');
 let liLista = document.querySelectorAll('.linhasLista');
 let navegador = document.querySelector('.navegador');
 let apagaLista = document.querySelector('#apaga-tudo');
-// let liLista = document.querySelectorAll('.linhasLista');
-
+let removeFinalizados = document.querySelector('#remover-finalizados');
 
 // Criar item lista
 botaoCriarTarefa.addEventListener('click', function() {
@@ -25,7 +24,7 @@ botaoCriarTarefa.addEventListener('click', function() {
   })
 
   // Risca item
-  criarLi.addEventListener('dblclick', function(){
+  criarLi.addEventListener('dblclick', function() {
     if (criarLi.classList.contains('completed')) {
         criarLi.classList.remove('completed');
     } else {
@@ -35,7 +34,14 @@ botaoCriarTarefa.addEventListener('click', function() {
 })
 
 // Remove todas li's
-apagaLista.addEventListener('click', function(){
+apagaLista.addEventListener('click', function() {
   lista.innerHTML = '';
 })
 
+// Remove Finalizados
+  removeFinalizados.addEventListener('click', function() {
+  let teste = document.querySelectorAll('.completed');
+  for (let index = 0; index < teste.length; index += 1) {
+    teste[index].parentNode.removeChild(teste[index]);
+  }  
+})
