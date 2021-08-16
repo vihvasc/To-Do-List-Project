@@ -30,3 +30,13 @@ function adicionaItem() {
   ol.appendChild(li)
   document.querySelector('#texto-tarefa').value = ''
 }
+
+function apagaTudo() {
+  let ol = document.querySelector('#lista-tarefas')
+  let filhos = ol.children
+  let tamanho = filhos.length - 1
+  for (let index = tamanho; index > -1; index -= 1) {
+    filhos[index].remove()
+  }
+}
+document.querySelector('#apaga-tudo').addEventListener('click', apagaTudo)
