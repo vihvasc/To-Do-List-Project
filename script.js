@@ -82,3 +82,22 @@ function checkedTask() {
 
   clearAll();
 
+  
+
+  function clearChecked() {
+    let checkeds = document.getElementsByClassName('completed');
+    let lists = document.getElementById('lista-tarefas');
+    let buttonClearCompleted = document.getElementById('remover-finalizados');
+
+    function completedOut() {
+      while (checkeds.length > 0) {
+        //  acessado https://qastack.com.br/programming/4777077/removing-elements-by-class-name
+        checkeds[0].parentNode.removeChild(checkeds[0]); //excluo o filho acessando o pai, como cada elemento( com classe completed) tem um pai diferente (li's diferentes) preciso criar um clico com while para acessar cada pai separado e assim excluir seu unico filho.
+        // ....
+      }
+    }
+    
+    buttonClearCompleted.addEventListener('click', completedOut);
+  }
+
+  clearChecked();
