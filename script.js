@@ -11,6 +11,7 @@ function addToList() {
   inputTask.value = ''
   li.className = 'li'
   li.addEventListener('click', changeColor)
+  li.addEventListener('dblclick', completeTask)
 }
 
 function changeColor(event) {
@@ -21,4 +22,8 @@ function changeColor(event) {
     }
   }
   event.target.classList.toggle('selected')
+}
+
+function completeTask(event){
+  event.target.classList.toggle('completed')
 }
