@@ -144,8 +144,9 @@ function setCompletedLineTr() {
   const children = Array.from(taskList.children);
   if (!children) return;
   children.forEach((task) => {
-    if (task.classList.contains('completed')) {
-      task.style.textDecoration = 'line-through solid rgb(0, 0, 0)';
+    const elementTask = task;
+    if (elementTask.classList.contains('completed')) {
+      elementTask.style.textDecoration = 'line-through solid rgb(0, 0, 0)';
     }
   });
 }
