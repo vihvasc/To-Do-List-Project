@@ -18,12 +18,30 @@ body {
     font-weight: normal;
 }
 
-#criar-tarefa{
+#criar-tarefa {
     background-color: rgb(88, 170, 236);
-    border-radius: 20%;
-    padding: 0.5%;
-    width: 15%;
-    border: none;
     color: white;
+    border-radius: 20%;
+    border: none;
+    padding: 2%;
+    width: 20%;
+    font-weight: bold;
+}
+#apaga-tudo {
+    background-color: red;
+    color: white;
+    border-radius: 20%;
+    border: none;
+    padding: 2%;
+    width: 20%;
+    font-weight: bold;
+}
+#remover-finalizados {
+    background-color: green;
+    color: white;
+    border-radius: 20%;
+    border: none;
+    padding: 2%;
+    width: 30%;
     font-weight: bold;
 }

@@ -2,7 +2,7 @@ let getOl = document.getElementById('lista-tarefas');
 let getInput = document.getElementById('texto-tarefa');
 let getButtonClear = document.querySelector('#apaga-tudo');
 
-function addLi() {
+function createTasks() {
     let setLi = document.createElement('li');
     setLi.className = 'tarefas';
     setLi.innerText = getInput.value;
@@ -11,7 +11,7 @@ function addLi() {
 }
 function clickButton() {
     let getButton = document.getElementById('criar-tarefa');
-    getButton.addEventListener('click', addLi);
+    getButton.addEventListener('click', createTasks);
 }
 clickButton();
 
@@ -64,5 +64,4 @@ function buttonCompleted() {
     getButtonCompleted.addEventListener('click', clearCompleted);
 }
 buttonCompleted()
-
 
