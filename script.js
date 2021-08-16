@@ -39,6 +39,16 @@ function cleanList() {
     }
 }
 
+function eraseCompleted() {
+    let listItem = document.querySelector("#lista-tarefas")
+    let completed = document.querySelectorAll(".completed")
+
+    for(let counter = 0; counter < completed.length; counter += 1) {
+        let erase = completed[counter]
+        listItem.removeChild(erase)
+    }
+}
+
 window.onload = function() {
     let createTskBtn = document.querySelector("#criar-tarefa")
     createTskBtn.addEventListener("click", addTask)
@@ -51,4 +61,7 @@ window.onload = function() {
 
     let cleanBtn = document.querySelector("#apaga-tudo")
     cleanBtn.addEventListener("click", cleanList)
+
+    let completedEraseBtn = document.querySelector("#remover-finalizados")
+    completedEraseBtn.addEventListener("click", eraseCompleted)
 }
