@@ -10,12 +10,16 @@ function createTask() {
     createItem.innerText = inputTypeTask.value;
     inputTypeTask.value = '';
     createItem.addEventListener('click', () => {
-      const getItens = document.querySelectorAll('#lista-tarefas');
+      const getItens = document.querySelectorAll('li');
       for (let under = 0; under < getItens.length; under += 1) {
-        getItens[under].style.backgroundColor = '';
+        if (getItens[under].style.background = 'rgb(128, 128, 128)') {
+          getItens[under].style.backgroundColor = '';
+        }
       }
       createItem.style.backgroundColor = 'rgb(128, 128, 128)';
-    });//aproveitei a criação dos itens e "embuti" para colocar a cor de fundo ao clicar, porém sempre dá para separar e melhorar para leitura. Mas como não ficou complexo, vou deixar assim.
+    });//aproveitei a criação dos itens e "embuti" para colocar a cor de fundo ao clicar, porém sempre dá para separar e melhorar paraa leitura. Mas como não ficou complexo, vou deixar assim.
   });
 }
 createTask();
+
+//o item que eu clicar é o único que deve ter background
