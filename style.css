@@ -15,3 +15,17 @@ ol li {
 .completed {
   text-decoration: line-through solid black;
 }
+
+#criar-tarefa {
+  background-image: url('https://e7.pngegg.com/pngimages/341/867/png-clipart-white-check-with-green-background-illustration-fingerprint-comcast-circle-symbol-technology-tick-miscellaneous-angle.png');
+  background-size: cover;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  border: 1px solid green;
+}
+
+#criar-tarefa:hover {
+  transform: scale(1.5);
+  transition: 300ms;
+}
