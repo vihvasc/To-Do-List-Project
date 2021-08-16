@@ -5,18 +5,12 @@ const apagaTudo = document.getElementById('apaga-tudo');
 const removerFinalizados = document.getElementById('remover-finalizados');
 const salvarTarefas = document.getElementById('salvar-tarefas');
 const removerSelecionado = document.getElementById('remover-selecionado');
+const moverCima = document.getElementById('mover-cima');
+const moverBaixo = document.getElementById('mover-baixo');
 
 if (localStorage.getItem('content')) {
   listaTarefas.innerHTML = localStorage.getItem('content');
 }
-
-criarTarefa.addEventListener('click', taskAdd);
-listaTarefas.addEventListener('click', taskSelected);
-listaTarefas.addEventListener('dblclick', taskCompleted);
-apagaTudo.addEventListener('click', removeAll);
-removerFinalizados.addEventListener('click', removeFinished);
-salvarTarefas.addEventListener('click', taskSave);
-removerSelecionado.addEventListener('click', removeSelected);
 
 function taskAdd() {
   const tarefa = document.createElement('li');
@@ -65,3 +59,33 @@ function removeSelected() {
     listaTarefas.removeChild(selected);
   }
 }
+
+function moveUp() {
+  const elementSelected = document.getElementsByClassName('selected')[0];
+  const list = document.querySelectorAll('.tarefa');
+  if (list[0] !== elementSelected && elementSelected) {
+    const elementUp = elementSelected.previousElementSibling;
+    const { parentNode } = elementUp;
+    parentNode.insertBefore(elementUp, elementSelected.nextSibling);
+  }
+}
+
+function moveDown() {
+  const elementSelected = document.getElementsByClassName('selected')[0];
+  const list = document.querySelectorAll('.tarefa');
+  if (list[list.length - 1] !== elementSelected && elementSelected) {
+    const elementDown = elementSelected.nextSibling;
+    const { parentNode } = elementDown;
+    parentNode.insertBefore(elementDown, elementSelected);
+  }
+}
+
+criarTarefa.addEventListener('click', taskAdd);
+listaTarefas.addEventListener('click', taskSelected);
+listaTarefas.addEventListener('dblclick', taskCompleted);
+apagaTudo.addEventListener('click', removeAll);
+removerFinalizados.addEventListener('click', removeFinished);
+salvarTarefas.addEventListener('click', taskSave);
+removerSelecionado.addEventListener('click', removeSelected);
+moverCima.addEventListener('click', moveUp);
+moverBaixo.addEventListener('click', moveDown);
