@@ -1,22 +1,34 @@
-let body = document.body;
-let inputTask = document.getElementById('texto-tarefa');
-let buttonAdd = document.getElementById('criar-tarefa');
-let taskList = document.getElementById('lista-tarefas');
+const {body} = document;
+const inputTask = document.getElementById('texto-tarefa');
+const buttonAdd = document.getElementById('criar-tarefa');
+const taskList = document.getElementById('lista-tarefas');
 
-//Criando uma tarefa nova como item list para ser usado na OL depois
+// Criando uma tarefa nova como item list para ser usado na OL depois
+
+const list = document.getElementsByClassName('list');
+
+function selectTask(event) {
+  // let selectedTask = event.target;
+
+  for (let index = 0; index < list.length; index += 1) {
+    list[index].classList.remove('selected');
+  }
+  event.target.classList.add('selected');
+  console.log('cheguei na function selecttask');
+}
 
 function createNewTask(task) {
-  let li = document.createElement('li');
+  const li = document.createElement('li');
   li.classList.add('list');
   li.innerText = task;
-  li.addEventListener('click', selectTask); //linha criada após requisito 6
+  li.addEventListener('click', selectTask); // linha criada após requisito 6
   return li;
 }
 
 function addNewTask() {
-  let task = inputTask.value;
+  const task = inputTask.value;
   inputTask.value = '';
-  let createdTask = createNewTask(task);
+  const createdTask = createNewTask(task);
   taskList.appendChild(createdTask);
 }
 
@@ -28,11 +40,6 @@ function callAllFunctions() {
   listtennerButtonAdd();
 }
 
-function selectTask(event) {
-  let selectedTask = event.target;
-  let lastSelectedTask = document.querySelector('.selected');
-  event.target.classList.add('selected');
-  console.log('cheguei na function selecttask');
-}
+console.log(body);
 
 window.onload = callAllFunctions;
