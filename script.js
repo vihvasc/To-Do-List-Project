@@ -69,9 +69,11 @@ function criaTarefa() {
       novoItem.innerHTML = textoAAdicionar.value;
       // Faz-se o appendChild desse elemento li dentro da ol
       listaDeTarefas.appendChild(novoItem);
+      textoAAdicionar.value = '';
   })
 }
 criaTarefa();
+
 // 0
 // *** 
 // ***** 
