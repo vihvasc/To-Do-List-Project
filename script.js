@@ -4,6 +4,7 @@ const itemList = document.getElementById('lista-tarefas');
 const buttonAddItem = document.getElementById('criar-tarefa');
 const inputAddItem = document.getElementById('texto-tarefa');
 const buttonClearAll = document.getElementById('apaga-tudo');
+const buttonClearCompleted = document.getElementById('remover-finalizados');
 
 // Add Item to list in localStorage
 function addItemToLocal(item) {
@@ -61,7 +62,7 @@ function fillWithLocal() {
   }
 }
 
-// Funtion to remove all itens in ol
+// Funtion to remove all items in ol
 function removeAllItems() {
   const listItems = document.querySelectorAll('#lista-tarefas li');
   for (let i = 0; i < listItems.length; i += 1) {
@@ -69,10 +70,35 @@ function removeAllItems() {
     itemList.removeChild(element);
   }
   local.clear();
+  local.setItem('listaItems', JSON.stringify([]));
 }
 
 // addEventListener to buttonAddItem
 buttonClearAll.addEventListener('click', removeAllItems);
+
+// Function to fill localServer with listItems
+function fillLocalwithList() {
+  const allItemsInList = itemList.children;
+  local.clear();
+  const listaItems = [];
+  for (let i = 0; i < allItemsInList.length; i += 1) {
+    listaItems.push(allItemsInList[i].innerText);
+  }
+  local.setItem('listaItems', JSON.stringify(listaItems));
+}
+
+// Function to delete items completed
+function removeCompletedItems() {
+  const listItems = document.querySelectorAll('#lista-tarefas .completed');
+  for (let i = 0; i < listItems.length; i += 1) {
+    const element = itemList.querySelector('.completed');
+    itemList.removeChild(element);
+  }
+  fillLocalwithList();
+}
+
+// addEventListener to buttonAddItem
+buttonClearCompleted.addEventListener('click', removeCompletedItems);
 
 // Load Page
 window.onload = function startPage() {
