@@ -23,3 +23,14 @@ function adicionaParagrafo() {
   body.appendChild(elementoP);
 }
 adicionaParagrafo();
+
+// 03 - Adicione um input com o id="texto-tarefa" onde a pessoa usuária poderá digitar o nome do item que deseja adicionar à lista
+// *** O que será verificado:
+// ***** Será verificada a existência de um elemento do tipo input com o id texto-tarefa.
+
+
+
+
+// 0
+// *** 
+// ***** 
