@@ -1,4 +1,4 @@
-const tags = ['body', 'header', 'h1'];
+const tags = ['body', 'header', 'h1', 'div', 'p'];
 // const ids = [''];
 // const classes = [''];
 
@@ -33,6 +33,9 @@ function createElements(myArray) {
 function createPageStructure() {
   createElements([tags[0], 0, tags[1], '', '', '']);
   createElements([tags[1], 0, tags[2], tags[1], '', 'Minha Lista de Tarefas']);
+  createElements([tags[0], 0, tags[3], '', '', '']);
+  createElements([tags[3], 0, tags[4], 'funcionamento', '', 'Clique duas vezes' +
+    ' em um item para marcá-lo como completo']);
 }
 
 createPageStructure();
