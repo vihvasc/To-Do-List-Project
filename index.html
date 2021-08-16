@@ -5,17 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
-    <title>Project Todo List</title>
+    <title>Project To do List</title>
 </head>
 <body>
     <header>
-        <h1>Minha Lista de Tarefas</h1>
-        <p id='funcionamento'>Clique duas vezes em um item para marcá-lo como completo</p>
+        <div id='title-container'>
+            <h1>Minha Lista de Tarefas</h1>
+            <p id='funcionamento'>Clique duas vezes em um item para marcá-lo como completo</p>
+        </div>
     </header>
+    <main>
+        <section id='list-section'>
+            <h2>Digite suas tarefas</h2>
+            <div id='input-container'>
+                <input type="text" name="Insert task" id="texto-tarefa">
+                <button><i class="fas fa-plus-circle"></i></button>
+                <div id='list-container'>
+                    <ol id='lista-tarefas'>
+
+                    </ol>
+                </div>
+            </div>
+        </section>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>

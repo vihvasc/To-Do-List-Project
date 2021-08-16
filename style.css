@@ -1,3 +1,21 @@
 body {
 	font-family: 'Raleway', sans-serif;
+	background-color: rgb(230, 230, 230)
+}
+
+#title-container {
+
+
+	margin: 50px 50px;
+	color: white;
+	background-color: rgb(42, 157, 143);
+}
+
+#list-section {
+	border-radius: 25px;
+	box-shadow: 5px 5px 18px 2px rgb(128, 128, 128);
+	margin: 50px 50px;
+	min-height: 300px;
+	color: white;
+	background-color: rgb(42, 157, 143);
 }
