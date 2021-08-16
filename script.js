@@ -1,6 +1,7 @@
 const text = document.getElementById('texto-tarefa');
 const buttonAdd = document.getElementById('criar-tarefa');
-const buttonClear = document.getElementById('apaga-tudo');
+const buttonLimpar = document.getElementById('apaga-tudo');
+const buttonFinalizados = document.getElementById('remover-finalizados');
 const listIndex = document.getElementById('lista-tarefas');
 
 function pintarLi(event) {
@@ -22,18 +23,28 @@ function riscarLi(event) {
 }
 
 function addText() {
-  const liCreate = document.createElement('li');
-  listIndex.appendChild(liCreate);
+  const list = document.createElement('li');
+  listIndex.appendChild(list);
   const textPush = document.createTextNode(text.value);
-  liCreate.appendChild(textPush);
+  list.appendChild(textPush);
   text.value = '';
-  liCreate.addEventListener('click', pintarLi);
-  liCreate.addEventListener('dblclick', riscarLi);
+  list.addEventListener('click', pintarLi);
+  list.addEventListener('dblclick', riscarLi);
 }
 
-function apagarLis () {
+function apagarLis() {
   listIndex.innerHTML = '';
 }
 
+function apagarFinalizados() {
+  const list = document.querySelectorAll('li');
+  for (let i = 0; i < list.length; i += 1) {
+    if (list[i].className === 'completed' || list[i].className === 'selected completed') {
+      listIndex.removeChild(list[i]);
+    }
+  }
+}
+
 buttonAdd.addEventListener('click', addText);
-buttonClear.addEventListener('click', apagarLis)
+buttonLimpar.addEventListener('click', apagarLis);
+buttonFinalizados.addEventListener('click', apagarFinalizados);
