@@ -8,9 +8,12 @@ createParagraph.innerText = 'Clique duas vezes em um item para marcá-lo como co
 createParagraph.id = 'funcionamento';
 const createInput = document.createElement('input');
 createInput.id = 'texto-tarefa';
+const createOrderedList = document.createElement('ol');
+createOrderedList.id = 'lista-tarefas';
 
 corpoDoProjeto[0].appendChild(headerTitle);
 headerTitle.appendChild(title);
 corpoDoProjeto[0].appendChild(createSection);
 createSection.appendChild(createParagraph);
 createSection.appendChild(createInput);
+createSection.appendChild(createOrderedList);
