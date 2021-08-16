@@ -12,7 +12,8 @@ function addTask() {
   if (input.value != '') {
     let newTask = document.createElement('li');
     newTask.innerText = input.value;
-    newTask.addEventListener("click", handleTaskClick);
+    newTask.addEventListener("click", highlightTask);
+    newTask.addEventListener("dblclick", finishTask);
     taskList.appendChild(newTask);
     input.value = "";
   } else {
@@ -20,7 +21,7 @@ function addTask() {
   }
 }
 
-function handleTaskClick(event) {
+function highlightTask(event) {
   let selected = document.querySelectorAll('.selected');
 
   if (!event.target.classList.contains('selected')) {
@@ -30,5 +31,13 @@ function handleTaskClick(event) {
     event.target.classList.add('selected');
   } else {
     event.target.classList.remove('selected');
+  }
+}
+
+function finishTask(event) {
+  if (!event.target.classList.contains('completed')) {
+    event.target.classList.add('completed');
+  } else {
+    event.target.classList.remove('completed');
   }
 }
