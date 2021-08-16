@@ -28,9 +28,8 @@ criaBotao();
 function adicionaTarefa() {
   const texto = textoAtual.value;
   const li = document.createElement('li');
-  li.innerText = texto;
-  console.log(li);
   const lista = document.getElementById('lista-tarefas');
+  li.innerText = texto;
   lista.appendChild(li);
 }
 
@@ -41,3 +40,12 @@ function apagaTexto() {
   textoAtual.value = '';
 }
 botaoAdiciona.addEventListener('click', apagaTexto);
+
+function mudaBackground(event) {
+  event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+}
+function pintaLis() {
+  const ol = document.getElementById('lista-tarefas').lastElementChild;
+  ol.addEventListener('click', mudaBackground);
+}
+botaoAdiciona.addEventListener('click', pintaLis);
