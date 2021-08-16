@@ -26,15 +26,15 @@ function paintTask() {
    
     function removeSelected() {
       for (let i = 0; i < taskSelected.length; i += 1) {
-        taskSelected[i].className = '';
+        taskSelected[i].classList.remove('selected');
       }
     }
 
     function selectTask(event) {
       let evitaError = event;
       removeSelected();
-      evitaError.target.className = 'selected';
-      olList.className = ''
+      evitaError.target.classList.add('selected');
+      olList.classList.remove('selected');
 
     }
 
@@ -42,3 +42,24 @@ function paintTask() {
   }
  
   paintTask();
+
+ 
+
+function checkedTask() {
+
+    let olList = document.getElementById('lista-tarefas');
+    let taskSelected = document.getElementsByTagName('li');
+
+    function selectchecked(event) {
+      let evitaError = event;
+      // acesado https://developer.mozilla.org/en-US/docs/Web/API/Element/dblclick_event
+      evitaError.target.classList.toggle('completed');
+      // ......
+      olList.className = ''
+    }
+    
+
+    olList.addEventListener('dblclick', selectchecked);
+  }
+ 
+  checkedTask();
