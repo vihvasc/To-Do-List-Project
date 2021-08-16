@@ -2,6 +2,7 @@ function todoList() {
   addTitle();
   addParagraph();
   addInput();
+  addOrdList();
 };
 
 function addInput() {
@@ -9,6 +10,12 @@ function addInput() {
   input.id = 'texto-tarefa';
   document.body.appendChild(input);
 };
+
+function addOrdList() {
+  const ol = document.createElement('ol');
+  ol.id = 'lista-tarefas'
+  document.body.appendChild(ol);
+}
 
 function addParagraph() {
   const paragraph = document.createElement('p');
