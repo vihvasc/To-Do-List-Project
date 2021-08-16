@@ -20,12 +20,52 @@ ol li {
   background-image: url('https://e7.pngegg.com/pngimages/341/867/png-clipart-white-check-with-green-background-illustration-fingerprint-comcast-circle-symbol-technology-tick-miscellaneous-angle.png');
   background-size: cover;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   border: 1px solid green;
 }
 
 #criar-tarefa:hover {
   transform: scale(1.5);
   transition: 300ms;
+}
+
+#salvar-tarefas {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEMzHE4Czaayu-j6rY_pzl1WTLd3zY89Mw4g&usqp=CAU');
+  background-size: cover;
+  width: 35px;
+  height: 35px;
+  border-radius: 20%;
+  border: 1px solid blue;
+}
+
+#salvar-tarefas:hover {
+  transform: scale(1.5);
+  transition: 300ms;
+}
+
+#buttons {
+  display: inline-block;
+}
+
+#buttons button {
+  width: 50px;
+  height: 50px;
+  display: block;
+  border-radius: 50%;
+}
+
+#buttons button:hover {
+  transform: scale(1.5);
+  transition: 300ms;
+}
+
+#lista-tarefas {
+  display: inline-block;
+}
+
+#apaga-tudo {
+  background-image: url('https://t3.ftcdn.net/jpg/01/45/20/02/360_F_145200273_450ViYipr5uU3WIwqzwjsRDHYTMcUH9P.jpg');
+  background-size: cover;
+  border: 1px solid red;
 }
