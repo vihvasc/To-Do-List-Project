@@ -65,3 +65,18 @@ function pintaLis() {
   ol.addEventListener('dblclick', riscaTarefa);
 }
 botaoAdiciona.addEventListener('click', pintaLis);
+
+function criaBotao2() {
+  const novoBotao = document.createElement('button');
+  novoBotao.id = 'apaga-tudo';
+  novoBotao.innerText = 'Remova todas as tarefas';
+  const body = document.getElementsByTagName('body')[0];
+  body.appendChild(novoBotao);
+}
+criaBotao2();
+function removeTudo() {
+  const ol = document.getElementById('lista-tarefas');
+  ol.innerText = ''
+}
+const botaoApaga = document.getElementById('apaga-tudo');
+botaoApaga.addEventListener('click', removeTudo);
