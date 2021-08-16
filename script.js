@@ -1,11 +1,12 @@
 let createTaskBtn = document.getElementById('criar-tarefa');
+let removeAllBtn = document.getElementById('apaga-tudo');
+let removeDoneBtn = document.getElementById('remover-finalizados');
 let input = document.getElementById('texto-tarefa');
 let taskList = document.getElementById('lista-tarefas');
-let removeAllBtn = document.getElementById('apaga-tudo');
 
 function handleAddTask() {
   let li = document.createElement('li');
-  li.classList.add('list-item');
+  // li.classList.add('list-item');
   li.textContent = input.value;
 
   li.addEventListener('click', handleClickItem);
@@ -48,3 +49,12 @@ function handleRemoveAll() {
   }
 }
 removeAllBtn.addEventListener('click', handleRemoveAll);
+
+function handleRemoveDone() {
+  let completedTasks = document.getElementsByClassName('completed');
+
+  for (item of completedTasks) {
+    item.remove();
+  }
+}
+removeDoneBtn.addEventListener('click', handleRemoveDone);
