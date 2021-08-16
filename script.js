@@ -1,6 +1,7 @@
 const addButton = document.getElementById('criar-tarefa')
 const list = document.getElementById('lista-tarefas')
 const delButton = document.getElementById('apaga-tudo')
+const delCompletedButton = document.getElementById('remover-finalizados')
 
 function addTask() {
   const inputText = document.getElementById('texto-tarefa')
@@ -39,13 +40,26 @@ function deleteAll() {
   for (let element of elementsList) {
     arrayWithElements.push(element)
   }
-  
+
   for(let element of arrayWithElements){
     element.remove()
   }
 
 }
+function deleteCompleted () {
+  const elementsList = document.querySelectorAll('.completed')
+  const arrayWithElements = []
+  console.log(elementsList)
+  for (let element of elementsList) {
+    arrayWithElements.push(element)
+  }
+
+  for (let element of arrayWithElements) {
+    element.remove()
+  }
+}
 addButton.addEventListener('click', addTask)
 list.addEventListener('click', changeLiColor)
 list.addEventListener('dblclick', scratchTask)
 delButton.addEventListener('click', deleteAll)
+delCompletedButton.addEventListener('click', deleteCompleted)
