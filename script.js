@@ -1,6 +1,21 @@
 const ordererList = document.getElementById('lista-tarefas');// lista ordenada.
 const input = document.querySelector('#texto-tarefa'); // input
 const addTaskButton = document.querySelector('#criar-tarefa');// botão adicionar tarefa.
+const createdTasks = document.getElementsByClassName('task');
+
+function removeColor() {
+  for (let index = 0; index < createdTasks.length; index += 1) {
+    createdTasks[index].style.backgroundColor = '';
+  }
+}
+function addGrayBackground() {
+  for (let index = 0; index < createdTasks.length; index += 1) {
+    createdTasks[index].addEventListener('click', () => {
+      removeColor();
+      createdTasks[index].style.backgroundColor = 'rgb(128, 128, 128)';
+    });
+  }
+}
 
 function addTask() {
   addTaskButton.addEventListener('click', () => {
@@ -11,16 +26,6 @@ function addTask() {
     input.value = '';
     addGrayBackground();
   });
-}
-
-function addGrayBackground() {
-  const createdTasks = document.getElementsByClassName('task');// todas tarefas criadas.
-  for (let index = 0; index < createdTasks.length; index += 1) {
-    createdTasks[index].addEventListener('click', (event) => {
-      const eventColor = event.target;
-      eventColor.style.backgroundColor = 'rgb(128, 128, 128)';
-    });
-  }
 }
 
 function allTask() {
