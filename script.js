@@ -6,6 +6,8 @@ const inputAddItem = document.getElementById('texto-tarefa');
 const buttonClearAll = document.getElementById('apaga-tudo');
 const buttonClearCompleted = document.getElementById('remover-finalizados');
 const buttonSaveList = document.getElementById('salvar-tarefas');
+const buttonMoveUp = document.getElementById('mover-cima');
+const buttonMoveDown = document.getElementById('mover-baixo');
 
 // Function to change color of element
 function changeElementColor(eventoDeOrigem) {
@@ -78,7 +80,7 @@ function fillLocalwithList() {
 }
 
 // addEventListener to buttonAddItem
-buttonSaveList.addEventListener('click', fillLocalwithList)
+buttonSaveList.addEventListener('click', fillLocalwithList);
 
 // Function to delete items completed
 function removeCompletedItems() {
@@ -91,6 +93,42 @@ function removeCompletedItems() {
 
 // addEventListener to buttonAddItem
 buttonClearCompleted.addEventListener('click', removeCompletedItems);
+
+// Function to move up a selected item
+function moveUpSelectedItem() {
+  const selectedElement = itemList.querySelector('.selected');
+  const lista = itemList.querySelectorAll('li');
+  for (let i = 1; i < lista.length; i += 1) {
+    elementText = lista[i].innerText;
+    if (elementText === selectedElement.innerText) {
+      lista[i].innerText = lista[i - 1].innerText;
+      lista[i].classList.remove('selected');
+      lista[i - 1].innerText = elementText;
+      lista[i - 1].classList.add('selected');
+    }
+  }
+}
+
+// addEventListener to buttonMoveUp
+buttonMoveUp.addEventListener('click', moveUpSelectedItem);
+
+// Function to move down a selected item
+function moveDownSelectedItem() {
+  const selectedElement = itemList.querySelector('.selected');
+  const lista = itemList.querySelectorAll('li');
+  for (let i = 0; i < lista.length - 1; i += 1) {
+    elementText = lista[i].innerText;
+    if (elementText === selectedElement.innerText) {
+      lista[i].innerText = lista[i + 1].innerText;
+      lista[i].classList.remove('selected');
+      lista[i + 1].innerText = elementText;
+      lista[i + 1].classList.add('selected');
+    }
+  }
+}
+
+// addEventListener to buttonMoveUp
+buttonMoveDown.addEventListener('click', moveDownSelectedItem);
 
 // Load Page
 window.onload = function startPage() {
