@@ -1,20 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto Todo List</title>    
-    <link rel='stylesheet' href='style.css'>
-</head>
-<body>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <script defer src="./js/script.js"></script>
+    <title>Lista de Tarefas</title>
+  </head>
+  <body>
     <header>
-        <h1>Minha Lista de Tarefas</h1>  
-        <p class = 'subtitulo' id='funcionamento'> <em> Clique duas vezes em um item para marcá-lo como completo</em></p>      
+      <h1>Minha Lista de <span>Tarefas</span></h1>
+      <p id="funcionamento"><em>Clique duas vezes em um item para marcá-lo como completo</em></p>
     </header>
-    <main></main>
+    <main>
+      <div class="container">
+        <form action="">
+          <input id="texto-tarefa" type="text" class="todo-input" placeholder="Adicione sua tarefa"/>
+          <button class="todo-button">
+            <i class="fas fa-plus-square"></i>
+          </button>
+        </form>
+        <div class="todo-container">
+          <ul class="todo-list"></ul>
+        </div>
+      </div>
+    </main>
     <footer>
-        Gustavo Souza2021 - Todos os direitos reservados
-    </footer>    
-</body>
+      <div class="rodape">
+        <p class="text-rodape">GustavoSouza2021-Todos os direitos reservados</p>
+      </div>
+    </footer>
+  </body>
 </html>
