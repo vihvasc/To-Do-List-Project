@@ -7,7 +7,10 @@ const buttonClearCompleted = document.getElementById("remover-finalizados");
 const buttonSaveTask = document.getElementById("salvar-tarefas");
 const buttonMoveUp = document.getElementById("mover-cima");
 const buttonMoveDown = document.getElementById("mover-baixo");
+const buttonClearElement = document.getElementById("remover-selecionado");
 
+
+//Puxa a lista salva no local storage
 function loadSaveList() {
   if (localStorage.getItem("lista-ordenada")) {
     ordenadeList.innerHTML = localStorage.getItem("lista-ordenada");
@@ -15,9 +18,10 @@ function loadSaveList() {
 }
 loadSaveList();
 
+
+//Adiciona itens na lista
 buttonAdd.addEventListener("click",addList);
 function addList() {
-
   if (inputText.value !== "") {
     const createLi = document.createElement("li");
     createLi.innerText = inputText.value
@@ -29,7 +33,7 @@ function addList() {
     let placeholder = inputText.placeholder = "Lista vazia!";
   }
 }
-
+//Marca a atividade com a class completed e desmarca a anterior para ter somente uma
 ordenadeList.addEventListener("click", changeBackgroundColor);
 function changeBackgroundColor(event) {
   const selected = document.querySelector(".selected")
@@ -40,7 +44,7 @@ function changeBackgroundColor(event) {
     event.target.classList.add("selected");
   }
 }
-
+//Marca a atividade com a class completed
 ordenadeList.addEventListener("dblclick", completedList);
 function completedList(event) {
   if (event.target.classList.contains("completed")) {
@@ -49,12 +53,12 @@ function completedList(event) {
     event.target.classList.add("completed");
   }
 }
-
+//Limpa todas as atividades
 buttonClearAll.addEventListener("click", clearAll);
 function clearAll() {
   ordenadeList.innerHTML = "";
 }
-
+//Limpa as atividades que tem a class completed
 buttonClearCompleted.addEventListener("click",clearCompleted)
 function clearCompleted() {
   let completed = document.querySelectorAll(".completed");
@@ -62,31 +66,30 @@ function clearCompleted() {
     ordenadeList.removeChild(key)
   }
 }
-
+//Salva a lista no local storage
 buttonSaveTask.addEventListener("click", saveTasks);
 function saveTasks() {
   localStorage.setItem("lista-ordenada",ordenadeList.innerHTML)
 }
-
+//Mover elemento para cima
 buttonMoveUp.addEventListener("click", moveUp)
 function moveUp() {
-  let textUp = document.querySelector(".selected").previousElementSibling.innerHTML;
-  let textDown = document.querySelector(".selected");
-  let textStorage = document.createElement("li");
-  ordenadeList.appendChild(textStorage)
-  textStorage.className = "deleted"
-
-  textStorage.innerHTML = textUp;
-  textUp = textDown;
-  textDown = textStorage;
-    
-  document.querySelector(".selected").previousElementSibling.innerHTML = textUp.innerHTML;
-  document.querySelector(".selected").innerHTML = textDown.innerHTML;
-
-  ordenadeList.removeChild(textStorage)
+  let elementSelected = document.getElementsByClassName("selected")[0];
+  let list = document.querySelectorAll(".lista");
+  if (list[0] !== elementSelected && elementSelected) {
+    let elementUp = elementSelected.previousElementSibling;
+    let parentNode = elementUp.parentNode;
+    parentNode.insertBefore(elementUp, elementSelected.nextSibling);
+  }
 }
-
+//Mover elemento para baixo
 buttonMoveDown.addEventListener("click", moveDown);
-function moveDown() {
-  
+function moveDown(){
+  let elementSelected = document.getElementsByClassName("selected")[0];
+  let list = document.querySelectorAll(".lista");
+  if (list[list.length-1] !== elementSelected && elementSelected) {
+    let elementDown = elementSelected.nextElementSibling;
+    let parentNode = elementSelected.parentNode;
+    parentNode.insertBefore(elementDown, elementSelected);
+  }
 }
