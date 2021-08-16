@@ -3,7 +3,7 @@ const tags = ['body', 'header', 'h1', 'div', 'p', 'main', 'section', 'input', 'o
 const ids = ['', 'header', 'funcionamento', 'texto-tarefa', 'lista-tarefas', 'criar-tarefa'];
 const innerTexts = ['', 'Minha Lista de Tarefas', 'Clique duas vezes em um item para marcá-lo'
   + ' como completo', 'Nova', '[AVISO] - Digite o nome da tarefa para continuar...'];
-const classes = [''];
+const classes = ['', 'selected'];
 
 function createList(myArray) {
   const titlesList = {
@@ -69,3 +69,21 @@ function btnNewTask() {
 }
 
 btnNewTask();
+
+function selectListItem(event) {
+  const liListItem = event;
+  const liSelecteItem = document.getElementsByClassName(classes[1]);
+  if (liSelecteItem.length > 0) {
+    liSelecteItem[0].classList.remove(classes[1]);
+    liListItem.target.classList.add(classes[1]);
+  } else {
+    liListItem.target.classList.add(classes[1]);
+  }
+}
+
+function clickListItem() {
+  const olListaTarefas = document.getElementById(ids[4]);
+  olListaTarefas.addEventListener('click', selectListItem);
+}
+
+clickListItem();
