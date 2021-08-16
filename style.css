@@ -90,6 +90,10 @@ ol li {
   line-height: 26px;
 }
 
+.completed {
+  text-decoration: line-through solid black;
+}
+
 #buttons-container {
   margin-top: 10px;
 }
