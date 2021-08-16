@@ -31,3 +31,32 @@ header p {
 #texto-tarefa {
     margin-top: 20px;
 }
+
+.completed {
+    text-decoration: line-through solid black;
+  }
+
+  #buttons-list {
+      margin-top: 20px;
+  }
+
+  .red {
+      background-color: rgb(221, 36, 36);
+  }
+  
+ .yellow {
+     background-color: rgb(192, 192, 31);
+ }
+
+ .green {
+     background-color: rgb(80, 231, 60);
+ }
+
+ .blue {
+     background-color: lightskyblue;
+ } 
+
+ button{
+     border-radius: 10px;
+     border-style: hidden;
+ }
