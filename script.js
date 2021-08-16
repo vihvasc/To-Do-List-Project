@@ -1,6 +1,7 @@
 const mainParagraph = document.getElementById("funcionamento")
 const textAssignment = document.getElementById("texto-tarefa");
 const buttonAssignment = document.getElementById("criar-tarefa");
+const buttonClear = document.getElementById("apaga-tudo");
 const mainList = document.getElementById("lista-tarefas");
 
 function createTask (event){
@@ -30,3 +31,8 @@ function listStrip (event){
     let listTarget = event.target;
     listTarget.classList.toggle("completed");
 }
+
+function clearListAll (event){
+    mainList.innerHTML = "";
+}
+buttonClear.addEventListener("click", clearListAll)
