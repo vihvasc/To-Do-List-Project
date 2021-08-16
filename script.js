@@ -12,8 +12,15 @@ function addTask() {
 }
 function changeLiColor(e) {
   let element = e.target
-  element.style.backgroundColor = 'rgb(128, 128, 128)'
+  let selected = document.querySelector('.selected')
+
+  if (selected) {
+    selected.classList.remove('selected')
+    selected.style.backgroundColor = ''
+
+  }
   element.classList.add('selected')
+  element.style.backgroundColor = 'rgb(128, 128, 128)'
 }
 addButton.addEventListener('click', addTask)
 list.addEventListener('click', changeLiColor)
