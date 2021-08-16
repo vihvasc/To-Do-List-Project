@@ -1,3 +1,13 @@
+function clean() {
+  const buttonClean = document.getElementById('apaga-tudo');
+  const li = document.querySelectorAll('li');
+  buttonClean.addEventListener('click', () => {
+    for (let key = 0; key < li.length; key += 1) {
+      li[key].remove();
+    }
+  });
+}
+
 function taskComplete() {
   const li = document.querySelectorAll('li');
   for (let key = 0; key < li.length; key += 1) {
@@ -42,6 +52,7 @@ function addTaks() {
     list.appendChild(li);
     listColor();
     taskComplete();
+    clean();
   });
 }
 addTaks();
