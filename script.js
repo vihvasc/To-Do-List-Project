@@ -1,9 +1,10 @@
 const TASK_LIST_ITEM_CLASS = 'task';
+const TASK_LIST_ID = 'lista-tarefas';
 let selectedTask;
 
 function addTask() {
   const taskInput = document.getElementById('texto-tarefa');
-  const taskList = document.getElementById('lista-tarefas');
+  const taskList = document.getElementById(TASK_LIST_ID);
   const newTask = document.createElement('li');
 
   newTask.classList.add(TASK_LIST_ITEM_CLASS);
@@ -32,11 +33,23 @@ function handleTaskListItemDoubleClick(event) {
   }
 }
 
+function clearTaskList() {
+  const taskList = document.getElementById(TASK_LIST_ID);
+
+  taskList.innerHTML = '';
+}
+
+function handleClearTaskListButtonClick() {
+  clearTaskList();
+}
+
 window.onload = () => {
   const addTaskButton = document.getElementById('criar-tarefa');
-  const taskList = document.getElementById('lista-tarefas');
+  const taskList = document.getElementById(TASK_LIST_ID);
+  const clearTaskListButton = document.getElementById('apaga-tudo');
 
   addTaskButton.addEventListener('click', addTask);
   taskList.addEventListener('click', handleTaskListItemClick);
   taskList.addEventListener('dblclick', handleTaskListItemDoubleClick);
+  clearTaskListButton.addEventListener('click', handleClearTaskListButtonClick);
 };
