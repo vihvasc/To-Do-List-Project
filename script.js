@@ -13,3 +13,7 @@ let  input = document.createElement("input");
 input.id = "texto-tarefa";
 input.type = "text"
 document.body.appendChild(input);
+//requisito 4
+let list = document.createElement('ol');
+list.id = 'lista-tarefas';
+document.body.appendChild(list);
