@@ -67,3 +67,5 @@ function removeColor() {
     liSelect[index].style.backgroundColor = '';
   }
 }
+
+
