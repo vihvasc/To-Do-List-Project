@@ -1,11 +1,14 @@
 const buttonAddTask = document.getElementById('criar-tarefa');
 buttonAddTask.addEventListener('click',addTask);
 const taskList = document.getElementById('lista-tarefas');
+taskList.innerHTML = localStorage.getItem('saved-list');
 const allTasks = document.getElementsByClassName('task');
 const removeDoneButton = document.getElementById('remover-finalizados');
 removeDoneButton.addEventListener('click', removeTasksDone);
 const removeAllButton = document.getElementById('apaga-tudo');
 removeAllButton.addEventListener('click', removeAllTasks);
+const saveTasks = document.getElementById('salvar-tarefas');
+saveTasks.addEventListener('click', save);
 
 function addTask(){
     let textInput = document.getElementById('texto-tarefa').value 
@@ -47,3 +50,8 @@ function removeAllTasks(){
         allTasks[index].remove();
     }
 }
+
+function save(){
+    localStorage.setItem('saved-list', taskList.innerHTML)
+}
+ 
