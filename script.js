@@ -17,18 +17,34 @@ function handleSelectedItemBgColor() {
 }
 
 function handleSelectedItem(event) {
-  const listItems = document.querySelector('.selected');
-  listItems.classList.remove('selected');
+  const listItem = document.querySelector('.selected');
+  listItem.classList.remove('selected');
   event.target.classList.add('selected');
   handleSelectedItemBgColor();
 }
 
-function handleListItemsEventAdd() {
-  const listItems = document.querySelectorAll('.list-item');
+function handleListItemsEventAdd(listItems) {
+  // const listItems = document.querySelectorAll('.list-item');
   for (let index = 0; index < listItems.length; index += 1) {
     listItems[index].addEventListener('click', handleSelectedItem);
   }
   listItems[0].classList.add('selected');
+}
+
+function handleCompletedTaskCheck(event) {
+  const completeTask = event.target.className;
+  if (completeTask.match('completed')) {
+    event.target.classList.remove('completed');
+  } else {
+    event.target.classList.add('completed');
+  }
+}
+
+function handleCompletedTaskEventAdd(listItems) {
+  // const listItems = document.querySelectorAll('.list-item');
+  for (let index = 0; index < listItems.length; index += 1) {
+    listItems[index].addEventListener('dblclick', handleCompletedTaskCheck);
+  }
 }
 
 function handleTaskAdding() {
@@ -38,7 +54,9 @@ function handleTaskAdding() {
   listItem.innerText = inputText;
   taskList.appendChild(listItem);
   inputTextBox.value = '';
-  handleListItemsEventAdd();
+  const listItems = document.querySelectorAll('.list-item');
+  handleListItemsEventAdd(listItems);
+  handleCompletedTaskEventAdd(listItems);
 }
 
 window.onload = function createToDoListPage() {
