@@ -1,6 +1,9 @@
-const button = document.querySelector('#criar-tarefa');
+const buttonAddItem = document.querySelector('#criar-tarefa');
+const buttonDelete = document.querySelector('#apaga-tudo');
+const buttonRemoveFinished = document.querySelector('#remover-finalizados');
 const inputValue = document.querySelector('#texto-tarefa');
 const theList = document.querySelector('#lista-tarefas');
+
 
 // 5 - 6. Created function for addItem and order
 function addItemList() {
@@ -14,7 +17,7 @@ function addItemList() {
   theList.appendChild(creatListItem);
   inputValue.value = '';
 }
-button.addEventListener('click', addItemList);
+buttonAddItem.addEventListener('click', addItemList);
 
 // 7 - 8. Created function for change background-color and select one item
 theList.addEventListener('click', (event) => {
@@ -31,10 +34,21 @@ function scratched(event) {
 }
 theList.addEventListener('dblclick', scratched);
 
-// 10. Delete everything
+// 10. Created button of delete everything
 function deleteEverything() {
   const listOl = document.querySelector('ol');
   listOl.innerHTML = '';
 }
-const buttonDelete = document.querySelector('#apaga-tudo');
 buttonDelete.addEventListener('click', deleteEverything);
+
+// 11. Created button of remove
+function remove() {
+  const removeFinished = document.querySelectorAll('li');
+  const listComplete = document.querySelector('ol');
+  for (let i = 0; i < removeFinished.length; i += 1) {
+    if (removeFinished[i].classList.contains('completed')) {
+      listComplete.removeChild(removeFinished[i]);
+    }
+  }
+}
+buttonRemoveFinished.addEventListener('click', remove);
