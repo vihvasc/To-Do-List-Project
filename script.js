@@ -51,10 +51,10 @@ function addNewTaskButtonEvent() {
 
 // Requisito 10 - Criar botão que apaga todos os elementos da lista.
 function handleClearListButton() {
-  const orderedList = document.querySelectorAll('li');
+  const itemList = document.querySelectorAll('li');
 
-  for (let i = 0; i < orderedList.length; i += 1) {
-    orderedList[i].remove();
+  for (let i = 0; i < itemList.length; i += 1) {
+    itemList[i].remove();
   }
 }
 
@@ -63,8 +63,23 @@ function addClearListButtonEvent() {
   clearListButton.addEventListener('click', handleClearListButton);
 }
 
+// Requisito 11 - Criar botão que apaga somente os items finalizados.
+function handleCompletedClearButton() {
+  const completedTasks = document.querySelectorAll('.completed');
+
+  for (let i = 0; i < completedTasks.length; i += 1) {
+    completedTasks[i].remove();
+  }
+}
+
+function addCompletedClearButtonEvent() {
+  const clearCompletedButton = document.getElementById('remover-finalizados');
+  clearCompletedButton.addEventListener('click', handleCompletedClearButton);
+}
+
 window.onload = function () {
   createOrderedList();
   addNewTaskButtonEvent();
   addClearListButtonEvent();
+  addCompletedClearButtonEvent();
 };
