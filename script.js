@@ -65,3 +65,38 @@ function clearSelectedTask(event) {
 }
 
 removerSelecionado.addEventListener('click', clearSelectedTask);
+
+const moveUp = document.getElementById('mover-cima');
+
+function moveTaskUp(event) {
+  if (document.querySelector('.selected') !== null) {
+    const selectedTask = document.querySelector('.selected');
+    const previousTask = selectedTask.previousElementSibling;
+    const allTasks = document.querySelectorAll('#lista-tarefas li');
+
+    if (allTasks[0].innerText !== selectedTask.innerText) {
+      listaTarefas.insertBefore(selectedTask, previousTask);
+    }
+  }
+
+  event.preventDefault();
+}
+
+moveUp.addEventListener('click', moveTaskUp);
+
+const moveDown = document.getElementById('mover-baixo');
+
+function moveTaskDown(event) {
+  if (document.querySelector('.selected') !== null) {
+    const selectedTask = document.querySelector('.selected');
+    const nextTask = selectedTask.nextElementSibling;
+    const allTasks = document.querySelectorAll('#lista-tarefas li');
+
+    if (allTasks[allTasks.length - 1].innerText !== selectedTask.innerText) {
+      listaTarefas.insertBefore(nextTask, selectedTask);
+    }
+  }
+  event.preventDefault();
+}
+
+moveDown.addEventListener('click', moveTaskDown);
