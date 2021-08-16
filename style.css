@@ -1,5 +1,9 @@
-.tarefa {
+.task {
   width: fit-content;
+}
+
+.selected {
+  background-color: rgb(128, 128, 128);
 }
 
 .completed {

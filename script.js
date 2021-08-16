@@ -1,4 +1,4 @@
-const TASK_LIST_ITEM_CLASS = 'tarefa';
+const TASK_LIST_ITEM_CLASS = 'task';
 let selectedTask;
 
 function addTask() {
@@ -17,9 +17,9 @@ function handleTaskListItemClick(event) {
     const task = event.target;
 
     if (typeof selectedTask !== 'undefined') {
-      selectedTask.style.backgroundColor = '';
+      selectedTask.classList.remove('selected');
     }
-    task.style.backgroundColor = 'rgb(128, 128, 128)';
+    task.classList.add('selected');
     selectedTask = task;
   }
 }
