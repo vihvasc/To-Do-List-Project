@@ -26,7 +26,6 @@ function handleSelectedItem(event) {
 }
 
 function handleListItemsEventAdd(listItems) {
-  // const listItems = document.querySelectorAll('.list-item');
   for (let index = 0; index < listItems.length; index += 1) {
     listItems[index].addEventListener('click', handleSelectedItem);
   }
@@ -43,7 +42,6 @@ function handleCompletedTaskCheck(event) {
 }
 
 function handleCompletedTaskEventAdd(listItems) {
-  // const listItems = document.querySelectorAll('.list-item');
   for (let index = 0; index < listItems.length; index += 1) {
     listItems[index].addEventListener('dblclick', handleCompletedTaskCheck);
   }
