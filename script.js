@@ -29,15 +29,34 @@ function checkCompletedTask (receivedEvent) {
   const selectedTask = receivedEvent.target;
   const classOfElement = selectedTask.className;
   (classOfElement !== 'completed') ? selectedTask.classList.add('completed') : selectedTask.classList.remove('completed');
-  console.log(classOfElement);
 }
 
 function clearTaskList () {
   const clearButton = document.getElementById('apaga-tudo');
   const taskList = document.querySelector('#lista-tarefas');
-  clearButton.addEventListener('click', (receivedEvent) => {
+  clearButton.addEventListener('click', () => {
       taskList.innerHTML = '';
   });
 }
 
 clearTaskList();
+
+function clearCompleted () {
+  const clearCompletedButton = document.getElementById('remover-finalizados');
+  const completedList = document.getElementsByClassName('completed');
+  const taskList = document.getElementById('lista-tarefas');
+  let toRemove = [];
+  clearCompletedButton.addEventListener('click', ()=> {
+    console.log(completedList);
+    for (let index = 0; index < completedList.length; index += 1) {
+      toRemove.push(completedList[index]);
+    }
+    console.log(toRemove);
+    for (let index = 0; index < toRemove.length; index += 1) {
+      taskList.removeChild(toRemove[index]);
+    }
+    toRemove = [];
+  });
+}
+
+clearCompleted();
