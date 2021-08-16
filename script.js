@@ -11,12 +11,24 @@ function addItemToLocal(item) {
   local.setItem('listaItems', JSON.stringify(listItemLocal));
 }
 
+// Function to change color of element
+function changeElementColor(eventoDeOrigem) {
+  const element = eventoDeOrigem.target;
+  const elementBackgroundColor = element.style.backgroundColor;
+  if (elementBackgroundColor === 'rgb(128, 128, 128)') {
+    element.style.backgroundColor = 'white';
+  } else {
+    element.style.backgroundColor = 'rgb(128, 128, 128)';
+  }
+}
+
 // Function to add an item to ol
 function addItemToList() {
   const newItemText = inputAddItem.value;
   const newItemElement = document.createElement('li');
   addItemToLocal(newItemText);
   newItemElement.innerText = newItemText;
+  newItemElement.addEventListener('click', changeElementColor);
   itemList.appendChild(newItemElement);
   inputAddItem.value = '';
 }
@@ -31,6 +43,7 @@ function fillWithLocal() {
     const newItemText = listaItemsLocal[i];
     const newItemElement = document.createElement('li');
     newItemElement.innerText = newItemText;
+    newItemElement.addEventListener('click', changeElementColor);
     itemList.appendChild(newItemElement);
   }
 }

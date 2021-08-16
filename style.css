@@ -1,3 +1,9 @@
 ol {
   font-size: 20px;
+  background-color: white;
+}
+
+ol li {
+  font-size: 20px;
+  background-color: white;
 }
