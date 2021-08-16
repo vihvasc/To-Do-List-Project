@@ -109,7 +109,7 @@ function moveUp() {
   const listaTarefas = document.getElementById('lista-tarefas');
 
   if (listaTarefas.firstElementChild.classList.contains('mark') === false) {
-    if(mark){
+    if (mark) {
       const move = mark.cloneNode(true);
       const fatherNode = listaTarefas;
       const brtNode = mark.previousElementSibling;
