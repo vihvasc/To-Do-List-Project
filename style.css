@@ -5,7 +5,6 @@ h1 , p {
 
 .selected {
   background-color: gray;
-  width: fit-content;
 }
 
 .completed {
