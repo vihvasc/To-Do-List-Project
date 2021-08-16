@@ -1,0 +1,8 @@
+* {
+  margin: 0;
+  border: 0;
+}
+
+.selected-item {
+  background-color: rgb(128, 128, 128);
+}
