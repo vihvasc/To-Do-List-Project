@@ -1,5 +1,6 @@
 const lista = document.getElementById('lista-tarefas');
-const botao = document.getElementById('criar-tarefa');
+const botaoAdiciona = document.getElementById('criar-tarefa');
+const botaoRemove = document.getElementById('apaga-tudo');
 
 function button() {
   const inputAdicionar = document.getElementById('texto-tarefa').value;
@@ -11,7 +12,7 @@ function button() {
   document.getElementById('texto-tarefa').value = '';
 }
 
-botao.addEventListener('click', button);
+botaoAdiciona.addEventListener('click', button);
 
 function mudaFundo(event) {
   const mudaCorLi = event.target;
@@ -31,3 +32,10 @@ function riscaTarefas(event) {
 }
 
 lista.addEventListener('dblclick', riscaTarefas);
+
+function apagaLista() {
+  const listaFilhos = document.getElementById('lista-tarefas');
+  listaFilhos.innerText = '';
+}
+
+botaoRemove.addEventListener('click', apagaLista);
