@@ -29,16 +29,16 @@
 
 // addEventButton();
 
-const valueInput = document.querySelector('#texto-tarefa');
+const input = document.querySelector('#texto-tarefa');
 const olList = document.querySelector('#lista-tarefas');
 const button = document.querySelector('#criar-tarefa');
 
 function addInputValue () {
-  button.addEventListener('click' function() {
+  button.addEventListener('click', function() {
   const li = document.createElement('li');
-  li.innerText = valueInput.value;
+  li.innerText = input.value;
   olList.appendChild(li);
-  valueInput = '';
+  input.value = '';
   })
 }
 
