@@ -1,6 +1,7 @@
 const lista = document.getElementById('lista-tarefas');
 const botaoAdiciona = document.getElementById('criar-tarefa');
 const botaoRemove = document.getElementById('apaga-tudo');
+const botaoFinalizados = document.getElementById('remover-finalizados');
 
 function button() {
   const inputAdicionar = document.getElementById('texto-tarefa').value;
@@ -39,3 +40,14 @@ function apagaLista() {
 }
 
 botaoRemove.addEventListener('click', apagaLista);
+
+function apagaFinalizados() {
+  const completados = document.querySelectorAll('.completed');
+
+  console.log(lista);
+  for (let index = 0; index < completados.length; index += 1) {
+    lista.removeChild(completados[index]);
+  }
+}
+
+botaoFinalizados.addEventListener('click', apagaFinalizados);
