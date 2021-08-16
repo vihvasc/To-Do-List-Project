@@ -14,13 +14,23 @@ function addTasksItem (){
 let textBox = document.getElementById("texto-tarefa");
 let taskList = document.querySelector("#lista-tarefas");
 let listLi = document.createElement("li");
+listLi.className = "tasks";
 listLi.innerHTML = textBox.value;
 taskList.appendChild(listLi);
-textBox.value = newTextBox; 
+textBox.value = newTextBox;
 
-
-    
+/*EVENTO-CLICK NA TAREFA-MUDAR BACKGROUND COLOR*/
+let newColor = "rgb(128, 128, 128)";
+let tasksLi = document.querySelectorAll(".tasks");
+listLi.addEventListener("click",function(event){
+    if(listLi.style.backgroundColor = "white" && tasksLi.length >= 0){
+        event.target.style.backgroundColor = newColor;
+    }
+})    
 }
+
+
+
 
 
 
