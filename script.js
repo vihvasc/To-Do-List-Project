@@ -22,6 +22,15 @@ function addItemListEvents(itemList) {
   itemList.addEventListener('dblclick', handleListItemDbClick);
 }
 
+// Cria Lista Ordenada pelo DOM.
+function createOrderedList() {
+  const newOl = document.createElement('ol');
+  newOl.id = 'lista-tarefas';
+  const getOlParent = document.getElementById('list-container');
+
+  getOlParent.appendChild(newOl);
+}
+
 // Requisitos 5 e 6 - Cria um novo item ao final da lista e apaga o valor do input.
 function handleNewTask() {
   const newTask = document.createElement('li');
@@ -40,6 +49,22 @@ function addNewTaskButtonEvent() {
   buttonCreateTask.addEventListener('click', handleNewTask);
 }
 
+// Requisito 10 - Criar botão que apaga todos os elementos da lista.
+function handleClearListButton() {
+  const orderedList = document.querySelectorAll('li');
+
+  for (let i = 0; i < orderedList.length; i += 1) {
+    orderedList[i].remove();
+  }
+}
+
+function addClearListButtonEvent() {
+  const clearListButton = document.getElementById('apaga-tudo');
+  clearListButton.addEventListener('click', handleClearListButton);
+}
+
 window.onload = function () {
+  createOrderedList();
   addNewTaskButtonEvent();
+  addClearListButtonEvent();
 };
