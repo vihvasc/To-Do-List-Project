@@ -4,7 +4,8 @@ const chamaLista = document.getElementById('lista-tarefas');
 const buttonClearAll = document.getElementById('apaga-tudo');
 const removeFinalizados = document.getElementById('remover-finalizados');
 const salvaTarefas = document.getElementById('salvar-tarefas');
-
+const removerSelecionado = document.getElementById('remover-selecionado');
+ 
 if (localStorage.getItem('salvar')) {
   chamaLista.innerHTML = localStorage.getItem('salvar');
 }
@@ -15,6 +16,7 @@ chamaLista.addEventListener('dblclick', taskCompleted);
 buttonClearAll.addEventListener('click', clearAll);
 removeFinalizados.addEventListener('click', removeTaskCompleted);
 salvaTarefas.addEventListener('click', salvandoTarefas);
+removerSelecionado.addEventListener('click', removeItemSelecionado);
 
 function addListaTarefa() {
   const criaLista = document.createElement('li');
@@ -52,4 +54,11 @@ function removeTaskCompleted() {
 
 function salvandoTarefas() {
   localStorage.setItem('salvar', chamaLista.innerHTML);
+}
+
+function removeItemSelecionado() {
+    const removeItem = document.querySelectorAll('.selected');
+    for (let index = 0; index < removeItem.length; index += 1) {
+        chamaLista.removeChild(removeItem[index]);
+    }
 }
