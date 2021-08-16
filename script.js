@@ -40,7 +40,7 @@ function clearTaskList() {
 }
 
 function clearCompletedTasks() {
-  let completedTasks = document.getElementsByClassName('completed');
+  const completedTasks = document.getElementsByClassName('completed');
 
   while (completedTasks.length > 0) {
     completedTasks[0].remove();
@@ -51,9 +51,7 @@ window.onload = () => {
   const addTaskButton = document.getElementById('criar-tarefa');
   const taskList = document.getElementById(TASK_LIST_ID);
   const clearTaskListButton = document.getElementById('apaga-tudo');
-  const clearCompletedTasksButton = document.getElementById(
-    'remover-finalizados'
-  );
+  const clearCompletedTasksButton = document.getElementById('remover-finalizados');
 
   addTaskButton.addEventListener('click', addTask);
   taskList.addEventListener('click', handleTaskListItemClick);
