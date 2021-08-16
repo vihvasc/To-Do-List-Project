@@ -6,6 +6,8 @@ function toggleClass(element, className) {
   element.classList.toggle(className);
 }
 
+// 7 & 8
+
 function changeListItemBackgroundColor(event) {
   let selectedListItem = event.target;
   let listItens = document.getElementsByClassName("list-item");
@@ -18,6 +20,15 @@ function changeListItemBackgroundColor(event) {
   };
 };
 
+// 9
+
+function completeTask(event) {
+  let task = event.target;
+  toggleClass(task, "completed");
+};
+
+// 5
+
 function addTaskToList() {
   let input = document.getElementById("texto-tarefa");
   let taskList = document.getElementById("lista-tarefas");
@@ -26,7 +37,8 @@ function addTaskToList() {
   listItem.innerText = task;
   listItem.className = "list-item";
   taskList.appendChild(listItem);
-  listItem.addEventListener("click", changeListItemBackgroundColor)
+  listItem.addEventListener("click", changeListItemBackgroundColor);
+  listItem.addEventListener("dblclick", completeTask);
   removeInputText(input);
 };
 
