@@ -2,6 +2,8 @@ let inputTexto = document.querySelector('#texto-tarefa');
 let botaoCriarTarefa = document.querySelector('#criar-tarefa');
 let lista = document.querySelector('#lista-tarefas');
 let liLista = document.querySelectorAll('.linhasLista');
+let navegador = document.querySelector('.navegador');
+let apagaLista = document.querySelector('#apaga-tudo');
 // let liLista = document.querySelectorAll('.linhasLista');
 
 
@@ -25,11 +27,15 @@ botaoCriarTarefa.addEventListener('click', function() {
   // Risca item
   criarLi.addEventListener('dblclick', function(){
     if (criarLi.classList.contains('completed')) {
-        criarLi.classList.remove('completed');    
+        criarLi.classList.remove('completed');
     } else {
       criarLi.classList.add('completed');
     }
   })
-  
-  
 })
+
+// Remove todas li's
+apagaLista.addEventListener('click', function(){
+  lista.innerHTML = '';
+})
+
