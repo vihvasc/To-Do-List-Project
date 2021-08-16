@@ -1,78 +1,78 @@
 body {
-	font-family: 'Raleway', sans-serif;
-	background-color: rgb(230, 230, 230)
+  font-family: 'Raleway', sans-serif;
+  background-color: rgb(230, 230, 230);
 }
 
 #title-container {
-	color: white;
-	background-color: rgb(42, 157, 143);
-	height: 100px;
-	text-align: center;
+  color: white;
+  background-color: rgb(42, 157, 143);
+  height: 100px;
+  text-align: center;
 }
 
 h1 {
-	font-weight: 700;
-	font-size: 38px;
-	padding-top: 20px;
+  font-weight: 700;
+  font-size: 38px;
+  padding-top: 20px;
 }
 
 p {
-	font-style: italic;
-	padding-top: 10px;
+  font-style: italic;
+  padding-top: 10px;
 }
 
 main {
-	text-align: center;
+  text-align: center;
 }
 
 h2 {
-	font-weight: 700;
-	padding-top: 20px;
-	font-size: 26px;
+  font-weight: 700;
+  padding-top: 20px;
+  font-size: 26px;
 }
 
 #criar-tarefa {
-	position: relative;
-	top: 6px;
-	background-color: rgb(42, 157, 143);
-	border: none;
-	border-radius: 25px;
-	height: 34px;
+  position: relative;
+  top: 6px;
+  background-color: rgb(42, 157, 143);
+  border: none;
+  border-radius: 25px;
+  height: 34px;
 }
 
 #add-list {
-	margin: 0 auto;
-	color: white;
-	font-size: 32px;
-	border: 1px solid gray;
-	border-radius: 24px;
+  margin: 0 auto;
+  color: white;
+  font-size: 32px;
+  border: 1px solid gray;
+  border-radius: 24px;
   cursor: pointer;
 }
 
 #add-list:active {
-	transform: translateY(4px);
+  transform: translateY(4px);
 }
 
 #list-section {
-	display: inline-block;
-	border-radius: 25px;
-	box-shadow: 5px 5px 18px 2px rgb(128, 128, 128);
-	margin: 30px 80px;
-	min-height: 300px;
-	width: 60%;
-	color: white;
-	background-color: rgb(42, 157, 143);
+  display: inline-block;
+  border-radius: 25px;
+  box-shadow: 5px 5px 18px 2px gray;
+  margin: 30px 80px;
+  min-height: 300px;
+  width: 60%;
+  color: white;
+  background-color: rgb(42, 157, 143);
 }
 
 #input-container {
-	padding-top: 15px;
+  padding-top: 15px;
 }
 
 #texto-tarefa {
-	border: none;
-	border-radius: 25px;
-	height: 30px;
-	width: 450px;
+  border: none;
+  border-radius: 25px;
+  height: 30px;
+  width: 450px;
 }
 
 #list-container {
@@ -81,17 +81,17 @@ h2 {
 
 ol li {
   text-align: left;
-	list-style: decimal;
-	list-style-position: inside;
-	margin-left: 150px;
-	margin-right: 150px;
-	padding-left: 5px;
-	font-size: 20px;
-	line-height: 26px;
+  list-style: decimal;
+  list-style-position: inside;
+  margin-left: 150px;
+  margin-right: 150px;
+  padding-left: 5px;
+  font-size: 20px;
+  line-height: 26px;
 }
 
 #buttons-container {
-	margin-top: 10px;
+  margin-top: 10px;
 }
 
 #remover-selecionado {
@@ -106,57 +106,57 @@ ol li {
 }
 
 #mover-cima {
-	background-color: rgb(233, 196, 106);
-	border: 1px solid gray;
-	border-radius: 25px;
-	color: white;
-	font-weight: 700;
-	width: 160px;
-	height: 35px;
-	margin-bottom: 14px;
+  background-color: rgb(233, 196, 106);
+  border: 1px solid gray;
+  border-radius: 25px;
+  color: white;
+  font-weight: 700;
+  width: 160px;
+  height: 35px;
+  margin-bottom: 14px;
 }
 
 #mover-baixo {
-	background-color: rgb(244, 162, 97);
-	border: 1px solid gray;
-	border-radius: 25px;
-	color: white;
-	font-weight: 700;
-	width: 160px;
-	height: 35px;
-	margin-bottom: 14px;
+  background-color: rgb(244, 162, 97);
+  border: 1px solid gray;
+  border-radius: 25px;
+  color: white;
+  font-weight: 700;
+  width: 160px;
+  height: 35px;
+  margin-bottom: 14px;
 }
 
 #remover-finalizados {
-	background-color: rgb(38, 70, 83);
-	border: 1px solid gray;
-	border-radius: 25px;
-	color: white;
-	font-weight: 700;
-	width: 160px;
-	height: 35px;
-	margin-bottom: 14px;
+  background-color: rgb(38, 70, 83);
+  border: 1px solid gray;
+  border-radius: 25px;
+  color: white;
+  font-weight: 700;
+  width: 160px;
+  height: 35px;
+  margin-bottom: 14px;
 }
 
 #apaga-tudo {
-	background-color: rgb(112, 112, 112);
-	border: 1px solid gray;
-	border-radius: 25px;
-	color: white;
-	font-weight: 700;
-	width: 160px;
-	height: 35px;
-	margin-bottom: 14px;
+  background-color: rgb(112, 112, 112);
+  border: 1px solid gray;
+  border-radius: 25px;
+  color: white;
+  font-weight: 700;
+  width: 160px;
+  height: 35px;
+  margin-bottom: 14px;
 }
 
-#salvar-tarefas{
-	background-color: rgb(14, 119, 71);
-	border: 1px solid gray;
-	border-radius: 25px;
-	color: white;
-	font-weight: 700;
-	width: 160px;
-	height: 35px;
+#salvar-tarefas {
+  background-color: rgb(14, 119, 71);
+  border: 1px solid gray;
+  border-radius: 25px;
+  color: white;
+  font-weight: 700;
+  width: 160px;
+  height: 35px;
 }
 
 i {
@@ -165,7 +165,7 @@ i {
 
 .button:hover {
   cursor: pointer;
-  box-shadow: 1px 1px 4px 2px rgba(115 , 115 , 115 , 0.75);
+  box-shadow: 1px 1px 4px 2px rgba(115, 115, 115, 0.75);
 }
 
 .button:active {
