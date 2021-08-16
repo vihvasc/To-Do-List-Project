@@ -5,13 +5,7 @@ const buttonAddItem = document.getElementById('criar-tarefa');
 const inputAddItem = document.getElementById('texto-tarefa');
 const buttonClearAll = document.getElementById('apaga-tudo');
 const buttonClearCompleted = document.getElementById('remover-finalizados');
-
-// Add Item to list in localStorage
-function addItemToLocal(item) {
-  const listItemLocal = JSON.parse(local.getItem('listaItems'));
-  listItemLocal.push(item);
-  local.setItem('listaItems', JSON.stringify(listItemLocal));
-}
+const buttonSaveList = document.getElementById('salvar-tarefas');
 
 // Function to change color of element
 function changeElementColor(eventoDeOrigem) {
@@ -38,7 +32,6 @@ function changeElementDecoration(eventoDeOrigem) {
 function addItemToList() {
   const newItemText = inputAddItem.value;
   const newItemElement = document.createElement('li');
-  addItemToLocal(newItemText);
   newItemElement.innerText = newItemText;
   newItemElement.addEventListener('dblclick', changeElementDecoration);
   newItemElement.addEventListener('click', changeElementColor);
@@ -69,8 +62,6 @@ function removeAllItems() {
     const element = itemList.lastChild;
     itemList.removeChild(element);
   }
-  local.clear();
-  local.setItem('listaItems', JSON.stringify([]));
 }
 
 // addEventListener to buttonAddItem
@@ -79,13 +70,15 @@ buttonClearAll.addEventListener('click', removeAllItems);
 // Function to fill localServer with listItems
 function fillLocalwithList() {
   const allItemsInList = itemList.children;
-  local.clear();
   const listaItems = [];
   for (let i = 0; i < allItemsInList.length; i += 1) {
     listaItems.push(allItemsInList[i].innerText);
   }
   local.setItem('listaItems', JSON.stringify(listaItems));
 }
+
+// addEventListener to buttonAddItem
+buttonSaveList.addEventListener('click', fillLocalwithList)
 
 // Function to delete items completed
 function removeCompletedItems() {
@@ -94,7 +87,6 @@ function removeCompletedItems() {
     const element = itemList.querySelector('.completed');
     itemList.removeChild(element);
   }
-  fillLocalwithList();
 }
 
 // addEventListener to buttonAddItem
