@@ -2,7 +2,7 @@ const button = document.querySelector('#criar-tarefa');
 const inputValue = document.querySelector('#texto-tarefa');
 const theList = document.querySelector('#lista-tarefas');
 
-// Created function for addItem and order
+// 5 - 6. Created function for addItem and order
 function addItemList() {
   if (inputValue.value === null || inputValue.value === '') { // ref.: https://pt.stackoverflow.com/questions/39139/como-impedir-o-submit-de-um-formul%C3%A1rio-vazio
     alert('Digite uma tarefa no campo abaixo!');
@@ -15,3 +15,18 @@ function addItemList() {
   inputValue.value = '';
 }
 button.addEventListener('click', addItemList);
+
+// 7 - 8. Created function for change background-color and select one item
+theList.addEventListener('click', (event) => {
+  const liItem = document.querySelectorAll('li');
+  for (let i = 0; i < liItem.length; i += 1) {
+    liItem[i].style.backgroundColor = 'white';
+  }
+  event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+});
+
+// 9. Scratched
+function scratched(event) {
+  event.target.classList.toggle('completed');
+}
+theList.addEventListener('dblclick', scratched);
