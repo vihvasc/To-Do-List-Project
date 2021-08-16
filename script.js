@@ -11,8 +11,44 @@ function adicionaTarefa() {
     let li = document.createElement('li');
     ol.appendChild(li);
     li.innerText = input;
+    console.log(li);
     document.getElementById('texto-tarefa').value = '';
+    li.addEventListener('click', function (event) {
+      event.target.classList.add('task');
+    })
   })
 }
 
 adicionaTarefa();
+
+
+
+// adicionar addeventlistener nas <li> 
+// ao clicar vai adicionar a classe 'task'
+
+// function destacaItem() {
+//   let tarefas = document.getElementsByTagName('li');
+
+//   for (let index = 0; index < tarefas.length, index += 1) {
+//     tarefas.addEventListener('click', function (event) {
+//       event.target.classList.add('task');
+//     })
+//   }
+// }
+
+// destacaItem();
+
+// function destacaItem() {
+
+//   for (let index = 0; index < tarefas.length; index += 1) {
+//     let tarefas = document.getElementsByClassName('destaca');
+//     console.log(tarefas);
+//     tarefas.addEventListener('click', function (event) {
+
+//       tarefas.classList.add('task');
+//     })
+//   }
+// }
+
+// destacaItem();
+
