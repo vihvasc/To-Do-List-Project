@@ -47,10 +47,11 @@ buttonAddItem.addEventListener('click', addItemToList);
 // Fill ol with localStorage Values
 function fillWithLocal() {
   const listaItemsLocal = JSON.parse(local.getItem('listaItems'));
+  const listaClassesLocal = JSON.parse(local.getItem('listaClasses'));
   for (let i = 0; i < listaItemsLocal.length; i += 1) {
-    const newItemText = listaItemsLocal[i];
     const newItemElement = document.createElement('li');
-    newItemElement.innerText = newItemText;
+    newItemElement.innerText = listaItemsLocal[i];
+    newItemElement.className = listaClassesLocal[i];
     newItemElement.addEventListener('dblclick', changeElementDecoration);
     newItemElement.addEventListener('click', changeElementColor);
     itemList.appendChild(newItemElement);
@@ -73,10 +74,17 @@ buttonClearAll.addEventListener('click', removeAllItems);
 function fillLocalwithList() {
   const allItemsInList = itemList.children;
   const listaItems = [];
+  const listaClasses = [];
+  const selectedClass = document.querySelector('.selected');
+  if (selectedClass !== null) {
+    selectedClass.classList.remove('selected');
+  }
   for (let i = 0; i < allItemsInList.length; i += 1) {
     listaItems.push(allItemsInList[i].innerText);
+    listaClasses.push(allItemsInList[i].className);
   }
   local.setItem('listaItems', JSON.stringify(listaItems));
+  local.setItem('listaClasses', JSON.stringify(listaClasses));
 }
 
 // addEventListener to buttonAddItem
@@ -96,15 +104,17 @@ buttonClearCompleted.addEventListener('click', removeCompletedItems);
 
 // Function to move up a selected item
 function moveUpSelectedItem() {
-  const selectedElement = itemList.querySelector('.selected');
-  const lista = itemList.querySelectorAll('li');
-  for (let i = 1; i < lista.length; i += 1) {
-    elementText = lista[i].innerText;
-    if (elementText === selectedElement.innerText) {
-      lista[i].innerText = lista[i - 1].innerText;
-      lista[i].classList.remove('selected');
-      lista[i - 1].innerText = elementText;
-      lista[i - 1].classList.add('selected');
+  if (itemList.querySelector('.selected') !== null) {
+    const selectedElement = itemList.querySelector('.selected');
+    const lista = itemList.querySelectorAll('li');
+    for (let i = 1; i < lista.length; i += 1) {
+      const elementText = lista[i].innerText;
+      if (elementText === selectedElement.innerText) {
+        lista[i].innerText = lista[i - 1].innerText;
+        lista[i].classList.remove('selected');
+        lista[i - 1].innerText = elementText;
+        lista[i - 1].classList.add('selected');
+      }
     }
   }
 }
@@ -114,15 +124,17 @@ buttonMoveUp.addEventListener('click', moveUpSelectedItem);
 
 // Function to move down a selected item
 function moveDownSelectedItem() {
-  const selectedElement = itemList.querySelector('.selected');
-  const lista = itemList.querySelectorAll('li');
-  for (let i = 0; i < lista.length - 1; i += 1) {
-    elementText = lista[i].innerText;
-    if (elementText === selectedElement.innerText) {
-      lista[i].innerText = lista[i + 1].innerText;
-      lista[i].classList.remove('selected');
-      lista[i + 1].innerText = elementText;
-      lista[i + 1].classList.add('selected');
+  if (itemList.querySelector('.selected') !== null) {
+    const selectedElement = itemList.querySelector('.selected');
+    const lista = itemList.querySelectorAll('li');
+    for (let i = 0; i < lista.length - 1; i += 1) {
+      const elementText = lista[i].innerText;
+      if (elementText === selectedElement.innerText) {
+        lista[i].innerText = lista[i + 1].innerText;
+        lista[i].classList.remove('selected');
+        lista[i + 1].innerText = elementText;
+        lista[i + 1].classList.add('selected');
+      }
     }
   }
 }
