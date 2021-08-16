@@ -2,10 +2,17 @@ const taskInput = document.getElementById('texto-tarefa');
 const btnAddTask = document.getElementById('criar-tarefa');
 const taskList = document.getElementById('lista-tarefas');
 
+// Seleciona uma tarefa.
+function selectTask(event) {
+  const task = event.target;
+  task.style.backgroundColor = 'rgb(128,128,128)';
+}
+
 // Cria uma nova <li> de tarefa.
 function createTask(name) {
   const li = document.createElement('li');
   li.innerText = name;
+  li.addEventListener('click', selectTask);
   return li;
 }
 
