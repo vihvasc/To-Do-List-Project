@@ -1,3 +1,13 @@
+function finalizedClean() {
+  const buttonFinalized = document.getElementById('remover-finalizados');
+  const taksfinalized = document.querySelectorAll('.completed');
+  buttonFinalized.addEventListener('click', () => {
+    for (let key = 0; key < taksfinalized.length; key += 1) {
+      taksfinalized[key].remove();
+    }
+  });
+}
+
 function clean() {
   const buttonClean = document.getElementById('apaga-tudo');
   const li = document.querySelectorAll('li');
@@ -15,6 +25,7 @@ function taskComplete() {
     li[key].addEventListener('dblclick', () => {
       if (cont === 0) {
         li[key].className = 'completed';
+        finalizedClean();
         cont = 1;
       } else {
         li[key].classList.remove('completed');
