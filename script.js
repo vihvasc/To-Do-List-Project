@@ -93,3 +93,9 @@ function moveDown(){
     parentNode.insertBefore(elementDown, elementSelected);
   }
 }
+
+buttonClearElement.addEventListener("click", clearElement);
+function clearElement() {
+  let elementSelected = document.getElementsByClassName("selected")[0];
+  ordenadeList.removeChild(elementSelected)
+}
