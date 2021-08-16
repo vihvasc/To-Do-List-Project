@@ -102,40 +102,54 @@ function removeCompletedItems() {
 // addEventListener to buttonAddItem
 buttonClearCompleted.addEventListener('click', removeCompletedItems);
 
+// Function to change order between two positions to Up
+function changeOrderToUp() {
+  const selectedElement = itemList.querySelector('.selected');
+  const lista = itemList.querySelectorAll('li');
+  for (let i = 1; i < lista.length; i += 1) {
+    const elementText = lista[i].innerText;
+    const elementClass = lista[i].className;
+    if (elementText === selectedElement.innerText) {
+      lista[i].innerText = lista[i - 1].innerText;
+      lista[i].className = lista[i - 1].className;
+      lista[i - 1].innerText = elementText;
+      lista[i - 1].className = elementClass;
+      break;
+    }
+  }
+}
+
 // Function to move up a selected item
 function moveUpSelectedItem() {
   if (itemList.querySelector('.selected') !== null) {
-    const selectedElement = itemList.querySelector('.selected');
-    const lista = itemList.querySelectorAll('li');
-    for (let i = 1; i < lista.length; i += 1) {
-      const elementText = lista[i].innerText;
-      if (elementText === selectedElement.innerText) {
-        lista[i].innerText = lista[i - 1].innerText;
-        lista[i].classList.remove('selected');
-        lista[i - 1].innerText = elementText;
-        lista[i - 1].classList.add('selected');
-      }
-    }
+    changeOrderToUp();
   }
 }
 
 // addEventListener to buttonMoveUp
 buttonMoveUp.addEventListener('click', moveUpSelectedItem);
 
+// Function to change order between two positions to Down
+function changeOrderToDown() {
+  const selectedElement = itemList.querySelector('.selected');
+  const lista = itemList.querySelectorAll('li');
+  for (let i = 0; i < lista.length - 1; i += 1) {
+    const elementText = lista[i].innerText;
+    const elementClass = lista[i].className;
+    if (elementText === selectedElement.innerText) {
+      lista[i].innerText = lista[i + 1].innerText;
+      lista[i].className = lista[i + 1].className;
+      lista[i + 1].innerText = elementText;
+      lista[i + 1].className = elementClass;
+      break;
+    }
+  }
+}
+
 // Function to move down a selected item
 function moveDownSelectedItem() {
   if (itemList.querySelector('.selected') !== null) {
-    const selectedElement = itemList.querySelector('.selected');
-    const lista = itemList.querySelectorAll('li');
-    for (let i = 0; i < lista.length - 1; i += 1) {
-      const elementText = lista[i].innerText;
-      if (elementText === selectedElement.innerText) {
-        lista[i].innerText = lista[i + 1].innerText;
-        lista[i].classList.remove('selected');
-        lista[i + 1].innerText = elementText;
-        lista[i + 1].classList.add('selected');
-      }
-    }
+    changeOrderToDown();
   }
 }
 
