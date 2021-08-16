@@ -1,15 +1,52 @@
 // Variáveis
-const taskList = document.querySelector('#lista-tarefas')
-const createButton = document.querySelector('#criar-tarefa')
-const clearButton = document.querySelector('#apaga-tudo')
-const removeButton = document.querySelector('#remover-finalizados')
+let storedTasks = [];
+let taskList = document.querySelector('#lista-tarefas')
+const createButton = document.querySelector('#criar-tarefa');
+const clearButton = document.querySelector('#apaga-tudo');
+const removeButton = document.querySelector('#remover-finalizados');
+const saveButton = document.querySelector('#salvar-tarefas');
+const main = document.querySelector('main');
 
 // Event Listeners
-createButton.addEventListener("click", addTask)
-clearButton.addEventListener("click", clearList)
-removeButton.addEventListener("click", removeFinishedTasks)
+createButton.addEventListener("click", addTask);
+clearButton.addEventListener("click", clearList);
+removeButton.addEventListener("click", removeFinishedTasks);
+saveButton.addEventListener("click", saveTasks);
 
 // Funções
+generateList();
+
+function generateList() {
+  if (localStorage.getItem('tasks')) {
+    let list = document.createElement('ol');
+    storedTasks = JSON.parse(localStorage.getItem('tasks'));
+    list.id = 'lista-tarefas';
+
+    for (let index = 0; index < storedTasks.length; index += 1) {
+      if (storedTasks[index].includes('.completed')) {
+        list.innerHTML += `<li class="completed">${storedTasks[index].replace('.completed','')}</li>`;
+      } else {
+        list.innerHTML += `<li>${storedTasks[index]}</li>`;
+      }
+    }
+
+    main.appendChild(list);
+
+    let allTasks = document.querySelectorAll('#lista-tarefas li');
+    for (let index = 0; index < allTasks.length; index += 1) {
+      allTasks[index].addEventListener('click', highlightTask);
+      allTasks[index].addEventListener('dblclick', finishTask);
+    }
+
+    taskList = document.querySelector('#lista-tarefas')
+  } else {
+    let list = document.createElement('ol');
+    list.id = 'lista-tarefas';
+    main.appendChild(list);
+    taskList = document.querySelector('#lista-tarefas')
+  }
+}
+
 function addTask() {
   let input = document.querySelector('#texto-tarefa');
   
@@ -52,12 +89,29 @@ function clearList() {
   for (let index = 0; index < list.length; index += 1) {
     list[index].remove();
   }
+
+  storedTasks = [];
 }
 
 function removeFinishedTasks() {
-  let list = document.querySelectorAll('.completed');
+  let finishedTasks = document.querySelectorAll('.completed');
+
+  for (let index = 0; index < finishedTasks.length; index += 1) {
+    finishedTasks[index].remove();
+  }
+}
+
+function saveTasks() {
+  let list = document.querySelectorAll('#lista-tarefas li');
+  storedTasks = [];
 
   for (let index = 0; index < list.length; index += 1) {
-    list[index].remove();
+    if (list[index].classList.contains('completed')) {
+      storedTasks.push(list[index].innerText + '.completed');
+    } else {
+      storedTasks.push(list[index].innerText);
+    }
   }
+
+  localStorage.setItem('tasks', JSON.stringify(storedTasks))
 }
