@@ -6,6 +6,8 @@ let clickCount = 0;
 const clearTasksBtn = document.getElementById('apaga-tudo');
 const removeDoneBtn = document.getElementById('remover-finalizados');
 const saveListBtn = document.getElementById('salvar-tarefas');
+const moveUpBtn = document.getElementById('mover-cima');
+const moveDownBtn = document.getElementById('mover-baixo');
 
 function checkClasses(currentItem, userClasses, counter) {
   if (userClasses[counter] === ('completed')) {
@@ -126,3 +128,42 @@ function saveList() {
   localStorage.setItem('userTasks', JSON.stringify(savedDict));
 }
 saveListBtn.addEventListener('click', saveList);
+
+// swap element with previous sibling
+function moveUp(array) {
+  for (let counter = 0; counter < array.length; counter += 1) {
+    const element = array[counter];
+    if (array.indexOf(element) === 0) {
+      // do nothing;
+    } else if (element.classList.contains('selected')) {
+      const prevSibling = element.previousSibling;
+      taskList.insertBefore(element, prevSibling);
+    }
+  }
+}
+
+// swap element with next sibling
+function moveDown(array) {
+  for (let counter = 0; counter < array.length; counter += 1) {
+    const element = array[counter];
+    if (array.indexOf(element) === array.length - 1) {
+      // do nothing
+    } else if (element.classList.contains('selected')) {
+      const nxtSibling = element.nextSibling;
+      taskList.insertBefore(nxtSibling, element);
+    }
+  }
+}
+
+function move(originEvent) {
+  const userBtn = originEvent.target;
+  const userBtnId = userBtn.id;
+  const itemsArray = Array.from(taskList.children);
+  if (userBtnId === 'mover-cima') {
+    moveUp(itemsArray);
+  } else if (userBtnId === 'mover-baixo') {
+    moveDown(itemsArray);
+  }
+}
+moveDownBtn.addEventListener('click', move);
+moveUpBtn.addEventListener('click', move);
