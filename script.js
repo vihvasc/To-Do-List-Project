@@ -1,6 +1,7 @@
 const takeBtnNewTask = document.getElementById('criar-tarefa');
 const input = document.getElementById('texto-tarefa');
 const taskList = document.getElementById('lista-tarefas');
+const takeBtnClearAll = document.getElementById('apaga-tudo');
 
 function removeAllClass(classe) {
   const currentList = document.querySelectorAll('#lista-tarefas li');
@@ -42,8 +43,17 @@ function appendNewTask() {
   input.value = '';
 }
 
+function clearTaskList() {
+  const currentList = document.querySelectorAll('#lista-tarefas li');
+
+  for (let i = 0; i < currentList.length; i += 1) {
+    currentList[i].remove();
+  }
+}
+
 function afterLoad() {
   takeBtnNewTask.addEventListener('click', appendNewTask);
+  takeBtnClearAll.addEventListener('click', clearTaskList);
 }
 
 window.onload = afterLoad;
