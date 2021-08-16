@@ -41,19 +41,24 @@ function addInputValue () {
   li.className = 'tarefas';
   olList.appendChild(li);
   input.value = '';
-  liBackgroundColor();
+  paintingLiBackground();
   })
+}
+
+function paintingLiBackground() {
+  for (let index = 0; index < liSelect.length; index += 1) {
+    liSelect[index].addEventListener('click', function () {
+      removeColor();
+      liSelect[index].style.backgroundColor = 'rgb(128, 128, 128)';
+    })
+  }
 }
 
 addInputValue();
 
-function liBackgroundColor() {
+function removeColor () {
   for (let index = 0; index < liSelect.length; index += 1) {
-    liSelect[index].addEventListener('click', function () {
-    liSelect[index].style.backgroundColor = 'rgb(128, 128, 128)';
-  })
+    liSelect[index].style.backgroundColor = '';
+  }
 }
-}
-
-
 
