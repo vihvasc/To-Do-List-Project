@@ -42,6 +42,12 @@ function apagaTexto() {
 botaoAdiciona.addEventListener('click', apagaTexto);
 
 function mudaBackground(event) {
+  const lis = document.getElementsByTagName('li');
+  if (lis.length > 1) {
+    for (const index of lis) {
+      index.style.backgroundColor = 'rgb(178, 224, 181)';
+    }
+  }
   event.target.style.backgroundColor = 'rgb(128, 128, 128)';
 }
 function pintaLis() {
