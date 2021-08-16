@@ -1,8 +1,9 @@
 const inputEnter = document.querySelector('#texto-tarefa');
 const createItem = document.querySelector('#criar-tarefa');
+const eraseAllList = document.querySelector('#apaga-tudo');
+const listOrder = document.querySelector('#lista-tarefas');
 
 createItem.addEventListener('click', () => {
-  const listOrder = document.querySelector('#lista-tarefas');
   const createListItem = document.createElement('li');
   createListItem.innerText = inputEnter.value;
 
@@ -15,4 +16,10 @@ createItem.addEventListener('click', () => {
   });
   listOrder.appendChild(createListItem);
   inputEnter.onfocus();
+});
+
+eraseAllList.addEventListener('click', () => {
+  while (listOrder.firstChild) {
+    listOrder.removeChild(listOrder.lastChild);
+  }
 });
