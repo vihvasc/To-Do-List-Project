@@ -40,8 +40,20 @@ function clearAll() {
   }
 }
 
+function removeDoneTasks() {
+  const doneTasks = document.getElementsByClassName('completed');
+
+  const index = 0;
+  while (doneTasks.length > 0) {
+    doneTasks[index].remove();
+  }
+}
+
 const taskButton = document.getElementById('criar-tarefa');
 taskButton.addEventListener('click', createTask);
 
 const clearButton = document.getElementById('apaga-tudo');
-clearButton.addEventListener('click', clearAll)
+clearButton.addEventListener('click', clearAll);
+
+const removeDoneButton = document.getElementById('remover-finalizados');
+removeDoneButton.addEventListener('click', removeDoneTasks);
