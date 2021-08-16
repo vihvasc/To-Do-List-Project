@@ -9,15 +9,23 @@ buttonCreatTask.addEventListener("click",creatList);
 function creatList(){
    let valueInputTask = inputTextTask.value ;
    let linha = document.createElement("li");
-   linha.id = "liColor"
+   linha.className = ("liColor");
    linha.innerText = valueInputTask;
    listOfTasks.appendChild(linha);
    inputTextTask.value = null;
+  linha.addEventListener("click",mudarDeCor)
+ function mudarDeCor (){      
+  linha.style.backgroundColor = "rgb(128, 128, 128)";
+  /*let liSelected = document.getElementsByClassName("liColor");
+   for(let cont = 0;cont < liSelected.length;cont += 1){
+       liSelected[cont].eventt */
+   }    
+  }
  
-}
 
 
- 
+      
+
 
 
 
