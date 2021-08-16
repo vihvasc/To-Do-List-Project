@@ -88,7 +88,6 @@ function criaTarefa() {
         
         //Deve-se verificar se o item já está selecionado como Completed
         let comparaClasse = novoItem.className;
-        const elementosLista = document.querySelectorAll('li');
 
         //   //Deve-se verificar se o item já está selecionado como Completed
         //     // Se não, deve-se adicionar a class completed e text-decoration quando o dbclick é realizado;
@@ -139,6 +138,29 @@ criaTarefa();
 // ***** Utilize a classe CSS "completed" para adicionar o efeito de letra tachada (riscada) às tarefas finalizadas.
 // https://pt.stackoverflow.com/questions/9605/detectar-se-um-elemento-cont%C3%A9m-uma-classe-com-javascript-puro
 
-// 0
+// 10 - Adicione um botão com id="apaga-tudo" que quando clicado deve apagar todos os itens da lista
+// *** O que será verificado:
+// ***** Será verificado que existe um elemento button com o id apaga-tudo
+// ***** Será verificado que, dado que uma lista possui tarefas, um clique no botão a deixa vazia
+
+function limpaLista () {
+    const botaoLimpar = document.createElement('button');
+    botaoLimpar.id = 'apaga-tudo';
+    botaoLimpar.textContent = 'Limpar Lista';
+    botaoLimpar.addEventListener('click', function () {
+      
+      const elementosLista = document.querySelectorAll('li');
+        for (let index = 0; index < elementosLista.length; index +=1) {
+          elementosLista[index].remove();
+        }
+    })
+    body.appendChild(botaoLimpar);
+    
+
+    
+}
+limpaLista();
+
+// 1
 // ***
 // *****
