@@ -1,5 +1,6 @@
 body {
   background-color: rgb(35, 19, 43);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #section-header {
@@ -7,15 +8,29 @@ body {
   border-radius: 20px;
   color: rgb(46, 61, 242);
   background-color: rgb(133, 147, 245);
+  text-align: center;
 }
 
 #section-main {
   border: 2px solid rgb(235, 155, 162);
   border-radius: 20px;
-  color: rgb(242, 150, 246);
+  color: rgb(242, 200, 246);
   background-color: rgb(212, 129, 177);
 }
 
 #tasks-container *{
   color: rgb(197, 255, 255);
+}
+
+#texto-tarefa {
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+label {
+  margin-left: 15px;
+}
+
+.completed {
+  text-decoration: line-through solid rgb(0, 0, 0);
 }

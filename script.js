@@ -1,4 +1,3 @@
-
 function changeLiColor (receivedEvent) {
   const tasksList = document.querySelectorAll('#lista-tarefas> *');
   const element = receivedEvent.target;
@@ -19,8 +18,16 @@ function createTask() {
     newTask.innerHTML = inputElement.value;
     contentTarget.appendChild(newTask);
     newTask.addEventListener('click', changeLiColor);
+    newTask.addEventListener('dblclick', checkCompletedTask);
     inputElement.value = '';
-  })
-};
+  });
+}
 
 createTask();
+
+function checkCompletedTask (receivedEvent) {
+  const selectedTask = receivedEvent.target;
+  const classOfElement = selectedTask.className;
+  (classOfElement !== 'completed') ? selectedTask.classList.add('completed') : selectedTask.classList.remove('completed');
+  console.log(classOfElement);
+}
