@@ -10,10 +10,13 @@ body {
 }
 
 #list-section {
+	display: inline-block;
+
 	border-radius: 25px;
 	box-shadow: 5px 5px 18px 2px rgb(128, 128, 128);
 	margin: 20px 20px;
 	min-height: 300px;
+	width: 60%;
 	color: white;
 	background-color: rgb(42, 157, 143);
 }
