@@ -51,3 +51,17 @@ function apagarLista(){
    lista.innerHTML = '';
 
 }
+
+//função para remover tarefas finalizadas
+let btnClearFinished = document.getElementById("remover-finalizados").addEventListener("click", removeFinished)
+
+let itemLista = document.getElementsByClassName("tarefa")
+function removeFinished(){
+    for(let index = 0; index < itemLista.length; index += 1){
+        if(itemLista[index].classList.contains("completed")){
+            lista.removeChild(itemLista[index])
+            index = 0;
+            console.log("Removi");
+        }
+    }
+}
