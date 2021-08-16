@@ -33,4 +33,20 @@
 
   body.addEventListener('click', checkItem);
 
+  function markCompleted(element) {
+    if (element.classList.contains('completed')) {
+      element.classList.remove('completed');
+    } else {
+      element.classList.add('completed');
+    }
+  }
+
+  function checkItem2(originEvent) {
+    let element = originEvent.target;
+    if (element.parentNode.id === "lista-tarefas") {
+      markCompleted(element);
+    }
+  }
+  body.addEventListener("dblclick", checkItem2);
+
   
