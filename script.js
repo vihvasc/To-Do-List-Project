@@ -11,3 +11,10 @@ function addTask() {
 }
 
 createTask.addEventListener('click', addTask);
+
+function colorTask(event) {
+  const task = event.target;
+  task.style.backgroundColor = 'rgb(128, 128, 128)';
+}
+
+taskList.addEventListener('click', colorTask);
