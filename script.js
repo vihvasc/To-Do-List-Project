@@ -1,22 +1,19 @@
-let text = document.getElementById('texto-tarefa');
-let button = document.getElementById('criar-tarefa');
-let listIndex = document.getElementById('lista-tarefas');
-let list = document.querySelectorAll('li');
+const text = document.getElementById('texto-tarefa');
+const buttonAdd = document.getElementById('criar-tarefa');
+const buttonClear = document.getElementById('apaga-tudo');
+const listIndex = document.getElementById('lista-tarefas');
 
-
-function pintarLi (event) {
-  let list = document.querySelectorAll('li');
+function pintarLi(event) {
+  const list = document.querySelectorAll('li');
   for (let i = 0; i < list.length; i += 1) {
     list[i].classList.remove('selected');
   }
-  const target = event.target;
+  const { target } = event;
   target.classList.add('selected');
-
-  console.log(list)
 }
 
-function riscarLi (event) {
-  let target = event.target;
+function riscarLi(event) {
+  const { target } = event;
   if (target.classList.contains('completed')) {
     target.classList.remove('completed');
   } else {
@@ -34,4 +31,9 @@ function addText() {
   liCreate.addEventListener('dblclick', riscarLi);
 }
 
-button.addEventListener('click', addText);
+function apagarLis () {
+  listIndex.innerHTML = '';
+}
+
+buttonAdd.addEventListener('click', addText);
+buttonClear.addEventListener('click', apagarLis)
