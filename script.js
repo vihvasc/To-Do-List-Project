@@ -1,9 +1,11 @@
 // Variáveis
 const taskList = document.querySelector('#lista-tarefas')
-const button = document.querySelector('#criar-tarefa')
+const createButton = document.querySelector('#criar-tarefa')
+const clearButton = document.querySelector('#apaga-tudo')
 
 // Event Listeners
-button.addEventListener("click", addTask)
+createButton.addEventListener("click", addTask)
+clearButton.addEventListener("click", clearList)
 
 // Funções
 function addTask() {
@@ -39,5 +41,14 @@ function finishTask(event) {
     event.target.classList.add('completed');
   } else {
     event.target.classList.remove('completed');
+  }
+}
+
+function clearList() {
+  let list = document.querySelectorAll('#lista-tarefas li');
+  console.log(list);
+
+  for (let index = 0; index < list.length; index += 1) {
+    list[index].remove();
   }
 }
