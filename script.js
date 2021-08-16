@@ -66,4 +66,34 @@ function removeSelecionado() {
   let selecionado = document.querySelector('#selecionado')
   selecionado.remove()
 }
-document.querySelector('#remover-selecionado').addEventListener('click', removeSelecionado)
+document.querySelector('#remover-selecionado').addEventListener('click', removeSelecionado);
+function moverCima() {
+  if (document.querySelector('#selecionado')) {
+    let selecionado = document.querySelector('#selecionado');
+  let lista = document.getElementsByTagName('ol')[0];
+  let itens = document.getElementsByTagName('li');
+  let vetor = Array.from(itens);
+  index = vetor.indexOf(selecionado);
+  if (index === 0) {
+    return 
+  }
+  lista.insertBefore(selecionado, itens[index-1]);
+  }
+  
+}
+document.querySelector('#mover-cima').addEventListener('click', moverCima);
+function moverBaixo() {
+  if (document.querySelector('#selecionado')) {
+    let selecionado = document.querySelector('#selecionado');
+  let lista = document.getElementsByTagName('ol')[0];
+  let itens = document.getElementsByTagName('li');
+  let vetor = Array.from(itens);
+  index = vetor.indexOf(selecionado);
+  if (index === vetor.length-1) {
+    return 
+  }
+  lista.insertBefore(selecionado, itens[index+2]);
+  }
+  
+}
+document.querySelector('#mover-baixo').addEventListener('click', moverBaixo);
