@@ -2,6 +2,10 @@ const buttonAddTask = document.getElementById('criar-tarefa');
 buttonAddTask.addEventListener('click',addTask);
 const taskList = document.getElementById('lista-tarefas');
 const allTasks = document.getElementsByClassName('task');
+const removeDoneButton = document.getElementById('remover-finalizados');
+removeDoneButton.addEventListener('click', removeTasksDone);
+const removeAllButton = document.getElementById('apaga-tudo');
+removeAllButton.addEventListener('click', removeAllTasks);
 
 function addTask(){
     let textInput = document.getElementById('texto-tarefa').value 
@@ -29,5 +33,17 @@ function taskDone(event){
         currentTask.classList.remove('completed')
     }else{
         currentTask.classList.add('completed')
+    }
+}
+function removeTasksDone(){
+    for(let index = allTasks.length-1 ; index >= 0; index -= 1){
+        if(allTasks[index].classList.contains('completed')){
+            allTasks[index].remove();
+        }
+    }
+}
+function removeAllTasks(){
+    for(let index = allTasks.length-1 ; index >= 0; index -= 1){
+        allTasks[index].remove();
     }
 }
