@@ -1,8 +1,10 @@
 const buttonCreateTask = document.getElementById('criar-tarefa');
 const taskList = document.getElementById('lista-tarefas');
 const inputTextBox = document.getElementById('texto-tarefa');
+const buttonEraseAll = document.getElementById('apaga-tudo');
+const buttonRemoveCompleteTasks = document.getElementById('remover-finalizados');
 
-function receiveTaskInput() {
+function handleTaskInputReceive() {
   const inputText = inputTextBox.value;
   return inputText;
 }
@@ -48,7 +50,7 @@ function handleCompletedTaskEventAdd(listItems) {
 }
 
 function handleTaskAdding() {
-  const inputText = receiveTaskInput();
+  const inputText = handleTaskInputReceive();
   const listItem = document.createElement('li');
   listItem.className = 'list-item';
   listItem.innerText = inputText;
@@ -59,7 +61,23 @@ function handleTaskAdding() {
   handleCompletedTaskEventAdd(listItems);
 }
 
+function handleListErasing() {
+  while (taskList.firstChild) {
+    taskList.removeChild(taskList.firstChild);
+  }
+}
+
+function handleCompletedTaskErasing() {
+  const completedTasks = document.querySelectorAll('.completed');
+  for (let index = 0; index < completedTasks.length; index += 1) {
+    const task = completedTasks[index];
+    taskList.removeChild(task);
+  }
+}
+
 window.onload = function createToDoListPage() {
-  inputTextBox.addEventListener('keyup', receiveTaskInput);
+  inputTextBox.addEventListener('keyup', handleTaskInputReceive);
   buttonCreateTask.addEventListener('click', handleTaskAdding);
+  buttonEraseAll.addEventListener('click', handleListErasing);
+  buttonRemoveCompleteTasks.addEventListener('click', handleCompletedTaskErasing);
 };
