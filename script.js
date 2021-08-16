@@ -7,6 +7,7 @@ let getButton = document.getElementById('criar-tarefa');
 function clearText (){
   document.querySelector('#texto-tarefa').value = '';
 }
+getButton.addEventListener('click', createTask);
 
 function createTask(){
   let getInputText = document.querySelector('#texto-tarefa').value;
@@ -15,18 +16,21 @@ function createTask(){
   getOl.appendChild(addLi);
   addLi.innerText = getInputText;
   clearText ();
-
-function addBackgroundColor (evento){
-  addLi.classList = 'item-lista';
+  
+function addBackgroundColor (){
+  // addLi.classList = 'item-lista';
 }
 addLi.addEventListener('click', addBackgroundColor);
+addLi.addEventListener('click',removeBackground);
 }
 
-getButton.addEventListener('click', createTask);
-
-// let x = document.getElementsByClassName('item-lista')[0]
-
-// function addBackgroundColor (evento){
-// console.log(evento.target);
-// }
-// x.addEventListener('click', addBackgroundColor);
+function removeBackground(event){
+let x = document.querySelector('.item-lista');
+if(x !== null){
+x.classList.remove('item-lista');}
+if(event.target.className !== 'item-lista'){
+event.target.className = 'item-lista';
+} else {
+event.target.className = '';
+}
+}
