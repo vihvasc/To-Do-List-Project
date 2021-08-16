@@ -1,5 +1,5 @@
 const list = [];
-const orderlist = document.getElementById('lista-tarefas');
+const orderList = document.getElementById('lista-tarefas');
 const listItem = document.getElementById('texto-tarefa');
 
 const button = document.getElementById('criar-tarefa');
@@ -10,7 +10,7 @@ function addList() {
   list.push(newItem);
   const element = document.createElement('li');
   element.innerText = newItem;
-  orderlist.appendChild(element);
+  orderList.appendChild(element);
   listItem.value = '';
 }
 
@@ -26,5 +26,9 @@ function clearBackground() {
     let listElement = elements[index];
     listElement.style.backgroundColor = '';
   }
-
 }
+
+const elementList = document.getElementsByTagName('ol')[0];
+elementList.addEventListener('dblclick', function (event) {
+  event.target.classList.toggle('completed');
+});
