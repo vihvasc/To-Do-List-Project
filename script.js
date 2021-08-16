@@ -13,7 +13,7 @@ botaoCriarTarefa.addEventListener('click', function() {
   lista.appendChild(criarLi);
   inputTexto.value = null;
 
-  // Adiciona cor de fundo
+  // Adiciona seletor cor de fundo
   criarLi.addEventListener('click', function(){      
     let removerCor = document.querySelectorAll('.linhasLista');
     for (let index = 0; index < removerCor.length; index += 1) {
@@ -21,4 +21,15 @@ botaoCriarTarefa.addEventListener('click', function() {
     }
     criarLi.style.backgroundColor = 'rgb(128,128,128)';
   })
+
+  // Risca item
+  criarLi.addEventListener('dblclick', function(){
+    if (criarLi.classList.contains('completed')) {
+        criarLi.classList.remove('completed');    
+    } else {
+      criarLi.classList.add('completed');
+    }
+  })
+  
+  
 })
