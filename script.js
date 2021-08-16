@@ -3,6 +3,7 @@ const local = localStorage;
 const itemList = document.getElementById('lista-tarefas');
 const buttonAddItem = document.getElementById('criar-tarefa');
 const inputAddItem = document.getElementById('texto-tarefa');
+const buttonClearAll = document.getElementById('apaga-tudo');
 
 // Add Item to list in localStorage
 function addItemToLocal(item) {
@@ -59,6 +60,19 @@ function fillWithLocal() {
     itemList.appendChild(newItemElement);
   }
 }
+
+// Funtion to remove all itens in ol
+function removeAllItems() {
+  const listItems = document.querySelectorAll('#lista-tarefas li');
+  for (let i = 0; i < listItems.length; i += 1) {
+    const element = itemList.lastChild;
+    itemList.removeChild(element);
+  }
+  local.clear();
+}
+
+// addEventListener to buttonAddItem
+buttonClearAll.addEventListener('click', removeAllItems);
 
 // Load Page
 window.onload = function startPage() {
