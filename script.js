@@ -1,13 +1,22 @@
 let inputTexto = document.querySelector('#texto-tarefa');
 let botaoCriarTarefa = document.querySelector('#criar-tarefa');
 let lista = document.querySelector('#lista-tarefas');
+let liLista = document.querySelectorAll('.linhasLista');
+// let liLista = document.querySelectorAll('.linhasLista');
+
 
 // Criar item lista
 botaoCriarTarefa.addEventListener('click', function() {
   let criarLi = document.createElement('li');
+  criarLi.classList.add('linhasLista');
   criarLi.innerText = inputTexto.value;  
   lista.appendChild(criarLi);
-  inputTexto.value = '';
-})
+  inputTexto.value = null;
 
+  criarLi.addEventListener('click', function(){    
+      criarLi.style.backgroundColor = 'rgb(128,128,128)'
+    
+  })
+  
+})
 
