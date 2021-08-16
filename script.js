@@ -97,10 +97,12 @@ removeSelectedButton.addEventListener('click', removeSelectedTask);
 
 const task = JSON.parse(localStorage.getItem('taskList'));
 
-for (let index = 0; index < task.length; index += 1) {
-  if (task[index].completed) {
-    createTask(task[index].text, 'completed');
-  } else {
-    createTask(task[index].text);
+if (task) {
+  for (let index = 0; index < task.length; index += 1) {
+    if (task[index].completed) {
+      createTask(task[index].text, 'completed');
+    } else {
+      createTask(task[index].text);
+    }
   }
 }
