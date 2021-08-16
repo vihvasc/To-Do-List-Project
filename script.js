@@ -50,8 +50,18 @@ function mudaBackground(event) {
   }
   event.target.style.backgroundColor = 'rgb(128, 128, 128)';
 }
+function tiraTarefa() {
+  event.target.className = '';
+  event.target.addEventListener('click', riscaTarefa);
+}
+
+function riscaTarefa() {
+  event.target.className = 'completed';
+  event.target.addEventListener('dblclick', tiraTarefa);
+}
 function pintaLis() {
   const ol = document.getElementById('lista-tarefas').lastElementChild;
   ol.addEventListener('click', mudaBackground);
+  ol.addEventListener('dblclick', riscaTarefa);
 }
 botaoAdiciona.addEventListener('click', pintaLis);
