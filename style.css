@@ -52,21 +52,21 @@ header {
 
 #remover-selecionado,
 #apaga-tudo {
-  background-color: #FA3120;
+  background-color: #fa3120;
 }
 
 #mover-cima,
 #mover-baixo {
-  background-color: #FF8000;
+  background-color: #ff8000;
 }
 
 #remover-finalizados,
 #criar-tarefa {
-  background-color: #0865FE;
+  background-color: #0865fe;
 }
 
 #salvar-tarefas {
-  background-color: #1EFE08;
+  background-color: #1efe08;
 }
 
 .selected-item {
