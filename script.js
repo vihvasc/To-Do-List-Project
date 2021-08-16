@@ -5,6 +5,7 @@ const buttonAddItem = document.getElementById('criar-tarefa');
 const inputAddItem = document.getElementById('texto-tarefa');
 const buttonClearAll = document.getElementById('apaga-tudo');
 const buttonClearCompleted = document.getElementById('remover-finalizados');
+const buttonClearSelected = document.getElementById('remover-selecionado');
 const buttonSaveList = document.getElementById('salvar-tarefas');
 const buttonMoveUp = document.getElementById('mover-cima');
 const buttonMoveDown = document.getElementById('mover-baixo');
@@ -156,11 +157,19 @@ function moveDownSelectedItem() {
 // addEventListener to buttonMoveUp
 buttonMoveDown.addEventListener('click', moveDownSelectedItem);
 
+// Function to remove selected item
+function removeSelectedItem() {
+  const listItems = document.querySelectorAll('#lista-tarefas .selected');
+  for (let i = 0; i < listItems.length; i += 1) {
+    const element = itemList.querySelector('.selected');
+    itemList.removeChild(element);
+  }
+}
+
+// addEventListener to buttonMoveUp
+buttonClearSelected.addEventListener('click', removeSelectedItem);
+
 // Load Page
 window.onload = function startPage() {
-  if (local.getItem('listaItems') === null) {
-    local.setItem('listaItems', JSON.stringify([]));
-  } else {
-    fillWithLocal();
-  }
+  fillWithLocal();
 };
