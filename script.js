@@ -1,7 +1,9 @@
 let addTaskBtn = document.getElementById('criar-tarefa')
 let taskList = document.getElementById('lista-tarefas')
 let inputTask = document.getElementById('texto-tarefa')
+let deleteListBtn = document.getElementById('apaga-tudo')
 
+deleteListBtn.addEventListener('click', deleteTasks)
 addTaskBtn.addEventListener('click', addToList)
 
 function addToList() {
@@ -24,6 +26,11 @@ function changeColor(event) {
   event.target.classList.toggle('selected')
 }
 
-function completeTask(event){
+function completeTask(event) {
   event.target.classList.toggle('completed')
+}
+
+function deleteTasks() {
+  // let list = document.querySelectorAll('.li')
+  taskList.innerHTML = ''
 }
