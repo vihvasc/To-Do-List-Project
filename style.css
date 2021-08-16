@@ -2,7 +2,7 @@
 	margin: 0;
 	padding: 0;
 	border: 0;
-  background-color: rgb(228, 210, 51, 0.4);
+  background-color: rgb(228, 220, 121);
 }
 
 input {
@@ -20,4 +20,8 @@ ul, ol, li {
 
 button {
   border: 1px solid rgb(13,13,13);
+}
+
+.selected {
+  background-color: rgb(128,128,128);
 }
