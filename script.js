@@ -21,7 +21,9 @@ function changeListItemBackgroundColor(event) {
   let listItens = document.getElementsByClassName("list-item");
   for (let item of listItens) {
     if (item === selectedListItem) {
-      toggleClass(item, "selected-item");
+      if (!item.classList.contains("selected-item")) {
+        item.classList.add("selected-item");
+      };
     } else if (item.classList.contains("selected-item")) {
       toggleClass(item, "selected-item");
     }; 
