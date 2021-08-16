@@ -171,5 +171,9 @@ buttonClearSelected.addEventListener('click', removeSelectedItem);
 
 // Load Page
 window.onload = function startPage() {
-  fillWithLocal();
+  if (local.getItem('listaItems') === null) {
+    local.setItem('listaItems', JSON.stringify([]));
+  } else {
+    fillWithLocal();
+  }
 };
