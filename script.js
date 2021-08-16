@@ -19,7 +19,7 @@ function toggleClass(element, className) {
 function changeListItemBackgroundColor(event) {
   let selectedListItem = event.target;
   let listItens = document.getElementsByClassName("list-item");
-  for (item of listItens) {
+  for (let item of listItens) {
     if (item === selectedListItem) {
       toggleClass(item, "selected-item");
     } else if (item.classList.contains("selected-item")) {
@@ -80,6 +80,41 @@ function loadSavedTasks() {
   let savedTasks = localStorage.getItem("listItens");
   if (savedTasks) {
     tasksList.innerHTML = savedTasks;
+    let tasksItens = document.getElementsByClassName("list-item");
+    for (let item of tasksItens) {
+      item.addEventListener("click", changeListItemBackgroundColor);
+      item.addEventListener("dblclick", completeTask);
+    };
+  };
+};
+
+function moveTaskUp() {
+  let selected = document.querySelector(".selected-item");
+  if (selected) {
+    let previousTask = selected.previousElementSibling;
+    if (previousTask) {
+      let selectedHtml = selected.innerHTML;
+      let previousTaskHtml = previousTask.innerHTML;
+      selected.innerHTML = previousTaskHtml;
+      previousTask.innerHTML = selectedHtml;
+      toggleClass(selected, "selected-item");
+      toggleClass(previousTask, "selected-item");
+    };
+  };
+};
+
+function moveTaskDown() {
+  let selected = document.querySelector(".selected-item");
+  if (selected) {
+    let nextTask = selected.nextElementSibling;
+    if (nextTask) {
+      let selectedHtml = selected.innerHTML;
+      let nextTaskHtml = nextTask.innerHTML;
+      selected.innerHTML = nextTaskHtml;
+      nextTask.innerHTML = selectedHtml;
+      toggleClass(selected, "selected-item");
+      toggleClass(nextTask, "selected-item");
+    };
   };
 };
 
@@ -91,7 +126,11 @@ function buttonsStart() {
   let wipeCompletedTasksButton = document.getElementById("remover-finalizados");
   wipeCompletedTasksButton.addEventListener("click", wipeCompletedTasks)
   let saveTasksButton = document.getElementById("salvar-tarefas");
-  saveTasksButton.addEventListener("click", saveTasks)
+  saveTasksButton.addEventListener("click", saveTasks);
+  let moveTaskUpButton = document.getElementById("mover-cima");
+  moveTaskUpButton.addEventListener("click", moveTaskUp);
+  let moveTaskDownButton = document.getElementById("mover-baixo");
+  moveTaskDownButton.addEventListener("click", moveTaskDown);
 };
 
 window.onload = function () {
