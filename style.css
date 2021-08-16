@@ -1,76 +1,76 @@
 body {
-    font-family: sans-serif;
-    background-color: #2196F3;
+  font-family: sans-serif;
+  background-color: #2196f3;
 }
 
 main {
-    background-color: #fff;
-    border-radius: 1em;
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+  background-color: white;
+  border-radius: 1em;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 ol {
-    list-style-position: inside;
-    margin-left: 20%;
+  list-style-position: inside;
+  margin-left: 20%;
 }
 
 li {
-    width: 20rem;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  width: 20rem;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 input {
-    margin-left: 20%;
-    height: 1.5em;
-    width: 45%;
-    border: 1px solid darkblue;
-    font-size: large;
+  margin-left: 20%;
+  height: 1.5em;
+  width: 45%;
+  border: 1px solid darkblue;
+  font-size: large;
     
 }
 
 button {
-    border-radius: 0.5em;
-    padding: 8px 16px;
-    margin-top: 20px;
-    font-family: monospace;
-    margin: 2px 5px;
+  border-radius: 0.5em;
+  padding: 8px 16px;
+  margin-top: 20px;
+  font-family: monospace;
+  margin: 2px 5px;
 }
 
 input:focus {
-    outline: 2px solid #2196F3;
-    border: 1px solid lightgray;
+  outline: 2px solid #2196F3;
+  border: 1px solid lightgray;
     
 }
 
 li:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .title {
-    text-align: center;
+  text-align: center;
 }
 
 #funcionamento {
-    color: rgb(64, 68, 68);
-    opacity: 30%;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-align: center;
-    font-size:20px;
+  color: rgb(64 , 68 , 68);
+  opacity: 30%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  font-size: 20px;
     
 }
 
 .mark {
-    background-color: rgb(128,128,128);
+  background-colo: rgb(128 , 128 , 128);
 }
 
 .completed {
-    text-decoration: line-through solid rgb(0, 0, 0);
+  text-decoration: line-through solid rgb(0 , 0 , 0);
 }
 
 .button {
-    text-align: center;
-    padding-bottom: 10px;
+  text-align: center;
+  padding-bottom: 10px;
 }
 
