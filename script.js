@@ -13,13 +13,6 @@ function addTask() {
   });
 }
 
-// function addListenerForTasks() {
-//   const createdTasks = document.getElementsByClassName('task');// todas tarefas criadas.
-//   for (let index = 0; index < createdTasks.length; index += 1) {
-//     createdTasks[index].addEventListener('click', addGrayBackground);
-//   }
-// }
-
 function addGrayBackground() {
   const createdTasks = document.getElementsByClassName('task');// todas tarefas criadas.
   for (let index = 0; index < createdTasks.length; index += 1) {
@@ -32,6 +25,5 @@ function addGrayBackground() {
 
 function allTask() {
   addTask();
-  addListenerForTasks();
 }
 window.onload = allTask;
