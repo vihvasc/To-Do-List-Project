@@ -1,19 +1,27 @@
 window.onload = function (){
+
     let buttonTarefa = document.querySelector('#criar-tarefa');
     let buttonClear = document.getElementById('apaga-tudo');
     let buttonClearFinished = document.getElementById('remover-finalizados');
     let buttonSaveList = document.getElementById('salvar-tarefas');
-    
+
+    if (localStorage.getItem('history') === null){
+
+    } else {
+        clearList();
+        recoverySave();
+    }
+
     
     buttonTarefa.addEventListener('click',addSession);
     buttonClear.addEventListener('click', clearList);
     buttonClearFinished.addEventListener('click',removeFinished);
     buttonSaveList.addEventListener('click',saveList);
     document.addEventListener('click', inFocus);
-    document.addEventListener('dblclick',completeMark);    
+    document.addEventListener('dblclick',completeMark);
+
     
 }
-
 let input = document.querySelector('#texto-tarefa');
 
 function addSession(){
@@ -23,17 +31,13 @@ function addSession(){
     }
 
     let oldList = JSON.parse(sessionStorage.getItem('lista'));
-    if(input.value !== '' && oldList.includes(input.value) === false){
+    if(input.value !== ''){
         listItemText = input.value;
         oldList.push(listItemText);
         sessionStorage.setItem('lista', JSON.stringify(oldList));
         addToList();
     
-    } else if (oldList.includes(input.value) === true){
-        alert('A tarefa já está presente na lista');
-        input.value = '';
     }
-    
     
     
 }
@@ -91,5 +95,36 @@ function removeFinished(){
 }
 
 function saveList(){
+    let listToSave = document.querySelectorAll('.item');
 
+        localStorage.setItem('history', JSON.stringify([]));
+        localStorage.setItem('classToSave', JSON.stringify([]));
+
+    let historyList = JSON.parse(localStorage.getItem('history'));
+    let historyListClass = JSON.parse(localStorage.getItem('classToSave'));   
+
+    for(let i = 0; i < listToSave.length; i += 1){
+        historyList.push(listToSave[i].innerText);
+        historyListClass.push(listToSave[i].className);
+
+    }
+
+    localStorage.setItem('history', JSON.stringify(historyList));
+    localStorage.setItem('classToSave', JSON.stringify(historyListClass));
+    
+}
+
+function recoverySave() {
+
+    let list = document.querySelector('#lista-tarefas');
+    let historyList = JSON.parse(localStorage.getItem('history'));
+    let historyListClass = JSON.parse(localStorage.getItem('classToSave'));
+    
+
+    for (let i = 0; i < historyList.length; i += 1){
+        let li = document.createElement('li');
+        li.innerText = historyList[i];
+        li.classList = historyListClass[i];
+        list.appendChild(li);
+    }
 }
