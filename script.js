@@ -3,12 +3,18 @@ const imput = document.getElementById('texto-tarefa');
 const chamaLista = document.getElementById('lista-tarefas');
 const buttonClearAll = document.getElementById('apaga-tudo');
 const removeFinalizados = document.getElementById('remover-finalizados');
+const salvaTarefas = document.getElementById('salvar-tarefas');
+
+if (localStorage.getItem('salvar')) {
+  chamaLista.innerHTML = localStorage.getItem('salvar');
+}
 
 criarTarefa.addEventListener('click', addListaTarefa);
 chamaLista.addEventListener('click', corDaLinha);
 chamaLista.addEventListener('dblclick', taskCompleted);
 buttonClearAll.addEventListener('click', clearAll);
 removeFinalizados.addEventListener('click', removeTaskCompleted);
+salvaTarefas.addEventListener('click', salvandoTarefas);
 
 function addListaTarefa() {
   const criaLista = document.createElement('li');
@@ -42,4 +48,8 @@ function removeTaskCompleted() {
   for (let index = 0; index < finalizados.length; index += 1) {
     chamaLista.removeChild(finalizados[index]);
   }
+}
+
+function salvandoTarefas() {
+  localStorage.setItem('salvar', chamaLista.innerHTML);
 }
