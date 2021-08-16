@@ -7,11 +7,18 @@ function mudaCorBG() {
     this.classList.add('selected');
   }
   const todaLista = document.getElementsByClassName('tarefasAdicionadas');
-  console.log(todaLista[0] === this);
   for (let i = 0; i < todaLista.length; i += 1) {
     if (todaLista[i] !== this) {
       todaLista[i].classList.remove('selected');
     }
+  }
+}
+
+function mudaCompletado() {
+  if (this.classList.contains('completed')) {
+    this.classList.remove('completed');
+  } else {
+    this.classList.add('completed');
   }
 }
 
@@ -22,6 +29,7 @@ function criarTarefa() {
   tarefaLista.className = 'tarefasAdicionadas';
   tarefaLista.innerText = textoTarefaInput.value;
   tarefaLista.addEventListener('click', mudaCorBG);
+  tarefaLista.addEventListener('dblclick', mudaCompletado);
   listaTarefas.appendChild(tarefaLista);
   textoTarefaInput.value = '';
 }
@@ -31,10 +39,20 @@ function apagarLista() {
   tarefas.innerHTML = '';
 }
 
+function apagarFinalizados() {
+  const tarefasFinalizadas = document.getElementsByClassName('completed');
+  for (let i = 0; i < tarefasFinalizadas.length; i += 0) {
+    tarefasFinalizadas[i].remove();
+  }
+}
+
 window.onload = function principal() {
   const cliqueBotaoCriarTarefa = document.getElementById('criar-tarefa');
   cliqueBotaoCriarTarefa.addEventListener('click', criarTarefa);
 
   const cliqueBotaoApagar = document.getElementById('apaga-tudo');
   cliqueBotaoApagar.addEventListener('click', apagarLista);
+
+  const cliqueBotaoRemoveFinalizados = document.getElementById('remover-finalizados');
+  cliqueBotaoRemoveFinalizados.addEventListener('click', apagarFinalizados);
 };
