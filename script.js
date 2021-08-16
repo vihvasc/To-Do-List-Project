@@ -66,6 +66,20 @@ function criaTarefa() {
     const novoItem = document.createElement('li');
     novoItem.innerHTML = textoAAdicionar.value;
     novoItem.className = 'item-lista ';
+    novoItem.addEventListener('click', function (){
+      // Ao clicar no elemento, ele deve ser selecionado, e os demais devem retornar a não possuirem cor de fundo;
+      // Deve-se listar todos os elementos da lista com getElementsByClassName
+      const elementosDaLista = document.getElementsByClassName('item-lista');
+
+      // Deve-se fazer um for alterando as propriedades de todos os elementos (Class e backgroundColor)
+      for (index = 0; index < elementosDaLista.length; index += 1) {
+          elementosDaLista[index].className = 'item-lista ';
+          elementosDaLista[index].style.backgroundColor = '';
+      }
+      // Deve-se, ao sair do for, adicionar a propriedade selected e rgb(125,128,128) ao item Selecionado
+      novoItem.style.backgroundColor = 'rgb(128,128,128)';
+      novoItem.className = 'item-lista selected';
+    })
     // Faz-se o appendChild desse elemento li dentro da ol
     listaDeTarefas.appendChild(novoItem);
     textoAAdicionar.value = '';
@@ -81,12 +95,6 @@ criaTarefa();
 // *** O que será verificado:
 // ***** Será verificado que, ao se carregar a página, os itens da lista não tem o estilo CSS background-color: rgb(128, 128, 128)
 // ***** Será verificado que, ao se clicar em um item da lista, ele passa a ter o estilo CSS background-color: rgb(128, 128, 128)
-
-function selecionaElemento() {
-    const elementoSelecionado = document.getElementsByClassName('item-lista');
-    
-}
-selecionaElemento();
 
 // 0
 // ***
