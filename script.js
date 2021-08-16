@@ -16,18 +16,23 @@ function adicionaItemLista() {
   itemList.innerText = inputBox.value;
   itemList.className = 'item-list';
   inputBox.value = '';
-  itemList.addEventListener('click', changeBackgroundColor)
+  itemList.addEventListener('click', selecionaItemLista);
+  itemList.addEventListener('dblclick', riscaItemLista);
   list.appendChild(itemList);
 }
 
 // let selectedItem = document.querySelector('.selected');
-function changeBackgroundColor(event) {
+function selecionaItemLista(event) {
   let itemList = document.querySelectorAll('.item-list');
   for(let index = 0; index < itemList.length; index += 1) {
     
     if(itemList[index].classList.contains('selected')) {
       itemList[index].classList.remove('selected'); 
     }
-      event.target.classList.add('selected');
   }
+  event.target.classList.add('selected');
+}
+function riscaItemLista(event) {
+  let itemList = document.querySelectorAll('.item-list');
+  event.target.classList.toggle('completed'); 
 }

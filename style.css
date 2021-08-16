@@ -1,3 +1,9 @@
 .selected {
   background-color: grey;
 }
+.item-list {
+  margin-right: 90%;
+}
+.completed {
+  text-decoration: line-through solid rgb(0, 0, 0);
+}
