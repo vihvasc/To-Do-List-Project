@@ -2,6 +2,7 @@ const inputTask = document.getElementById('texto-tarefa');
 const createTask = document.getElementById('criar-tarefa');
 const taskList = document.getElementById('lista-tarefas');
 const body = document.querySelector('body');
+let clickCount = 0;
 
 // adiciona tarefa à lista
 function addTask() {
@@ -24,11 +25,37 @@ function addSelected(element) {
   }
   element.classList.add('selected');
 }
+
+// adiciona/remove classe 'completed'
+function markCompleted(element) {
+  if (element.classList.contains('completed')) {
+    element.classList.remove('completed');
+  } else {
+    element.classList.add('completed');
+  }
+}
+
+// verifica número de clicks
+// Fonte: https://gist.github.com/karbassi/639453
+function countClicks(element) {
+  clickCount += 1;
+  let singleClickTimer;
+  addSelected(element);
+  if (clickCount === 1) {
+    // aguarda 175ms para zerar clickCount
+    singleClickTimer = setTimeout(() => { clickCount = 0; }, 175);
+  } else if (clickCount === 2) {
+    clearTimeout(singleClickTimer);
+    clickCount = 0;
+    markCompleted(element);
+  }
+}
+
 // verifica se o elemento é um list item
 function checkItem(originEvent) {
   const element = originEvent.target;
   if (element.parentNode.id === 'lista-tarefas') {
-    addSelected(element);
+    countClicks(element);
   }
 }
 body.addEventListener('click', checkItem);
