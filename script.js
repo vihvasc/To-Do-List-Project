@@ -1,3 +1,4 @@
+// Cria Elementos
 createButton('Adicionar', 'criar-tarefa', 'input-button');
 createInput();
 
@@ -5,7 +6,9 @@ const inputButton = document.getElementById('criar-tarefa');
 const input = document.getElementById('texto-tarefa');
 const taskList = document.getElementById('lista-tarefas');
 
+// Adiciona Eventos
 inputButton.addEventListener('click', addNewTask);
+taskList.addEventListener('click', changeTaskColor);
 
 // Cria o input para adicionar Tarefas
 function createInput() {
@@ -37,4 +40,9 @@ function addNewTask() {
   } else {
     alert('Campo vazio!');
   }
+}
+
+// Muda a cor de fundo de um elemento da lista
+function changeTaskColor(event) {
+  event.target.style.backgroundColor = 'rgb(128,128,128)';
 }
