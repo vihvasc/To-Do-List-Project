@@ -1,12 +1,22 @@
 function selectTask(event) {
-  const currentTask = document.getElementById('selected-task');
+  const currentTask = document.getElementById('selected');
 
   if (currentTask) {
     currentTask.id = '';
   }
 
   const selectedTask = event.target;
-  selectedTask.id = 'selected-task';
+  selectedTask.id = 'selected';
+}
+
+function toggleCompletion(event) {
+  const selectedTask = event.target;
+
+  if (selectedTask.className === 'completed') {
+    selectedTask.className = '';
+  } else {
+    selectedTask.className = 'completed';
+  }
 }
 
 function createTask() {
@@ -17,6 +27,7 @@ function createTask() {
 
   newTask.innerText = taskText;
   newTask.addEventListener('click', selectTask);
+  newTask.addEventListener('dblclick', toggleCompletion);
   taskList.appendChild(newTask);
   taskInput.value = '';
 }
