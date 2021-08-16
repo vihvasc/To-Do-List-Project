@@ -5,11 +5,16 @@ function selecionar(task) {
   task.target.classList.add('selected');
 }
 
+function complete(task) {
+  task.target.classList.toggle('completed');
+}
+
 function criarTarefa() {
   const input = document.getElementById('texto-tarefa');
   const tarefa = document.createElement('li');
   tarefa.innerText = input.value;
   tarefa.addEventListener('click', selecionar);
+  tarefa.addEventListener('dblclick', complete);
   document.getElementById('lista-tarefas').appendChild(tarefa);
   input.value = '';
 }

@@ -4,6 +4,14 @@ h1 , p {
 }
 
 .selected {
-  background-color: rgb(128 , 128 , 128);
+  background-color: gray;
   width: fit-content;
+}
+
+.completed {
+  text-decoration: line-through solid black;
+}
+
+#lista-tarefas {
+  user-select: none;
 }
