@@ -34,9 +34,18 @@ function changeColor(event) {
 tasks.addEventListener('click', changeColor);
 
 // marca task como completa
+
+function compare1(itemEvent) {
+  return itemEvent.className === 'item completed selected';
+}
+
+function compare2(itemEvent) {
+  return itemEvent.className === 'item selected completed';
+}
+
 function addRemoveLineThrough(event) {
   const itemEvent = event.target;
-  if (itemEvent.className === 'item completed selected') {
+  if (compare1(itemEvent) || compare2(itemEvent)) {
     itemEvent.classList.remove('completed');
   } else {
     itemEvent.classList.add('completed');
@@ -44,3 +53,24 @@ function addRemoveLineThrough(event) {
 }
 
 itens.addEventListener('dblclick', addRemoveLineThrough);
+
+// apagar tudo
+const eraserAll = document.getElementById('apaga-tudo');
+
+function eraser() {
+  itens.innerText = '';
+}
+
+eraserAll.addEventListener('click', eraser);
+
+// apaga tarefas finalizadas
+const clearTaskCompleted = document.getElementById('remover-finalizados');
+
+function removeCompleteTask() {
+  const completedTask = document.querySelectorAll('.completed');
+  for (let index = 0; index < completedTask.length; index += 1) {
+    completedTask[index].remove();
+  }
+}
+
+clearTaskCompleted.addEventListener('click', removeCompleteTask);
