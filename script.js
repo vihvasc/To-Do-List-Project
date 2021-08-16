@@ -177,11 +177,29 @@ function removerFinalizados() {
         checaElementos[index].remove();
       }
     }
-    
   })
-
 }
 removerFinalizados();
+
+// 12 - Adicione um botão com id="salvar-tarefas" que salve o conteúdo da lista. Se você fechar e reabrir a página, a lista deve continuar no estado em que estava
+// *** O que será verificado:
+// ***** Será verificado que existe um elemento button com o id salvar-tarefas
+// ***** Será verificado que, quando a lista tiver vários elementos, alguns dos quais marcados como finalizados, um recarregamento da página mantém a lista exatamente como está.
+
+function salvarTarefas() {
+    const botaoSalvar = document.createElement('button');
+    botaoSalvar.textContent = 'Salvar Tarefas';
+    botaoSalvar.addEventListener('click', function () {
+    })
+    body.appendChild(botaoSalvar);
+}
+salvarTarefas();
+
+function localStorage(elementos) {
+  localStorage.setItem('elementos', JSON.stringify(elementos));
+  // localStorage.push(elementos);
+
+}
 
 // 1
 // ***
