@@ -1,6 +1,6 @@
 const taskInput = document.getElementById('texto-tarefa');
 const btnAddTask = document.getElementById('criar-tarefa');
-const btnEraseAllTasks = document.getElementById('apagar-tudo');
+const btnEraseAllTasks = document.getElementById('apaga-tudo');
 const taskList = document.getElementById('lista-tarefas');
 
 // Apagando todos os itens da lista.
@@ -43,7 +43,7 @@ function addTask() {
 
 function addAllListeners() {
   btnAddTask.addEventListener('click', addTask);
-//   btnEraseAllTasks.addEventListener('click', eraseAllTasks);
+  btnEraseAllTasks.addEventListener('click', eraseAllTasks);
 }
 
 function init() {
