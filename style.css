@@ -85,3 +85,12 @@ ol li {
   background-color: gray;
   font-weight: 900;
 }
+
+#mover-cima {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Font_Awesome_5_regular_arrow-circle-up_green.svg/768px-Font_Awesome_5_regular_arrow-circle-up_green.svg.png');
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-size: cover;
+  border: 1px solid green;
+}
