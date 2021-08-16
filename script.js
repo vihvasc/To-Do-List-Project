@@ -8,6 +8,7 @@ const removeDoneBtn = document.getElementById('remover-finalizados');
 const saveListBtn = document.getElementById('salvar-tarefas');
 const moveUpBtn = document.getElementById('mover-cima');
 const moveDownBtn = document.getElementById('mover-baixo');
+const deleteSelected = document.getElementById('remover-selecionado');
 
 function checkClasses(currentItem, userClasses, counter) {
   if (userClasses[counter] === ('completed')) {
@@ -155,6 +156,7 @@ function moveDown(array) {
   }
 }
 
+// delegate to moveUp or moveDown
 function move(originEvent) {
   const userBtn = originEvent.target;
   const userBtnId = userBtn.id;
@@ -167,3 +169,14 @@ function move(originEvent) {
 }
 moveDownBtn.addEventListener('click', move);
 moveUpBtn.addEventListener('click', move);
+
+// remove element with class 'selected'
+function removeSelected() {
+  const itemsArray = Array.from(taskList.children);
+  for (let counter = 0; counter < itemsArray.length; counter += 1) {
+    if (itemsArray[counter].classList.contains('selected')) {
+      taskList.removeChild(itemsArray[counter]);
+    }
+  }
+}
+deleteSelected.addEventListener('click', removeSelected);
