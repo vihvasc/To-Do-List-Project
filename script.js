@@ -8,7 +8,7 @@ criarTarefa.addEventListener('click', addListaTarefa);
 chamaLista.addEventListener('click' , corDaLinha);
 chamaLista.addEventListener('dblclick' , taskCompleted);
 buttonClearAll.addEventListener("click", clearAll);
-//removeFinalizados.addEventListener("click", removeElementoFinalizado);
+//npmremoveFinalizados.addEventListener("click", removeElementoFinalizado);
 
 function addListaTarefa() {
   const criaLista = document.createElement('li');
