@@ -1,6 +1,9 @@
-const tags = ['body', 'header', 'h1', 'div', 'p', 'main', 'section', 'input', 'ol'];
-// const ids = [''];
-// const classes = [''];
+const tags = ['body', 'header', 'h1', 'div', 'p', 'main', 'section', 'input', 'ol', 'button',
+  'li'];
+const ids = ['', 'header', 'funcionamento', 'texto-tarefa', 'lista-tarefas', 'criar-tarefa'];
+const innerTexts = ['', 'Minha Lista de Tarefas', 'Clique duas vezes em um item para marcá-lo'
+  + ' como completo', 'Nova', '[AVISO] - Digite o nome da tarefa para continuar...'];
+const classes = [''];
 
 function createList(myArray) {
   const titlesList = {
@@ -31,16 +34,38 @@ function createElements(myArray) {
 }
 
 function createPageStructure() {
-  createElements([tags[0], 0, tags[1], '', '', '']);
-  createElements([tags[1], 0, tags[2], tags[1], '', 'Minha Lista de Tarefas']);
-  createElements([tags[0], 0, tags[3], '', '', '']);
-  createElements([tags[3], 0, tags[4], 'funcionamento', '', 'Clique duas vezes '
-    + 'em um item para marcá-lo como completo']);
-  createElements([tags[0], 0, tags[5], '', '', '']);
-  createElements([tags[5], 0, tags[6], '', '', '']);
-  createElements([tags[6], 0, tags[7], 'texto-tarefa', '', '']);
-  createElements([tags[5], 0, tags[6], '', '', '']);
-  createElements([tags[6], 1, tags[8], 'lista-tarefas', '', '']);
+  createElements([tags[0], 0, tags[1], ids[0], classes[0], innerTexts[0]]);
+  createElements([tags[1], 0, tags[2], ids[1], classes[0], innerTexts[1]]);
+  createElements([tags[0], 0, tags[3], ids[0], classes[0], innerTexts[0]]);
+  createElements([tags[3], 0, tags[4], ids[2], classes[0], innerTexts[2]]);
+  createElements([tags[0], 0, tags[5], ids[0], classes[0], innerTexts[0]]);
+  createElements([tags[5], 0, tags[6], ids[0], classes[0], innerTexts[0]]);
+  createElements([tags[6], 0, tags[7], ids[3], classes[0], innerTexts[0]]);
+  createElements([tags[5], 0, tags[6], ids[0], classes[0], innerTexts[0]]);
+  createElements([tags[6], 1, tags[8], ids[4], classes[0], innerTexts[0]]);
+  createElements([tags[5], 0, tags[6], ids[0], classes[0], innerTexts[0]]);
+  createElements([tags[6], 2, tags[9], ids[5], classes[0], innerTexts[3]]);
 }
 
 createPageStructure();
+
+function createNewTask() {
+  const inputTextoTarefa = document.getElementById(ids[3]);
+  if (inputTextoTarefa.value !== '') {
+    const olListaTarefas = document.getElementById(ids[4]);
+    const liNewTask = document.createElement(tags[10]);
+    liNewTask.innerText = inputTextoTarefa.value;
+    olListaTarefas.appendChild(liNewTask);
+    inputTextoTarefa.value = '';
+  } else {
+    window.alert(innerTexts[4]);
+  }
+  inputTextoTarefa.focus();
+}
+
+function btnNewTask() {
+  const btnCriarTarefa = document.getElementById(ids[5]);
+  btnCriarTarefa.addEventListener('click', createNewTask);
+}
+
+btnNewTask();
