@@ -1,26 +1,11 @@
-let createTaskBtn = document.getElementById('criar-tarefa');
-let removeAllBtn = document.getElementById('apaga-tudo');
-let removeDoneBtn = document.getElementById('remover-finalizados');
-let input = document.getElementById('texto-tarefa');
-let taskList = document.getElementById('lista-tarefas');
-
-function handleAddTask() {
-  let li = document.createElement('li');
-  // li.classList.add('list-item');
-  li.textContent = input.value;
-
-  li.addEventListener('click', handleClickItem);
-  li.addEventListener('dblclick', handleDoubleClickItem);
-
-  taskList.appendChild(li);
-
-  input.value = '';
-}
-
-createTaskBtn.addEventListener('click', handleAddTask);
+const createTaskBtn = document.getElementById('criar-tarefa');
+const removeAllBtn = document.getElementById('apaga-tudo');
+const removeDoneBtn = document.getElementById('remover-finalizados');
+const input = document.getElementById('texto-tarefa');
+const taskList = document.getElementById('lista-tarefas');
 
 function handleClickItem(event) {
-  for (item of taskList.children) {
+  for (let item of taskList.children) {
     item.classList.remove('selected');
     item.style.background = '';
 
@@ -32,15 +17,27 @@ function handleClickItem(event) {
 let isCompleted = false;
 function handleDoubleClickItem(event) {
   if (isCompleted === false) {
-    for (item of taskList.children) {
-      event.target.classList.add('completed');
-      isCompleted = true;
-    }
+    event.target.classList.add('completed');
+    isCompleted = !isCompleted;
   } else {
     event.target.classList.remove('completed');
-    isCompleted = false;
+    isCompleted = !isCompleted;
   }
 }
+
+function handleAddTask() {
+  const li = document.createElement('li');
+  // li.classList.add('list-item');
+  li.textContent = input.value;
+
+  li.addEventListener('click', handleClickItem);
+  li.addEventListener('dblclick', handleDoubleClickItem);
+
+  taskList.appendChild(li);
+
+  input.value = '';
+}
+createTaskBtn.addEventListener('click', handleAddTask);
 
 function handleRemoveAll() {
   while (taskList.children.length !== 0) {
@@ -51,10 +48,12 @@ function handleRemoveAll() {
 removeAllBtn.addEventListener('click', handleRemoveAll);
 
 function handleRemoveDone() {
-  let completedTasks = document.getElementsByClassName('completed');
+  const completedTasks = document.getElementsByClassName('completed');
 
-  for (item of completedTasks) {
-    item.remove();
+  while (completedTasks.length !== 0) {
+    for (let item of completedTasks) {
+      item.remove();
+    }
   }
 }
 removeDoneBtn.addEventListener('click', handleRemoveDone);
