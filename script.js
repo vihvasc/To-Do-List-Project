@@ -1,18 +1,18 @@
 function mudaCorBG() {
 // Usa método this conforme exemplo visto em
 // http://www.w3bai.com/pt/jsref/met_element_addeventlistener.html
-
-  const todosElementosLista = document.getElementsByClassName('tarefasAdicionadas');
-  for (let i = 0; i < todosElementosLista.length; i += 1) {
-    if (todosElementosLista[i].classList.contains('selected')) {
-      todosElementosLista[i].classList.remove('selected');
-    } else {
-      todosElementosLista[i].classList.add('selected');
-    }
-    console.log(this);
+  if (this.classList.contains('selected')) {
+    this.classList.remove('selected');
+  } else {
+    this.classList.add('selected');
   }
-
-  console.log(todosElementosLista[0].classList);
+  const todaLista = document.getElementsByClassName('tarefasAdicionadas');
+  console.log(todaLista[0] === this);
+  for (let i = 0; i < todaLista.length; i += 1) {
+    if (todaLista[i] !== this) {
+      todaLista[i].classList.remove('selected');
+    }
+  }
 }
 
 function criarTarefa() {
@@ -31,8 +31,10 @@ function apagarLista() {
   tarefas.innerHTML = '';
 }
 
-const cliqueBotaoCriarTarefa = document.getElementById('criar-tarefa');
-cliqueBotaoCriarTarefa.addEventListener('click', criarTarefa);
+window.onload = function principal() {
+  const cliqueBotaoCriarTarefa = document.getElementById('criar-tarefa');
+  cliqueBotaoCriarTarefa.addEventListener('click', criarTarefa);
 
-const cliqueBotaoApagar = document.getElementById('apaga-tudo');
-cliqueBotaoApagar.addEventListener('click', apagarLista);
+  const cliqueBotaoApagar = document.getElementById('apaga-tudo');
+  cliqueBotaoApagar.addEventListener('click', apagarLista);
+};
