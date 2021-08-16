@@ -29,6 +29,10 @@ function createListItem() {
 
 button.addEventListener('click', createListItem);
 
+function targetItem(event) {
+    event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+}
 
+ol.addEventListener('click', targetItem);
 
 
