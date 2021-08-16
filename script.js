@@ -2,6 +2,12 @@ const taskInput = document.getElementById('texto-tarefa');
 const btnAddTask = document.getElementById('criar-tarefa');
 const taskList = document.getElementById('lista-tarefas');
 
+// Riscando tarefa (marcando como concluída).
+function finishTask(event) {
+  const task = event.target;
+  task.classList.toggle('completed');
+}
+
 // Seleciona uma tarefa.
 function selectTask(event) {
   const actualSelected = event.target;
@@ -17,6 +23,7 @@ function createTask(name) {
   const li = document.createElement('li');
   li.innerText = name;
   li.addEventListener('click', selectTask);
+  li.addEventListener('dblclick', finishTask);
   return li;
 }
 
