@@ -4,9 +4,24 @@ let listIndex = document.getElementById('lista-tarefas');
 let list = document.querySelectorAll('li');
 
 
-function pintarLi () {
+function pintarLi (event) {
+  let list = document.querySelectorAll('li');
+  for (let i = 0; i < list.length; i += 1) {
+    list[i].classList.remove('selected');
+  }
+  const target = event.target;
+  target.classList.add('selected');
+
+  console.log(list)
+}
+
+function riscarLi (event) {
   let target = event.target;
-  target.style.backgroundColor = 'rgb(128, 128, 128)'
+  if (target.classList.contains('completed')) {
+    target.classList.remove('completed');
+  } else {
+    target.classList.add('completed');
+  }
 }
 
 function addText() {
@@ -16,6 +31,7 @@ function addText() {
   liCreate.appendChild(textPush);
   text.value = '';
   liCreate.addEventListener('click', pintarLi);
+  liCreate.addEventListener('dblclick', riscarLi);
 }
 
 button.addEventListener('click', addText);
