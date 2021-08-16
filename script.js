@@ -82,6 +82,12 @@ function changeColor (){
 //    console.log(todoList);
 //  }
 
+//função para remover item selcionado
+function removeSelected(){
+  let selected = document.querySelector(".selected");
+  selected.remove();
+}
+
 // função para criar eventos gerais
 function createEvent(){
   const button = document.getElementById('criar-tarefa');
@@ -93,8 +99,11 @@ function createEvent(){
   const clearCompletedList = document.getElementById("remover-finalizados");
   clearCompletedList.addEventListener('click', clearCompleted);
 
-  const saveItems = document.getElementById("salvar-tarefas");
-  saveItems.addEventListener("click", saveList);
+  // const saveItems = document.getElementById("salvar-tarefas");
+  // saveItems.addEventListener("click", saveList);
+
+  const removeSelectedButton = document.getElementById("remover-selecionado");
+  removeSelectedButton.addEventListener('click', removeSelected);
 }
 
 // função para selecionar um elemento da lista
