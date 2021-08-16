@@ -1,7 +1,18 @@
 function mudaCorBG() {
-// Conforme exemplo visto em
+// Usa método this conforme exemplo visto em
 // http://www.w3bai.com/pt/jsref/met_element_addeventlistener.html
-  this.style.backgroundColor = 'rgb(128,128,128)';
+
+  const todosElementosLista = document.getElementsByClassName('tarefasAdicionadas');
+  for (let i = 0; i < todosElementosLista.length; i += 1) {
+    if (todosElementosLista[i].classList.contains('selected')) {
+      todosElementosLista[i].classList.remove('selected');
+    } else {
+      todosElementosLista[i].classList.add('selected');
+    }
+    console.log(this);
+  }
+
+  console.log(todosElementosLista[0].classList);
 }
 
 function criarTarefa() {
