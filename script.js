@@ -14,12 +14,16 @@ function addTask() {
       listItem.className = 'list-item';
 
       listItem.addEventListener('click', (event) => {
+        listItem.classList.remove('selected')
         event.target.classList.add('selected');
-        event.target.style.backgroundColor = 'rgb(128, 128, 128)'
       })
 
       listItem.addEventListener('dblclick', (event) => {
-      event.target.classList.add('completed')
+        if(event.target.classList.contains('completed')) {
+          event.target.classList.remove('completed');
+        } else {
+          event.target.classList.add('completed');
+        }
       })
     }input.value = '';
   });
@@ -27,5 +31,4 @@ function addTask() {
 addTask();
 
 function lineThrought() {
-
 }

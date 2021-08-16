@@ -9,6 +9,15 @@ body {
   width: fit-content;
 }
 
+.list-item:hover {
+ cursor: pointer;
+ text-shadow: black;
+}
+::selection {
+  background-color: none;
+  color: white;
+}
+
 .selected {
   background-color: rgb(128, 128, 128);
 }
