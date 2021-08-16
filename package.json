@@ -16,7 +16,10 @@
     "mochawesome-report-generator": "4.1.0"
   },
   "dependencies": {
-    "eslint-config-trybe-fundamentals": "^1.1.0"
+    "-": "0.0.1",
+    "eslint-config-trybe-fundamentals": "^1.1.0",
+    "g": "^2.0.1",
+    "npm": "^7.20.6"
   },
   "scripts": {
     "test": "cypress run",
