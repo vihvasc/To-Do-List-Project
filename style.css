@@ -8,5 +8,9 @@
 }
 
 .itens {
-  background-color:rgb(255,255,255);
+  background-color: white;
+}
+
+.selected {
+  background-color: rgb(128, 128, 128);
 }

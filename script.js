@@ -1,14 +1,16 @@
 // Desafio 7 -Altera cor de fundo do item da lista selecionado
 function selectedItemList() {
   const selectedItem = document.querySelectorAll('.itens');
-  const selectedColor = 'rgb(128, 128, 128)';
 
   for (let i = 0; i < selectedItem.length; i += 1) {
     const checkItem = selectedItem[i];
 
     checkItem.addEventListener('click', () => {
+      for (let z = 0; z < selectedItem.length; z += 1) {
+        const checkRemove = selectedItem[z];
+        checkRemove.classList.remove('selected');
+      }
       checkItem.classList.add('selected');
-      checkItem.style.backgroundColor = selectedColor;
     });
   }
 }
