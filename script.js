@@ -34,22 +34,33 @@ function applyBackground(selectedItem) {
   const oldSelected = document.querySelector('.selected');
   if (oldSelected) {
     oldSelected.style.background = '';
+    oldSelected.classList.remove('selected');
   }
   const item = selectedItem;
   item.style.background = selectedBackground;
-  item.className = 'selected';
+  item.classList.add('selected');
 }
 
-function changeBackground(event) {
+function selectTask(event) {
   const theTarget = event.target;
   applyBackground(theTarget);
+}
+
+function applyLinetrough(completedItem) {
+  completedItem.classList.toggle('completed');
+}
+
+function completedTask(event) {
+  const theTarget = event.target;
+  applyLinetrough(theTarget);
 }
 
 function addTask() {
   const taskContent = input.value;
   const taskItem = document.createElement('li');
   taskItem.innerText = taskContent;
-  taskItem.addEventListener('click', changeBackground);
+  taskItem.addEventListener('click', selectTask);
+  taskItem.addEventListener('dblclick', completedTask);
   taskList.appendChild(taskItem);
   input.value = '';
 }
