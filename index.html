@@ -9,29 +9,33 @@
 
 </head>
 <body>
-
 	<div id="to-do-list">
 		<header>Minha Lista de Tarefas</header>
 
 		<p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
+
   	<div id='entrada'>
 
 	  	<input id='texto-tarefa' type="text">
 	  	<button id="criar-tarefa">Adicionar</button>
 
   	</div>
+		
 		<ol id="lista-tarefas"></ol>
 
-		<div>
+		<div id="buttons">
 
-			<button id="remover-finalizados">Limpar Completados</button>
+			<button id="remover-selecionado">x</button>
+			<button id="mover-cima">↑</button>
+			<button id="mover-baixo">↓</button>
+
+			<button id="remover-finalizados">Limpar Completos</button>
 			<button id="apaga-tudo">Limpar Lista</button>
 			<button id="salvar-tarefas">Salvar Tarefas</button>
-			
+
 		</div>
 
   </div>
-
 	<script src="script.js"></script>	
 </body>
 </html>

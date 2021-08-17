@@ -72,3 +72,41 @@ buttonSave.addEventListener('click', () => {
 window.onload = () => {
   taskList.innerHTML = localStorage.getItem('lista');
 };
+
+// Desafio 13 - Adiciona botões que mudam a posição dos itens na lista
+const moveUpButton = document.getElementById('mover-cima');
+const moveDownButton = document.getElementById('mover-baixo');
+
+moveUpButton.addEventListener('click', () => {
+// identifica qual é o meu elemento com a tag selectec
+  const selected = document.querySelector('.selected');
+// verifica se existe algum elemento com a tag selected
+  if (selected) {
+// olha pro 'filho' que tem antes de selected
+    const previous = selected.previousSibling;
+// verifica se o 'filho' anterior existe
+    if (previous) {
+// coloca o selected antes do meu nó anterior
+      selected.parentNode.insertBefore(selected, previous);
+    }
+  }
+});
+
+moveDownButton.addEventListener('click', () => {
+// faz o mesmo que o anterior porém verifica o próximo 'filho'
+  const selected = document.querySelector('.selected');
+  if (selected) {
+    const nextSib = selected.nextSibling;
+    if (nextSib) {
+      selected.parentNode.insertBefore(nextSib, selected);
+    }
+  }
+});
+
+// // Desafio 14 - Adiciona botão que remove itens selecionados
+// const removeSelectedButton = document.getElementById('remover-selecionado');
+
+// removeSelectedButton.addEventListener('click', () => {
+//   const selected = document.querySelector('.selected');
+//   selected.remove();
+// });

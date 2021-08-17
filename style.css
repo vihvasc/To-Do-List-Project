@@ -4,14 +4,8 @@
   background-color: teal;
 }
 
-#to-do-list {
-  margin-top: 4%;
-  margin-left: 2%;
-  margin-right: 10%;
-  padding: 1.7%;
+div {
   background-color: white;
-  border-radius: 9px;
-  border: 1px solid white;
 }
 
 header {
@@ -31,8 +25,16 @@ header {
   margin-bottom: 1.5%;
 }
 
+#to-do-list {
+  margin-top: 4%;
+  margin-left: 3%;
+  margin-right: 10%;
+  padding: 1.7%;
+  border-radius: 9px;
+  border: 1px solid white;
+}
+
 #entrada {
-  background-color: white;
   display: block;
   box-sizing: border-box;
   width: 80%;
@@ -44,14 +46,36 @@ header {
   background-color: white;
   border-radius: 3px;
   border: 1.5px solid gray;
+  padding: 2.5px;
 }
 
-li {
+#criar-tarefa {
+  width: 10%;
+  background-color: dodgerblue;
+  color: whitesmoke;
+  border-radius: 20px;
+  border: 1px solid dodgerblue;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 15px;
   cursor: pointer;
+}
+
+#lista-tarefas {
+  background-color: white;
+  box-sizing: border-box;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 3%;
+  margin-bottom: 1%;
 }
 
 .itens {
   background-color: white;
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .selected {
@@ -60,4 +84,90 @@ li {
 
 .completed {
   text-decoration: line-through solid black;
+}
+
+#buttons {
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+#remover-finalizados {
+  width: 13%;
+  background-color: dodgerblue;
+  color: whitesmoke;
+  border-radius: 20px;
+  border: 1px solid dodgerblue;
+  margin-left: 15px;
+  margin-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+#apaga-tudo {
+  width: 10%;
+  background-color: maroon;
+  color: whitesmoke;
+  border-radius: 20px;
+  border: 1px solid maroon;
+  margin-left: 15px;
+  margin-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+#salvar-tarefas {
+  width: 12%;
+  background-color: forestgreen;
+  color: whitesmoke;
+  border-radius: 20px;
+  border: 1px solid forestgreen;
+  margin-left: 15px;
+  margin-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+#remover-selecionado{
+  width: 4%;
+  background-color: brown;
+  color: whitesmoke;
+  border-radius: 20px;
+  border: 1px solid brown;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-left: 15px;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+#mover-cima {
+  width: 4%;
+  background-color: darkgoldenrod;
+  color: whitesmoke;
+  border-radius: 20px;
+  border: 1px solid darkgoldenrod;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-left: 15px;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+#mover-baixo {
+  width: 4%;
+  background-color: darkgoldenrod;
+  color: whitesmoke;
+  border-radius: 20px;
+  border: 1px solid darkgoldenrod;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-left: 15px;
+  margin-right: 15px;
+  cursor: pointer;
 }
