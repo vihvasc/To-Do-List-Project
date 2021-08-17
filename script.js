@@ -210,6 +210,17 @@ function salvaTarefas() {
 }
 // salvaTarefas();
 
+function recuperaTarefas () {
+  if (localStorage.hasOwnProperty("arrayDeTarefas")) {
+    const arrayDeTarefas = JSON.parse(localStorage.getItem("arrayDeTarefas"))
+    alert("INFO: Existem dados Salvos no localStorage!!!"); // [DEBUG]
+  } else {
+    alert("INFO: Não existem dados Salvos no localStorage!!!");
+  }
+}
+recuperaTarefas();
+
+
 // 14 - Adicione um botão com id="remover-selecionado" que, quando clicado, remove o item selecionado
 // *** O que será verificado:
 // ***** Será verificada a presença de um elemento button com um id remover-selecionado
