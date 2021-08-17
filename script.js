@@ -1,3 +1,5 @@
+const listaTarefas = 'lista-tarefas';
+
 // Requisitos 7 e 8 - Clicar em um item da lista altera sua cor de fundo. Apenas um item pode ser selecionado.
 function handleListBackgroundColor(event) {
   const listItem = document.getElementsByTagName('li');
@@ -16,19 +18,27 @@ function handleListItemDbClick(event) {
   targetEvent.target.classList.toggle('completed');
 }
 
-// Cria Lista Ordenada pelo DOM.
-function createOrderedList() {
+// Cria função que adiciona todos os eventos aos items da lista.
+function addItemListEvents(itemList) {
+  for (let i = 0; i < itemList.length; i += 1) {
+    itemList[i].addEventListener('click', handleListBackgroundColor);
+    itemList[i].addEventListener('dblclick', handleListItemDbClick);
+  }
+}
+
+// Cria Lista Ordenada pelo DOM e Restaura o Local Storage.
+function restoreLocalStorage() {
+  const value = JSON.parse(localStorage.getItem('taskList'));
+
   const newOl = document.createElement('ol');
-  newOl.id = 'lista-tarefas';
+
+  newOl.id = listaTarefas;
+  newOl.innerHTML = value;
   const getOlParent = document.getElementById('list-container');
 
   getOlParent.appendChild(newOl);
-}
-
-// Cria função que adiciona todos os eventos aos items da lista.
-function addItemListEvents(itemList) {
-  itemList.addEventListener('click', handleListBackgroundColor);
-  itemList.addEventListener('dblclick', handleListItemDbClick);
+  console.log(newOl.childNodes);
+  addItemListEvents(newOl.childNodes);
 }
 
 // Requisitos 5 e 6 - Cria um novo item ao final da lista e apaga o valor do input.
@@ -36,14 +46,14 @@ function handleNewTask() {
   const newTask = document.createElement('li');
   newTask.innerText = document.getElementById('texto-tarefa').value;
 
-  const orderedList = document.getElementById('lista-tarefas');
+  const orderedList = document.getElementById(listaTarefas);
   orderedList.appendChild(newTask);
 
   // Apaga o input digitado.
   document.getElementById('texto-tarefa').value = '';
 
   // Adiciona Event Listener a Lista.
-  addItemListEvents(newTask);
+  addItemListEvents(orderedList.childNodes);
 }
 
 function addNewTaskButtonEvent() {
@@ -58,6 +68,7 @@ function handleClearListButton() {
   for (let i = 0; i < itemList.length; i += 1) {
     itemList[i].remove();
   }
+  localStorage.clear();
 }
 
 function addClearListButtonEvent() {
@@ -81,36 +92,19 @@ function addCompletedClearButtonEvent() {
 
 // Requisito 12 - Cria função que salva lista no Local Storage.
 function storageTasks() {
-  const itemList = document.querySelectorAll('li');
+  const orderedList = document.getElementById(listaTarefas);
 
-  for (let i = 0; i < itemList.length; i += 1) {
-    if (itemList[i] && itemList[i].innerText) {
-      localStorage.setItem(`li${[i]}`, itemList[i].innerText);
-    }
-  }
+  localStorage.setItem('taskList', JSON.stringify(orderedList.innerHTML));
 }
 
+// Tentar salvar a OL ao invés dos itens individuais
 function addStorageTasksButtonEvent() {
   const getSaveButton = document.getElementById('salvar-tarefas');
 
   getSaveButton.addEventListener('click', storageTasks);
 }
 
-function restoreLocalStorage() {
-  for (let i = 0; i < localStorage.length; i += 1) {
-    const key = localStorage.key(i);
-    const value = localStorage.getItem(key);
-
-    const newTask = document.createElement('li');
-    newTask.innerText = value;
-
-    const orderedList = document.getElementById('lista-tarefas');
-    orderedList.appendChild(newTask);
-  }
-}
-
 window.onload = function () {
-  createOrderedList();
   restoreLocalStorage();
   addNewTaskButtonEvent();
   addClearListButtonEvent();
