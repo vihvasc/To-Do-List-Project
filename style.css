@@ -42,9 +42,13 @@ header {
   font-weight: 900;
   background-color: rgb(92, 201, 92);
   border: 0;
+  border-radius: 4px;
   cursor: pointer;
+  transition: all 2ms;
 }
-
+.task-creation-container button:hover {
+  transform: scale(1.05);
+}
 .task-creation-container label {
   display: block;
   font-size: 20px;
@@ -122,10 +126,31 @@ header {
   font-size: 17px;
   cursor: pointer;
   transition: transform 0.2s;
+  border-radius: 4px;
 }
 
 #apaga-tudo:hover {
   background-color: rgb(56, 56, 56);
+  transform: scale(1.05);
+}
+
+#remove-finalizados {
+  width: 170px;
+  height: 50px;
+  vertical-align: top;
+  border: 0;
+  margin-left: 10px;
+  background-color: rgb(194, 83, 83);
+  font-weight: 900;
+  font-size: 17px;
+  padding: 5px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  border-radius: 4px;
+}
+
+#remove-finalizados:hover {
+  background-color: rgb(172, 70, 70);
   transform: scale(1.05);
 }
 

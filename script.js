@@ -49,8 +49,18 @@ function deleteAll() {
   });
 }
 
+function removeCompletedTask() {
+  const getCompletedTasks = document.querySelectorAll('.completed');
+  for (let i = 0; i < getCompletedTasks.length; i += 1) {
+    getOrdenedList.removeChild(getCompletedTasks[i]);
+    console.log(getCompletedTasks[i]);
+  }
+}
+
 window.onload = () => {
   createTask();
   completeTask();
   deleteAll();
+  removeCompletedTask();
+  document.getElementById('remove-finalizados').addEventListener('click', removeCompletedTask);
 };
