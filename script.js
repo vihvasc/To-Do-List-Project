@@ -4,12 +4,11 @@ const taskList = document.querySelector('#lista-tarefas');
 const taskItem = document.getElementsByClassName('task');
 const buttonClear = document.querySelector('#apaga-tudo');
 const buttonClearFinalized = document.querySelector('#remover-finalizados');
+const buttonSaveTasks = document.querySelector('#salvar-tarefas');
 
 function removeAllTask() {
   taskList.innerHTML = '';
 }
-
-buttonClear.addEventListener('click', removeAllTask);
 
 function removeFinalized() {
   const rmCompleted = document.querySelectorAll('li');
@@ -20,8 +19,6 @@ function removeFinalized() {
     }
   }
 }
-
-buttonClearFinalized.addEventListener('click', removeFinalized);
 
 function doubleClick(event) {
   const elemento = event.target;
@@ -43,8 +40,6 @@ function createTask() {
   taskList.addEventListener('dblclick', doubleClick);
 }
 
-createTasks.addEventListener('click', createTask);
-
 function addBackgroundColor(event) {
   const elemento = event.target;
   if (elemento.style.backgroundColor === '') {
@@ -61,4 +56,20 @@ function removeBackgroundColor(event) {
   addBackgroundColor(event);
 }
 
+function saveTasks() {
+  localStorage.setItem('ol', taskList.innerHTML);
+}
+
+function localStorageOl() {
+  if (localStorage.getItem('ol')) {
+    taskList.innerHTML = localStorage.getItem('ol');
+  }
+}
+
+localStorageOl();
+
+buttonClear.addEventListener('click', removeAllTask);
+buttonClearFinalized.addEventListener('click', removeFinalized);
+createTasks.addEventListener('click', createTask);
 taskList.addEventListener('click', removeBackgroundColor);
+buttonSaveTasks.addEventListener('click', saveTasks);
