@@ -190,7 +190,7 @@ function addMoveTaskDownButtonEvent() {
   buttonDown.addEventListener('click', handleMoveTaskDown);
 }
 
-window.onload = function () {
+function loadAllPageFunctions() {
   restoreLocalStorage();
   addNewTaskButtonEvent();
   addClearListButtonEvent();
@@ -199,4 +199,8 @@ window.onload = function () {
   addDeleteSelectedTaskItemButton();
   addMoveTaskUpButtonEvent();
   addMoveTaskDownButtonEvent();
+}
+
+window.onload = function () {
+  loadAllPageFunctions();
 };
