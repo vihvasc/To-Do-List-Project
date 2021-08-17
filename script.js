@@ -1,5 +1,6 @@
 
 let createTask=document.querySelector("#criar-tarefa");//button
+let clearAll=document.querySelector("#apaga-tudo");
 let textTask=document.querySelector("#texto-tarefa");//imput
 let taskList=document.querySelector("#lista-tarefas");//tag ol
 
@@ -12,7 +13,12 @@ function generateTask(){
   taskList.appendChild(task);
   task.innerHTML=textTask.value;
   textTask.value="";
+  
   task.addEventListener("click",paintBackgroundTask);
+
+  clearAll.addEventListener("click", function() {
+    taskList.removeChild(task);
+  })
 }
 
 function paintBackgroundTask(task){
@@ -20,5 +26,5 @@ function paintBackgroundTask(task){
   for(i=0; i<classTask.length; i+=1){
     classTask[i]=task;
     task.target.style.backgroundColor="rgb(128, 128, 128)";
-    }
   }
+}
