@@ -1,6 +1,7 @@
 let buttonList = document.getElementById('criar-tarefa')
 let listItem = document.getElementsByTagName('li')
-
+let buttonEraseAll = document.getElementById('apaga-tudo')
+let buttonEraseFinished = document.getElementById('remover-finalizados')
 
 
 buttonList.addEventListener('click', function(){
@@ -12,6 +13,7 @@ buttonList.addEventListener('click', function(){
     item.innerHTML = task
     input.value = ''
     item.addEventListener('click', clickLiToChangeColor)
+    item.addEventListener('dblclick', completedTask)
 })
 
 
@@ -24,3 +26,25 @@ function clickLiToChangeColor(li) {
     li.target.style.backgroundColor = 'rgb(128, 128, 128)'
 }
 
+function completedTask(event) {
+    event.target.classList.toggle('completed')
+}
+
+
+buttonEraseAll.addEventListener('click', function() {
+    const list = document.querySelectorAll('li')
+    for (index = 0; index < list.length; index += 1) {
+        list[index].remove()
+    }
+})
+
+buttonEraseFinished.addEventListener('click', function() {
+    const list = document.querySelectorAll('li.completed')
+    for (index = 0; index < list.length; index += 1) {
+        list[index].remove()
+    }
+})
+
+let saved = localStorage.setItem('ol', 'li')
+
+console.log(saved)
