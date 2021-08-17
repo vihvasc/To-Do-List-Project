@@ -9,8 +9,14 @@
 </head>
   <header>Minha Lista de Tarefas</header>
   <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
-  <input id="texto-tarefa" type="text"/>
-  <button id="criar-tarefa" onclick="addNewTask()">Adicionar</button>
+  <div>
+    <input type="text" id="task-input">
+    <button id="criar-tarefa">Adicionar</button>
+  </div>
+  <div class="task-list-container">
+    <ol class="task-list">
+    </ol>
+  </div>
 <body>
   <script src="script.js"></script>
 </body>

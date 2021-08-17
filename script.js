@@ -5,14 +5,13 @@ document.body.appendChild(newList);
 function addNewTask() {
   const addButton = document.querySelector('#criar-tarefa');
   const getInputField = document.querySelector('#task-input');
+  getInputField.id = 'texto-tarefa';
   let getTask = document.querySelector('#texto-tarefa');
 
   addButton.addEventListener('click', function () {
     const newLine = document.createElement('li');
+    newLine.innerText = getInputField.value;
     newList.appendChild(newLine);
-    console.log('valor: ');
-    console.log(getInputField.value);
-    newLine.innerText = getTask;
     getInputField.value = '';
   });
 }
