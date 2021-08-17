@@ -72,3 +72,24 @@ function removeSelectedTask() {
   }
 }
 buttonRemoveSelected.addEventListener('click', removeSelectedTask);
+
+const buttonMoveUp = document.getElementById('mover-cima');
+function moveUp() {
+  for (let index = 1; index < li.length; index += 1) {
+    if (li[index].classList.contains('selected')) {
+      ol.insertBefore(li[index], li[index - 1]);
+    }
+  }
+}
+buttonMoveUp.addEventListener('click', moveUp);
+
+const buttonMoveDown = document.getElementById('mover-baixo');
+function moveDown() {
+  for (let index = 0; index < li.length - 1; index += 1) {
+    if (li[index].classList.contains('selected')) {
+      ol.insertBefore(li[index + 1], li[index]);
+      index = li.length;
+    }
+  }
+}
+buttonMoveDown.addEventListener('click', moveDown);
