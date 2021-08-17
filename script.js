@@ -1,8 +1,6 @@
 const body = document.querySelector('body');
 const input = document.getElementById('texto-tarefa');
 const taskList = document.getElementById('lista-tarefas');
-// const storedTasks = localStorage.getItem('storedTasks');
-// const changeColor = document.querySelectorAll('.tarefa');
 
 function createButton(buttonId, buttonText, insertInsideId) {
   const createButton = document.createElement('button');
@@ -15,8 +13,8 @@ function createButton(buttonId, buttonText, insertInsideId) {
 function addTask() {
   const createLi = document.createElement('li');
   // if (input.value === '') {
-  //   return alert('Favor inserir um nome válido para a tarefa!');
-  // }
+  //     return alert('Favor inserir um nome válido para a tarefa!');
+  //   }
   createLi.innerText = input.value;
   createLi.id = 'tarefa';
   createLi.addEventListener('click', addClass);
@@ -74,7 +72,7 @@ function createEraseAllButton() {
 }
 createEraseAllButton();
 
-function eraseFinished() {
+function removeFinished() {
   let completedTasks = document.querySelectorAll('.completed');
   for (let task = 0; task < completedTasks.length; task += 1) {
     completedTasks[task].remove();
@@ -84,6 +82,20 @@ function eraseFinished() {
 function createRemoveFinishedButton() {
   createButton('remover-finalizados', 'Remover Finalizados', 'lista-tarefas');
   const removerFinalizados = document.getElementById('remover-finalizados');
-  removerFinalizados.addEventListener('click', eraseFinished);
+  removerFinalizados.addEventListener('click', removeFinished);
 }
 createRemoveFinishedButton();
+
+function removeSelected() {
+  let selectedTask = document.querySelectorAll('.selected');
+  for (let task = 0; task < selectedTask.length; task += 1) {
+    selectedTask[task].remove();
+  }
+}
+
+function createRemoveSelectedButton() {
+  createButton('remover-selecionado', 'Remover Selecionado', 'lista-tarefas');
+  const removerSelecionado = document.getElementById('remover-selecionado');
+  removerSelecionado.addEventListener('click', removeSelected);
+}
+createRemoveSelectedButton();
