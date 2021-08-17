@@ -1,99 +1,111 @@
-
-let adiciona = document.querySelector('#criar-tarefa');
-adiciona.addEventListener('click', adicionaItem);
+document.querySelector('#barra').style.maxWidth = '0.0001%'
 function completa(evento) {
-  let li = evento.target;
+  const li = evento.target;
   if (li.className !== 'completed') {
     li.className = 'completed';
     li.style.textDecoration = 'line-through';
+    barraStatus()
   } else {
     li.className = '';
     li.style.textDecoration = 'none';
+    barraStatus()
   }
 }
 function mudaCor(evento) {
-  if (document.querySelector('#selecionado')) {
-    antigo = document.querySelector('#selecionado');
+  const select = document.querySelector('#selecionado');
+  if (select) {
+    const antigo = select;
     antigo.id = '';
     antigo.style.backgroundColor = '';
   }
-  item = evento.target;
+  const item = evento.target;
   item.id = 'selecionado';
   item.style.backgroundColor = 'rgb(128,128,128)';
 }
 function adicionaItem() {
-  let item = document.querySelector('#texto-tarefa').value;
-  let ol = document.querySelector('#lista-tarefas');
-  let li = document.createElement("li");
+  const item = document.querySelector('#texto-tarefa').value;
+  const ol = document.querySelector('#lista-tarefas');
+  const li = document.createElement('li');
   li.innerText = item;
   li.addEventListener('click', mudaCor);
   li.addEventListener('dblclick', completa);
   ol.appendChild(li);
   document.querySelector('#texto-tarefa').value = '';
-};
-
+}
+const adiciona = document.querySelector('#criar-tarefa');
+adiciona.addEventListener('click', adicionaItem);
 function apagaTudo() {
-  let ol = document.querySelector('#lista-tarefas');
-  let filhos = ol.children;
-  let tamanho = filhos.length - 1;
+  const ol = document.querySelector('#lista-tarefas');
+  const filhos = ol.children;
+  const tamanho = filhos.length - 1;
+  document.querySelector('#barra').style.maxWidth = '0.0001%'
   for (let index = tamanho; index > -1; index -= 1) {
     filhos[index].remove();
   }
-};
+}
 document.querySelector('#apaga-tudo').addEventListener('click', apagaTudo);
 function removeFinalizados() {
-  let finalizados = document.getElementsByClassName('completed');
-  let finalizadosTamanho = finalizados.length - 1;
-  for (let index = finalizadosTamanho; index >-1; index -= 1) {
+  const finalizados = document.getElementsByClassName('completed');
+  const finalizadosTamanho = finalizados.length - 1;
+  document.querySelector('#barra').style.maxWidth = '0.0001%'
+  for (let index = finalizadosTamanho; index > -1; index -= 1) {
     finalizados[index].remove();
-  } 
-};
-document.querySelector('#remover-finalizados').addEventListener('click', removeFinalizados);
-function salvaLista() {
-  let lista = document.querySelector('ol')
-  teste = {}
-  for (let index = 0; index < lista.length; index += 1) {
-    teste[linha[index]] = lista[index]
   }
-  localStorage.setItem('lista', teste)
 }
-document.querySelector('#salvar-tarefas').addEventListener('click', salvaLista);
-window.onload = function () {
-  let lista = document.querySelector('ol')
-  lista = localStorage.lista
-}
+document.querySelector('#remover-finalizados').addEventListener('click', removeFinalizados);
 function removeSelecionado() {
-  let selecionado = document.querySelector('#selecionado')
-  selecionado.remove()
+  const selecionado = document.querySelector('#selecionado');
+  selecionado.remove();
 }
 document.querySelector('#remover-selecionado').addEventListener('click', removeSelecionado);
 function moverCima() {
-  if (document.querySelector('#selecionado')) {
-    let selecionado = document.querySelector('#selecionado');
-  let lista = document.getElementsByTagName('ol')[0];
-  let itens = document.getElementsByTagName('li');
-  let vetor = Array.from(itens);
-  index = vetor.indexOf(selecionado);
-  if (index === 0) {
-    return 
+  const selecionado = document.querySelector('#selecionado');
+  if (selecionado) {
+    const lista = document.getElementsByTagName('ol')[0];
+    const itens = document.getElementsByTagName('li');
+    const vetor = Array.from(itens);
+    const index = vetor.indexOf(selecionado);
+    if (index === 0) {
+      return;
+    }
+    lista.insertBefore(selecionado, itens[index - 1]);
   }
-  lista.insertBefore(selecionado, itens[index-1]);
-  }
-  
 }
 document.querySelector('#mover-cima').addEventListener('click', moverCima);
 function moverBaixo() {
-  if (document.querySelector('#selecionado')) {
-    let selecionado = document.querySelector('#selecionado');
-  let lista = document.getElementsByTagName('ol')[0];
-  let itens = document.getElementsByTagName('li');
-  let vetor = Array.from(itens);
-  index = vetor.indexOf(selecionado);
-  if (index === vetor.length-1) {
-    return 
+  const selecionado = document.querySelector('#selecionado');
+  if (selecionado) {
+    const lista = document.getElementsByTagName('ol')[0];
+    const itens = document.getElementsByTagName('li');
+    const vetor = Array.from(itens);
+    const index = vetor.indexOf(selecionado);
+    if (index === vetor.length - 1) {
+      return;
+    }
+    lista.insertBefore(selecionado, itens[index + 2]);
   }
-  lista.insertBefore(selecionado, itens[index+2]);
-  }
-  
 }
 document.querySelector('#mover-baixo').addEventListener('click', moverBaixo);
+function salvar() {
+  const ol = document.querySelectorAll('#lista-tarefas');
+  let save = []
+  for (let index = 0; index < ol.length; index += 1) {
+    let aaa = ol[index].innerText
+    save.push(aaa)
+  }
+  localStorage.setItem('linhas', save.toString())
+}
+document.getElementById('salvar-tarefas').addEventListener('click', salvar);
+function barraStatus() {
+  const barra = document.querySelector('#barra');
+  const total = document.getElementsByTagName('li').length;
+  const complete = document.getElementsByClassName('completed').length;
+  let razao = complete/total *100 + '%'
+  barra.style.maxWidth = razao
+  if (razao === '100%') {
+    let acabou = document.createElement('h1')
+    acabou.style.fontSize = '1.4em'
+    acabou.innerText = 'Parabens! você acabou suas tarefas'
+    document.body.appendChild(acabou)
+  }
+}
