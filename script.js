@@ -36,7 +36,9 @@ function criarBotao() {
     const listaDeTarefas = document.getElementById('lista-tarefas');
 
     const novoElementoDaLista = document.createElement('li');
+    novoElementoDaLista.addEventListener('click', selecionarElemento);
     novoElementoDaLista.innerText = textoInput;
+    novoElementoDaLista.className = 'elemento-lista';
     listaDeTarefas.appendChild(novoElementoDaLista);
     document.getElementById('texto-tarefa').value = '';
   });
@@ -50,3 +52,22 @@ function criarListaDeTarefas() {
   document.body.appendChild(novaListaDeTarefas);
 }
 criarListaDeTarefas();
+
+// 7 - Clicar em um item da lista deve alterar a cor de fundo do item para cinza rgb(128,128,128)
+// 8 - Não deve ser possível selecionar mais de um elemento da lista ao mesmo tempo
+function selecionarElemento(event) {
+const elementoAtual = document.querySelector('.selected');
+if (elementoAtual) {
+  elementoAtual.style.backgroundColor = '#FFFFFF'
+  elementoAtual.classList.remove('selected');
+}
+// elementoAtual.style.background-color: rgb(128, 128, 128);
+
+let elementoClickado = event.target;
+elementoClickado.classList.add('selected')
+elementoClickado.style.backgroundColor = 'rgb(128, 128, 128)';
+
+}
+
+
+
