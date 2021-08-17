@@ -6,6 +6,7 @@ const clearTaskCompleted = document.getElementById('remover-finalizados');
 const buttonSave = document.getElementById('salvar-tarefas');
 const buttonMoveUp = document.getElementById('mover-cima');
 const buttonMoveDown = document.getElementById('mover-baixo');
+const clearTaskSelected = document.getElementById('remover-selecionado');
 
 // adiciona tarefa
 function addTask() {
@@ -165,3 +166,13 @@ function moveDonw() {
 }
 
 buttonMoveDown.addEventListener('click', moveDonw);
+
+// remove item selecionado
+function removeSelectedItem() {
+  const selected = document.querySelector('.selected');
+  if (selected !== null) {
+    selected.remove();
+  }
+}
+
+clearTaskSelected.addEventListener('click', removeSelectedItem);
