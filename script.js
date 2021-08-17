@@ -15,8 +15,6 @@ function inputTask() {
 }
 inputTask()
 
-// Requisito 7
-
 function addEvent() {
   for (let index = 0; index < taskCreate.length; index += 1) {
     taskCreate[index].addEventListener('click', function () {
@@ -32,7 +30,6 @@ function removeSelector() {
   }
 }
 
-// Requisito 9
 function styleLine(event) {
   if (event.target.classList.contains('completed')) {
     event.target.classList.remove('completed');
@@ -44,7 +41,6 @@ function styleLine(event) {
 }
  listOrd.addEventListener('dblclick', styleLine);
 
- //Requisito 10
 function clearList(){
   location.reload();
 }
