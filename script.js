@@ -35,8 +35,7 @@ function riscaTarefas(event) {
 lista.addEventListener('dblclick', riscaTarefas);
 
 function apagaLista() {
-  const listaFilhos = document.getElementById('lista-tarefas');
-  listaFilhos.innerText = '';
+  lista.innerText = '';
 }
 
 botaoRemove.addEventListener('click', apagaLista);
