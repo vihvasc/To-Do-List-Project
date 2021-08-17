@@ -50,8 +50,8 @@ function clearCompletedTask() {
     completedList.remove();
     completedList = document.querySelector('.completed');
   }
-  localStorage.setItem('listTasksSave');
 }
+
 deleteCompletedTask.addEventListener('click', clearCompletedTask);
 
 function saveStorage() {
