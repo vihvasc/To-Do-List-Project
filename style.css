@@ -1,0 +1,8 @@
+.completed {
+  text-decoration: line-through solid black;
+}
+
+li {
+  text-transform: capitalize;
+  user-select: none;
+}
