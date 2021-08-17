@@ -1,4 +1,4 @@
-const selectedItem = document.getElementById('lista-tarefas');
+const taskList = document.getElementById('lista-tarefas');
 
 // Desafio 5 e 6- Cria uma lista de taferas em sequencia e limpa a entrada do input
 function addToList() {
@@ -11,7 +11,7 @@ function addToList() {
 
     item.textContent = text;
     item.className = 'itens';
-    selectedItem.appendChild(item);
+    taskList.appendChild(item);
 
     input.value = '';
   });
@@ -20,7 +20,7 @@ function addToList() {
 addToList();
 
 // Desafio 7 -Altera cor de fundo do item da lista selecionado
-selectedItem.addEventListener('click', (ev) => {
+taskList.addEventListener('click', (ev) => {
   const lista = document.getElementsByClassName('itens');
   const selected = ev.target;
 
@@ -59,3 +59,16 @@ buttonRemoveCompleted.addEventListener('click', () => {
 
   console.log(listCompleted);
 });
+
+// Desafio 12 - Adiciona botão que salva a lista mesmo recarregando a pagina
+const buttonSave = document.getElementById('salvar-tarefas');
+
+buttonSave.addEventListener('click', () => {
+  const listHtml = taskList.innerHTML;
+
+  localStorage.setItem('lista', listHtml);
+});
+
+window.onload = () => {
+  taskList.innerHTML = localStorage.getItem('lista');
+};
