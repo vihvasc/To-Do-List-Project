@@ -86,6 +86,6 @@ input {
   padding: 10px;
 }
 
-.grey {
-  background: rgb(128, 128, 128);
+.completed {
+  text-decoration: line-through solid black;
 }

@@ -15,22 +15,30 @@ window.onload = function () {
       allTheTasks.className = 'task';
       allTheTasks.innerText = liText;
       input.value = '';
-      allTheTasks.addEventListener("click", function () {
-        colorRemove ();
-        allTheTasks.style.background = "rgb(128, 128, 128)";
+      allTheTasks.addEventListener('click', function () {
+        colorRemove();
+        allTheTasks.style.background = 'rgb(128, 128, 128)';
       });
+
+      allTheTasks.addEventListener('dblclick', finishTask);
     }
     list.appendChild(allTheTasks);
   }
 
-  function colorRemove () {
-    for(let i = 0; i < allTheTasks.length; i += 1) {
-      allTheTasks[i].style.background = "";
+  function colorRemove() {
+    for (let i = 0; i < allTheTasks.length; i += 1) {
+      allTheTasks[i].style.background = '';
     }
   }
 
-  
-
-
-
+  function finishTask() {
+    for (let i = 0; i < allTheTasks.length; i += 1) {
+      let tasks = allTheTasks[i];
+      if (tasks.className === 'task completed') {
+        tasks.classList.remove('completed');
+      } else {
+        tasks.classList.add('completed');
+      }
+    }
+  }
 };
