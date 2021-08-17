@@ -3,6 +3,7 @@ const listOrderned = document.querySelector('#lista-tarefas');
 const addButtonTask = document.querySelector('#criar-tarefa');
 const liTask = document.getElementsByClassName('task');
 const deleteButton = document.getElementById('apaga-tudo');
+const deleteTask = document.getElementById('remover-finalizados');
 
 function removeColor() {
   for (let index = 0; index < liTask.length; index += 1) {
@@ -45,4 +46,12 @@ createTask();
 deleteButton.addEventListener('click', () => {
   // listOrderned.innerHTML = '';
   listOrderned.innerText = '';
+});
+
+deleteTask.addEventListener('click', () => {
+  let classComplete = document.querySelector('.completed');
+  while (classComplete) {
+    classComplete.remove();
+    classComplete = document.querySelector('.completed');
+  }
 });
