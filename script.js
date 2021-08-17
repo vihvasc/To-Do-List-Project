@@ -3,7 +3,7 @@ let taskItens = document.getElementsByClassName('task-item');
 let taskInput = document.querySelector('#texto-tarefa');
 let addButton = document.querySelector('#criar-tarefa');
 let clearButton = document.querySelector('#apaga-tudo')
-
+let doneButton = document.querySelector('#remover-finalizados')
 
 
 function addList(){
@@ -46,9 +46,19 @@ function lineThrough(event){
 function clearList(){
   ordenedList.innerHTML = '';
 }
+function clearDoneTasks(){
+  const taskList = document.querySelectorAll('.task-item');
+  for (let i = 0; i < taskList.length; i++) {
+   const element = taskList[i];
+    if (element.className.includes('completed')){
+      ordenedList.removeChild(element);
+    }
+  }
+}
 
 addButton.addEventListener('click', addList)
 clearButton.addEventListener('click', clearList)
+doneButton.addEventListener('click', clearDoneTasks)
 ordenedList.addEventListener('click', clearHighlight)
 ordenedList.addEventListener('dblclick', lineThrough)
 document.addEventListener('keyup', function(e){
