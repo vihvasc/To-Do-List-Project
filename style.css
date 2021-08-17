@@ -16,6 +16,10 @@ body {
   border-radius: 20px;
   color: rgb(242, 200, 246);
   background-color: rgb(212, 129, 177);
+  display: inline-block;
+  margin: auto;
+  margin-top: 15px;
+  padding: 30px;
 }
 
 #tasks-container *{
@@ -28,7 +32,7 @@ body {
 }
 
 button {
-  padding: 10px;
+  padding: 8px;
   background-color: rgb(212, 104, 152);
   font-size: 12px;
   border-radius: 15px;
