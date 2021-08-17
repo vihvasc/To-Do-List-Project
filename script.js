@@ -50,7 +50,7 @@ listLi.addEventListener("dblclick",completedTask);
 let createButtonRemove = document.createElement("button");
 let buttonRemove = section.appendChild(createButtonRemove);
 buttonRemove.id = "apaga-tudo";
-buttonRemove.innerText = "Remover";
+buttonRemove.innerText = "Remover tudo";
 
 buttonRemove.addEventListener("click", removeAllTasks);
 
@@ -62,5 +62,20 @@ function removeAllTasks(){
 }
 
 
+/* CRIAR BOTÃO PARA REMOVER TAREFAS CONCLUIDAS*/
+let createButtonRemoveCompleted = document.createElement("button");
+let buttonRemoveCompleted = section.appendChild(createButtonRemoveCompleted);
+buttonRemoveCompleted.id = "remover-finalizados";
+buttonRemoveCompleted.innerText = "Remover concluídas";
 
+buttonRemoveCompleted.addEventListener("click", removeCompletedTasks);
 
+function removeCompletedTasks(){
+    let allTasks1 = document.querySelectorAll(".tasks");
+    for(let index1 = 0 ; index1 < allTasks1.length ; index1 += 1){
+        if(allTasks1[index1].className === "tasks completed"){
+            allTasks1[index1].remove();
+        }
+        
+    }
+}
