@@ -271,9 +271,36 @@ function recuperaTarefas () {
       const listaTarefas = document.getElementById('lista-tarefas');
       const novaTarefa = document.createElement('li');
       novaTarefa.textContent = arrayDeTarefas[index];
+      
+      novaTarefa.addEventListener('click', function () {
+        const elementosDaLista = document.querySelectorAll('li');
+  
+        for (let index = 0; index < elementosDaLista.length; index += 1) {
+          elementosDaLista[index].style.backgroundColor = '';
+          elementosDaLista[index].id = '';
+        }
+        novaTarefa.style.backgroundColor = 'rgb(128,128,128)';
+        novaTarefa.id = 'selecionado';
+      })
+
+      novaTarefa.addEventListener('dblclick', function () {
+        
+        
+        let comparaClasse = novaTarefa.className;
+
+        if (comparaClasse.endsWith('completed') ) {
+            console.log('ELEMENTO \''+ novaTarefa.textContent + '\' FOI DESELECIONADO');
+            novaTarefa.className = '';
+            novaTarefa.style.textDecoration = '';
+
+        } else {
+            console.log('ELEMENTO \''+ novaTarefa.textContent + '\' FOI SELECIONADO');
+            novaTarefa.className = 'completed';
+            novaTarefa.style.textDecoration = 'line-through solid rgb(0,0,0)';
+        }
+      })
       listaTarefas.appendChild(novaTarefa);
     }
-    // alert("INFO: Existem dados Salvos no localStorage!!!"); // [DEBUG]
   } else {
     // alert("INFO: Não existem dados Salvos no localStorage!!!"); // [DEBUG]
   }
