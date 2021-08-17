@@ -72,7 +72,6 @@ function saveTasks () {
       listToStorage.push(object);
     }
     localStorage.setItem('tasks', JSON.stringify(listToStorage));
-    console.log(listToStorage);
     JSON.parse(localStorage.getItem('tasks'));
   });
 }
@@ -92,7 +91,6 @@ function loadTaskList () {
       theElement.innerHTML = tasksStore[index].text;
       theElement.className = tasksStore[index].class;
       containerToLoad.appendChild(theElement);
-      console.log(theElement.classList);
     }
   }
 }
