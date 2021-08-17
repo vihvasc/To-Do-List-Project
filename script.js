@@ -2,6 +2,7 @@ const text = document.getElementById('texto-tarefa');
 const buttonAdd = document.getElementById('criar-tarefa');
 const buttonLimpar = document.getElementById('apaga-tudo');
 const buttonFinalizados = document.getElementById('remover-finalizados');
+const buttonSalvar = document.getElementById('salvar-tarefas');
 const listIndex = document.getElementById('lista-tarefas');
 
 function pintarLi(event) {
@@ -45,6 +46,38 @@ function apagarFinalizados() {
   }
 }
 
+function salvarLista() {
+  const list = document.getElementsByTagName('li');
+  const jsonList = [];
+  const jsonClass = [];
+  for (let i = 0; i < list.length; i += 1) {
+    jsonList.push(list[i].innerHTML);
+    jsonClass.push(list[i].className);
+  }
+  localStorage.setItem('list', JSON.stringify(jsonList));
+  localStorage.setItem('class', JSON.stringify(jsonClass));
+}
+
+function listaSalva() {
+  if (localStorage.getItem('list') === null) {
+    localStorage.setItem('list', JSON.stringify([]));
+  } else {
+    const listParse = JSON.parse(localStorage.getItem('list'));
+    const classParse = JSON.parse(localStorage.getItem('class'));
+    for (let i = 0; i < listParse.length; i += 1) {
+      const listElement = document.createElement('li');
+      listElement.innerHTML = listParse[i];
+      listElement.className = classParse[i];
+      listIndex.appendChild(listElement);
+    }
+  }
+}
+
+window.onload = function() {
+  listaSalva();
+};
+
 buttonAdd.addEventListener('click', addText);
 buttonLimpar.addEventListener('click', apagarLis);
 buttonFinalizados.addEventListener('click', apagarFinalizados);
+buttonSalvar.addEventListener('click', salvarLista);
