@@ -12,6 +12,7 @@ butao.addEventListener("click", buton);
 
 let listas = document.getElementsByTagName("ol")[0]
 listas.addEventListener("click", pintar)
+listas.addEventListener("dblclick", realizado)
 
 
 function pintar(event) {
@@ -34,5 +35,9 @@ function buton () {
  input.value = ""
 }
 
+function realizado (event) {
+resultado = event.target
+resultado.classList.toggle("completed")
+}
 
 
