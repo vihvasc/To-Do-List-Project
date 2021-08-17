@@ -22,3 +22,31 @@ function criarInput() {
   document.body.appendChild(novoInput);
 }
 criarInput();
+
+// 5 - Adicione um botão com id="criar-tarefa" e, ao clicar nesse botão, um novo item deverá ser criado ao final da lista e o texto do input deve ser limpo
+// 6 - Ordene os itens da lista de tarefas por ordem de criação
+function criarBotao() {
+  const novoBotao = document.createElement('button');
+  novoBotao.id = 'criar-tarefa';
+  novoBotao.innerText = 'Adicionar';
+  document.body.appendChild(novoBotao);
+
+  novoBotao.addEventListener('click', function () {
+    const textoInput = document.getElementById('texto-tarefa').value;
+    const listaDeTarefas = document.getElementById('lista-tarefas');
+
+    const novoElementoDaLista = document.createElement('li');
+    novoElementoDaLista.innerText = textoInput;
+    listaDeTarefas.appendChild(novoElementoDaLista);
+    document.getElementById('texto-tarefa').value = '';
+  });
+}
+criarBotao();
+
+// 4 - Adicione uma lista ordenada de tarefas com o id="lista-tarefas"
+function criarListaDeTarefas() {
+  const novaListaDeTarefas = document.createElement('ol');
+  novaListaDeTarefas.id = 'lista-tarefas';
+  document.body.appendChild(novaListaDeTarefas);
+}
+criarListaDeTarefas();
