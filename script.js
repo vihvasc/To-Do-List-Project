@@ -33,6 +33,7 @@ function removeSelector() {
   }
 }
 
+// Requisito 9
 function styleLine(event) {
   if (event.target.classList.contains('completed')) {
     event.target.classList.remove('completed');
