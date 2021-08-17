@@ -11,8 +11,6 @@ botaoLimpar.addEventListener('click', limpar);
 let botaoLimparCompletos = document.getElementById('remover-finalizados');
 botaoLimparCompletos.addEventListener('click', limparCompleted);
 
-let botaoSalvarLista = document.getElementById('salvar-tarefas');
-botaoSalvarLista.addEventListener('click', salvarLista);
 
 // funcionalidade do botao de adicionar tarefa
 function addTarefa() {
