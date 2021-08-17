@@ -1,5 +1,6 @@
 const input = document.getElementById('texto-tarefa');
 const buttonAdd = document.getElementById('criar-tarefa');
+const buttonRemoveSelected = document.getElementById('remover-selecionado');
 const buttonMoveUp = document.getElementById('mover-cima');
 const buttonMoveDown = document.getElementById('mover-baixo');
 const buttonClearList = document.getElementById('apaga-tudo');
@@ -79,6 +80,15 @@ function moveDown() {
   }
 }
 
+// Requisito 14
+function removeSelected() {
+  for (let index = 0; index < arrayList.length; index += 1) {
+    if (arrayList[index].style.backgroundColor !== '') {
+      arrayList[index].remove();
+    }
+  }
+}
+
 // Escutadores buttons
 buttonAdd.addEventListener('click', addTasks);
 buttonClearList.addEventListener('click', clearList);
@@ -86,3 +96,4 @@ buttonRemoveCompleted.addEventListener('click', clearCompleted);
 buttonSaveList.addEventListener('click', saveList);
 buttonMoveUp.addEventListener('click', moveUp);
 buttonMoveDown.addEventListener('click', moveDown);
+buttonRemoveSelected.addEventListener('click', removeSelected);
