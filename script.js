@@ -65,3 +65,14 @@
       }
   }
   document.getElementById("remover-finalizados").addEventListener("click", removeFinalizados);
+
+  function saveList(){
+    localStorage.setItem("key",listaTarefa.innerHTML); 
+   }
+  
+  document.getElementById("salvar-tarefas").addEventListener("click", saveList);
+
+  function getList(){
+    listaTarefa.innerHTML = localStorage.getItem("key");
+  }
+  window.onload = getList;
