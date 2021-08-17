@@ -2,11 +2,78 @@
   text-decoration: line-through;
 }
 
+#body {
+  background-color: #17262d;
+}
+
+.selected {
+  background-color: rgb(128,128,128);
+}
+
+#header {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  font-style: normal;
+}
+
+#funcionamento {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+}
+
 #criar-tarefa {
   display: inline;
-  
+  background-color: rgb(29, 167, 29);
+  border-radius: 10px;
+  border: 0px;
+  color: antiquewhite;
+  height: 19px;
+  width: 150px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 #texto-tarefa {
   display: inline;
+  border-radius: 8px;
+  border: 1px solid gray;
+}
+
+#apaga-tudo {
+  border-radius: 10px;
+  border: 0px;
+  background-color: rgb(196, 28, 28);
+  color: antiquewhite;
+  height: 19px;
+  width: 120px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#remover-finalizados {
+  border-radius: 10px;
+  border: 0px;
+  color: antiquewhite;
+  background-color: rgb(10, 130, 241);
+  height: 19px;
+  font-family: 'Montserrat', sans-serif;
+  width: 175px;
+}
+
+#remover-selecionado {
+  border-radius: 10px;
+  border: 0px;
+  font-family: 'Montserrat', sans-serif;
+  color: antiquewhite;
+  background-color: rgb(13, 219, 75);
+}
+
+#section {
+  background-color:white;
+  border-radius: 20px;
+  height: 15%;
+  width: 40%;
+  padding: 30px;
+  padding-left: 30px;
+  margin-left: 5%;
+  margin-top: 5%;
 }

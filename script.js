@@ -29,7 +29,9 @@ button.addEventListener('click', addTask);
 const ul = document.getElementById('lista-tarefas');
 function cleanMark() {
   for (let i = 0; i < li.length; i += 1) {
-    li[i].style.backgroundColor = 'white';
+    if (li[i].classList.contains('selected')) {
+      li[i].classList.remove('selected');
+    }
   }
 }
 
@@ -37,7 +39,7 @@ function markTask(event) {
   const selectClick = event.target;
   cleanMark();
   if (selectClick.tagName === 'LI') {
-    selectClick.style.backgroundColor = 'rgb(128,128,128)';
+    selectClick.classList.add('selected');
   }
 }
 ul.addEventListener('click', markTask);
@@ -50,7 +52,7 @@ function cleanAll() {
 }
 buttonCleanAll.addEventListener('click', cleanAll);
 
-const buttonRemove = document.getElementById('remover-finalizados');
+const buttonRemoveCompleted = document.getElementById('remover-finalizados');
 function removeCompletedTask() {
   for (let index = 0; index < li.length; index += 1) {
     if (li[index].classList.contains('completed')) {
@@ -59,4 +61,14 @@ function removeCompletedTask() {
     }
   }
 }
-buttonRemove.addEventListener('click', removeCompletedTask);
+buttonRemoveCompleted.addEventListener('click', removeCompletedTask);
+
+const buttonRemoveSelected = document.getElementById('remover-selecionado');
+function removeSelectedTask() {
+  for (let index = 0; index < li.length; index += 1) {
+    if (li[index].classList.contains('selected')) {
+      ul.removeChild(ul.children[index]);
+    }
+  }
+}
+buttonRemoveSelected.addEventListener('click', removeSelectedTask);
