@@ -32,7 +32,23 @@ function clearHighlight(event){
   }
   taskHighlight(event)
 }
-
+function lineThrough(event){
+  if (event.target.style.textDecoration == ''){
+    event.target.style.textDecoration = 'line-through solid rgb(0, 0, 0)';
+    event.target.className = 'task-item completed'
+  } 
+  else if (event.target.style.textDecoration == 'line-through solid rgb(0, 0, 0)'){
+    event.target.style.textDecoration = '';
+    event.target.className = 'task-item'
+  } 
+}
 
 addButton.addEventListener('click', addList)
 ordenedList.addEventListener('click', clearHighlight)
+ordenedList.addEventListener('dblclick', lineThrough)
+document.addEventListener('keyup', function(e){
+  if (e.key === 'Enter')
+  addButton.click()
+  console.log('alo');
+})
+
