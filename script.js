@@ -111,16 +111,17 @@ function buttonUp() {
 
 buttonUp();
 
-// function moveDownLi() {
-//   for (let index = 0; index < liSelect.length; index += 1) {
-//     if (liSelect[index].style.backgroundColor !== '' && index > (liSelect.length - 1)) {
-//       olList.insertBefore(liSelect[index], liSelect[index].previousSibling);
-//     }
-//   }
-// }
+function moveDownLi() {
+  for (let index = 0; index < liSelect.length; index += 1) {
+    if (liSelect[index].style.backgroundColor !== '' && index < (liSelect.length - 1)) {
+      olList.insertBefore(liSelect[index], liSelect[index + 1].nextElementSibling);
+      return;
+    }
+  }
+}
 
-// function buttonDown() {
-//   moveDown.addEventListener('click', moveDownLi);
-// }
+function buttonDown() {
+  moveDown.addEventListener('click', moveDownLi);
+}
 
-// buttonDown();
+buttonDown();
