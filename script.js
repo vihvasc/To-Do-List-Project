@@ -8,43 +8,42 @@ function criarTarefa(){
     itemLista.appendChild(novoItem);
     input.value = "";
 
-    novoItem.addEventListener('click', alteraCor);
-    
-    
+    novoItem.addEventListener('click', alteraCor);   
+    novoItem.addEventListener('dblclick', marcaItem);
 }
-function alteraCor(evento) {
+
+// requisito 8
+function alteraCor(evento){
     let listaTotal = document.getElementsByTagName('li');
     
     for (let i of listaTotal){             
-        i.style.backgroundColor = 'white';
+        i.style.backgroundColor = 'white';            
     }
     evento.target.style.backgroundColor = 'rgb(128,128,128)';
+    
 }
    
- //requisito 9
- /*let itemLista = document.getElementById('lista-tarefas');
- let novoItem = document.createElement('li'); 
- itemLista.appendChild(novoItem);
-
- novoItem.addEventListener('dbclick', marcaItem);
-  function marcaItem(){
-    let listaItens = document.getElementsByTagName('li');
-    for (let i of listaItens){
-        console.log(i);
-        i.classList.add('completd');
-    }
-  }  
-*/
+ // requisito 9 
+  function marcaItem(evento){
+    let listaTotal = document.getElementsByTagName('li');       
+        
+        if(evento.target.classList.contains('completed')) {
+            evento.target.classList.remove('completed')
+        } else{
+            evento.target.classList.add('completed')
+        }   
+       
+     }    
+    
 
 // requisito 10
-let button = document.getElementById('apaga-tudo');
-button.addEventListener('click', apagaTudo)
-
 function apagaTudo(){
     listaCompleta = document.getElementById('lista-tarefas');
     listaCompleta.innerHTML = "";
 }
-    
+let button = document.getElementById('apaga-tudo');
+button.addEventListener('click', apagaTudo);   
+
     
     
 
