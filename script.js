@@ -23,6 +23,13 @@ function cliclli() {
         event.target.style.backgroundColor = 'rgb(128, 128, 128)';
       }
     });
+    element.addEventListener('dblclick', () => {
+      if (element.classList.contains('completed')) {
+        element.classList.remove('completed');
+      } else {
+        element.classList.add('completed');
+      }
+    });
   }
 }
 
