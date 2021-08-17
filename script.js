@@ -9,21 +9,23 @@ function createTask() {
     taskList.appendChild(createItem);
     createItem.innerText = inputTypeTask.value;
     inputTypeTask.value = '';
-    createItem.addEventListener('click', () => {
-      const getItens = document.querySelectorAll('li');
-      for (let under = 0; under < getItens.length; under += 1) {
-        if (getItens[under].style.background = 'rgb(128, 128, 128)') {
-          getItens[under].style.backgroundColor = '';
-        }
-      }
-      createItem.style.backgroundColor = 'rgb(128, 128, 128)';
-    });
     createItem.addEventListener('dblclick', () => {
       createItem.classList.toggle('completed');
     }); //fonte: https://qastack.com.br/programming/5497073/how-to-differentiate-single-click-event-and-double-click-event
   });
 }
 createTask();
+
+taskList.addEventListener('click', (event) => {
+  const select = document.querySelectorAll('.selected');
+  for (let under = 0; under < select.length; under += 1) {
+    select[under].classList.remove('selected');
+    select[under].style.backgroundColor = '';
+  }
+  event.target.classList.add('selected');
+  const getSelected = document.querySelector('.selected');
+  getSelected.style.backgroundColor = 'rgb(128, 128, 128)';
+});
 
 //botão apaga todos os itens da lista de uma vez
 const btnDeleteAllList = document.getElementById('apaga-tudo');
