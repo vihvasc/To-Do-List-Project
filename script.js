@@ -29,3 +29,13 @@ function addTask() {
 }
 
 createTask.addEventListener('click', addTask);
+
+function taskDone(event) {
+  if (event.target.classList.contains('completed')) {
+    event.target.classList.remove('completed');
+  } else {
+    event.target.classList.add('completed');
+  }
+}
+
+taskList.addEventListener('dblclick', taskDone);
