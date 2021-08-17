@@ -1,13 +1,9 @@
-h1 , p {
-  font-family: sans-serif;
-}
-
 .selected {
   background-color: gray;
 }
 
 .completed {
-  text-decoration: line-through solid black;
+  text-decoration: line-through;
 }
 
 #lista-tarefas {

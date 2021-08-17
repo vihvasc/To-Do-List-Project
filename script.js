@@ -1,3 +1,5 @@
+const taskList = document.getElementById('lista-tarefas');
+
 function selecionar(task) {
   if (document.querySelector('.selected')) {
     document.querySelector('.selected').classList.remove('selected');
@@ -10,31 +12,30 @@ function complete(task) {
 }
 
 function apagarLista() {
-  const lista = document.querySelectorAll('li');
-  lista.forEach((item) => {
+  const items = document.querySelectorAll('li');
+  items.forEach((item) => {
     item.remove();
   });
 }
 
 function apagarFinalizadas() {
-  const prontas = document.querySelectorAll('.completed');
-  prontas.forEach((item) => {
+  const completed = document.querySelectorAll('.completed');
+  completed.forEach((item) => {
     item.remove();
   });
 }
 
 function apagarTarefa() {
-  const selecionada = document.querySelector('.selected');
-  selecionada.remove();
+  const selected = document.querySelector('.selected');
+  selected.remove();
 }
 
 function salvarLista() {
-  const lista = document.querySelectorAll('li');
-  const array = [];
-  lista.forEach((item) => {
-    array.push(`${item.innerText} ${item.classList}`);
-  });
-  localStorage.setItem('List', JSON.stringify(array));
+  localStorage.setItem('toDoList', taskList.innerHTML);
+}
+
+function recuperarLista() {
+  taskList.innerHTML = localStorage.getItem('toDoList');
 }
 
 function criarTarefa() {
@@ -43,13 +44,16 @@ function criarTarefa() {
   tarefa.innerText = input.value;
   tarefa.addEventListener('click', selecionar);
   tarefa.addEventListener('dblclick', complete);
-  document.getElementById('lista-tarefas').appendChild(tarefa);
+  taskList.appendChild(tarefa);
   input.value = '';
 }
 
-// function recuperarLista() {
-//   document.getElementById('lista-tarefas').innerHTML = localStorage.getItem('list');
-// }
+function addEventListeners() {
+  document.querySelectorAll('li').forEach((item) => {
+    item.addEventListener('click', selecionar);
+    item.addEventListener('dblclick', complete);
+  });
+}
 
 window.onload = function initPage() {
   document.getElementById('criar-tarefa').addEventListener('click', criarTarefa);
@@ -57,5 +61,6 @@ window.onload = function initPage() {
   document.getElementById('remover-finalizados').addEventListener('click', apagarFinalizadas);
   document.getElementById('remover-selecionado').addEventListener('click', apagarTarefa);
   document.getElementById('salvar-tarefas').addEventListener('click', salvarLista);
-  // recuperarLista();
+  recuperarLista();
+  addEventListeners();
 };
