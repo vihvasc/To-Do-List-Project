@@ -13,14 +13,18 @@ function creatList(){
    linha.innerText = valueInputTask;
    listOfTasks.appendChild(linha);
    inputTextTask.value = null;
-  linha.addEventListener("click",mudarDeCor)
- function mudarDeCor (){      
-  linha.style.backgroundColor = "rgb(128, 128, 128)";
-  /*let liSelected = document.getElementsByClassName("liColor");
-   for(let cont = 0;cont < liSelected.length;cont += 1){
-       liSelected[cont].eventt */
-   }    
-  }
+   linha.addEventListener("click",mudarDeCor)
+ 
+function mudarDeCor (object){      
+  let getSelected = document.querySelector(".selected")
+	object.target.classList.toggle("selected")
+	if(getSelected){
+		getSelected.classList.remove("selected");
+		
+	}
+   
+  }   
+}
  
 
 
