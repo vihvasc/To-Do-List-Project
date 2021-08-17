@@ -1,8 +1,10 @@
 let botao = document.getElementById('criar-tarefa');
 let entrada = document.getElementById('texto-tarefa');
 let itemLista = document.getElementsByTagName('li');
+let botaoApagaTudo = document.getElementById('apaga-tudo');
 
 botao.addEventListener('click', addTarefa);
+botaoApagaTudo.addEventListener('click', apagaLista);
 
 
 function addTarefa (){
@@ -32,4 +34,12 @@ function mudaFundo(item){
 
 function riscaItem (item){
     item.target.classList.toggle('completed');
+}
+
+function apagaLista(){
+    let listaTarefas = document.querySelectorAll('li')
+
+    for (let index = 0; index < listaTarefas.length; index++) {
+        listaTarefas[index].remove();
+    }
 }
