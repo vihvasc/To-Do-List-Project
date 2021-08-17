@@ -46,7 +46,14 @@ header {
   background-color: white;
   border-radius: 3px;
   border: 1.5px solid gray;
-  padding: 2.5px;
+  padding: 3px;
+}
+
+#texto-tarefa:focus {
+  outline: 0;
+  border-width: 1px;
+  border-image: linear-gradient(to right, blue, cyan, blue);
+  border-image-slice: 1;
 }
 
 #criar-tarefa {
@@ -55,6 +62,7 @@ header {
   color: whitesmoke;
   border-radius: 20px;
   border: 1px solid dodgerblue;
+  margin-left: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
   font-size: 15px;
