@@ -66,15 +66,16 @@ function saveLocal() {
   let arraySavedList = [];
   let taskList = Array.from(list.children);
   for (let index = 0; index < taskList.length; index += 1) {
-    arraySavedList.push(taskList[index].innerText);
+    arraySavedList.push(taskList[index].innerHTML);
   }
   localStorage.setItem('myList', JSON.stringify(arraySavedList));
 }
 function getSavedList() {
   let localList = JSON.parse(localStorage.getItem('myList'));
-  localList.forEach(function(liText){
+  if(!localList) return
+    localList.forEach(function(liText){
     let itemSavedList = document.createElement('li');
-    itemSavedList.innerText = liText; 
+    itemSavedList.innerHTML = liText; 
     list.appendChild(itemSavedList);
   })
 }
