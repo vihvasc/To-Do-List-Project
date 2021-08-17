@@ -1,4 +1,4 @@
-const {body} = document;
+const { body } = document;
 const inputTask = document.getElementById('texto-tarefa');
 const buttonAdd = document.getElementById('criar-tarefa');
 const taskList = document.getElementById('lista-tarefas');
@@ -17,11 +17,16 @@ function selectTask(event) {
   console.log('cheguei na function selecttask');
 }
 
+function riskTask(event) {
+  event.target.classList.toggle('completed');
+}
+
 function createNewTask(task) {
   const li = document.createElement('li');
   li.classList.add('list');
   li.innerText = task;
   li.addEventListener('click', selectTask); // linha criada após requisito 6
+  li.addEventListener('dblclick', riskTask); // requisito 9
   return li;
 }
 
