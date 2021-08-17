@@ -45,11 +45,12 @@ function removerTodasTarefas() {
   }
 }
 
-function removeTasksCompleted() {
-  let tasksCompleted = document.querySelector('.completed');
-  while (tasksCompleted) {
-    tasksCompleted.remove();
-    tasksCompleted = document.querySelector('.completed');
+function removerTarefasCompletadas() {
+  let tarefaCompletada = document.querySelector('.completed');
+
+  while (tarefaCompletada) {
+    tarefaCompletada.remove();
+    tarefaCompletada = document.querySelector('.completed');
   }
 }
 
@@ -63,4 +64,4 @@ function enterPressed(event) {
 criarTarefa.addEventListener('click', adicionarNovaTarefa);
 campoInput.addEventListener('keypress', enterPressed);
 limparTarefas.addEventListener('click', removerTodasTarefas);
-limparConcluidos.addEventListener('click', removeTasksCompleted);
+limparConcluidos.addEventListener('click', removerTarefasCompletadas);
