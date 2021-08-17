@@ -1,10 +1,12 @@
 const getOrdenedList = document.querySelector('#lista-tarefas');
 const getTask = document.querySelector('#texto-tarefa');
 const getCreateTaskButton = document.querySelector('#criar-tarefa');
+const getDeleteAllButton = document.getElementById('apaga-tudo');
+const getDeleteCompletedButton = document.getElementById('remover-finalizados');
 
 function createTasks() {
   if (getTask.value === '') {
-    return alert('Insira um texto para a sua tarefa!');
+    return getTask.setAttribute('placeholder', 'Espaço vazio!');
   }
   const li = document.createElement('li');
   li.className = 'task-item';
@@ -29,7 +31,7 @@ function changeBackgroundColor(event) {
 getOrdenedList.addEventListener('click', changeBackgroundColor);
 
 /*
-* Código acima foi feito com a ajuda do Aluno Iury Roque da tribo B
+* Código da função acima foi feito com a ajuda do Aluno Iury Roque da tribo B
 */
 
 function completeTask() {
@@ -43,20 +45,23 @@ function completeTask() {
 }
 
 function deleteAll() {
-  const getDeleteAllButton = document.getElementById('apaga-tudo');
   getDeleteAllButton.addEventListener('click', () => {
     getOrdenedList.innerText = '';
   });
 }
 
 function removeCompletedTask() {
-  const getCompletedTasks = document.querySelectorAll('.completed');
-  for (let i = 0; i < getCompletedTasks.length; i += 1) {
-    getOrdenedList.removeChild(getCompletedTasks[i]);
-  }
+  getDeleteCompletedButton.addEventListener('click', () => {
+    const getCompletedTasks = document.querySelectorAll('.completed');
+    for (let i = 0; i < getCompletedTasks.length; i += 1) {
+      getOrdenedList.removeChild(getCompletedTasks[i]);
+    }
+  });
 }
 
 function saveTasks() {
+  const getSaveButton = document.getElementById('salvar-tarefas');
+  getSaveButton.addEventListener('click', saveTasks);
   const getHTMLTasks = getOrdenedList.innerHTML;
   localStorage.setItem('tasks', getHTMLTasks);
 }
@@ -71,7 +76,6 @@ window.onload = () => {
   completeTask();
   deleteAll();
   removeCompletedTask();
-  document.getElementById('remover-finalizados').addEventListener('click', removeCompletedTask);
-  document.getElementById('salvar-tarefas').addEventListener('click', saveTasks);
   loadTasks();
+  saveTasks();
 };

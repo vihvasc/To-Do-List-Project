@@ -6,13 +6,13 @@
 }
 
 html , body {
-  background-color: rgb(32, 32, 32);
+  background-color: rgb(32 , 32 , 32);
   font-family: sans-serif;
 }
 
 header {
   width: 80%;
-  background-color: rgb(32, 32, 32);
+  background-color: rgb(32 , 32 , 32);
   margin: auto;
   text-align: center;
   padding: 20px;
@@ -29,7 +29,7 @@ header {
   border: 0;
   outline: 0;
   font-size: 18px;
-  background-color: rgb(51, 51, 51);
+  background-color: rgb(51 , 51 , 51);
   padding-left: 10px;
 }
 
@@ -37,18 +37,20 @@ header {
   vertical-align: top;
   width: 30px;
   height: 30px;
-  color:rgb(24, 24, 24);
+  color: rgb(24 , 24 , 24);
   font-size: 20px;
   font-weight: 900;
-  background-color: rgb(92, 201, 92);
+  background-color: rgb(92 , 201 , 92);
   border: 0;
   border-radius: 4px;
   cursor: pointer;
-  transition: all 2ms;
+  transition: all 0.2s;
 }
+
 .task-creation-container button:hover {
   transform: scale(1.05);
 }
+
 .task-creation-container label {
   display: block;
   font-size: 20px;
@@ -64,13 +66,15 @@ header {
   width: 80%;
   margin-top: 20px;
   min-height: 300px;
-  background-color: #2b2b2b;
+  background-color: rbg(43 , 43 , 43);
   border-radius: 10px;
 }
+
 .task-container h1 {
   text-align: center;
   margin-bottom: 20px;
 }
+
 .task-container li {
   line-height: 30px;
   padding-left: 10px;
@@ -88,8 +92,8 @@ header {
   left: 10px;
   width: 400px;
   height: 50px;
-  background-color: #2b2b2b;
-  border-left: #3d3d3d 10px solid;
+  background-color: rgb(43 , 43 , 43);
+  border-left: rgb(61 , 61 , 61) 10px solid;
   text-align: center;
   border-radius: 5px;
   animation: opacity-notification 2s;
@@ -108,10 +112,10 @@ header {
 }
 
 .completed {
-  text-decoration: line-through solid rgb(0, 0, 0);
+  text-decoration: line-through solid black;
 }
 
-.buttons-containers{
+.buttons-containers {
   width: 80%;
   min-height: 100px;
   margin: 20px auto;
@@ -121,7 +125,7 @@ header {
   width: 150px;
   height: 50px;
   border: 0;
-  background-color: rgb(70, 70, 70);
+  background-color: rgb(70 , 70 , 70);
   font-weight: 900;
   font-size: 17px;
   cursor: pointer;
@@ -130,7 +134,7 @@ header {
 }
 
 #apaga-tudo:hover {
-  background-color: rgb(56, 56, 56);
+  background-color: rgb(56 , 56 , 56);
   transform: scale(1.05);
 }
 
@@ -140,7 +144,7 @@ header {
   vertical-align: top;
   border: 0;
   margin-left: 10px;
-  background-color: rgb(194, 83, 83);
+  background-color: rgb(194 , 83 , 83);
   font-weight: 900;
   font-size: 17px;
   padding: 5px;
@@ -150,7 +154,7 @@ header {
 }
 
 #remover-finalizados:hover {
-  background-color: rgb(172, 70, 70);
+  background-color: rgb(172 , 70 , 70);
   transform: scale(1.05);
 }
 
@@ -160,7 +164,7 @@ header {
   vertical-align: top;
   border: 0;
   margin-left: 10px;
-  background-color: rgb(137, 194, 83);
+  background-color: rgb(137 , 194 , 83);
   font-weight: 900;
   font-size: 17px;
   padding: 5px;
@@ -170,7 +174,7 @@ header {
 }
 
 #salvar-tarefas:hover {
-  background-color: rgb(117, 167, 71);
+  background-color: rgb(117 , 167 , 71);
   transform: scale(1.05);
 }
 
@@ -178,8 +182,8 @@ header {
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0.2;
   }
 }
-
