@@ -54,14 +54,14 @@ function removerTarefasCompletadas() {
   }
 }
 
-function enterPressed(event) {
-  const keyPressed = event;
-  if (keyPressed.key === 'Enter') {
+function enterPressionado(evento) {
+  const teclaPressionada = evento;
+  if (teclaPressionada.key === 'Enter') {
     adicionarNovaTarefa();
   }
 }
 
 criarTarefa.addEventListener('click', adicionarNovaTarefa);
-campoInput.addEventListener('keypress', enterPressed);
+campoInput.addEventListener('keypress', enterPressionado);
 limparTarefas.addEventListener('click', removerTodasTarefas);
 limparConcluidos.addEventListener('click', removerTarefasCompletadas);
