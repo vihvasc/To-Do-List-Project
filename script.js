@@ -27,30 +27,29 @@ taskList.addEventListener('click', (event) => {
   getSelected.style.backgroundColor = 'rgb(128, 128, 128)';
 });
 
-// botão apaga todos os itens da lista de uma vez
 const btnDeleteAllList = document.getElementById('apaga-tudo');
-btnDeleteAllList.addEventListener('click', function () {
-  while (taskList.firstChild)
+function deleteAllList() {
+  while (taskList.firstChild) {
     taskList.removeChild(taskList.lastChild);
-}); //fonte: https://qastack.com.br/programming/3955229/remove-all-child-elements-of-a-dom-node-in-javascript
-
+  }
+} // fonte: https://qastack.com.br/programming/3955229/remove-all-child-elements-of-a-dom-node-in-javascript
+btnDeleteAllList.addEventListener('click', deleteAllList);
 
 const btnRmDone = document.getElementById('remover-finalizados');
-btnRmDone.addEventListener('click', function rmTaskDone() {
-  let completed = document.querySelectorAll('.completed');
+function rmTaskDone() {
+  const completed = document.querySelectorAll('.completed');
   for (let i = 0; i < completed.length; i += 1) {
     completed[i].remove();
   }
-});
+}
+btnRmDone.addEventListener('click', rmTaskDone);
 
-// evento de clique
 const btnSaveTask = document.getElementById('salvar-tarefas');
-btnSaveTask.addEventListener('click', function saveTask() {
-  //função de salvar
+function saveTask() {
   localStorage.setItem(1, taskList.innerHTML);
-});
-// observei a necessidade de carregar o item novamente no  html mostrar o que foi salvo
-// para manter a lista como estava
+}
+btnSaveTask.addEventListener('click', saveTask);
+
 function loadSaveTask() {
   taskList.innerHTML = localStorage.getItem(1);
 }
