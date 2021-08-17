@@ -6,6 +6,7 @@ const buttonFinalizados = document.getElementById('remover-finalizados');
 const buttonSalvar = document.getElementById('salvar-tarefas');
 const buttonUp = document.getElementById('mover-cima');
 const buttonDown = document.getElementById('mover-baixo');
+const buttonDelete = document.getElementById('remover-selecionado')
 
 function pintarLi(event) {
   const list = document.querySelectorAll('li');
@@ -97,7 +98,14 @@ function moveDown() {
   }
 }
 
-window.onload = function() {
+function deleteItem() {
+  const selectedItem = document.querySelector('.selected');
+  if (selectedItem !== null) {
+    selectedItem.parentNode.removeChild(selectedItem)
+  }
+}
+
+window.onload = function initialRendering() {
   listaSalva();
 };
 
@@ -107,3 +115,4 @@ buttonFinalizados.addEventListener('click', apagarFinalizados);
 buttonSalvar.addEventListener('click', salvarLista);
 buttonUp.addEventListener('click', moveUp);
 buttonDown.addEventListener('click', moveDown);
+buttonDelete.addEventListener('click', deleteItem);
