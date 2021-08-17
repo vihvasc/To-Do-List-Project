@@ -14,9 +14,9 @@ function createButton(buttonId, buttonText, insertInsideId) {
 
 function addTask() {
   const createLi = document.createElement('li');
-  if (input.value === '') {
-    return alert('Favor inserir um nome válido para a tarefa!');
-  }
+  // if (input.value === '') {
+  //   return alert('Favor inserir um nome válido para a tarefa!');
+  // }
   createLi.innerText = input.value;
   createLi.id = 'tarefa';
   createLi.addEventListener('click', addClass);
@@ -60,15 +60,16 @@ function finishedTask(event) {
   }
 }
 
-const completedTask = document.querySelectorAll('.completed');
+function eraseAll() {
+  let createdTasks = document.querySelectorAll('#tarefa');
+  for (let task = 0; task < createdTasks.length; task += 1) {
+    createdTasks[task].remove();
+  }
+}
 
 function createEraseAllButton() {
   createButton('apaga-tudo', 'Apagar Tudo', 'lista-tarefas');
-  const createdTasks = document.querySelectorAll('#tarefa');
-  if (createdTasks) {
-    for (let task = 0; task < createdTasks.length; task += 1){
-      
-    }
-  }
+  const apagaTudo = document.getElementById('apaga-tudo');
+  apagaTudo.addEventListener('click', eraseAll);
 }
 createEraseAllButton();
