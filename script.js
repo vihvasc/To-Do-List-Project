@@ -17,11 +17,20 @@ function addList(){
 function addClikList(){
     let listItem = document.querySelectorAll("li");
     for(let index = 0; index < listItem.length; index += 1){
-        listItem[index].addEventListener("click", color);
+        listItem[index].addEventListener("click", selectItem);
     }
+
 }
 
-function color(event){
-    console.log("click");
-    event.target.style.backgroundColor = "rgb(128,128,128)";
+function selectItem(event){
+    let listItem = document.querySelector(".selected");
+    console.log(listItem);
+    if(listItem != null){
+        listItem.classList.remove("selected");
+    }
+    event.target.classList.add("selected");
 }
+
+
+
+
