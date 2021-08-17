@@ -2,13 +2,13 @@
 const inputTarefa = document.querySelector('#texto-tarefa');
 const listaTarefas = document.querySelector('#lista-tarefas');
 const botaoCriaTarefa = document.querySelector('#criar-tarefa');
-/* const botaoApagaTudo = document.querySelector('#apaga-tudo');
+const botaoApagaTudo = document.querySelector('#apaga-tudo');
+/* 
 const botaoRemoveFinalizadas = document.querySelector('#remover-finalizados');
 const botaoSalvarTarefas = document.querySelector('#salvar-tarefas');
 const botaoMoverCima = document.querySelector('#mover-cima');
 const botaoMoverBaixo = document.querySelector('#mover-baixo');
 const botaoRemoveSelecionado = document.querySelector('#remover-selecionado'); */
-
 
 function criaTarefa() {
   const itemLista = document.createElement('li');
@@ -16,18 +16,29 @@ function criaTarefa() {
   listaTarefas.appendChild(itemLista);
   inputTarefa.value = '';
   itemLista.addEventListener('click', corFundo);
-  console.log(itemLista)
+  console.log(itemLista);
 }
 
-function corFundo(event){
-  let evento = event.target;
-  evento.style.backgroundColor = 'gray';
+function corFundo(event) {
+  const antigoSelecionado = document.querySelector('.selected');
+  if (antigoSelecionado != null) {
+    antigoSelecionado.classList.remove('selected');
+  }
+  const evento = event.target;
+  evento.classList.add('selected');
+}
+function apagaTudo() {
+  const listaElementos = document.getElementsByTagName('li');
+  for (let i = 0; i < listaElementos.length; i = 0) {
+    listaElementos[i].remove();
+  }
 }
 
 //ativo as variáveis para receber o click 
 botaoCriaTarefa.addEventListener('click', criaTarefa);
-/* botaoApagaTudo.addEventListener('click', apagaTudo);
-botaoRemoveFinalizadas.addEventListener('click', apagaFinalizados);
+botaoApagaTudo.addEventListener('click', apagaTudo);
+
+/* botaoRemoveFinalizadas.addEventListener('click', apagaFinalizados);
 botaoRemoveSelecionado.addEventListener('click', apagaSelecionados);
 botaoSalvarTarefas.addEventListener('click', salvaListaTarefas);
 botaoMoverCima.addEventListener('click', moverCima);
