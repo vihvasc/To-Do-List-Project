@@ -10,6 +10,8 @@ body {
 
 #painel {
   display: flex;
+  justify-content: space-evenly;
+  margin: 15px auto;
 }
 
 #a-fazer , #fazendo , #concluido {
@@ -17,6 +19,17 @@ body {
   height: fit-content;
   border: 2px solid black;
   border-radius: 26px;
+  box-shadow: 2px 2px 6px 0;
+}
+
+ol {
+  margin: 0 0 5px;
+}
+
+li {
+  text-transform: capitalize;
+  user-select: none;
+  width: 130px;
 }
 
 h4 {
@@ -25,10 +38,6 @@ h4 {
   margin-bottom: 7px;
 }
 
-li {
-  text-transform: capitalize;
-  user-select: none;
-}
 
 .completed {
   text-decoration: line-through solid black;
