@@ -242,7 +242,7 @@ removerFinalizados();
 function botaoSalvar() {
   const botaoSalvar = document.createElement('button');
   botaoSalvar.textContent = 'Salvar Tarefas';
-  botaoSalvar.id = 'salva-tarefas';
+  botaoSalvar.id = 'salvar-tarefas';
   botaoSalvar.addEventListener('click', salvaTarefas);
   body.appendChild(botaoSalvar);
 }
