@@ -29,6 +29,7 @@ let divButton = document.createElement('div');
 document.body.appendChild(divButton);
 let button = document.createElement('button');
 button.id = 'criar-tarefa';
+button.innerText ='Criar Tarefa'
 divButton.appendChild(button);
 // criar um evento para esse botão
 function addNewItem() {
@@ -69,3 +70,18 @@ function elementoRiscado() {
   }
 }
 elementoRiscado();
+
+//  requisito 10
+function clearItems(){
+  let  buttonClear = document.createElement('button');
+  buttonClear.id = 'apaga-tudo';
+  buttonClear.innerText = 'Apagar'
+  document.body.appendChild(buttonClear)
+  buttonClear.addEventListener('click',function(){
+    document.location.reload(true);
+  });
+
+}
+clearItems();;
+
+//requisito 11
