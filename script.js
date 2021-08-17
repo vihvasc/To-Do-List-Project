@@ -2,17 +2,21 @@
 createInput(); // Cria input para adicionar tarefas
 createButton('Adicionar', 'criar-tarefa', 'input-button'); // cria botão para adicioonar tarefas
 createButton('Limpar Lista', 'apaga-tudo', 'button-container'); //Cria botão para apagar todas tarefas
+createButton('Limpar Completos', 'remover-finalizados', 'button-container'); //Cria botão para apagar tarefas completadas
 
 const inputButton = document.getElementById('criar-tarefa');
 const input = document.getElementById('texto-tarefa');
 const taskList = document.getElementById('lista-tarefas');
 const clearListButton = document.getElementById('apaga-tudo');
-
+const clearCompletedtasksButton = document.getElementById(
+  'remover-finalizados'
+);
 // Adiciona Eventos
 inputButton.addEventListener('click', addNewTask);
 taskList.addEventListener('click', selectItem);
 taskList.addEventListener('dblclick', completeItem);
 clearListButton.addEventListener('click', clearList);
+clearCompletedtasksButton.addEventListener('click', clearCompletedsTasks);
 
 // Cria o input para adicionar Tarefas
 function createInput() {
@@ -68,6 +72,16 @@ function clearList() {
   let tasks = document.querySelectorAll('.list-item');
 
   for (let task of tasks) {
+    task.remove();
+  }
+}
+
+// Romove os itens completados
+function clearCompletedsTasks() {
+  let CompletedTasks = document.querySelectorAll('.completed');
+
+  for (let task of CompletedTasks) {
+    console.log(task);
     task.remove();
   }
 }
