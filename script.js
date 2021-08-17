@@ -44,10 +44,9 @@ addButton();
 
 function removeElementsLi() {
   removeButton.addEventListener('click', () => {
-    for (let index = 0; index < liSelect.length; index += 1) {
-      if (liSelect[index].className === 'completed') {
-        liSelect[index].remove();
-      }
+    const item = document.querySelectorAll('.completed');
+    for (let index = 0; index < item.length; index += 1) {
+      item[index].remove();
     }
   });
 }
