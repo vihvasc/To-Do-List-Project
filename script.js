@@ -5,6 +5,7 @@ const btnEraseCompleteTasks = document.getElementById('remover-finalizados');
 const btnSave = document.getElementById('salvar-tarefas');
 const btnMoveUp = document.getElementById('mover-cima');
 const btnMoveDown = document.getElementById('mover-baixo');
+const btnEraseTask = document.getElementById('remover-selecionado');
 const taskList = document.getElementById('lista-tarefas');
 
 // Apaga os itens concluídos da lista.
@@ -56,6 +57,12 @@ function addTask() {
   taskList.appendChild(taskElement);
 }
 
+// Remove uma tarefa da lista de tarefas.
+function removeTask() {
+  const selected = document.querySelector('.selected');
+  selected.remove();
+}
+
 // Move tarefa para a posição abaixo.
 function moveTaskDown() {
   const selectedTask = document.querySelector('.selected');
@@ -104,6 +111,7 @@ function addAllListeners() {
   btnSave.addEventListener('click', saveList);
   btnMoveDown.addEventListener('click', moveTaskDown);
   btnMoveUp.addEventListener('click', moveTaskUp);
+  btnEraseTask.addEventListener('click', removeTask);
 }
 
 function init() {
