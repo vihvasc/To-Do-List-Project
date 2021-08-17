@@ -61,7 +61,10 @@ function removeFinished(){
         if(itemLista[index].classList.contains("completed")){
             lista.removeChild(itemLista[index])
             index = 0;
-            console.log("Removi");
+            console.log("Removi" + itemLista.length);
+            if(itemLista.length === 1 && itemLista[0].classList.contains("completed")){
+                lista.removeChild(itemLista[0])
+            }
         }
     }
 }
