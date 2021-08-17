@@ -1,3 +1,34 @@
+verifyStorage();
+function verifyStorage(){
+ let length = window.localStorage.getItem('tamanho');
+ if(length !== 0){
+   restoreList();
+ }
+
+}
+function addClasses(){
+  let tamanho = window.localStorage.getItem('tamanho');
+  let list = document.querySelectorAll('li');
+  for(let i = 0; i < tamanho; i ++){
+    let name = `list${i}Class`;
+    let classe = window.localStorage.getItem(name);
+    list[i].className = classe;
+  }
+}
+
+function restoreList(){
+  let ol = document.getElementById('lista-tarefas');
+  let tamanho = window.localStorage.getItem('tamanho');
+  
+  for(let i = 0; i < tamanho; i ++){
+    let name = `list${i}`;
+    let item = window.localStorage.getItem(name);
+    let li = document.createElement('li');
+    li.innerText = item;
+    ol.appendChild(li);
+  }
+  addClasses();
+}
 createEvent();
 //função que pega o valor digitado no input
 function getValue(){
@@ -78,8 +109,18 @@ function changeColor (){
 
  //função para salvar lista de tarefas
  function saveList(){
-   var todoList = document.querySelectorAll("li");
-   console.log(todoList);
+  let length = 0;
+  let list = document.querySelectorAll('li');
+  for(let i = 0; i < list.length; i ++){
+    let name = `list${i}`;
+    let nameClass = `list${i}Class`;
+    let listClass = list[i].classList;
+    let text = list[i].innerText;
+    window.localStorage.setItem(name, text)
+    window.localStorage.setItem(nameClass, listClass);
+    length ++;
+  }
+  window.localStorage.setItem('tamanho', length);
  }
 
 //função para remover item selcionado
@@ -144,6 +185,7 @@ function moveUp(){
 function moveDown(){
   const list = document.querySelectorAll("li");
   let selected = document.querySelector(".selected");
+  console.log(selected);
   let positionLater = getPosition();
 
   let selectedText = selected.innerText;
@@ -158,6 +200,29 @@ function moveDown(){
   }
   changesSelected(selected, positionLater[2]);
   changeColor();
+}
+
+//verifica se algum item está selecionado ao clicar no botão mover-baixo
+function verifySelectedDown(){
+  let selected = document.querySelector(".selected");
+  let listItems = document.querySelectorAll("li");
+  let count = 0;
+  for(let key of listItems){
+    count += 1;
+  }
+  console.log(count);
+  if(selected !== null && selected !== listItems[count-1]) {
+    moveDown();
+  }
+}
+
+//verifica se algum item está selecionado ao clicar no botão mover-cima
+function verifySelectedUp(){
+  let selected = document.querySelector(".selected");
+  let listItems = document.querySelectorAll("li");
+    if(selected !== null && selected !== listItems[0]){
+      moveUp();
+    } 
 }
 
 // função para criar eventos gerais
@@ -175,10 +240,10 @@ function createEvent(){
   saveItems.addEventListener("click", saveList);
 
   const moveUpButton = document.getElementById("mover-cima");
-  moveUpButton.addEventListener('click', moveUp);
+  moveUpButton.addEventListener('click', verifySelectedUp);
 
   const moveDownButton = document.getElementById("mover-baixo");
-  moveDownButton.addEventListener('click', moveDown);
+  moveDownButton.addEventListener('click', verifySelectedDown);
 
   const removeSelectedButton = document.getElementById("remover-selecionado");
   removeSelectedButton.addEventListener('click', removeSelected);
