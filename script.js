@@ -15,22 +15,22 @@ window.onload = function () {
       allTheTasks.className = 'task';
       allTheTasks.innerText = liText;
       input.value = '';
+      allTheTasks.addEventListener("click", function () {
+        colorRemove ();
+        allTheTasks.style.background = "rgb(128, 128, 128)";
+      });
     }
     list.appendChild(allTheTasks);
   }
 
-  //não consigo adicionar evento de click em um li que é criada dinamicamente, ou seja,  uma li que só aparece quando é inserido texto na caixa de input. Então a solução seria "delegar" esse evento para outro elemento, no caso o elemento pai, a ol.
-
-  //fontes: https://stackoverflow.com/questions/34896106/attach-event-to-dynamic-elements-in-javascript
-  //https://davidwalsh.name/event-delegate
-
-  function changeColor() {
-    list.addEventListener('click', function (event) {
-      if (event.target && event.target.className === 'task') {
-        event.target.className = 'grey';
-      }
-    });
+  function colorRemove () {
+    for(let i = 0; i < allTheTasks.length; i += 1) {
+      allTheTasks[i].style.background = "";
+    }
   }
 
-  changeColor();
+  
+
+
+
 };
