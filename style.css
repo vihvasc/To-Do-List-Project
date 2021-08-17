@@ -40,13 +40,12 @@ p {
 span {
   color: purple;
 }
- form input{
+ form input {
   border: 1px black solid;
   border-radius: 0.25rem;
 }
 
-form input, 
-form button {
+form input {
   padding: 0.5rem;
   font-size: 1.5rem;
   background: white;
@@ -56,22 +55,24 @@ form button {
   color: black;
   background: white;
   cursor: pointer;
+  padding: 0.5rem;
+  font-size: 1.5rem;
   transition: all 0.3s ease;
 }
 
-form button#criar-tarefa:hover {
+form button.criar-tarefa:hover {
   color: green;
 }
 
-form button#mover-cima:hover {
+form button.mover-cima:hover {
   color: blue;
 }
 
-form button#mover-baixo:hover {
+form button.mover-baixo:hover {
   color: orange;
 }
 
-form button#remover-selecionado:hover {
+form button.remover-selecionado:hover {
   color: red;
 }
 

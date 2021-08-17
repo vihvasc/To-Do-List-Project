@@ -2,9 +2,9 @@ const btnCreatetask = document.getElementById('criar-tarefa');
 const btnDeleteList = document.getElementById('apaga-tudo');
 const btnDeleteCompletos = document.getElementById('remover-finalizados');
 const btnSalvarTasks = document.getElementById('salvar-tarefas');
-const btnMoveUp = document.getElementById('mover-cima');
-const btnMoveDown = document.getElementById('mover-baixo');
-const btnDeleteTask = document.getElementById('remover-selecionado');
+const btnMoveUp = document.querySelector('#mover-cima');
+const btnMoveDown = document.querySelector('#mover-baixo');
+const btnToDoTask = document.querySelector('#remover-selecionado');
 const toDoList = document.getElementById('lista-tarefas');
 const inputText = document.getElementById('texto-tarefa');
 
@@ -20,12 +20,14 @@ function createTask(event) {
 btnCreatetask.addEventListener('click', createTask);
 
 toDoList.addEventListener('click', (event) => {
-  const listTask = toDoList.children;
-  for (let index = 0; index < listTask.length; index += 1) {
-    listTask[index].style.backgroundColor = '';
+  const changedColor = event;
+  if (changedColor.target.className === 'selected') {
+    if (changedColor.target.style.backgroundColor === 'rgb(128,128,128)') {
+      changedColor.target.style.backgroundColor = '';
+    } else {
+      changedColor.target.style.backgroundColor = 'rgb(128,128,128)';
+    }
   }
-  const selectedList = event.target;
-  selectedList.style.backgroundColor = 'rgb(128, 128, 128)';
 });
 
 btnDeleteList.addEventListener('click', () => {
@@ -35,14 +37,28 @@ btnDeleteList.addEventListener('click', () => {
 toDoList.addEventListener('dblclick', (event) => {
   event.target.classList.toggle('completed');
 });
-const storage = localStorage;
 
 btnSalvarTasks.addEventListener('click', () => {
-  storage.setItem('lista', toDoList.innerHTML);
+
+  localStorage.setItem('savedList', toDoList.innerHTML);
 });
 
-btnMoveUp.addEventListener('click', () => {});
+btnMoveUp.addEventListener('click', () => {
+  console.log('clicou');
+});
 
-btnMoveDown.addEventListener('click', () => {});
+btnMoveDown.addEventListener('click', () => {
+  console.log('clicou');
+});
 
-btnDeleteTask.addEventListener('click', () => {});
+btnToDoTask.addEventListener('click', () => {
+  console.log('clicou');
+});
+
+btnDeleteCompletos.addEventListener('click', () => {
+  const tasksCompletos = document.getElementsByClassName('completed');
+  const comprimento = tasksCompletos.length;
+  for (let index = 0; index < comprimento; index += 1) {
+    tasksCompletos[0].remove();
+  }
+});
