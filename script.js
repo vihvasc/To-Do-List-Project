@@ -3,6 +3,9 @@ const taskList = document.getElementById('lista-tarefas');
 const inputTextBox = document.getElementById('texto-tarefa');
 const buttonEraseAll = document.getElementById('apaga-tudo');
 const buttonRemoveCompleteTasks = document.getElementById('remover-finalizados');
+const buttonSaveList = document.getElementById('salvar-tarefas');
+const itemsTags = [];
+const itemsTexts = [];
 
 function handleTaskInputReceive() {
   const inputText = inputTextBox.value;
@@ -10,7 +13,7 @@ function handleTaskInputReceive() {
 }
 
 function handleSelectedItemBgColor() {
-  const listItems = document.querySelectorAll('.list-item');
+  const listItems = document.getElementsByClassName('list-item');
   for (let index = 0; index < listItems.length; index += 1) {
     listItems[index].style.background = 'rgb(255, 255, 255)';
   }
@@ -73,9 +76,45 @@ function handleCompletedTaskErasing() {
   }
 }
 
+function handleSaveList() {
+  const itemsList = document.querySelectorAll('.list-item');
+  const listSize = itemsList.length;
+  for (let index = 0; index < listSize; index += 1) {
+    const itemTag = itemsList[index].className;
+    itemsTags.push(itemTag);
+    const itemText = itemsList[index].innerText;
+    itemsTexts.push(itemText);
+  }
+  localStorage.setItem('tags', JSON.stringify(itemsTags));
+  localStorage.setItem('texts', JSON.stringify(itemsTexts));
+}
+
+function handleRetrieveList() {
+  if (localStorage.length > 0) {
+    handleListErasing();
+    const newItemsTags = JSON.parse(localStorage.getItem('tags'));
+    const newItemsTexts = JSON.parse(localStorage.getItem('texts'));
+    const listSize = newItemsTags.length;
+    for (let index = 0; index < listSize; index += 1) {
+      const newListItem = document.createElement('li');
+      newListItem.className = newItemsTags[index];
+      newListItem.innerText = newItemsTexts[index];
+      taskList.appendChild(newListItem);
+    }
+    const listItems = document.getElementsByClassName('list-item');
+    handleListItemsEventAdd(listItems);
+    handleCompletedTaskEventAdd(listItems);
+    localStorage.clear();
+  } else {
+    return window.onload;
+  }
+}
+
 window.onload = function createToDoListPage() {
   inputTextBox.addEventListener('keyup', handleTaskInputReceive);
   buttonCreateTask.addEventListener('click', handleTaskAdding);
   buttonEraseAll.addEventListener('click', handleListErasing);
   buttonRemoveCompleteTasks.addEventListener('click', handleCompletedTaskErasing);
+  buttonSaveList.addEventListener('click', handleSaveList);
+  window.reload = handleRetrieveList();
 };
