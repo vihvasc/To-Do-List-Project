@@ -27,30 +27,29 @@ body {
     width: 20%;
     font-weight: bold;
 }
-#apaga-tudo {
+/* /* #apaga-tudo {
     background-color: red;
     color: white;
+    font-weight: bold;
     border-radius: 20%;
     border: none;
-    padding: 2%;
     width: 15%;
-    font-weight: bold;
-}
-#remover-finalizados {
+    padding: 2%;
+
+} */
+/* #remover-finalizados {
     background-color: green;
     color: white;
+    padding: 1%;
+    font-weight: bold;
     border-radius: 20%;
     border: none;
+    width: 28%;
+    height: 20%;
     padding: 2%;
-    width: 20%;
-    font-weight: bold;
-}
-#remover-selecionado {
-    background-color: green;
+} */
+/* #remover-selecionado {
     color: white;
-    border-radius: 20%;
-    border: none;
-    padding: 2%;
-    width: 20%;
     font-weight: bold;
-}
+    border: none;
+} */

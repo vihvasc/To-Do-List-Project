@@ -65,6 +65,21 @@ function buttonCompleted() {
 }
 buttonCompleted()
 
+let buttonSaveTasks = document.getElementById('salvar-tarefas');
+buttonSaveTasks.addEventListener('click', function() {
+    let getOl = document.querySelectorAll('#lista-tarefas');
+    for (let i = 0; i < getOl.length; i += 1){
+    localStorage.setItem('list', JSON.stringify(getOl[i].innerHTML))
+    }
+});
+
+function loadTasks () {
+    let getOl = document.querySelectorAll('#lista-tarefas');
+    for (let i = 0; i < getOl.length; i += 1){
+        getOl[i].innerHTML = JSON.parse(localStorage.getItem('list'));
+    }
+}
+
 function removeSelected () {
     let getClassSelected = document.querySelector('.selected');
         getClassSelected.remove();
@@ -74,3 +89,49 @@ function buttonRemoveSelected() {
     buttonSelected.addEventListener('click', removeSelected);
 }
 buttonRemoveSelected()
+
+
+
+window.onload = function() {
+    loadTasks ()
+};
+
+
+function moveUp() {
+    let getClassSelected = document.querySelector('.selected');
+    let getNoOl = document.querySelectorAll('#lista-tarefas');
+    let selectedPreviousSibling = getClassSelected.previousElementSibling;
+
+    for (let i = 0; i < getNoOl.length; i += 1) {
+        if (selectedPreviousSibling === null) {
+        } else {
+        getNoOl[i].insertBefore(getClassSelected, selectedPreviousSibling);
+        }
+    }
+}
+function buttonMoveUp() {
+    let = getButtonMoveUp = document.getElementById('mover-cima');
+    getButtonMoveUp.addEventListener('click', moveUp)
+}
+buttonMoveUp()
+
+function moveDown() {
+    let getClassSelected1 = document.querySelector('.selected');
+    let getNoOl1 = document.querySelectorAll('#lista-tarefas');
+    let selectedNextSibling = getClassSelected1.nextElementSibling;
+    console.log(getClassSelected1)
+    console.log(selectedNextSibling);
+
+    for (let i = 0; i < getNoOl1.length; i += 1) {
+        if (selectedNextSibling === null){
+        } else {
+        getNoOl1[i].insertBefore(selectedNextSibling ,getClassSelected1);
+        console.log(getNoOl1[i]);
+        }
+    }
+}
+function buttonMoveDown() {
+    let = getButtonMoveDown = document.getElementById('mover-baixo');
+    getButtonMoveDown.addEventListener('click', moveDown)
+}
+buttonMoveDown()
