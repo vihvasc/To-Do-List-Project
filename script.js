@@ -3,6 +3,8 @@ const list = document.getElementById('lista-tarefas')
 const delButton = document.getElementById('apaga-tudo')
 const delCompletedButton = document.getElementById('remover-finalizados')
 const saveButton = document.getElementById('salvar-tarefas')
+const upButton = document.getElementById('mover-cima')
+const downButton = document.getElementById('mover-baixo')
 
 function addTask() {
   const inputText = document.getElementById('texto-tarefa')
@@ -94,6 +96,37 @@ function getSavedTasks() {
     }
   }
 }
+
+upButton.addEventListener('click', () => {
+  let selected = document.querySelector('.selected')
+  if(selected){
+    let previousSib = selected.previousSibling
+    if (previousSib) {
+      selected.parentNode.insertBefore(selected, previousSib)
+    }
+  }
+  
+})
+downButton.addEventListener('click', () => {
+  let selected = document.querySelector('.selected')
+  if (selected){
+    let nextSib = selected.nextSibling
+    if(nextSib){
+      selected.parentNode.insertBefore(nextSib, selected)
+    }
+  }
+})
+function makeLiObj(li) {
+  const styles = getComputedStyle(li)
+
+  const taskObj = {
+    text: li.innerText,
+    completed: styles.textDecoration.includes('line-through'),
+    selected: styles.backgroundColor.includes('rgb(128, 128, 128)'),
+  }
+  return taskObj
+}
+
 
 getSavedTasks()
 
