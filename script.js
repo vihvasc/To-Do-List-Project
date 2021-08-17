@@ -25,11 +25,16 @@ function handleDoubleClickItem(event) {
   }
 }
 
+function handleMouseHover(event) {
+  event.target.style.cursor = 'pointer';
+}
+
 function handleAddTask() {
   const li = document.createElement('li');
   // li.classList.add('list-item');
   li.textContent = input.value;
 
+  li.addEventListener('mouseover', handleMouseHover);
   li.addEventListener('click', handleClickItem);
   li.addEventListener('dblclick', handleDoubleClickItem);
 
