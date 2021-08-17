@@ -52,21 +52,21 @@ function criaTarefa() {
         novoItem.id = 'selecionado';
       })
       novoItem.addEventListener('dblclick', function () {
-        let comparaClasse = novoItem.className;
-          if (comparaClasse.endsWith('completed') ) {
-            console.log('ELEMENTO \''+ novoItem.textContent + '\' FOI DESELECIONADO');
-            novoItem.className = '';
-            novoItem.style.textDecoration = '';
-          } else {
-            console.log('ELEMENTO \''+ novoItem.textContent + '\' FOI SELECIONADO');
-            novoItem.className = 'completed';
-            novoItem.style.textDecoration = 'line-through solid rgb(0,0,0)';
-          }
-        })
+        const comparaClasse = novoItem.className;
+        if (comparaClasse.endsWith('completed') ) {
+          console.log('ELEMENTO \'' + novoItem.textContent + '\' FOI DESELECIONADO');
+          novoItem.className = '';
+          novoItem.style.textDecoration = '';
+        } else {
+          console.log('ELEMENTO \'' + novoItem.textContent + '\' FOI SELECIONADO');
+          novoItem.className = 'completed';
+          novoItem.style.textDecoration = 'line-through solid rgb(0,0,0)';
+        }
+        });
       listaDeTarefas.appendChild(novoItem);
     }
     textoAAdicionar.value = '';
-  })
+  });
 }
 criaTarefa();
 
@@ -80,9 +80,9 @@ function limpaLista() {
     botaoLimpar.addEventListener('click', function () {
       
       const elementosLista = document.querySelectorAll('li');
-        for (let index = 0; index < elementosLista.length; index +=1) {
-          elementosLista[index].remove();
-        }
+      for (let index = 0; index < elementosLista.length; index +=1) {
+        elementosLista[index].remove();
+      }
       salvaTarefas()
     })
     document.body.appendChild(botaoLimpar);
@@ -107,13 +107,13 @@ function removerFinalizados() {
 removerFinalizados();
 
 function botaoSalvar() {
-  const botaoSalvar = document.createElement('button');
-  botaoSalvar.textContent = 'Salvar Tarefas';
-  botaoSalvar.id = 'salvar-tarefas';
-  botaoSalvar.addEventListener('click', salvaTarefas);
-  document.body.appendChild(botaoSalvar);
+  const botaoDeSalvar = document.createElement('button');
+  botaoDeSalvar.textContent = 'Salvar Tarefas';
+  botaoDeSalvar.id = 'salvar-tarefas';
+  botaoDeSalvar.addEventListener('click', salvaTarefas);
+  document.body.appendChild(botaoDeSalvar);
 }
-botaoSalvar();
+botaoDeSalvar();
 
 function salvaTarefas() {
   let listaOrdenada = document.querySelectorAll('li');
@@ -149,16 +149,16 @@ function recuperaTarefas () {
         let comparaClasse = novaTarefa.className;
 
         if (comparaClasse.endsWith('completed') ) {
-            console.log('ELEMENTO \''+ novaTarefa.textContent + '\' FOI DESELECIONADO');
-            novaTarefa.className = '';
-            novaTarefa.style.textDecoration = '';
+          console.log('ELEMENTO \''+ novaTarefa.textContent + '\' FOI DESELECIONADO');
+          novaTarefa.className = '';
+          novaTarefa.style.textDecoration = '';
 
         } else {
-            console.log('ELEMENTO \''+ novaTarefa.textContent + '\' FOI SELECIONADO');
-            novaTarefa.className = 'completed';
-            novaTarefa.style.textDecoration = 'line-through solid rgb(0,0,0)';
+          console.log('ELEMENTO \''+ novaTarefa.textContent + '\' FOI SELECIONADO');
+          novaTarefa.className = 'completed';
+          novaTarefa.style.textDecoration = 'line-through solid rgb(0,0,0)';
         }
-      })
+      });
       listaTarefas.appendChild(novaTarefa);
     }
   } else {
@@ -168,34 +168,33 @@ function recuperaTarefas () {
 recuperaTarefas();
 
 function removerSelecionado() {
-    const botaoRemover = document.createElement('button');
-    botaoRemover.textContent = 'Remover Selecionado';
-    botaoRemover.id = 'remover-selecionado';
-    botaoRemover.addEventListener('click', function () {
-      const elementoSelecionado = document.getElementById('selecionado');
-      elementoSelecionado.remove();
-
-    })
-    document.body.appendChild(botaoRemover);
+  const botaoRemover = document.createElement('button');
+  botaoRemover.textContent = 'Remover Selecionado';
+  botaoRemover.id = 'remover-selecionado';
+  botaoRemover.addEventListener('click', function () {
+    const elementoSelecionado = document.getElementById('selecionado');
+    elementoSelecionado.remove();
+  });
+  document.body.appendChild(botaoRemover);
 }
 removerSelecionado();
 
 function moverElementoSelecionado() {
-  const moveCima = document.createElement('button');
-  moveCima.id = 'mover-cima';
-  moveCima.textContent = 'Mover para Cima';
-  const moveBaixo = document.createElement('button');
-  moveBaixo.id = 'mover-baixo';
-  moveBaixo.textContent = 'Mover para Baixo';
-  moveCima.addEventListener('click', function moveCima() {
+  const moverCima = document.createElement('button');
+  moverCima.id = 'mover-cima';
+  moverCima.textContent = 'Mover para Cima';
+  const moverBaixo = document.createElement('button');
+  moverBaixo.id = 'mover-baixo';
+  moverBaixo.textContent = 'Mover para Baixo';
+  moverCima.addEventListener('click', function moveCima() {
     const arrayElementos = document.querySelectorAll('li');
     console.log(arrayElementos);
-  })
-  moveBaixo.addEventListener('click', function moveCima() {
+  });
+  moveBaixo.addEventListener('click', function moveBaixo() {
     const arrayElementos = document.querySelectorAll('li');
     console.log(arrayElementos);
-  })
-  document.body.appendChild(moveCima);
-  document.body.appendChild(moveBaixo);
+  });
+  document.body.appendChild(moverCima);
+  document.body.appendChild(moverBaixo);
 }
 moverElementoSelecionado();
