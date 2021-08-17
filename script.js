@@ -21,7 +21,7 @@ function addTarefas() {
   let textoLi = document.createElement('li');
   textoLi.innerHTML = textoInput;
   listaOrdenada.appendChild(textoLi);
-  textoInput.value = '';
+  input.value = '';
 }
 
 let botaoInserir = document.getElementById('criar-tarefa')
