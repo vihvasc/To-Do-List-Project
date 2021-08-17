@@ -2,35 +2,35 @@
 const createTask = document.querySelector('#criar-tarefa');
 const textTask = document.querySelector('#texto-tarefa');
 const todoList = document.querySelector('#lista-tarefas');
+const clearTask = document.querySelector('#apaga-tudo')
+const removeCheck = document.querySelector('#remover-finalizados')
 
 // function
-function taskGenerator() {
-  const task = document.createElement('li');
-  task.classList.add('list');
-  task.innerHTML = textTask.value;
-  todoList.appendChild(task);
-  textTask.value = '';
-  cliclli();
+function completdLi() {
+  const listTask = document.querySelectorAll('.list');
+
+  for (element of listTask) {
+    element.addEventListener('dblclick', (event) => {
+      if (element.classList.contains('completed')) 
+      event.target.classList.toggle('completed', false);
+      else 
+      event.target.classList.toggle('completed', true);
+    });
+  }
 }
 
-function cliclli() {
+function selectLi() {
   const listTask = document.querySelectorAll('.list');
-  for (const element of listTask) {
+  for (element of listTask) {
     element.addEventListener('click', (event) => {
-      if (element.classList !== 'select') {
+      if (element.className !== 'select') {
         removeClassList();
-        element.classList.add('select');
+        event.target.classList.add('select');
         event.target.style.backgroundColor = 'rgb(128, 128, 128)';
       }
     });
-    element.addEventListener('dblclick', () => {
-      if (element.classList.contains('completed')) {
-        element.classList.remove('completed');
-      } else {
-        element.classList.add('completed');
-      }
-    });
   }
+  
 }
 
 function removeClassList() {
@@ -41,5 +41,33 @@ function removeClassList() {
   });
 }
 
+
+
+function taskGenerator() {
+  const task = document.createElement('li');
+  task.classList.add('list');
+  task.innerHTML = textTask.value;
+  todoList.appendChild(task);
+  textTask.value = '';
+  selectLi();
+  completdLi()
+  
+}
+
+function clearTasks() {
+  const listTask = document.querySelectorAll('.list');
+  listTask.forEach((event) => {
+    event.remove()
+  })
+}
+
+function removeCheckTask() {
+  const listTask = document.querySelectorAll('.completed');
+  listTask.forEach((event) => {
+    event.remove()
+  })
+}
 // addEventListener
 createTask.addEventListener('click', taskGenerator);
+clearTask.addEventListener('click', clearTasks);
+removeCheck.addEventListener('click', removeCheckTask);
