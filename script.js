@@ -36,11 +36,12 @@ function adicionarNovaTarefa() {
   campoInput.value = '';
 }
 
-function removeAllTasks() {
-  let allTasksCreated = listaTarefas.lastElementChild;
-  while (allTasksCreated) {
-    listaTarefas.removeChild(allTasksCreated);
-    allTasksCreated = listaTarefas.lastElementChild;
+function removerTodasTarefas() {
+  let todasTarefasCriadas = listaTarefas.lastElementChild;
+
+  while (todasTarefasCriadas) {
+    listaTarefas.removeChild(todasTarefasCriadas);
+    todasTarefasCriadas = listaTarefas.lastElementChild;
   }
 }
 
@@ -61,5 +62,5 @@ function enterPressed(event) {
 
 criarTarefa.addEventListener('click', adicionarNovaTarefa);
 campoInput.addEventListener('keypress', enterPressed);
-limparTarefas.addEventListener('click', removeAllTasks);
+limparTarefas.addEventListener('click', removerTodasTarefas);
 limparConcluidos.addEventListener('click', removeTasksCompleted);
