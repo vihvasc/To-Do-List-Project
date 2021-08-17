@@ -2,6 +2,7 @@ const { body } = document;
 const inputTask = document.getElementById('texto-tarefa');
 const buttonAdd = document.getElementById('criar-tarefa');
 const taskList = document.getElementById('lista-tarefas');
+const buttonClearTasks = document.getElementById('apaga-tudo'); // requisito 10
 
 // Criando uma tarefa nova como item list para ser usado na OL depois
 
@@ -37,12 +38,21 @@ function addNewTask() {
   taskList.appendChild(createdTask);
 }
 
-function listtennerButtonAdd() {
+function clearTasks() {
+  taskList.innerHTML = '';
+}
+
+function listenerButtonAdd() {
   buttonAdd.addEventListener('click', addNewTask);
 }
 
+function listenerButtonClearTask() {
+  buttonClearTasks.addEventListener('click', clearTasks);
+}
+
 function callAllFunctions() {
-  listtennerButtonAdd();
+  listenerButtonAdd();
+  listenerButtonClearTask();
 }
 
 console.log(body);
