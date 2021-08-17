@@ -3,7 +3,6 @@ const addInput = document.getElementById('texto-tarefa'); // input
 const listOrd = document.getElementById('lista-tarefas');//lista ordenada
 const taskCreate = document.getElementsByTagName('li');//listas das tarefas criadas
 
-
 function inputTask() {
   addButton.addEventListener('click', function () {
     let li = document.createElement('li');
@@ -44,5 +43,9 @@ function styleLine(event) {
   }
 }
  listOrd.addEventListener('dblclick', styleLine);
-  
+
+ //Requisito 10
+function clearList(){
+  location.reload();
+}
 
