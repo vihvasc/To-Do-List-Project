@@ -1,6 +1,7 @@
 const input = document.getElementById('texto-tarefa');
 const buttonAdd = document.getElementById('criar-tarefa');
 const buttonClearList = document.getElementById('apaga-tudo');
+const buttonRemoveCompleted = document.getElementById('remover-finalizados');
 const listTasks = document.getElementById('lista-tarefas');
 const arrayList = document.getElementsByTagName('li');
 
@@ -41,3 +42,14 @@ function clearList() {
 }
 
 buttonClearList.addEventListener('click', clearList);
+
+// Requisito 11
+function clearCompleted() {
+  let classCompleted = document.querySelector('.completed');
+  while (classCompleted) {
+    classCompleted.remove();
+    classCompleted = document.querySelector('.completed');
+  }
+}
+
+buttonRemoveCompleted.addEventListener('click', clearCompleted);
