@@ -3,6 +3,7 @@ const buttonAddTask = document.querySelector('#criar-tarefa');
 const taskList = document.querySelector('#lista-tarefas');
 const deleteButton = document.querySelector('#apaga-tudo');
 const completedRemoveButton = document.querySelector('#remover-finalizados')
+const removeSelectedButton = document.querySelector('#remover-selecionado')
 
 function addTask() {
   buttonAddTask.addEventListener('click', () => {
@@ -23,7 +24,12 @@ function addTask() {
       }
      event.target.classList.add('selected');
     }) 
-      
+    removeSelectedButton.addEventListener('click', () => {
+      const selected = document.querySelectorAll('.selected');
+      for(let i = 0; i < selected.length; i += 1) {
+        selected[i].remove()
+      }
+    })
   lineThrough(listItem);
     }input.value = '';
   });
@@ -38,7 +44,7 @@ function lineThrough(listItem) {
     }
   })
 
-  completedRemoveButton.addEventListener('click', (event) => {
+  completedRemoveButton.addEventListener('click', () => {
     const completed = document.querySelectorAll('.completed');
     for(let i = 0; i < completed.length; i += 1) {
      completed[i].remove();
