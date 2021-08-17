@@ -2,6 +2,7 @@ const taskInput = document.getElementById('texto-tarefa'); // Input
 const listaTarefas = document.getElementById('lista-tarefas'); // Lista Ordenada
 const criarTarefa = document.getElementById('criar-tarefa'); // Botão adicionar tarefa
 const tarefasCriadas = document.getElementsByTagName('li'); // Todas tarefas criadas
+const botaoLimparTarefas = document.getElementById('apaga-tudo'); // Botão de limpar tarefas criadas
 
 
 function changeColor(event) {
@@ -14,8 +15,6 @@ function changeColor(event) {
 
 function addNewTask() {
   const li = document.createElement('li');
-  const inputValue = taskInput.value
-  // inputValue.replace(//)
   li.innerText = taskInput.value;
   li.addEventListener('click', changeColor);
   li.addEventListener('dblclick', toggleCompleted);
@@ -32,6 +31,14 @@ function toggleCompleted(event) {
   }
 }
 
+function removeAllTasks() {
+  let allTasksCreated = listaTarefas.lastElementChild;
+  while (allTasksCreated) {
+    listaTarefas.removeChild(allTasksCreated);
+    allTasksCreated = listaTarefas.lastElementChild;
+  }
+}
+
 criarTarefa.addEventListener('click', addNewTask);
 taskInput.addEventListener('keypress', function(event) {
   let enterPressed = event;
@@ -39,3 +46,4 @@ taskInput.addEventListener('keypress', function(event) {
     addNewTask();
   }
 });
+botaoLimparTarefas.addEventListener('click', removeAllTasks);
