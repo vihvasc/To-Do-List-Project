@@ -1,27 +1,68 @@
 body { 
   margin: 0;
-  padding: 0;
+  padding: 1%;
   box-sizing: border-box;
-  background-color: rgb(139, 159, 10);
-  color: white;
+  background-color: #1F4853;
+  color: #DDDDDD;
+  font-family: 'Permanent Marker';
+  text-align: center;
 }
+
 .list-item {
   width: fit-content;
+  padding: 5px;
+  border: solid 1px black;
+  margin: 5px;
+  color: black;
+  border-radius: 15%;
+  /* font-family: 'Courier New', Courier, monospace; */
 }
 
 .list-item:hover {
- cursor: pointer;
- text-shadow: black;
+  cursor: pointer;
+  text-shadow: black;
+  background-color: rgb(252, 211, 71);
 }
 ::selection {
-  background-color: none;
-  color: white;
+  background-color: ;
+  color: black;
 }
 
 .selected {
-  background-color: rgb(128, 128, 128);
+ background-color: rgb(128,128,128); 
 }
 
 .completed {
   text-decoration: line-through solid rgb(0, 0, 0);
+}
+
+#texto-tarefa {
+
+}
+
+button {
+  margin: 5px;
+  padding:10px;
+  background-color: rgb(184, 167, 181);
+  
+
+}
+
+button:hover{
+  background-color: rgb(252, 211, 71);
+}
+
+.bottom-btn {
+  margin: 10px;
+}
+
+#central-page {
+  border: dotted 5px black;
+  background-color: #DDDDDD;
+  margin: 0 auto;
+  width: 50%
+}
+  
+.imgs{
+width: 10px;
 }
