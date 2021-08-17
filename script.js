@@ -8,7 +8,7 @@ const taskList = document.getElementById('lista-tarefas');
 
 // Adiciona Eventos
 inputButton.addEventListener('click', addNewTask);
-taskList.addEventListener('click', changeTaskColor);
+taskList.addEventListener('click', selectItem);
 
 // Cria o input para adicionar Tarefas
 function createInput() {
@@ -42,7 +42,13 @@ function addNewTask() {
   }
 }
 
-// Muda a cor de fundo de um elemento da lista
-function changeTaskColor(event) {
-  event.target.style.backgroundColor = 'rgb(128,128,128)';
+// Adiciona a classe selected para mudar a cor de fundo do item
+function selectItem(event) {
+  let selected = document.querySelector('.selected');
+
+  if (selected && selected !== event.target) {
+    selected.classList.remove('selected');
+  }
+
+  event.target.classList.toggle('selected');
 }
