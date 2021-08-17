@@ -27,11 +27,7 @@ function addTarefas() {
 let botaoInserir = document.getElementById('criar-tarefa')
 botaoInserir.addEventListener('click', addTarefas)
 
-
-// let inputTarefa = document.getElementById('texto-tarefa');
-// inputTarefa.addEventListener('input', addListaTarefas);
-
-// function addListaTarefas(event){
-//     inputTarefa.value = '';
-// }
-
+let textoLi = document.getElementById('lista-tarefas');
+textoLi.addEventListener('click',function(event){
+    event.target.style.backgroundColor = 'rgb(128,128,128)';
+});
