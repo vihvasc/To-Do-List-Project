@@ -66,17 +66,42 @@ function pintaLis() {
 }
 botaoAdiciona.addEventListener('click', pintaLis);
 
-function criaBotao2() {
+function criaBotaoApagaTudo() {
   const novoBotao = document.createElement('button');
   novoBotao.id = 'apaga-tudo';
   novoBotao.innerText = 'Remova todas as tarefas';
   const body = document.getElementsByTagName('body')[0];
   body.appendChild(novoBotao);
 }
-criaBotao2();
+criaBotaoApagaTudo();
 function removeTudo() {
   const ol = document.getElementById('lista-tarefas');
-  ol.innerText = ''
+  ol.innerText = '';
 }
 const botaoApaga = document.getElementById('apaga-tudo');
 botaoApaga.addEventListener('click', removeTudo);
+
+function criaBotaoApagaCompletado() {
+  const novoBotao = document.createElement('button');
+  novoBotao.id = 'remover-finalizados';
+  novoBotao.innerText = 'Remova todas as tarefas finalizadas';
+  const body = document.getElementsByTagName('body')[0];
+  body.appendChild(novoBotao);
+}
+
+criaBotaoApagaCompletado();
+function apagaCompletado() {
+  const pegaCompleto = document.getElementsByClassName('completed');
+  for (let i = 0; i <= pegaCompleto.length + 1; i++) {
+    for (let index of pegaCompleto) {
+      console.log(index);
+      index.remove();
+      if (index == undefined) {
+        const pegaUm = document.getElementsByClassName('completed')[0];
+        pegaUm.remove();
+      }
+    }
+  }
+}
+const botaoApagaCompletado = document.getElementById('remover-finalizados');
+botaoApagaCompletado.addEventListener('click', apagaCompletado);
