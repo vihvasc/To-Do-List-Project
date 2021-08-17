@@ -53,8 +53,17 @@ function removeCompletedTask() {
   const getCompletedTasks = document.querySelectorAll('.completed');
   for (let i = 0; i < getCompletedTasks.length; i += 1) {
     getOrdenedList.removeChild(getCompletedTasks[i]);
-    console.log(getCompletedTasks[i]);
   }
+}
+
+function saveTasks() {
+  const getHTMLTasks = getOrdenedList.innerHTML;
+  localStorage.setItem('tasks', getHTMLTasks);
+}
+
+function loadTasks() {
+  getOrdenedList.innerHTML = localStorage.getItem('tasks');
+  console.log(localStorage.getItem('tasks'));
 }
 
 window.onload = () => {
@@ -62,5 +71,7 @@ window.onload = () => {
   completeTask();
   deleteAll();
   removeCompletedTask();
-  document.getElementById('remove-finalizados').addEventListener('click', removeCompletedTask);
+  document.getElementById('remover-finalizados').addEventListener('click', removeCompletedTask);
+  document.getElementById('salvar-tarefas').addEventListener('click', saveTasks);
+  loadTasks();
 };
