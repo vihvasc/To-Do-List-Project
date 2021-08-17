@@ -4,11 +4,13 @@ const button = document.getElementById('criar-tarefa');
 const liSelect = document.getElementsByTagName('li');
 const clearButton = document.getElementById('apaga-tudo');
 const removeButton = document.getElementById('remover-finalizados');
+const saveTasks = document.getElementById('salvar-tarefas');
 
 function paintingLiBackground(event) {
   for (let index = 0; index < liSelect.length; index += 1) {
     liSelect[index].style.backgroundColor = '';
-  } const eventTarget = event.target;
+  }
+  const eventTarget = event.target;
   eventTarget.style.backgroundColor = 'rgb(128, 128, 128)';
 }
 
@@ -52,3 +54,15 @@ function removeElementsLi() {
 }
 
 removeElementsLi();
+
+function savingTasks() {
+  saveTasks.addEventListener('click', () => {
+    localStorage.setItem('tasksList', olList.innerHTML);
+  });
+}
+
+savingTasks();
+
+window.onload = () => {
+  olList.innerHTML = localStorage.getItem('tasksList');
+};
