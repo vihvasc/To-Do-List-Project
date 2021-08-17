@@ -2,6 +2,13 @@ const createTasks = document.querySelector('#criar-tarefa');
 const taskInput = document.querySelector('#texto-tarefa');
 const taskList = document.querySelector('#lista-tarefas');
 const taskItem = document.getElementsByClassName('task');
+const buttonClear = document.querySelector('#apaga-tudo');
+
+function removeAllTask() {
+  taskList.innerHTML = '';
+}
+
+buttonClear.addEventListener('click', removeAllTask);
 
 function doubleClick(event) {
   const elemento = event.target;
