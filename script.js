@@ -92,7 +92,7 @@ function criaBotaoApagaCompletado() {
 criaBotaoApagaCompletado();
 function apagaCompletado() {
   const pegaCompleto = document.getElementsByClassName('completed');
-  for (let i = 0; i <= pegaCompleto.length + 1; i++) {
+  for (let i = 0; i <= pegaCompleto.length + 1; i += 1) {
     for (let index of pegaCompleto) {
       console.log(index);
       index.remove();
@@ -105,3 +105,39 @@ function apagaCompletado() {
 }
 const botaoApagaCompletado = document.getElementById('remover-finalizados');
 botaoApagaCompletado.addEventListener('click', apagaCompletado);
+
+function criaBotaoSalvaArquivo() {
+  const novoBotao = document.createElement('button');
+  novoBotao.id = 'salvar-tarefas';
+  novoBotao.innerText = 'Salve suas alterações';
+  const body = document.getElementsByTagName('body')[0];
+  body.appendChild(novoBotao);
+}
+criaBotaoSalvaArquivo();
+
+function salvaTudo() {
+  const lis = document.getElementsByTagName('li');
+  for (let index = 0; index < lis.length; index += 1) {
+    let atual = lis[index];
+    localStorage.setItem('classe' + index, atual.className);
+    localStorage.setItem('text' + index, atual.innerText);
+    localStorage.setItem('tag' + index, atual.tagName.toLowerCase());
+    localStorage.setItem('background' + index, atual.style.backgroundColor);
+  }
+}
+const pegaBotaoSalvaTudo = document.getElementById('salvar-tarefas');
+pegaBotaoSalvaTudo.addEventListener('click', salvaTudo);
+
+function criaLiNoCarregar() {
+  let locals = localStorage.length;
+  for (let i = 0; i < locals; i += 1) {
+    const novoElemento = document.createElement(localStorage.getItem('tag' + i));
+    novoElemento.className = localStorage.getItem('classe' + i);
+    novoElemento.innerText = localStorage.getItem('text' + i);
+    novoElemento.style.backgroundColor = localStorage.getItem('background' + i);
+    const ol = document.getElementById('lista-tarefas');
+    ol.appendChild(novoElemento);
+  }
+}
+
+window.onload = criaLiNoCarregar();
