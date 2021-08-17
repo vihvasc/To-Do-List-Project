@@ -1,5 +1,6 @@
 const input = document.getElementById('texto-tarefa');
 const buttonAdd = document.getElementById('criar-tarefa');
+const buttonClearList = document.getElementById('apaga-tudo');
 const listTasks = document.getElementById('lista-tarefas');
 const arrayList = document.getElementsByTagName('li');
 
@@ -33,3 +34,10 @@ function addTasks() {
 }
 
 buttonAdd.addEventListener('click', addTasks);
+
+// Requisito 10
+function clearList() {
+  listTasks.innerHTML = '';
+}
+
+buttonClearList.addEventListener('click', clearList);
