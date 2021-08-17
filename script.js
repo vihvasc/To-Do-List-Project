@@ -123,6 +123,8 @@ saveTaskListBtn.innerText = 'Salvar';
 document.body.appendChild(saveTaskListBtn);
 
 window.onload = loadTaskList;
+// Consultei o repositório do Rodrigo Lima com sua autorização para resolver essa parte.
+// https://github.com/tryber/sd-015-b-project-todo-list/pull/99#issue-713660235
 
 function moveUp() {
   const selectedTask = document.querySelector('.selected');
