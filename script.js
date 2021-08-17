@@ -1,7 +1,8 @@
 const input = document.querySelector('#texto-tarefa');
-const listOrdernd = document.querySelector('#lista-tarefas');
+const listOrderned = document.querySelector('#lista-tarefas');
 const addButtonTask = document.querySelector('#criar-tarefa');
 const liTask = document.getElementsByClassName('task');
+const deleteButton = document.getElementById('apaga-tudo');
 
 function removeColor() {
   for (let index = 0; index < liTask.length; index += 1) {
@@ -34,9 +35,14 @@ function createTask() {
     li.className = 'task';
     li.addEventListener('dblclick', doubleClick);
     input.value = '';
-    listOrdernd.appendChild(li);
+    listOrderned.appendChild(li);
     addListener();
   });
 }
 
 createTask();
+
+deleteButton.addEventListener('click', () => {
+  // listOrderned.innerHTML = '';
+  listOrderned.innerText = '';
+});
