@@ -5,6 +5,7 @@ const takeBtnClearDone = document.getElementById('remover-finalizados');
 const takeBtnSaveTasks = document.getElementById('salvar-tarefas');
 const takeBtnMoveUp = document.getElementById('mover-cima');
 const takeBtnMoveDown = document.getElementById('mover-baixo');
+const takeBtnDelete = document.getElementById('remover-selecionado')
 
 const input = document.getElementById('texto-tarefa');
 
@@ -118,6 +119,12 @@ function moveItemDown() {
   }
 }
 
+function deleteSelected() {
+  const selected = document.querySelector('.selected');
+
+  selected.remove();
+}
+
 // A ideia de salvar os items da lista em objetos foi baseada em um conversa que tive com o colega Guilherme Saboia, turma 15, tribo b.
 
 function saveTasks() {
@@ -168,6 +175,7 @@ function afterLoad() {
   takeBtnSaveTasks.addEventListener('click', saveTasks);
   takeBtnMoveUp.addEventListener('click', moveItemUp);
   takeBtnMoveDown.addEventListener('click', moveItemDown);
+  takeBtnDelete.addEventListener('click', deleteSelected)
 }
 
 window.onload = afterLoad;
