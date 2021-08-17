@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600&display=swap');
 
 * {
-  font-family: 'Nunito', sans-serif;
+  font-family: Nunito, sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -10,7 +10,7 @@
 }
 
 body {
-  background: rgb(226, 225, 225);
+  background: gainsboro;
 }
 
 header,
@@ -60,23 +60,22 @@ form button#criar-tarefa:hover {
 }
 
 form button#mover-cima:hover {
-  color: rgb(35, 162, 221);
+  color: blue;
 }
 
 form button#mover-baixo:hover {
-  color: rgb(238, 154, 20);
+  color: orange;
 }
 
 form button#remover-selecionado:hover {
-  color: rgb(218, 27, 21);
+  color: red;
 }
-
 
 .btn {
   width: 16rem;
   padding: 1rem;
-  background: #333;
-  color: rgb(255, 255, 255);
+  background: dimgray;
+  color: black;
   cursor: pointer;
   font-size: 1rem;
   margin: 1rem;
@@ -84,25 +83,24 @@ form button#remover-selecionado:hover {
 }
 
 .btn:hover {
-  background: rgb(88, 86, 88);
+  background: gray;
 }
 
-section#container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+section#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#lista-tarefas{
-    min-width: 31%;    
+#lista-tarefas {
+  min-width: 31%;    
 }
 
 .container {
-margin: 0.5rem;
-color: black;
-font-size: 1.2rem;
-display: block;
-
+  margin: 0.5rem;
+  color: black;
+  font-size: 1.2rem;
+  display: block;
 }
 
 .todo {
@@ -112,10 +110,10 @@ display: block;
   display: block;
   justify-content: space-between;
   align-items: center;
-  }
+}
 
-.todo li{
-    flex: 1;
-    margin: 1rem;
+.todo li {
+  flex: 1;
+  margin: 1rem;
 }
 

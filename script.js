@@ -1,9 +1,9 @@
 const btnCreatetask = document.getElementById('criar-tarefa');
-const btnDeleteList = document.getElementById('apaga-tudo');
-const btnDeleteCompletos = document.getElementById('remover-finalizados');
-const btnSalvarTasks = document.getElementById('salvar-tarefas');
-const btnMoveUp = document.getElementById('mover-cima');
-const btnMoveDown = document.getElementById('mover-baixo');
+// const btnDeleteList = document.getElementById('apaga-tudo');
+// const btnDeleteCompletos = document.getElementById('remover-finalizados');
+// const btnSalvarTasks = document.getElementById('salvar-tarefas');
+// const btnMoveUp = document.getElementById('mover-cima');
+// const btnMoveDown = document.getElementById('mover-baixo');
 const toDoList = document.getElementById('lista-tarefas');
 const inputText = document.getElementById('texto-tarefa');
 
