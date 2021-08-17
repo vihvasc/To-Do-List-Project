@@ -1,15 +1,14 @@
-body{
-    background-color: #466b5a;
-}
+
 #criar-tarefa{
     border-radius: 1px;
-    padding: 8px 28px;
+    padding: 2px 7px;
     margin-left: 10px;
     margin-bottom: 15px;
+    color: white;
+   
   }
 
   .completed{
       text-decoration: line-through;
   }
 
-  
