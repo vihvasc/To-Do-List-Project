@@ -50,7 +50,7 @@ function criaTarefa() {
         }
         novoItem.style.backgroundColor = 'rgb(128,128,128)';
         novoItem.id = 'selecionado';
-      })
+      });
       novoItem.addEventListener('dblclick', function () {
         const comparaClasse = novoItem.className;
         if (comparaClasse.endsWith('completed') ) {
@@ -83,8 +83,8 @@ function limpaLista() {
       for (let index = 0; index < elementosLista.length; index +=1) {
         elementosLista[index].remove();
       }
-      salvaTarefas()
-    })
+      salvaTarefas();
+    });
     document.body.appendChild(botaoLimpar);
 }
 limpaLista();
@@ -102,7 +102,7 @@ function removerFinalizados() {
         checaElementos[index].remove();
       }
     }
-  })
+  });
 }
 removerFinalizados();
 
@@ -127,7 +127,7 @@ function salvaTarefas() {
 
 function recuperaTarefas () {
   if (localStorage.hasOwnProperty("arrayDeTarefas")) {
-    const arrayDeTarefas = JSON.parse(localStorage.getItem("arrayDeTarefas"))
+    const arrayDeTarefas = JSON.parse(localStorage.getItem("arrayDeTarefas"));
     for (let index = 0; index < arrayDeTarefas.length; index +=1) {
       
       const listaTarefas = document.getElementById('lista-tarefas');
@@ -143,7 +143,7 @@ function recuperaTarefas () {
         }
         novaTarefa.style.backgroundColor = 'rgb(128,128,128)';
         novaTarefa.id = 'selecionado';
-      })
+      });
       novaTarefa.addEventListener('dblclick', function () {        
         
         let comparaClasse = novaTarefa.className;
