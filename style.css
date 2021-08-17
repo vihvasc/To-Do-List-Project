@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  background-color: #09c98f;
+  background-color: teal;
 }
 
 #to-do-list {
@@ -54,6 +54,6 @@ header {
   background-color: gray;
 }
 
-ol li.completed {
-  text-decoration: line-through solid rgb(0, 0, 0)
+.completed {
+  text-decoration: line-through solid black;
 }

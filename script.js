@@ -39,3 +39,10 @@ lista.addEventListener('dblclick', (ev) => {
     ev.target.classList.toggle('completed');
   }
 });
+
+// Desafio 10 - Cria botão que limpa a minha ol
+const buttonRemove = document.getElementById('apaga-tudo');
+
+buttonRemove.addEventListener('click', () => {
+  lista.innerHTML = '';
+});
