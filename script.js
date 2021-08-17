@@ -2,6 +2,7 @@ const botaoAdicionar = document.querySelector('#criar-tarefa');
 const input = document.querySelector('#texto-tarefa');
 const lista = document.getElementById('lista-tarefas');
 const botaoApagar = document.querySelector('#apaga-tudo');
+const botaoFinalizados = document.querySelector('#remover-finalizados')
 let filhoDaLista = document.createElement('li');
 let classeDoFilhoDaLista = document.querySelector('.list');
 
@@ -47,19 +48,35 @@ function mudandoBackground(evento) {
 function selecionandoComDoisClicks (doisClicks) {
 
 	doisClicks.target.classList.toggle('completed');
+
+	botaoFinalizados.addEventListener('click', interacaoBotaoFinalizados);
 }
 
+// acima só precisei fazer a classe "completed" aparecer e desaparecer após os dois clicks, adiciondo no evento que criei dentro da função "interacaoBotaoAdicionar", e mudando algumas coisas no css atravez da classe "completed", ou seja, quando eu dar os dois clicks, se não tiver a classe completed, vai aparecer ao dar os dois clicks, e as alteraçoes feitas no css dentro dessa classe "completed" será ativada certinho de uma vez.
 
 
 botaoApagar.addEventListener('click', interacaoBotaoApagar);
 function interacaoBotaoApagar() {
 	const classeLista = document.querySelectorAll('.list');
-	const classOl = document.querySelector('.classOl')
-	// const todasAsClassesLista = document.querySelectorAll('li');
-	// const removendoAsClassesLista = classeLista.classList.remove('list');
+
 	if (classeLista) {
 		for (let index = 0; index < classeLista.length; index += 1) {
 			classeLista[index].remove();
+		}
+	}
+}
+
+// Acima, fiz o cirei um botao para limpar todas as tags <li> que tiver a classe "list" (que no caso são todas). 
+
+
+
+function interacaoBotaoFinalizados() {
+	// console.log('ola mundo!');
+	let classCompleted = document.querySelectorAll('.completed');
+	
+	if (classCompleted) {
+		for (let index = 0; index < classCompleted.length; index++) {
+			classCompleted[index].remove();
 		}
 	}
 }
