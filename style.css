@@ -52,7 +52,7 @@ header {
 #texto-tarefa:focus {
   outline: 0;
   border-width: 1px;
-  border-image: linear-gradient(to right,blue,cyan,blue);
+  border-image: linear-gradient(to right , blue , cyan , blue);
   border-image-slice: 1;
 }
 
