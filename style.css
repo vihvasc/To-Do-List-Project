@@ -3,21 +3,21 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: 'Patrick Hand', cursive;
+  font-family: Patrick-Hand , cursive;
 }
 
 header {
+  margin-top: 30px;
   text-align: center;
-  margin: 30px 30px;
   font-size: 60px;
-  color:rgb(97, 134, 23);
-  font-family: 'Patrick Hand', cursive;
+  padding: 10px 20px;
+  color: black;
 }
 
 main {
   display: block;
   width: fit-content;
-  margin: 30px auto;
+  margin: 50px auto;
 }
 
 .box {
@@ -43,22 +43,26 @@ main {
 .task-list-options h2 {
   text-align: center;
   font-size: 30px;
-  font-family: 'Patrick Hand', cursive;
   margin: 20px 0;
   user-select: none;
 }
 
 #lista-tarefas {
-  font-size: 25px;
   margin: 15px;
 }
 
 #lista-tarefas li {
   padding: 5px;
+  font-size: 25px;
   cursor: pointer;
   user-select: none;
   list-style-position: inside;
   border-bottom: 1pt black solid;
+  transition: 0.2s;
+}
+
+#lista-tarefas li:hover {
+  color: black;
 }
 
 #texto-tarefa {
@@ -69,7 +73,6 @@ main {
   text-align: center;
   border-radius: 5px;
   padding: 5px;
-
 }
 
 button {
@@ -79,9 +82,14 @@ button {
   background-color: ghostwhite;
   border-radius: 3px;
   user-select: none;
+  transition: 0.3s;
 }
 
-#criar-tarefa, #remover-selecionado {
+.task-list-operations button:hover {
+  background-color: rgba(255 , 166 , 0 , 0.76);
+}
+
+#criar-tarefa , #remover-selecionado {
   display: block;
   width: 350px;
   margin: 10px auto;
@@ -92,7 +100,7 @@ button {
   justify-content: center;
 }
 
-#mover-cima, #mover-baixo {
+#mover-cima , #mover-baixo {
   font-size: 30px;
   width: 120px;
   padding: 0;
@@ -104,19 +112,18 @@ button {
   padding: 10px;
 }
 
-#apaga-tudo, #remover-finalizados, #salvar-tarefas {
+#apaga-tudo , #remover-finalizados , #salvar-tarefas {
   margin: 8px;
 }
 
 .save {
-  background-color: lawngreen;
+  background-color: rgba(126 , 252 , 0 , 0.76);
   color: black;
   padding: 10px;
-
 }
 
 .danger {
-  background-color: red;
+  background-color: rgba(255 , 0 , 0 , 0.897);
   color: cornsilk;
   padding: 10px;
 }
