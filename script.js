@@ -3,7 +3,6 @@ const input = document.querySelector('#texto-tarefa');
 const lista = document.getElementById('lista-tarefas');
 let filhoDaLista = document.createElement('li');
 let classeDoFilhoDaLista = document.querySelector('.list');
-let filhosLista = lista.childElementCount;
 
 
 
@@ -24,6 +23,7 @@ function interacaoBotaoAdicionar() {
 
 // acima eu atribui um valor '' vazio, ou seja, assim que eu clicar no botao "adicionar", além de se juntar na lista o que eu escrevi, também vai substituir o que está escrito no input por uma str vazia.
 	filhoDaLista.addEventListener('click', mudandoBackground);
+	filhoDaLista.addEventListener('dblclick', selecionandoComDoisClicks);
 }
 
 // acima, usei o addEventListener para a cada click, ativar a minha função (que está dentro do parenteses).
@@ -40,3 +40,10 @@ function mudandoBackground(evento) {
 }
 
 // o ".toggle" usado acima, serve para variar, por exemplo, como ele está numa função de click, então fica: se eu clicar em um item da lista, aparece a classe "selected", se eu clicar novamente, a classe some, ou seja, se não tiver a classe que coloquei no ".toggle" ele vai criar, porém se ja tiver, ele vai deletar.
+
+
+
+function selecionandoComDoisClicks (doisClicks) {
+
+	doisClicks.target.classList.toggle('completed');
+}
