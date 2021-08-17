@@ -2,8 +2,8 @@ const campoInput = document.getElementById('texto-tarefa'); // Input
 const listaTarefas = document.getElementById('lista-tarefas'); // Lista Ordenada
 const criarTarefa = document.getElementById('criar-tarefa'); // Botão adicionar tarefa
 const tarefasCriadas = document.getElementsByTagName('li'); // Todas tarefas criadas
-const botaoLimparTarefas = document.getElementById('apaga-tudo'); // Botão de limpar tarefas criadas
-const botaoLimpatConcluidos = document.getElementById('remover-finalizados'); // Botão de limpar tarefas concluídas
+const limparTarefas = document.getElementById('apaga-tudo'); // Botão de limpar tarefas criadas
+const limparConcluidos = document.getElementById('remover-finalizados'); // Botão de limpar tarefas concluídas
 
 function changeColor(event) {
   for (let index = 0; index < tarefasCriadas.length; index += 1) {
@@ -56,5 +56,5 @@ function enterPressed(event) {
 
 criarTarefa.addEventListener('click', addNewTask);
 campoInput.addEventListener('keypress', enterPressed);
-botaoLimparTarefas.addEventListener('click', removeAllTasks);
-botaoLimpatConcluidos.addEventListener('click', removeTasksCompleted);
+limparTarefas.addEventListener('click', removeAllTasks);
+limparConcluidos.addEventListener('click', removeTasksCompleted);
