@@ -8,10 +8,15 @@ body {
   text-align: center;
 }
 
+header{
+  background-color: #113843;
+  border-radius: 50%;
+}
+
 .list-item {
   width: fit-content;
   padding: 5px;
-  border: solid 1px black;
+  border: dotted 2px black;
   margin: 5px;
   color: black;
   border-radius: 15%;

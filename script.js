@@ -3,7 +3,7 @@ const buttonAddTask = document.querySelector('#criar-tarefa');
 const taskList = document.querySelector('#lista-tarefas');
 const deleteButton = document.querySelector('#apaga-tudo');
 const completedRemoveButton = document.querySelector('#remover-finalizados')
-const completed = document.querySelectorAll('.completed');
+
 function addTask() {
   buttonAddTask.addEventListener('click', () => {
     if (input.value === '') {
@@ -35,6 +35,13 @@ function lineThrough(listItem) {
       event.target.classList.remove('completed');
     } else {
       event.target.classList.add('completed');
+    }
+  })
+
+  completedRemoveButton.addEventListener('click', (event) => {
+    const completed = document.querySelectorAll('.completed');
+    for(let i = 0; i < completed.length; i += 1) {
+     completed[i].remove();
     }
   })
 }
