@@ -8,8 +8,7 @@ const removeButton = document.getElementById('remover-finalizados');
 function paintingLiBackground(event) {
   for (let index = 0; index < liSelect.length; index += 1) {
     liSelect[index].style.backgroundColor = '';
-  }
-  const eventTarget = event.target;
+  } const eventTarget = event.target;
   eventTarget.style.backgroundColor = 'rgb(128, 128, 128)';
 }
 
@@ -46,7 +45,9 @@ addButton();
 function removeElementsLi() {
   removeButton.addEventListener('click', () => {
     for (let index = 0; index < liSelect.length; index += 1) {
-      liSelect[index].classList.remove('completed');
+      if (liSelect[index].className === 'completed') {
+        liSelect[index].remove();
+      }
     }
   });
 }
