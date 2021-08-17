@@ -5,8 +5,8 @@ const tarefasCriadas = document.getElementsByTagName('li'); // Todas tarefas cri
 const limparTarefas = document.getElementById('apaga-tudo'); // Botão de limpar tarefas criadas
 const limparConcluidos = document.getElementById('remover-finalizados'); // Botão de limpar tarefas concluídas
 const salvarTarefas = document.getElementById('salvar-tarefas'); // Botão de salvar terafas
-const botaoMoverCima = document.getElementById('mover-cima');
-const botaoMoverBaixo = document.getElementById('mover-baixo');
+const botaoMoverCima = document.getElementById('mover-cima'); // Botão mover para cima
+const botaoMoverBaixo = document.getElementById('mover-baixo'); // Botão mover para baixo
 
 function mudarCorTarefa(evento) {
   const tarefasAtuais = [...tarefasCriadas];
@@ -96,27 +96,20 @@ function recuperarListaSalva() {
 }
 
 function moverParaCima() {
-  let selecionado = null;
-
-  for (let index = 0; index < tarefasCriadas.length; index += 1) {
-    selecionado = index;
-    if (tarefasCriadas[index].style.backgroundColor && selecionado > 0) {
-      listaTarefas.insertBefore(tarefasCriadas[selecionado], tarefasCriadas[selecionado].previousSibling);
-      return;
+  Array.from(tarefasCriadas).forEach((selecionada, index) => {
+    if (selecionada.style.backgroundColor && index > 0) {
+      listaTarefas.insertBefore(selecionada, tarefasCriadas[index].previousSibling);
     }
-  }
+  });
 }
 
 function moverParaBaixo() {
-  let selecionado = null;
-
-  for (let index = 0; index < tarefasCriadas.length; index += 1) {
-    selecionado = index;
-    if (tarefasCriadas[index].style.backgroundColor && selecionado < (tarefasCriadas.length - 1)) {
-      listaTarefas.insertBefore(tarefasCriadas[selecionado], tarefasCriadas[selecionado + 1].nextSibling);
-      return;
+  const qntDeTarefas = tarefasCriadas.length;
+  Array.from(tarefasCriadas).forEach((selecionada, index) => {
+    if (selecionada.style.backgroundColor && index < (qntDeTarefas - 1)) {
+      listaTarefas.insertBefore(selecionada, tarefasCriadas[index + 1].nextSibling);
     }
-  }
+  });
 }
 
 criarTarefa.addEventListener('click', adicionarNovaTarefa);
@@ -126,7 +119,6 @@ limparConcluidos.addEventListener('click', removerTarefasCompletadas);
 salvarTarefas.addEventListener('click', salvar);
 botaoMoverCima.addEventListener('click', moverParaCima);
 botaoMoverBaixo.addEventListener('click', moverParaBaixo);
-
 
 window.onload = () => {
   if (localStorage.getItem('listaAtual')) {
