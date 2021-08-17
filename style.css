@@ -5,25 +5,25 @@
   color: white;
 }
 
-html, body {
-  background-color: #202020;
+html , body {
+  background-color: rgb(32, 32, 32);
   font-family: sans-serif;
 }
 
 header {
   width: 80%;
-  background-color: #202020;
+  background-color: rgb(32, 32, 32);
   margin: auto;
   text-align: center;
   padding: 20px;
 }
 
-.task-creation-container{
+.task-creation-container {
   width: 80%;
   margin: auto;
 }
 
-.task-creation-container input{
+.task-creation-container input {
   width: 200px;
   height: 30px;
   border: 0;
@@ -70,13 +70,15 @@ header {
 .task-container li {
   line-height: 30px;
   padding-left: 10px;
+  cursor: pointer;
+  user-select: none;
 }
 
 .selected {
-  background-color: rgb(128, 128, 128);
+  background-color: grey;
 }
 
-.notification{
+.notification {
   position: absolute;
   bottom: 10px;
   left: 10px;
@@ -101,6 +103,31 @@ header {
   display: none;
 }
 
+.completed {
+  text-decoration: line-through solid rgb(0, 0, 0);
+}
+
+.buttons-containers{
+  width: 80%;
+  min-height: 100px;
+  margin: 20px auto;
+}
+
+#apaga-tudo {
+  width: 150px;
+  height: 50px;
+  border: 0;
+  background-color: rgb(70, 70, 70);
+  font-weight: 900;
+  font-size: 17px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+#apaga-tudo:hover {
+  background-color: rgb(56, 56, 56);
+  transform: scale(1.05);
+}
 
 @keyframes opacity-notification {
   from {
