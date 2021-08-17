@@ -1,5 +1,5 @@
 .selected {
-  background-color: gray;
+  background-color: lightgray;
 }
 
 .completed {
@@ -8,4 +8,8 @@
 
 #lista-tarefas {
   user-select: none;
+}
+
+h1 , p , li {
+  font-family: sans-serif;
 }
