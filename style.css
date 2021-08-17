@@ -4,13 +4,13 @@
 }
 
 body {
-  background-color:rgb(66, 253, 78);
+  background-color:rgb(66 , 253 , 78); 
 }
 
 header {
   font-size: 30px;
   font-weight: bold;
-  color:rgb(12, 49, 49);
+  color:rgb(12 , 49 , 49); 
 }
 
 .selected {
@@ -19,5 +19,5 @@ header {
 
 .completed {
   text-decoration: line-through solid;
-  color:black;
+  color:black; 
 }
