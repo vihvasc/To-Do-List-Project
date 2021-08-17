@@ -1,11 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Patrick Hand', cursive;
+}
+
 header {
   text-align: center;
   margin: 30px 30px;
-  font-size: 40px;
+  font-size: 60px;
+  font-family: 'Patrick Hand', cursive;
+}
+
+main {
+  display: block;
+  width: fit-content;
+  margin: 30px auto;
+}
+
+.box {
+  border: 2px solid black;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  width: 1100px;
+}
+
+.task-list-box {
+  width: 450px;
+  border-right: 1px solid black;
+}
+
+.task-list-options {
+  position: sticky;
+  top: 50px;
+  height: fit-content;
+  margin: 0 auto;
+}
+
+.task-list-options h2 {
+  text-align: center;
+  font-size: 30px;
+  font-family: 'Patrick Hand', cursive;
+  margin: 20px 0;
+  user-select: none;
+}
+
+#lista-tarefas {
+  font-size: 25px;
+  margin: 15px;
+}
+
+#lista-tarefas li {
+  padding: 5px;
+  cursor: pointer;
+  user-select: none;
+  list-style-position: inside;
+  border-bottom: 1pt black solid;
+}
+
+#texto-tarefa {
+  display: block;
+  font-size: 20px;
+  margin: 0 auto 20px;
+  width: 350px;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+
+}
+
+button {
+  padding: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: ghostwhite;
+  border-radius: 3px;
+  user-select: none;
+}
+
+#criar-tarefa, #remover-selecionado {
+  display: block;
+  width: 350px;
+  margin: 10px auto;
+}
+
+.move-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+#mover-cima, #mover-baixo {
+  width: 120px;
+  margin: 8px 12px;
+}
+
+.task-list-general {
+  margin-top: 5px;
+  padding: 10px;
+}
+
+#apaga-tudo, #remover-finalizados, #salvar-tarefas {
+  margin: 8px;
+}
+
+.save {
+  background-color: lawngreen;
+  color: black;
+  padding: 10px;
+
+}
+
+.danger {
+  background-color: red;
+  color: cornsilk;
+  padding: 10px;
 }
 
 .selected {
   background-color: gray;
+  border-radius: 5px;
+  transition: 0.3s;
+  color: floralwhite;
 }
 
 .completed {
