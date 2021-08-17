@@ -55,12 +55,34 @@ function addEventListeners() {
   });
 }
 
+function subirItem() {
+  const selected = document.querySelector('.selected');
+  if (selected) {
+    const prevLI = selected.previousElementSibling;
+    if (prevLI) {
+      taskList.insertBefore(selected, prevLI);
+    }
+  }
+}
+
+function descerItem() {
+  const selected = document.querySelector('.selected');
+  if (selected) {
+    const nextLI = selected.nextElementSibling;
+    if (nextLI) {
+      taskList.insertBefore(selected, nextLI.nextElementSibling);
+    }
+  }
+}
+
 window.onload = function initPage() {
   document.getElementById('criar-tarefa').addEventListener('click', criarTarefa);
   document.getElementById('apaga-tudo').addEventListener('click', apagarLista);
   document.getElementById('remover-finalizados').addEventListener('click', apagarFinalizadas);
   document.getElementById('remover-selecionado').addEventListener('click', apagarTarefa);
   document.getElementById('salvar-tarefas').addEventListener('click', salvarLista);
+  document.getElementById('mover-cima').addEventListener('click', subirItem);
+  document.getElementById('mover-baixo').addEventListener('click', descerItem);
   recuperarLista();
   addEventListeners();
 };
