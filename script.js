@@ -1,6 +1,5 @@
 let button = document.querySelector('#criar-tarefa');
 let listaTarefa = document.querySelector('#lista-tarefas');
-let itemListaTarefa = document.getElementsByClassName('.item');
 
 button.addEventListener('click', function( ) {
   let textoTarefa = document.querySelector('#texto-tarefa');
@@ -23,3 +22,8 @@ function corTarefa(event) {
   event.target.style.backgroundColor = selectColor;
 }
 listaTarefa.addEventListener('click', corTarefa);
+
+function completTarefa(event) {
+  event.target.classList.toggle('completed');
+}
+listaTarefa.addEventListener('dblclick', completTarefa);
