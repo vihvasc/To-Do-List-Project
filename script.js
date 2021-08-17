@@ -16,6 +16,7 @@ function creatList(){
    linha.addEventListener("click",addClassSelected)
 	 linha.addEventListener("dblclick",scratched)
 	
+	
 	function addClassSelected (object){      
   let getSelected = document.querySelector(".selected")
 	object.target.classList.toggle("selected")
@@ -26,11 +27,20 @@ function creatList(){
   }   
 	
 }
-//text-decoration: line-through;
+
 function scratched(object){
 	object.target.classList.toggle("completed")
-	
 }
+let buttonDeletAll = document.getElementById("apaga-tudo")
+buttonDeletAll.addEventListener("click",deletAllList)
+
+function deletAllList (){
+	let listOfLi = document.querySelectorAll(".liColor")
+	for(let cont = 0;cont < listOfLi.length;cont += 1){
+		listOfLi[cont].remove();
+	}
+}
+
 
  
 
