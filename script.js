@@ -32,13 +32,24 @@ btnDeleteAllList.addEventListener('click', function () {
     taskList.removeChild(taskList.lastChild);
 }); //fonte: https://qastack.com.br/programming/3955229/remove-all-child-elements-of-a-dom-node-in-javascript
 
-// ao clicar
+
 const btnRmDone = document.getElementById('remover-finalizados');
 btnRmDone.addEventListener('click', function rmTaskDone() {
-  //todos os elementos marcados
   let completed = document.querySelectorAll('.completed');
-  // são removidos
   for (let i = 0; i < completed.length; i += 1) {
     completed[i].remove();
   }
 });
+
+//evento de clique
+const btnSaveTask = document.getElementById('salvar-tarefas');
+btnSaveTask.addEventListener('click', function saveTask() {
+  //função de salvar
+  localStorage.setItem(1, taskList.innerHTML);
+});
+//observei a necessidade de carregar o item novamente no  html mostrar o que foi salvo
+//para manter a lista como estava
+function loadSaveTask() {
+  taskList.innerHTML = localStorage.getItem(1);
+}
+loadSaveTask();
