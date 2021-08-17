@@ -1,7 +1,7 @@
 // reference Dom
 const createTask = document.querySelector('#criar-tarefa');
 const textTask = document.querySelector('#texto-tarefa');
-const todoList = document.querySelector('.todo_list');
+const todoList = document.querySelector('#lista-tarefas');
 
 // function
 function taskGenerator() {
