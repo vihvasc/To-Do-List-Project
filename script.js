@@ -215,6 +215,37 @@ function removerSelecionado() {
 }
 removerSelecionado();
 
+// 13 - Adicione dois botões, um com id="mover-cima" e outro com id="mover-baixo", que permitam mover o item selecionado para cima ou para baixo na lista de tarefas
+// * Pontos importantes sobre este requisito bônus:
+// ** Antes de começar a desenvolver essa funcionalidade, pare e pense. O que significa mover um item de uma lista para cima ou para baixo no **_DOM_**? Você já possui todas as habilidades necessárias para fazer isso.
+// ** Habitue-se a pensar nos casos especiais ao construir programas. O que acontece se o usuário tentar mover o primeiro item para cima ou o último para baixo?
+// *** O que será verificado:
+// **** Será verificada a existência de dois elementos button, um com o id mover-cima e o outro com o id mover-baixo
+// **** Será verificado que, dado que diversos elementos foram acrescentados à lista, movimentá-los de formas diversas os deixa nas posições esperadas
+// **** Será verificado que, caso algum elemento esteja finalizado, este status deve persistir ainda que se mova o elemento
+// **** Será verificado que, caso nenhum elemento esteja selecionado, clicar nos botões não altera a lista
+// **** Será verificado que um elemento que esteja selecionado deve se manter selecionado mesmo depois de movido
+// **** Caso especial! Será verificado que, caso se tente subir o elemento no topo da lista ou, caso se tente descer o último elemento da lista, esta não deve ser alterada
+
+function moverElementoSelecionado() {
+  const moveCima = document.createElement('button');
+  moveCima.id = 'mover-cima';
+  moveCima.textContent = 'Mover para Cima';
+  const moveBaixo = document.createElement('button');
+  moveBaixo.id = 'mover-baixo';
+  moveBaixo.textContent = 'Mover para Baixo';
+  moveCima.addEventListener('click', function moveCima() {
+    const arrayElementos = document.querySelectorAll('li');
+    console.log(arrayElementos);
+  })
+  moveBaixo.addEventListener('click', function moveCima() {
+    const arrayElementos = document.querySelectorAll('li');
+    console.log(arrayElementos);
+  })
+  body.appendChild(moveCima);
+  body.appendChild(moveBaixo);
+}
+moverElementoSelecionado();
 // 1
 // ***
 // *****
