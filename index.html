@@ -10,11 +10,17 @@
 <body>
   <header id="header">Minha Lista de Tarefas</header>
   <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
-  <section>
+  <section id="sectionInput">
     <input id="texto-tarefa" type="text" name="name" placeholder="Digite seu texto aqui"> </input>
+  </section>
+  <section id="sectionBtns">
     <button id="criar-tarefa">Criar</button>
+    <button id="salvar-tarefas">Salvar</button>
+    <button id="remover-selecionado">Remover Selecionado</button>
+    <button id="remover-finalizados">Remover Finalizados</button>
+    <button id="apaga-tudo">Remover Tudo</button>
 </section>
-<section>
+<section id="sectionList">
   <ol id="lista-tarefas"></ol>
 </section>
   <script src="script.js"></script>

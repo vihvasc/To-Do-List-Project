@@ -2,11 +2,13 @@
 	margin: 0;
 	padding: 0;
 	border: 0;
-  background-color: rgb(228, 220, 121);
+  background-color: rgb(237, 227, 200);
 }
 
 input {
-  border: 1px solid rgb(13,13,13);
+  border: 1px solid rgb(42,42,42);
+	text-align: center;
+	width: 300px;
 }
 
 body {
@@ -14,14 +16,30 @@ body {
 	font-size: 25px
 }
 
-ul, ol, li {
-	list-style: none;
-}
-
 button {
   border: 1px solid rgb(13,13,13);
 }
 
+section {
+	text-align: center;
+}
+
 .selected {
   background-color: rgb(128,128,128);
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+#header {
+	text-align: center;
+}
+
+#funcionamento {
+	text-align: justify;
+	margin-left: 10px;
+	font-size: 15px;
+	font-style: italic;
+	margin-top: 20px;
 }
