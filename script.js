@@ -2,6 +2,7 @@ window.onload = criaListaTarefas;
 
 function criaListaTarefas() {
   geraItemList();
+  buttonDeleteAll();
 }
 
 let list = document.getElementById('lista-tarefas');
@@ -35,4 +36,12 @@ function selecionaItemLista(event) {
 function riscaItemLista(event) {
   let itemList = document.querySelectorAll('.item-list');
   event.target.classList.toggle('completed'); 
+}
+function buttonDeleteAll() {
+  let buttonDeleteAllItens = document.getElementById('apaga-tudo');
+  buttonDeleteAllItens.addEventListener('click', deleteAllLis);
+}
+function deleteAllLis() {
+  myList = document.getElementById('lista-tarefas');
+  myList.remove(myList.lastChild);
 }
