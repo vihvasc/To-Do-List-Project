@@ -58,7 +58,7 @@ function loadTasks() {
 
   if (localStorage.getItem('tasks') !== null) {
     taskList.innerHTML = JSON.parse(localStorage.getItem('tasks'));
-    selectedTask = document.getElementsByClassName('selected')[0];
+    selectedTask = document.querySelector('.selected');
   }
 }
 
@@ -67,7 +67,7 @@ function moveUp() {
     const previousTask = selectedTask.previousSibling;
     previousTask.insertAdjacentElement('beforebegin', selectedTask);
   } catch (TypeError) {
-    return;
+    console.log('Erro em moveUp');
   }
 }
 
@@ -76,13 +76,16 @@ function moveDown() {
     const nextTask = selectedTask.nextSibling;
     nextTask.insertAdjacentElement('afterend', selectedTask);
   } catch (TypeError) {
-    return;
+    console.log('Erro em moveDown');
   }
+}
+
+function removeSelected() {
+  selectedTask.remove();
 }
 
 window.onload = () => {
   loadTasks();
-
   const addTaskButton = document.getElementById('criar-tarefa');
   const taskList = document.getElementById(TASK_LIST_ID);
   const clearTaskListButton = document.getElementById('apaga-tudo');
@@ -90,7 +93,7 @@ window.onload = () => {
   const saveButton = document.getElementById('salvar-tarefas');
   const moveUpButton = document.getElementById('mover-cima');
   const moveDownButton = document.getElementById('mover-baixo');
-
+  const removeButton = document.getElementById('remover-selecionado');
   addTaskButton.addEventListener('click', addTask);
   taskList.addEventListener('click', handleTaskListItemClick);
   taskList.addEventListener('dblclick', handleTaskListItemDoubleClick);
@@ -99,4 +102,5 @@ window.onload = () => {
   saveButton.addEventListener('click', saveTasks);
   moveUpButton.addEventListener('click', moveUp);
   moveDownButton.addEventListener('click', moveDown);
+  removeButton.addEventListener('click', removeSelected);
 };
