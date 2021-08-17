@@ -1,6 +1,7 @@
 .selected {
-  background-color: rgb(128, 128, 128);
+  background-color: 'rgb(128 ,128 , 128)';
 }
 
 .completed {
-  text-decoration:solid line-through  rgb(0, 0, 0);}
+  text-decoration: solid line-through 'rgb(0 ,0 , 0)';
+}
