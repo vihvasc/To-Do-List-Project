@@ -89,3 +89,40 @@ removeDoneTasksBtn.addEventListener('click', removeDoneTasks);
 removeDoneTasksBtn.id = 'remover-finalizados';
 removeDoneTasksBtn.innerText = 'Remover finalizados';
 document.body.appendChild(removeDoneTasksBtn);
+
+function saveTaskList() {
+  const listOfTasks = document.querySelectorAll('li');
+  sessionStorage.setItem('TaskListLength', listOfTasks.length);
+  for (let i = 0; i < listOfTasks.length; i += 1) {
+    const savedItem = `Item${i}`;
+    const savedClassIndex = `Class${i}`;
+    const savedClass = listOfTasks[i].classList.contains('completed');
+    sessionStorage.setItem(savedItem, listOfTasks[i].innerText);
+    sessionStorage.setItem(savedClassIndex, savedClass);
+  }
+}
+
+function loadTaskList() {
+  const taskListLength = sessionStorage.getItem('TaskListLength');
+  for (let i = 0; i < taskListLength; i += 1) {
+    const loadedItem = document.createElement('li');
+    const taskText = sessionStorage.getItem(`Item${i}`);
+    const taskClass = String(sessionStorage.getItem(`Class${i}`));
+    console.log(taskClass);
+    loadedItem.innerText = taskText;
+    loadedItem.addEventListener('click', selectTask);
+    loadedItem.addEventListener('dblclick', completedTask);
+    if (taskClass === 'true') {
+      loadedItem.classList.add('completed');
+    }
+    taskList.appendChild(loadedItem);
+  }
+}
+
+const saveTaskListBtn = document.createElement('button');
+saveTaskListBtn.addEventListener('click', saveTaskList);
+saveTaskListBtn.id = 'salvar-tarefas';
+saveTaskListBtn.innerText = 'Salvar';
+document.body.appendChild(saveTaskListBtn);
+
+window.onload = loadTaskList;
