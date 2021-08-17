@@ -62,56 +62,106 @@ function criaTarefa() {
   botaoCriarTarefa.addEventListener('click', function () {
     const textoAAdicionar = document.getElementById('texto-tarefa');
     const listaDeTarefas = document.getElementById('lista-tarefas');
-    // Ao se clickar no botão, cria-se uma 'const' li com o conteúdo dessa variável.
-    const novoItem = document.createElement('li');
-    novoItem.innerHTML = textoAAdicionar.value;
-    // novoItem.className = 'item-lista ';
-    novoItem.addEventListener('click', function () {
-      // Ao clicar no elemento, ele deve ser selecionado, e os demais devem retornar a não possuirem cor de fundo;
-      // Deve-se listar todos os elementos da lista com getElementsByClassName
-      // const elementosDaLista = document.getElementsByClassName('item-lista');
-      const elementosDaLista = document.querySelectorAll('li');
-
-      // Deve-se fazer um for alterando as propriedades de todos os elementos (Class e backgroundColor)
-      for (let index = 0; index < elementosDaLista.length; index += 1) {
-        // elementosDaLista[index].className = 'item-lista ';
-        elementosDaLista[index].style.backgroundColor = '';
-        elementosDaLista[index].id = '';
-      }
-      // Deve-se, ao sair do for, adicionar a propriedade selected e rgb(125,128,128) ao item Selecionado
-      novoItem.style.backgroundColor = 'rgb(128,128,128)';
-      novoItem.id = 'selecionado';
-      // novoItem.className = 'item-lista selected';
-    })
-    novoItem.addEventListener('dblclick', function () {
-        // Deve-se adicionar a class completed e text-decoration quando o dbclick é realizado;
-        // Deve ser possível desfazer essa seleção caso o item já tenha sido selecionado;
-        // Ou seja, quando o dbclick rodar, preciso verificar a class do elemento para decidir o que fazer com ele.
-        
-        //Deve-se verificar se o item já está selecionado como Completed
-        let comparaClasse = novoItem.className;
-
-        //   //Deve-se verificar se o item já está selecionado como Completed
-        //     // Se não, deve-se adicionar a class completed e text-decoration quando o dbclick é realizado;
-        //     elementosLista[index].className = 'completed';
-        //     elementosLista[index].style.textDecoration = 'line-through solid rgb(0,0,0)';
-
-        if (comparaClasse.endsWith('completed') ) {
-            console.log('ELEMENTO \''+ novoItem.textContent + '\' FOI DESELECIONADO');
-            novoItem.className = '';
-            novoItem.style.textDecoration = '';
-
-        } else {
-            console.log('ELEMENTO \''+ novoItem.textContent + '\' FOI SELECIONADO');
-            novoItem.className = 'completed';
-            novoItem.style.textDecoration = 'line-through solid rgb(0,0,0)';
+    // Ao se clickar no botão, cria-se uma 'const' li com o conteúdo dessa variável (SE NÃO ESTIVER VAZIA!!!)
+    if (!textoAAdicionar.value ) {
+      alert('ERRO: INPUT/TEXTO NÃO PODE SER VAZIO!!!');
+    } else {
+      const novoItem = document.createElement('li');
+      novoItem.innerHTML = textoAAdicionar.value;
+      // novoItem.className = 'item-lista ';
+      novoItem.addEventListener('click', function () {
+        // Ao clicar no elemento, ele deve ser selecionado, e os demais devem retornar a não possuirem cor de fundo;
+        // Deve-se listar todos os elementos da lista com getElementsByClassName
+        // const elementosDaLista = document.getElementsByClassName('item-lista');
+        const elementosDaLista = document.querySelectorAll('li');
+  
+        // Deve-se fazer um for alterando as propriedades de todos os elementos (Class e backgroundColor)
+        for (let index = 0; index < elementosDaLista.length; index += 1) {
+          // elementosDaLista[index].className = 'item-lista ';
+          elementosDaLista[index].style.backgroundColor = '';
+          elementosDaLista[index].id = '';
         }
-        // const elementosLista = document.querySelectorAll('li');
-        // console.log(novoItem.textContent);
+        // Deve-se, ao sair do for, adicionar a propriedade selected e rgb(125,128,128) ao item Selecionado
+        novoItem.style.backgroundColor = 'rgb(128,128,128)';
+        novoItem.id = 'selecionado';
+        // novoItem.className = 'item-lista selected';
       })
+      novoItem.addEventListener('dblclick', function () {
+          // Deve-se adicionar a class completed e text-decoration quando o dbclick é realizado;
+          // Deve ser possível desfazer essa seleção caso o item já tenha sido selecionado;
+          // Ou seja, quando o dbclick rodar, preciso verificar a class do elemento para decidir o que fazer com ele.
+          
+          //Deve-se verificar se o item já está selecionado como Completed
+          let comparaClasse = novoItem.className;
+  
+          //   //Deve-se verificar se o item já está selecionado como Completed
+          //     // Se não, deve-se adicionar a class completed e text-decoration quando o dbclick é realizado;
+          //     elementosLista[index].className = 'completed';
+          //     elementosLista[index].style.textDecoration = 'line-through solid rgb(0,0,0)';
+  
+          if (comparaClasse.endsWith('completed') ) {
+              console.log('ELEMENTO \''+ novoItem.textContent + '\' FOI DESELECIONADO');
+              novoItem.className = '';
+              novoItem.style.textDecoration = '';
+  
+          } else {
+              console.log('ELEMENTO \''+ novoItem.textContent + '\' FOI SELECIONADO');
+              novoItem.className = 'completed';
+              novoItem.style.textDecoration = 'line-through solid rgb(0,0,0)';
+          }
+          // const elementosLista = document.querySelectorAll('li');
+          // console.log(novoItem.textContent);
+        })
+      listaDeTarefas.appendChild(novoItem);
+
+
+    }
+    // novoItem.addEventListener('click', function () {
+    //   // Ao clicar no elemento, ele deve ser selecionado, e os demais devem retornar a não possuirem cor de fundo;
+    //   // Deve-se listar todos os elementos da lista com getElementsByClassName
+    //   // const elementosDaLista = document.getElementsByClassName('item-lista');
+    //   const elementosDaLista = document.querySelectorAll('li');
+
+    //   // Deve-se fazer um for alterando as propriedades de todos os elementos (Class e backgroundColor)
+    //   for (let index = 0; index < elementosDaLista.length; index += 1) {
+    //     // elementosDaLista[index].className = 'item-lista ';
+    //     elementosDaLista[index].style.backgroundColor = '';
+    //     elementosDaLista[index].id = '';
+    //   }
+    //   // Deve-se, ao sair do for, adicionar a propriedade selected e rgb(125,128,128) ao item Selecionado
+    //   novoItem.style.backgroundColor = 'rgb(128,128,128)';
+    //   novoItem.id = 'selecionado';
+    //   // novoItem.className = 'item-lista selected';
+    // })
+    // novoItem.addEventListener('dblclick', function () {
+    //     // Deve-se adicionar a class completed e text-decoration quando o dbclick é realizado;
+    //     // Deve ser possível desfazer essa seleção caso o item já tenha sido selecionado;
+    //     // Ou seja, quando o dbclick rodar, preciso verificar a class do elemento para decidir o que fazer com ele.
+        
+    //     //Deve-se verificar se o item já está selecionado como Completed
+    //     let comparaClasse = novoItem.className;
+
+    //     //   //Deve-se verificar se o item já está selecionado como Completed
+    //     //     // Se não, deve-se adicionar a class completed e text-decoration quando o dbclick é realizado;
+    //     //     elementosLista[index].className = 'completed';
+    //     //     elementosLista[index].style.textDecoration = 'line-through solid rgb(0,0,0)';
+
+    //     if (comparaClasse.endsWith('completed') ) {
+    //         console.log('ELEMENTO \''+ novoItem.textContent + '\' FOI DESELECIONADO');
+    //         novoItem.className = '';
+    //         novoItem.style.textDecoration = '';
+
+    //     } else {
+    //         console.log('ELEMENTO \''+ novoItem.textContent + '\' FOI SELECIONADO');
+    //         novoItem.className = 'completed';
+    //         novoItem.style.textDecoration = 'line-through solid rgb(0,0,0)';
+    //     }
+    //     // const elementosLista = document.querySelectorAll('li');
+    //     // console.log(novoItem.textContent);
+    //   })
 
     // Faz-se o appendChild desse elemento li dentro da ol
-    listaDeTarefas.appendChild(novoItem);
+    // listaDeTarefas.appendChild(novoItem);
     textoAAdicionar.value = '';
   })
 }
