@@ -7,6 +7,7 @@ const limparConcluidos = document.getElementById('remover-finalizados'); // Bot�
 const salvarTarefas = document.getElementById('salvar-tarefas'); // Botão de salvar terafas
 const botaoMoverCima = document.getElementById('mover-cima'); // Botão mover para cima
 const botaoMoverBaixo = document.getElementById('mover-baixo'); // Botão mover para baixo
+const botaoRemoverSelecionado = document.getElementById('remover-selecionado'); // Botão remover selecionado
 
 function mudarCorTarefa(evento) {
   const tarefasAtuais = [...tarefasCriadas];
@@ -112,6 +113,14 @@ function moverParaBaixo() {
   });
 }
 
+function removerSelecionado() {
+  Array.from(tarefasCriadas).forEach((tarefa) => {
+    if (tarefa.style.backgroundColor) {
+      tarefa.remove();
+    }
+  });
+}
+
 criarTarefa.addEventListener('click', adicionarNovaTarefa);
 campoInput.addEventListener('keypress', enterPressionado);
 limparTarefas.addEventListener('click', removerTodasTarefas);
@@ -119,6 +128,7 @@ limparConcluidos.addEventListener('click', removerTarefasCompletadas);
 salvarTarefas.addEventListener('click', salvar);
 botaoMoverCima.addEventListener('click', moverParaCima);
 botaoMoverBaixo.addEventListener('click', moverParaBaixo);
+botaoRemoverSelecionado.addEventListener('click', removerSelecionado);
 
 window.onload = () => {
   if (localStorage.getItem('listaAtual')) {
