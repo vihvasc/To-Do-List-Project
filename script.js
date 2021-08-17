@@ -40,14 +40,32 @@ function addNewItem() {
       listItem.innerText = newItem;
       list.appendChild(listItem);
       listItem.addEventListener('click', changeListItemBackgroundColor);
+      listItem.addEventListener('dblclick', elementoRiscado);
+      list;
       input.value = '';
     }
   });
 }
 addNewItem();
 //requisito 7
-// item = document.getElementsByClassName("list-item")
 function changeListItemBackgroundColor(event) {
   let li = event.target;
   li.style.backgroundColor = 'rgb(128, 128, 128)';
 }
+//requisito 8
+//preciso excluir a cor da anterior
+// function removebackgrondColor(){
+
+// }
+// requisito 9
+function elementoRiscado() {
+  let listItem = document.getElementsByTagName('li');
+  for (let index = 0; index < listItem.length; index += 1) {
+    if (listItem[index].classList.contains('completed')) {
+      listItem[index].classList.remove('completed');
+    } else {
+      listItem[index].classList = 'completed';
+    }
+  }
+}
+elementoRiscado();
