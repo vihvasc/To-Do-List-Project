@@ -1,8 +1,13 @@
 :root {
+
   --button-color-red: red;
+
   --button-color-blue: blue;
+
   --button-color-orange: orange;
+
   --button-color-green: green;
+
   --primary-color: green;
 }
 
@@ -29,7 +34,7 @@ button {
   border-radius: 10px 10px 10px 0;
   border: none;
   color: white;
-  padding: 5px 10px 5px 10px;
+  padding: 5px 10px;
   margin: 5px;
 }
 
@@ -39,10 +44,10 @@ p {
 }
 
 #criar-tarefa {
-  padding: 5px 20px 5px 20px;
+  padding: 5px 20px;
 }
 
-#criar-tarefa, #remover-finalizados {
+#criar-tarefa , #remover-finalizados {
   background-color: var(--button-color-blue);
 }
 
@@ -51,23 +56,23 @@ p {
   background-color: var(--button-color-green);
 }
 
-#mover-cima, #mover-baixo{
+#mover-cima , #mover-baixo {
   background-color: var(--button-color-orange);
-  padding: 5px 15px 5px 15px;
+  padding: 5px 15px;
 }
 
-#apaga-tudo, #remover-selecionado {
+#apaga-tudo , #remover-selecionado {
   background-color: var(--button-color-red);
 }
 
-#remover-selecionado{
-  padding: 5px 15px 5px 15px;
+#remover-selecionado {
+  padding: 5px 15px;
 }
 
-button:hover{
+button:hover {
   opacity: 50%;
 }
 
-li:hover{
+li:hover {
   opacity: 70%;
 }
