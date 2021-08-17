@@ -1,10 +1,8 @@
-const body = document.body;
-
 function adicionaTitulo() {
   const elementoHeader = document.createElement('header');
   elementoHeader.id = 'titulo-header';
   elementoHeader.textContent = 'Minha Lista de Tarefas';
-  body.appendChild(elementoHeader);
+  document.body.appendChild(elementoHeader);
 }
 adicionaTitulo();
 
@@ -12,14 +10,14 @@ function adicionaParagrafo() {
   const elementoP = document.createElement('p');
   elementoP.id = 'funcionamento';
   elementoP.textContent = 'Clique duas vezes em um item para marcá-lo como completo';
-  body.appendChild(elementoP);
+  document.body.appendChild(elementoP);
 }
 adicionaParagrafo();
 
 function adicionaInput() {
   const elementoInput = document.createElement('input');
   elementoInput.id = 'texto-tarefa';
-  body.appendChild(elementoInput);
+  document.body.appendChild(elementoInput);
 }
 adicionaInput();
 
@@ -34,7 +32,7 @@ function criaTarefa() {
   const botaoCriarTarefa = document.createElement('button');
   botaoCriarTarefa.id = 'criar-tarefa';
   botaoCriarTarefa.textContent = 'Adicionar Tarefa';
-  body.appendChild(botaoCriarTarefa);
+  document.body.appendChild(botaoCriarTarefa);
   botaoCriarTarefa.addEventListener('click', function () {
     const textoAAdicionar = document.getElementById('texto-tarefa');
     const listaDeTarefas = document.getElementById('lista-tarefas');
@@ -87,7 +85,7 @@ function limpaLista() {
         }
       salvaTarefas()
     })
-    body.appendChild(botaoLimpar);
+    document.body.appendChild(botaoLimpar);
 }
 limpaLista();
 
@@ -95,7 +93,7 @@ function removerFinalizados() {
   const botaoRemover = document.createElement('button');
   botaoRemover.id = 'remover-finalizados';
   botaoRemover.textContent = 'Apaga Finalizados';
-  body.appendChild(botaoRemover);
+  document.body.appendChild(botaoRemover);
   botaoRemover.addEventListener('click', function () {
     const checaElementos = document.querySelectorAll('li');
     for (let index = 0; index < checaElementos.length; index += 1 ) {
@@ -113,7 +111,7 @@ function botaoSalvar() {
   botaoSalvar.textContent = 'Salvar Tarefas';
   botaoSalvar.id = 'salvar-tarefas';
   botaoSalvar.addEventListener('click', salvaTarefas);
-  body.appendChild(botaoSalvar);
+  document.body.appendChild(botaoSalvar);
 }
 botaoSalvar();
 
@@ -178,7 +176,7 @@ function removerSelecionado() {
       elementoSelecionado.remove();
 
     })
-    body.appendChild(botaoRemover);
+    document.body.appendChild(botaoRemover);
 }
 removerSelecionado();
 
@@ -197,7 +195,7 @@ function moverElementoSelecionado() {
     const arrayElementos = document.querySelectorAll('li');
     console.log(arrayElementos);
   })
-  body.appendChild(moveCima);
-  body.appendChild(moveBaixo);
+  document.body.appendChild(moveCima);
+  document.body.appendChild(moveBaixo);
 }
 moverElementoSelecionado();
