@@ -6,6 +6,8 @@ const buttonRemoveCompleteTasks = document.getElementById('remover-finalizados')
 const buttonSaveList = document.getElementById('salvar-tarefas');
 const itemsTags = [];
 const itemsTexts = [];
+const buttonMoveItemUp = document.getElementById('mover-cima');
+const buttonMoveItemDown = document.getElementById('mover-baixo');
 
 function handleTaskInputReceive() {
   const inputText = inputTextBox.value;
@@ -110,11 +112,34 @@ function handleRetrieveList() {
   }
 }
 
+const fullList = document.getElementById('lista-tarefas');
+
+function handleMoveItemUp() {
+  // const fullList = document.getElementById('lista-tarefas');
+  const listItems = document.getElementsByClassName('list-item');
+  const selectedTask = document.querySelector('.selected');
+  if (selectedTask !== listItems[0]) {
+    fullList.insertBefore(selectedTask, selectedTask.previousElementSibling);
+  }
+}
+
+function handleMoveItemDown() {
+  // const fullList = document.getElementById('lista-tarefas');
+  const listItems = document.getElementsByClassName('list-item');
+  const index = listItems.length;
+  const selectedTask = document.querySelector('.selected');
+  if (selectedTask !== listItems[index - 1]) {
+    fullList.insertBefore(selectedTask.nextElementSibling, selectedTask);
+  }
+}
+
 window.onload = function createToDoListPage() {
   inputTextBox.addEventListener('keyup', handleTaskInputReceive);
   buttonCreateTask.addEventListener('click', handleTaskAdding);
   buttonEraseAll.addEventListener('click', handleListErasing);
   buttonRemoveCompleteTasks.addEventListener('click', handleCompletedTaskErasing);
   buttonSaveList.addEventListener('click', handleSaveList);
+  buttonMoveItemUp.addEventListener('click', handleMoveItemUp);
+  buttonMoveItemDown.addEventListener('click', handleMoveItemDown);
   window.reload = handleRetrieveList();
 };
