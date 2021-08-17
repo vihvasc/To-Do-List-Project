@@ -31,5 +31,18 @@ function newColor1 (event){
     event.target.style.backgroundColor = newColor;
    
 }
+/*EVENTO-CLICK NA TAREFA- COLOCA TAREFA RISCADA*/
+listLi.addEventListener("dblclick",completedTask);
+    
+        function completedTask(event){
+            const completeTask = event.target;
+            if (completeTask.className === "tasks completed"){
+                completeTask.classList.remove("completed");
+            }
+            else{
+                completeTask.classList.add("completed");
+            }
+                         
+}
     
 }
