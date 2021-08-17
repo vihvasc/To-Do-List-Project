@@ -1,17 +1,39 @@
 function deletarOutroSelecionado(elemento, listaElementos) {
-  for(let i of listaElementos) {
-    if(i !== elemento) {
-      i.className = '';
+  for (let i = 0; i < listaElementos.length; i += 1) {
+    if(listaElementos[i] !== elemento) {
+      listaElementos[i].className = listaElementos[i].className.replace('selecionado', '');
     }
   }
 }
 
 function mudarFundo(evento) {
   const elemento = evento.target;
-  elemento.className = 'selecionado';
   let elementosComClasseSelecionado = document.getElementsByClassName('selecionado');
-  if (elementosComClasseSelecionado.length > 1) {
-    deletarOutroSelecionado(elemento, elementosComClasseSelecionado);
+  if(elementosComClasseSelecionado.namedItem(elemento.id) === null) {
+    if (elementosComClasseSelecionado.length >= 1 ) {
+      elemento.className += ' selecionado';
+      deletarOutroSelecionado(elemento, elementosComClasseSelecionado);
+    } else {
+      elemento.className += ' selecionado';
+    }
+  } else {
+    console.log('elemento já selecionado');
+  }
+  
+}
+
+function retiraClasse(elemento) {
+  elemento.className = elemento.className.replace('completed', '');
+  elemento.className = '';
+}
+
+function finalizar(evento) {
+  const elemento = evento.target;
+  const listaElementoCompleto = document.getElementsByClassName('completed');
+  if (listaElementoCompleto.namedItem(elemento.id) !== null) {
+    retiraClasse(elemento);
+  } else  {
+    elemento.className = 'completed';
   }
 }
 
@@ -22,6 +44,7 @@ function criarItem(texto) {
   li.innerText = texto;
   li.id = ol.querySelectorAll('li').length + 1;
   li.addEventListener('click', mudarFundo);
+  li.addEventListener('dblclick', finalizar)
 
   //  limpa text-box input#texto-tarefa
   document.getElementById('texto-tarefa').value = '';
