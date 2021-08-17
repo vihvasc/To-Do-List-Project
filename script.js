@@ -5,6 +5,8 @@ const createdTasks = document.getElementsByTagName('li');
 const deleteButton = document.getElementById('apaga-tudo');
 const deleteCompletedTask = document.getElementById('remover-finalizados');
 const buttonSaveList = document.getElementById('salvar-tarefas');
+const buttonUp = document.getElementById('mover-cima');
+const buttonDown = document.getElementById('mover-baixo');
 
 function addRemoveColor(event) {
   const currentTask = event.target;
@@ -80,6 +82,30 @@ function recoverySavedList() {
     eventClickAndDbClick();
   }
 }
+
+function moveUp() {
+  let selected = null;
+  for (let index = 0; index < createdTasks.length; index += 1) {
+    selected = index;
+    if (createdTasks[index].style.backgroundColor !== '' && index > 0) {
+      ordererList.insertBefore(createdTasks[selected], createdTasks[selected].previousSibling);
+      return;
+    }
+  }
+}
+buttonUp.addEventListener('click', moveUp);
+
+function moveDown() {
+  let selected = null;
+  for (let index = 0; index < createdTasks.length; index += 1) {
+    selected = index;
+    if (createdTasks[index].style.backgroundColor !== '' && index < createdTasks.length - 1) {
+      ordererList.insertBefore(createdTasks[selected].nextSibling, createdTasks[selected]);
+      return;
+    }
+  }
+}
+buttonDown.addEventListener('click', moveDown);
 
 function allTask() {
   addTask();
