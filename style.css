@@ -10,6 +10,8 @@ ol li {
 
 .selected {
   background-color: grey;
+  border-radius: 10px;
+  padding: 5px;
 }
 
 .completed {
@@ -47,6 +49,9 @@ ol li {
 #buttons {
   display: inline-block;
   width: 150px;
+  border: 2px solid rgb(118, 209, 0);;
+  border-radius: 20px;
+  margin-top: 20px;
 }
 
 #buttons button {
@@ -66,6 +71,14 @@ ol li {
 #list {
   display: inline-block;
   position: absolute;
+  border: 2px solid rgb(118, 209, 0);
+  margin-top: 20px;
+  margin-left: 20px;
+  border-radius: 20px;
+  padding-right: 300px;
+  height: 309.45px;
+  width: 300px;
+  overflow-y: auto;
 }
 
 #apaga-tudo {
