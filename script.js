@@ -15,11 +15,37 @@ function criarTarefa(){
 function alteraCor(evento) {
     let listaTotal = document.getElementsByTagName('li');
     
-    for (let i of listaTotal){
-             
-        i.style.backgroundColor = 'white';     
-   
+    for (let i of listaTotal){             
+        i.style.backgroundColor = 'white';
     }
     evento.target.style.backgroundColor = 'rgb(128,128,128)';
 }
+   
+ //requisito 9
+ /*let itemLista = document.getElementById('lista-tarefas');
+ let novoItem = document.createElement('li'); 
+ itemLista.appendChild(novoItem);
+
+ novoItem.addEventListener('dbclick', marcaItem);
+  function marcaItem(){
+    let listaItens = document.getElementsByTagName('li');
+    for (let i of listaItens){
+        console.log(i);
+        i.classList.add('completd');
+    }
+  }  
+*/
+
+// requisito 10
+let button = document.getElementById('apaga-tudo');
+button.addEventListener('click', apagaTudo)
+
+function apagaTudo(){
+    listaCompleta = document.getElementById('lista-tarefas');
+    listaCompleta.innerHTML = "";
+}
+    
+    
+    
+
     
