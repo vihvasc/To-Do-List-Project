@@ -23,12 +23,23 @@ element.addEventListener('click', function (event) {
 function clearBackground() {
   const elements = document.getElementsByTagName('li');
   for (let index = 0; index < elements.length; index += 1) {
-    let listElement = elements[index];
+    const listElement = elements[index];
     listElement.style.backgroundColor = '';
   }
 }
 
-const elementList = document.getElementsByTagName('ol')[0];
-elementList.addEventListener('dblclick', function (event) {
+const listOfElements = document.getElementsByTagName('ol')[0];
+listOfElements.addEventListener('dblclick', function (event) {
   event.target.classList.toggle('completed');
 });
+
+const removeButton = document.getElementById('apaga-tudo');
+removeButton.addEventListener('click', clearList);
+const itens = document.getElementsByTagName('li');
+
+function clearList() {
+  for (let index = list.length - 1; index >= 0; index -= 1) {
+    const item = itens[index];
+    listOfElements.removeChild(item);
+  }
+}
