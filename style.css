@@ -1,7 +1,71 @@
 body {
-  background-color: rgb(178, 224, 181) ;
+  background-color: rgb(131, 228, 220);
+  margin-left: 20%;
+  display: inline-block;
+  overflow:visible;
+  background-image:url(fundoSite.png)
 }
 
+header {
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 60px;
+  padding: 20px;
+  border: 3px solid white;
+  margin-top: 40px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 2px 2px rgb(112, 112, 112);
+}
+footer {
+  margin-top: 20px;
+  font-size: 15px;
+  font-family: 'Courier New', Courier, monospace;
+  color: rgb(255, 255, 255);
+  background-color: black;
+  box-shadow: 1px 1px 1px 1px black;
+  text-align: center;
+}
 .completed {
-    text-decoration: line-through solid rgb(0, 0, 0);
+  text-decoration: line-through solid rgb(0, 0, 0);
+}
+p {
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+}
+#texto-tarefa {
+  margin-left: 24%;
+  font-size: 30px;
+  border-style:double;
+  border:solid 1px;
+  box-shadow: 2px 2px 2px 2px rgb(112, 112, 112);
+  border-radius: 10px;
+  margin-bottom: 50px;
+}
+#criar-tarefa {
+  background-color: rgb(255, 255, 255);
+  font-family: 'Courier New', Courier, monospace;
+  margin-right: 10px;
+}
+#apaga-tudo {
+  background-color: rgb(255, 255, 255);
+  font-family: 'Courier New', Courier, monospace;
+  margin-right: 10px;
+}
+
+#remover-finalizados {
+  background-color: rgb(255, 255, 255);
+  font-family: 'Courier New', Courier, monospace;
+  margin-right: 10px;
+}
+
+#salvar-tarefas {
+  background-color: rgb(255, 255, 255);
+  font-family: 'Courier New', Courier, monospace;
+  margin-right: 10px;
+}
+
+#ol {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 25px;
 }
