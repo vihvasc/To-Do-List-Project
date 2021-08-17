@@ -44,5 +44,23 @@ listLi.addEventListener("dblclick",completedTask);
             }
                          
 }
-    
+   
 }
+/*CRIAR BOTÃO E EVENTO PARA REMOVER TODAS AS TAREFAS*/
+let createButtonRemove = document.createElement("button");
+let buttonRemove = section.appendChild(createButtonRemove);
+buttonRemove.id = "apaga-tudo";
+buttonRemove.innerText = "Remover";
+
+buttonRemove.addEventListener("click", removeAllTasks);
+
+function removeAllTasks(){
+    let allTasks = document.querySelectorAll(".tasks");
+    for(let index = 0 ; index < allTasks.length ; index += 1){
+        allTasks[index].remove();
+    }
+}
+
+
+
+
