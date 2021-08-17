@@ -3,6 +3,9 @@ const inputTask = document.getElementById('texto-tarefa');
 const buttonAdd = document.getElementById('criar-tarefa');
 const taskList = document.getElementById('lista-tarefas');
 const buttonClearTasks = document.getElementById('apaga-tudo'); // requisito 10
+const buttonClearCompletedTasks = document.getElementById(
+  'remover-finalizados'
+); // requisito 11
 
 // Criando uma tarefa nova como item list para ser usado na OL depois
 
@@ -39,7 +42,19 @@ function addNewTask() {
 }
 
 function clearTasks() {
+  // requisito 10
   taskList.innerHTML = '';
+}
+
+console.log(taskList);
+function clearCompletedTasks() {
+  const lists = taskList.children;
+  for (let index = lists.length - 1; index >= 0; index -= 1) {
+    const completed = lists[index];
+    if (completed.classList.contains('completed')) {
+      completed.remove();
+    }
+  }
 }
 
 function listenerButtonAdd() {
@@ -47,12 +62,19 @@ function listenerButtonAdd() {
 }
 
 function listenerButtonClearTask() {
+  // requisito 10
   buttonClearTasks.addEventListener('click', clearTasks);
+}
+
+function listenerButtonClearCompletedTasks() {
+  // requisito 11
+  buttonClearCompletedTasks.addEventListener('click', clearCompletedTasks);
 }
 
 function callAllFunctions() {
   listenerButtonAdd();
-  listenerButtonClearTask();
+  listenerButtonClearTask(); // requisito 10
+  listenerButtonClearCompletedTasks(); // requisito 11
 }
 
 console.log(body);
