@@ -2,9 +2,11 @@ let botao = document.getElementById('criar-tarefa');
 let entrada = document.getElementById('texto-tarefa');
 let itemLista = document.getElementsByTagName('li');
 let botaoApagaTudo = document.getElementById('apaga-tudo');
+let botaoApagaFinalizados = document. getElementById('remover-finalizados')
 
 botao.addEventListener('click', addTarefa);
 botaoApagaTudo.addEventListener('click', apagaLista);
+botaoApagaFinalizados.addEventListener('click', apagaFinalizados)
 
 
 function addTarefa (){
@@ -37,9 +39,15 @@ function riscaItem (item){
 }
 
 function apagaLista(){
-    let listaTarefas = document.querySelectorAll('li')
-
+    let listaTarefas = document.querySelectorAll('li');
     for (let index = 0; index < listaTarefas.length; index++) {
         listaTarefas[index].remove();
+    }
+}
+
+function apagaFinalizados(){
+    let listaTarefasCompleted = document.querySelectorAll('li.completed');
+    for (let index = 0; index < listaTarefasCompleted.length; index++) {
+        listaTarefasCompleted[index].remove();
     }
 }
