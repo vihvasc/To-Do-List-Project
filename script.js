@@ -1,9 +1,18 @@
-function mudarFundo(disparado) {
-  if(disparado.target.style.backgroundColor !== 'rgb(128, 128, 128)') {
-    disparado.target.style.backgroundColor = 'rgb(128, 128, 128)';
-  } else {
-    disparado.target.style.backgroundColor = '';
-  } 
+function deletarOutroSelecionado(elemento, listaElementos) {
+  for(let i of listaElementos) {
+    if(i !== elemento) {
+      i.className = '';
+    }
+  }
+}
+
+function mudarFundo(evento) {
+  const elemento = evento.target;
+  elemento.className = 'selecionado';
+  let elementosComClasseSelecionado = document.getElementsByClassName('selecionado');
+  if (elementosComClasseSelecionado.length > 1) {
+    deletarOutroSelecionado(elemento, elementosComClasseSelecionado);
+  }
 }
 
 function criarItem(texto) {
