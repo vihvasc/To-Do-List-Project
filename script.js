@@ -7,8 +7,10 @@ function handleListBackgroundColor(event) {
 
   for (let i = 0; i < listItem.length; i += 1) {
     listItem[i].style.backgroundColor = '';
+    listItem[i].id = '';
   }
   targetEvent.style.backgroundColor = 'gray';
+  targetEvent.id = 'selected';
 }
 
 // Requisito 9 - Clicar duas vezes em um item da lista deixa ele tachado. Clicar outras duas vezes remove o tachado.
@@ -37,7 +39,6 @@ function restoreLocalStorage() {
   const getOlParent = document.getElementById('list-container');
 
   getOlParent.appendChild(newOl);
-  console.log(newOl.childNodes);
   addItemListEvents(newOl.childNodes);
 }
 
@@ -97,11 +98,22 @@ function storageTasks() {
   localStorage.setItem('taskList', JSON.stringify(orderedList.innerHTML));
 }
 
-// Tentar salvar a OL ao invés dos itens individuais
 function addStorageTasksButtonEvent() {
   const getSaveButton = document.getElementById('salvar-tarefas');
 
   getSaveButton.addEventListener('click', storageTasks);
+}
+
+// Requisito 14 - Cria botão que apaga somente o elemento selecionado.
+function deleteSelectedTaskItem() {
+  const selectedTask = document.getElementById('selected');
+  selectedTask.remove();
+}
+
+function addDeleteSelectedTaskItemButton() {
+  const deleteTaskButton = document.getElementById('remover-selecionado');
+
+  deleteTaskButton.addEventListener('click', deleteSelectedTaskItem);
 }
 
 window.onload = function () {
@@ -110,4 +122,5 @@ window.onload = function () {
   addClearListButtonEvent();
   addCompletedClearButtonEvent();
   addStorageTasksButtonEvent();
+  addDeleteSelectedTaskItemButton();
 };
