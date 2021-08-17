@@ -7,6 +7,10 @@
   width: 600px;
 }
 
+#texto-tarefa {
+  padding: 5px 60px 5px 5px;
+}
+
 ol > li {
   font-size: 20px;
 }
@@ -19,8 +23,20 @@ ol > li {
   text-decoration: line-through solid black;
 }
 
-#criar-tarefa {
+.container-botoes {
+  display: block;
   position: absolute;
-  bottom: 0;
+}
+
+#criar-tarefa {
+  display: inline-block;
   padding: 5px;
+  color: blue;
+}
+
+#apaga-tudo {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 5px;
+  color: red;
 }
