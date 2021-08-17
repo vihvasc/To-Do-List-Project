@@ -1,5 +1,7 @@
 const input = document.getElementById('texto-tarefa');
 const buttonAdd = document.getElementById('criar-tarefa');
+const buttonMoveUp = document.getElementById('mover-cima');
+const buttonMoveDown = document.getElementById('mover-baixo');
 const buttonClearList = document.getElementById('apaga-tudo');
 const buttonRemoveCompleted = document.getElementById('remover-finalizados');
 const buttonSaveList = document.getElementById('salvar-tarefas');
@@ -35,14 +37,10 @@ function addTasks() {
   input.value = '';
 }
 
-buttonAdd.addEventListener('click', addTasks);
-
 // Requisito 10
 function clearList() {
   listTasks.innerHTML = '';
 }
-
-buttonClearList.addEventListener('click', clearList);
 
 // Requisito 11
 function clearCompleted() {
@@ -53,16 +51,38 @@ function clearCompleted() {
   }
 }
 
-buttonRemoveCompleted.addEventListener('click', clearCompleted);
-
 // Requisito 12
 function saveList() {
   const listTasksHTML = listTasks.innerHTML;
   localStorage.setItem('listTasksSave', listTasksHTML);
 }
 
-buttonSaveList.addEventListener('click', saveList);
-
 window.onload = () => {
   listTasks.innerHTML = localStorage.getItem('listTasksSave');
 };
+
+// Requisito 13
+function moveUp() {
+  for (let index = 0; index < arrayList.length; index += 1) {
+    if (arrayList[index].style.backgroundColor !== '' && index > 0) {
+      listTasks.insertBefore(arrayList[index], arrayList[index].previousSibling);
+      return;
+    }
+  }
+}
+function moveDown() {
+  for (let index = 0; index < arrayList.length; index += 1) {
+    if (arrayList[index].style.backgroundColor !== '' && index < (arrayList.length - 1)) {
+      listTasks.insertBefore(arrayList[index], arrayList[index + 1].nextSibling);
+      return;
+    }
+  }
+}
+
+// Escutadores buttons
+buttonAdd.addEventListener('click', addTasks);
+buttonClearList.addEventListener('click', clearList);
+buttonRemoveCompleted.addEventListener('click', clearCompleted);
+buttonSaveList.addEventListener('click', saveList);
+buttonMoveUp.addEventListener('click', moveUp);
+buttonMoveDown.addEventListener('click', moveDown);
