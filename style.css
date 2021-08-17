@@ -1,7 +1,165 @@
+:root {
+
+  --color1: white;
+
+  --selected: gray;
+
+  --colorBlack: black;
+
+  --colorBlackRGBA: rgba(0 , 0 , 0 , 0.5);
+
+  --myColor2RGBA: rgba(127 , 85 , 57 , 0.5);
+
+  --mycolor0: rgb( 43 , 28 , 19);
+
+  --mycolor1: rgb(156 , 102 , 68);
+
+  --mycolor2: rgb(127 , 85 , 57);
+
+  --mycolor3: rgb(176 , 137 , 104);
+
+  --mycolor4: rgb(221 , 184 , 146);
+
+  --mycolor5: rgb(230 , 204 , 178);
+
+  --mycolor6: rgb(237 , 224 , 212);
+}
+
+body {
+  background-image: url('./images/background.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+body div:nth-of-type( 1 ) {
+  position: fixed;
+  left: 160px;
+  top: 100px;
+}
+
+header {
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  left: 160px;
+  top: 0;
+}
+
+section {
+  position: fixed;
+  left: 160px;
+}
+
+section:nth-of-type( 1 ) {
+  top: 600px;
+}
+
+section:nth-of-type( 2 ) {
+  top: 150px;
+  background-color: var(--myColor2RGBA);
+  max-width: 50%;
+  min-width: 600px;
+  height: 60vh;
+  position: absolute;
+  overflow-y: scroll;
+}
+
+section:nth-of-type( 3 ) {
+  position: fixed;
+}
+
+li {
+  color: var(--mycolor0);
+  font-size: 18px;
+  font-weight: 500;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+button {
+  background-color: var(--mycolor1);
+  color: var(--mycolor6);
+  font-size: 14px;
+  font-weight: 800;
+  padding: 10px;
+  border-radius: 10px;
+  position: absolute;
+  top: 650px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: var(--mycolor4);
+  color: var(--mycolor1);
+}
+
 .selected {
-  background-color: gray;
+  background-color: var(--selected);
 }
 
 .completed {
-  text-decoration: line-through solid black;
+  text-decoration: line-through solid var(--colorBlack);
+}
+
+#header {
+  color: var(--mycolor1);
+  text-shadow: 3px 3px var(--mycolor4);
+  font-size: 60px;
+  position: relative;
+  max-width: 50%;
+  min-width: 600px;
+  font-style: italic;
+}
+
+#funcionamento {
+  color: var(--mycolor2);
+  font-size: 20px;
+  max-width: 50%;
+  min-width: 600px;
+  margin-left: 60px;
+  margin-top: 10px;
+}
+
+#texto-tarefa {
+  background-color: var(--mycolor1);
+  color: var(--mycolor4);
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+#texto-tarefa:hover {
+  background-color: var(--mycolor4);
+  color: var(--mycolor0);
+}
+
+#criar-tarefa {
+  left: 210px;
+  top: 593px;
+}
+
+#remover-finalizados {
+  left: 80px;
+  width: 180px;
+}
+
+#salvar-tarefas {
+  left: 270px;
+  width: 130px;
+}
+
+#mover-cima {
+  top: 300px;
+  left: 610px;
+}
+
+#mover-baixo {
+  top: 350px;
+  left: 610px;
+}
+
+#remover-selecionado {
+  left: 410px;
+  width: 180px;
 }
