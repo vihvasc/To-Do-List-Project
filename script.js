@@ -3,12 +3,25 @@ const taskInput = document.querySelector('#texto-tarefa');
 const taskList = document.querySelector('#lista-tarefas');
 const taskItem = document.getElementsByClassName('task');
 const buttonClear = document.querySelector('#apaga-tudo');
+const buttonClearFinalized = document.querySelector('#remover-finalizados');
 
 function removeAllTask() {
   taskList.innerHTML = '';
 }
 
 buttonClear.addEventListener('click', removeAllTask);
+
+function removeFinalized() {
+  const rmCompleted = document.querySelectorAll('li');
+
+  for (let index = 0; index < rmCompleted.length; index += 1) {
+    if (rmCompleted[index].classList.contains('completed')) {
+      rmCompleted[index].remove();
+    }
+  }
+}
+
+buttonClearFinalized.addEventListener('click', removeFinalized);
 
 function doubleClick(event) {
   const elemento = event.target;
