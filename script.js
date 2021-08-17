@@ -50,4 +50,13 @@ function cleanAll() {
 }
 buttonCleanAll.addEventListener('click', cleanAll);
 
-
+const buttonRemove = document.getElementById('remover-finalizados');
+function removeCompletedTask() {
+  for (let index = 0; index < li.length; index += 1) {
+    if (li[index].classList.contains('completed')) {
+      ul.removeChild(ul.children[index]);
+      index -= 1;
+    }
+  }
+}
+buttonRemove.addEventListener('click', removeCompletedTask);
