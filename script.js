@@ -2,6 +2,7 @@ const buttonAdd = document.querySelector('#criar-tarefa');
 
 const ol = document.querySelector('#lista-tarefas');
 
+
 buttonAdd.addEventListener('click', () => {
   const text = document.querySelector('#texto-tarefa'); // pega o input
   const { value } = text; // pega o valor do inpu
@@ -17,11 +18,18 @@ const selectOl = document.querySelector('ol');
 selectOl.addEventListener('click', (event) => {
   if (event.target.classList.contains('lista')) {
     const attributeRemove = document.getElementsByTagName('li');
-    // console.log(attributeRemove);
     for (let i = 0; i < attributeRemove.length; i += 1) {
       attributeRemove[i].removeAttribute('style');
-      console.log('testado');
     }
- event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+    event.target.style.backgroundColor = 'rgb(128, 128, 128)';
   }
+});
+// Requisito 9
+selectOl.addEventListener('dblclick', (event) => {
+  if (event.target.classList.contains('lista')) {
+    event.target.classList.toggle('completed');
+  }
+  // } else if (event.target.classList.contains('lista', 'completed')) {
+  //   event.target.classList.remove('completed');
+  // }
 });
