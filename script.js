@@ -1,25 +1,9 @@
-// Desafio 7 -Altera cor de fundo do item da lista selecionado
-function selectedItemList() {
-  const selectedItem = document.querySelectorAll('.itens');
-
-  for (let i = 0; i < selectedItem.length; i += 1) {
-    const checkItem = selectedItem[i];
-
-    checkItem.addEventListener('click', () => {
-      for (let z = 0; z < selectedItem.length; z += 1) {
-        const checkRemove = selectedItem[z];
-        checkRemove.classList.remove('selected');
-      }
-      checkItem.classList.add('selected');
-    });
-  }
-}
+const selectedItem = document.getElementById('lista-tarefas');
 
 // Desafio 5 e 6- Cria uma lista de taferas em sequencia e limpa a entrada do input
 function addToList() {
   const button = document.getElementById('criar-tarefa');
   const input = document.getElementById('texto-tarefa');
-  const oList = document.getElementById('lista-tarefas');
 
   button.addEventListener('click', () => {
     const text = input.value;
@@ -27,11 +11,31 @@ function addToList() {
 
     item.textContent = text;
     item.className = 'itens';
-    oList.appendChild(item);
+    selectedItem.appendChild(item);
 
     input.value = '';
-    selectedItemList();
   });
 }
 
 addToList();
+
+// Desafio 7 -Altera cor de fundo do item da lista selecionado
+selectedItem.addEventListener('click', (ev) => {
+  const lista = document.getElementsByClassName('itens');
+  const selected = ev.target;
+
+  for (let i = 0; i < lista.length; i += 1) {
+    const remover = lista[i];
+    remover.classList.remove('selected');
+  }
+  selected.classList.add('selected');
+});
+
+// Desafio 9 - Duplos cliques adicionam e retiram a classe complited
+const lista = document.querySelector('ol');
+
+lista.addEventListener('dblclick', (ev) => {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('completed');
+  }
+});
