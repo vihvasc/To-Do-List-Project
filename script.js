@@ -204,7 +204,7 @@ function salvaTarefas() {
   for (let index = 0; index < listaOrdenada.length; index += 1) {
     arrayDeTarefas.push(listaOrdenada[index].textContent);
   }
-  console.log(arrayDeTarefas);
+  // console.log(arrayDeTarefas); // [DEBUG]
   localStorage.setItem("arrayDeTarefas", JSON.stringify(arrayDeTarefas));
   // localStorage.setItem("arrayDeTarefas", arrayDeTarefas.toString() ); // Function de Teste
 }
@@ -213,9 +213,17 @@ function salvaTarefas() {
 function recuperaTarefas () {
   if (localStorage.hasOwnProperty("arrayDeTarefas")) {
     const arrayDeTarefas = JSON.parse(localStorage.getItem("arrayDeTarefas"))
-    alert("INFO: Existem dados Salvos no localStorage!!!"); // [DEBUG]
+    // console.log(arrayDeTarefas);
+    for (let index = 0; index < arrayDeTarefas.length; index +=1) {
+      
+      const listaTarefas = document.getElementById('lista-tarefas');
+      const novaTarefa = document.createElement('li');
+      novaTarefa.textContent = arrayDeTarefas[index];
+      listaTarefas.appendChild(novaTarefa);
+    }
+    // alert("INFO: Existem dados Salvos no localStorage!!!"); // [DEBUG]
   } else {
-    alert("INFO: Não existem dados Salvos no localStorage!!!");
+    // alert("INFO: Não existem dados Salvos no localStorage!!!"); // [DEBUG]
   }
 }
 recuperaTarefas();
