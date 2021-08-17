@@ -2,6 +2,7 @@ const mainParagraph = document.getElementById("funcionamento")
 const textAssignment = document.getElementById("texto-tarefa");
 const buttonAssignment = document.getElementById("criar-tarefa");
 const buttonClear = document.getElementById("apaga-tudo");
+const buttonClearListCompleted = document.getElementById("remover-finalizados")
 const mainList = document.getElementById("lista-tarefas");
 
 function createTask (event){
@@ -36,3 +37,11 @@ function clearListAll (event){
     mainList.innerHTML = "";
 }
 buttonClear.addEventListener("click", clearListAll)
+
+function removeCompletion (event){
+    let listComplete = document.querySelectorAll(".completed");
+    for (let index = 0; index < listComplete.length; index += 1){
+        listComplete[index].remove();
+    }
+}
+buttonClearListCompleted.addEventListener("click", removeCompletion)
