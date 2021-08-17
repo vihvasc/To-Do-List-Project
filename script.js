@@ -1,10 +1,10 @@
 const tags = ['body', 'header', 'h1', 'div', 'p', 'main', 'section', 'input', 'ol', 'button',
   'li'];
 const ids = ['', 'header', 'funcionamento', 'texto-tarefa', 'lista-tarefas', 'criar-tarefa',
-  'apaga-tudo', 'remover-finalizados', 'salvar-tarefas'];
+  'apaga-tudo', 'remover-finalizados', 'salvar-tarefas', 'mover-cima', 'mover-baixo'];
 const innerTexts = ['', 'Minha Lista de Tarefas', 'Clique duas vezes em um item para marcá-lo'
   + ' como completo', 'Nova', '[AVISO] - Digite o nome da tarefa para continuar...', 'Apagar', 
-'Remover Finalizados', 'Salvar Tarefas'];
+'Remover Finalizados', 'Salvar Tarefas', '▲', '▼'];
 const classes = ['', 'selected', 'completed'];
 
 function createList(myArray) {
@@ -50,6 +50,8 @@ function createPageStructure() {
   createElements([tags[6], 2, tags[9], ids[6], classes[0], innerTexts[5]]);
   createElements([tags[6], 2, tags[9], ids[7], classes[0], innerTexts[6]]);
   createElements([tags[6], 2, tags[9], ids[8], classes[0], innerTexts[7]]);
+  createElements([tags[6], 2, tags[9], ids[9], classes[0], innerTexts[8]]);
+  createElements([tags[6], 2, tags[9], ids[10], classes[0], innerTexts[9]]);
 }
 
 function createNewTask() {
@@ -166,6 +168,48 @@ function existSavedTasks() {
   }
 }
 
+function liMoveUp() {
+  const liSelectedItem = document.getElementsByClassName('selected')[0];
+  if (liSelectedItem) {
+    const liPreviusItem = liSelectedItem.previousElementSibling;
+    if (liPreviusItem) {
+      const liAuxItem = document.createElement(ids[10]);
+      liAuxItem.innerText = liSelectedItem.innerText;
+      liAuxItem.className = liSelectedItem.className;
+      liSelectedItem.innerText = liPreviusItem.innerText;
+      liSelectedItem.className = liPreviusItem.className;
+      liPreviusItem.innerText = liAuxItem.innerText;
+      liPreviusItem.className = liAuxItem.className;
+    }
+  }
+}
+
+function btnLiMoveUp() {
+  const btnMoverCima = document.getElementById(ids[9]);
+  btnMoverCima.addEventListener('click', liMoveUp);
+}
+
+function liMoveDown() {
+  const liSelectedItem = document.getElementsByClassName('selected')[0];
+  if (liSelectedItem) {
+    const liNextItem = liSelectedItem.nextElementSibling;
+    if (liNextItem) {
+      const liAuxItem = document.createElement(ids[10]);
+      liAuxItem.innerText = liSelectedItem.innerText;
+      liAuxItem.className = liSelectedItem.className;
+      liSelectedItem.innerText = liNextItem.innerText;
+      liSelectedItem.className = liNextItem.className;
+      liNextItem.innerText = liAuxItem.innerText;
+      liNextItem.className = liAuxItem.className;
+    }
+  }
+}
+
+function btnLiMoveDown() {
+  const btnMoverBaixo = document.getElementById(ids[10]);
+  btnMoverBaixo.addEventListener('click', liMoveDown);
+}
+
 window.onload = function startPage() {
   createPageStructure();
   btnNewTask();
@@ -175,4 +219,6 @@ window.onload = function startPage() {
   btnRemoveSelected();
   btnSaveTasks();
   existSavedTasks();
+  btnLiMoveUp();
+  btnLiMoveDown();
 };
