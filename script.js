@@ -65,3 +65,12 @@ function buttonCompleted() {
 }
 buttonCompleted()
 
+function removeSelected () {
+    let getClassSelected = document.querySelector('.selected');
+        getClassSelected.remove();
+}
+function buttonRemoveSelected() {
+    let buttonSelected = document.getElementById('remover-selecionado')
+    buttonSelected.addEventListener('click', removeSelected);
+}
+buttonRemoveSelected()
