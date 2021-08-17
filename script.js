@@ -1,4 +1,4 @@
-const taskInput = document.getElementById('texto-tarefa'); // Input
+const campoInput = document.getElementById('texto-tarefa'); // Input
 const listaTarefas = document.getElementById('lista-tarefas'); // Lista Ordenada
 const criarTarefa = document.getElementById('criar-tarefa'); // Botão adicionar tarefa
 const tarefasCriadas = document.getElementsByTagName('li'); // Todas tarefas criadas
@@ -24,11 +24,11 @@ function toggleCompleted(event) {
 
 function addNewTask() {
   const li = document.createElement('li');
-  li.innerText = taskInput.value;
+  li.innerText = campoInput.value;
   li.addEventListener('click', changeColor);
   li.addEventListener('dblclick', toggleCompleted);
   listaTarefas.appendChild(li);
-  taskInput.value = '';
+  campoInput.value = '';
 }
 
 function removeAllTasks() {
@@ -47,12 +47,14 @@ function removeTasksCompleted() {
   }
 }
 
-criarTarefa.addEventListener('click', addNewTask);
-taskInput.addEventListener('keypress', (event) => {
+function enterPressed(event) {
   const keyPressed = event;
   if (keyPressed.key === 'Enter') {
     addNewTask();
   }
-});
+}
+
+criarTarefa.addEventListener('click', addNewTask);
+campoInput.addEventListener('keypress', enterPressed);
 botaoLimparTarefas.addEventListener('click', removeAllTasks);
 botaoLimpatConcluidos.addEventListener('click', removeTasksCompleted);
