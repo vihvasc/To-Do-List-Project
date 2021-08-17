@@ -15,7 +15,13 @@ button.addEventListener('click', creatItem);
 
 // Adciona CSS ao elemento selecionado com o click;
 function colorItem(event) {
-  event.target.style.setProperty('background-color', 'gray');
+  const coloredItem = document.querySelector('.itemSelected');
+  if (coloredItem === null) {
+    event.target.classList.add('itemSelected');
+  } else {
+    coloredItem.classList.remove('itemSelected');
+    event.target.classList.add('itemSelected');  
+  }
 }
 
 list.addEventListener('click', colorItem);
