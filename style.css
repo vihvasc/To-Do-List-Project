@@ -21,6 +21,7 @@ ol > li {
 
 .completed {
   text-decoration: line-through solid black;
+  color: green;
 }
 
 .container-botoes {
@@ -39,4 +40,11 @@ ol > li {
   margin-left: 10px;
   padding: 5px;
   color: red;
+}
+
+#remover-finalizados {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 5px;
+  color: green;
 }

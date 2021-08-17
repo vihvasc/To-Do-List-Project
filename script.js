@@ -22,7 +22,8 @@ function mudarFundo(evento) {
 
 }
 
-function retiraClasse(elemento) {
+function retiraClasse(elem) {
+  const elemento = elem;
   elemento.className = elemento.className.replace('completed', '');
   elemento.className = '';
 }
@@ -44,7 +45,7 @@ function criarItem(texto) {
   li.innerText = texto;
   li.id = ol.querySelectorAll('li').length + 1;
   li.addEventListener('click', mudarFundo);
-  li.addEventListener('dblclick', finalizar)
+  li.addEventListener('dblclick', finalizar);
 
   //  limpa text-box input#texto-tarefa
   document.getElementById('texto-tarefa').value = '';
@@ -61,9 +62,16 @@ function verificarInput() {
 }
 
 function apagarTodasTarefas() {
-  const items = document.querySelectorAll('ol li');
-  for (let i = 0; i < items.length; i += 1) {
-    items[i].remove();
+  const todosOsItems = document.querySelectorAll('ol li');
+  for (let i = 0; i < todosOsItems.length; i += 1) {
+    todosOsItems[i].remove();
+  }
+}
+
+function apagarFinalizadas() {
+  let itemsFinalizados = document.querySelectorAll('.completed');
+  for (let i = 0; i < itemsFinalizados.length; i += 1) {
+    itemsFinalizados[i].remove();
   }
 }
 
@@ -73,6 +81,9 @@ function adicionarEscutadoresBotoes() {
 
   const botao_apaga_tudo = document.getElementById('apaga-tudo');
   botao_apaga_tudo.addEventListener('click', apagarTodasTarefas);
+
+  const botao_remover_finalizados = document.getElementById('remover-finalizados');
+  botao_remover_finalizados.addEventListener('click', apagarFinalizadas);
 }
 
 adicionarEscutadoresBotoes();
