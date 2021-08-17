@@ -1,5 +1,6 @@
 .liTag {
     background-color: rgb(0, 255, 149);
+    text-decoration: none;
 }
 
 .selected {

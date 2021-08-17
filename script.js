@@ -1,6 +1,7 @@
 let input = document.getElementById('texto-tarefa');
 let buttonTask = document.getElementById('criar-tarefa');
 let listTask = document.getElementById('lista-tarefas');
+let clearButton = document.getElementById('apaga-tudo');
 
 buttonTask.addEventListener('click', createListTask);
 // target: botao
@@ -26,23 +27,23 @@ function liBackgroundColor(event) {
 }
 listTask.addEventListener('click', liBackgroundColor);
 
+// INCOMPLETO, DUVIDOSO
 function liRisk(event) {
-    let liTag = listTask.children;
+    let liTag = document.querySelectorAll('li');
     for (let i = 0; i < liTag.length; i++) {
-        liTag[i].className = 'liTag';
+        if (liTag.className === 'liTag') {
+            event.target.toggle = 'completed';
+        } else if (liTag.className === 'liTag completed') {
+            event.target.removeAtribute('completed');
+        }
     }
-
-    event.target.className = 'liTag completed';
 }
 listTask.addEventListener('dblclick', liRisk);
 
-function liNoRisk(event) {
-    let liTag = listTask.children;
+function clearTasks(event) {
+    let liTag = document.querySelectorAll('li');
     for (let i = 0; i < liTag.length; i++) {
-        if (liTag[i].className = 'liTag completed'){
-            event.target.className = 'liTag';
-        }
+        liTag[i].remove();
     }
-
-    
 }
+clearButton.addEventListener('click', clearTasks);
