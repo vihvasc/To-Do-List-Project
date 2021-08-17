@@ -5,6 +5,8 @@ const tarefasCriadas = document.getElementsByTagName('li'); // Todas tarefas cri
 const limparTarefas = document.getElementById('apaga-tudo'); // Botão de limpar tarefas criadas
 const limparConcluidos = document.getElementById('remover-finalizados'); // Botão de limpar tarefas concluídas
 const salvarTarefas = document.getElementById('salvar-tarefas'); // Botão de salvar terafas
+const botaoMoverCima = document.getElementById('mover-cima');
+const botaoMoverBaixo = document.getElementById('mover-baixo');
 
 function mudarCorTarefa(evento) {
   const tarefasAtuais = [...tarefasCriadas];
@@ -74,9 +76,9 @@ function salvar() {
     };
     propriedadesDaTarefa.push(objTarefa);
   });
-  
+
   localStorage.setItem('listaAtual', JSON.stringify(propriedadesDaTarefa));
-  alert('Lista salva com sucesso!')
+  alert('Lista salva com sucesso!');
 }
 
 function recuperarListaSalva() {
@@ -90,7 +92,31 @@ function recuperarListaSalva() {
     li.addEventListener('click', mudarCorTarefa);
     li.addEventListener('dblclick', alternarCompletado);
     listaTarefas.appendChild(li);
-  })
+  });
+}
+
+function moverParaCima() {
+  let selecionado = null;
+
+  for (let index = 0; index < tarefasCriadas.length; index += 1) {
+    selecionado = index;
+    if (tarefasCriadas[index].style.backgroundColor && selecionado > 0) {
+      listaTarefas.insertBefore(tarefasCriadas[selecionado], tarefasCriadas[selecionado].previousSibling);
+      return;
+    }
+  }
+}
+
+function moverParaBaixo() {
+  let selecionado = null;
+
+  for (let index = 0; index < tarefasCriadas.length; index += 1) {
+    selecionado = index;
+    if (tarefasCriadas[index].style.backgroundColor && selecionado < (tarefasCriadas.length - 1)) {
+      listaTarefas.insertBefore(tarefasCriadas[selecionado], tarefasCriadas[selecionado + 1].nextSibling);
+      return;
+    }
+  }
 }
 
 criarTarefa.addEventListener('click', adicionarNovaTarefa);
@@ -98,9 +124,12 @@ campoInput.addEventListener('keypress', enterPressionado);
 limparTarefas.addEventListener('click', removerTodasTarefas);
 limparConcluidos.addEventListener('click', removerTarefasCompletadas);
 salvarTarefas.addEventListener('click', salvar);
+botaoMoverCima.addEventListener('click', moverParaCima);
+botaoMoverBaixo.addEventListener('click', moverParaBaixo);
 
-window.onload = function () {
+
+window.onload = () => {
   if (localStorage.getItem('listaAtual')) {
-    recuperarListaSalva()
+    recuperarListaSalva();
   }
-}
+};

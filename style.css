@@ -32,6 +32,7 @@ ol {
 }
 
 li {
+
   /* text-transform: capitalize; */
   user-select: none;
   width: 130px;
@@ -46,4 +47,20 @@ h4 {
 
 .completed {
   text-decoration: line-through solid black;
+}
+
+#subir-descer-tarefas {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 0;
+}
+
+#mover-cima , #mover-baixo {
+  margin: 2px;
+  height: fit-content;
+}
+
+#paragrafo-setas {
+  text-align: center;
+  margin-top: 0;
 }
