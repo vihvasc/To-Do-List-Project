@@ -22,6 +22,26 @@ window.onload = function () {
     }
     li.addEventListener("click", changeBg, false)
     
+    let selectLi = document.querySelector("li");
+
+    function toogle() {
+      console.log("teste")
+      if(selectLi.classList.contains("completed")){
+        selectLi.classList.remove("completed");
+      }else{
+        selectLi.classList.add("completed");
+      }
+    }
+
+
+    li.addEventListener("dblclick", toogle, false);
+  
+    
+    
+
+
+
+
     limpar = document.querySelector("#apaga-tudo");
     
     limpar.addEventListener("click", clearList)
