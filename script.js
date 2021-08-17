@@ -3,6 +3,7 @@ const textAssignment = document.getElementById("texto-tarefa");
 const buttonAssignment = document.getElementById("criar-tarefa");
 const buttonClear = document.getElementById("apaga-tudo");
 const buttonClearListCompleted = document.getElementById("remover-finalizados")
+const buttonClearListSelect = document.getElementById("remover-selecionado")
 const mainList = document.getElementById("lista-tarefas");
 
 function createTask (){
@@ -45,3 +46,11 @@ function removeCompletion (){
     }
 }
 buttonClearListCompleted.addEventListener("click", removeCompletion)
+
+function removeSelects (){
+    let listSelect = document.querySelectorAll(".selected");
+    for (let index = 0; index < listSelect.length; index += 1){
+        listSelect[index].remove();
+    }
+}
+buttonClearListSelect.addEventListener("click", removeSelects)
