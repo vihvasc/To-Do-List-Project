@@ -17,12 +17,13 @@ function mudarCorTarefa(evento) {
   tarefaClicada.style.backgroundColor = 'rgb(128, 128, 128)';
 }
 
-function toggleCompleted(event) {
-  const taskClicked = event.target;
-  if (taskClicked.className === 'completed') {
-    taskClicked.classList.remove('completed');
+function alternarCompletado(evento) {
+  const tarefaClicada = evento.target;
+
+  if (tarefaClicada.className) {
+    tarefaClicada.classList.remove('completed');
   } else {
-    taskClicked.classList.add('completed');
+    tarefaClicada.classList.add('completed');
   }
 }
 
@@ -30,7 +31,7 @@ function addNewTask() {
   const li = document.createElement('li');
   li.innerText = campoInput.value;
   li.addEventListener('click', mudarCorTarefa);
-  li.addEventListener('dblclick', toggleCompleted);
+  li.addEventListener('dblclick', alternarCompletado);
   listaTarefas.appendChild(li);
   campoInput.value = '';
 }
