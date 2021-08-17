@@ -27,9 +27,15 @@ selectOl.addEventListener('click', (event) => {
 // Requisito 9
 selectOl.addEventListener('dblclick', (event) => {
   if (event.target.classList.contains('lista')) {
-    event.target.classList.toggle('completed');
+    event.target.classList.toggle('completed');// função nova que aprendi de alternar
   }
-  // } else if (event.target.classList.contains('lista', 'completed')) {
-  //   event.target.classList.remove('completed');
-  // }
+});
+// limpar a lista
+const eraserAll = document.querySelector('#apaga-tudo');
+
+eraserAll.addEventListener('click', (event) => {
+  const olPai = document.getElementById('lista-tarefas');
+  while (olPai.firstChild) {
+    olPai.removeChild(olPai.firstChild);
+  }
 });
