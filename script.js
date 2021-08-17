@@ -1,6 +1,8 @@
 window.onload = function() {
 buton;
 pintar;
+realizado;
+limpar;
 }
 
 
@@ -13,6 +15,9 @@ butao.addEventListener("click", buton);
 let listas = document.getElementsByTagName("ol")[0]
 listas.addEventListener("click", pintar)
 listas.addEventListener("dblclick", realizado)
+
+let limparLista = document.getElementById("apaga-tudo")
+limparLista.addEventListener("click", limpar)
 
 
 function pintar(event) {
@@ -40,4 +45,8 @@ resultado = event.target
 resultado.classList.toggle("completed")
 }
 
+function limpar (){
+    let parametro = document.getElementById("lista-tarefas");
+    parametro.innerText = ""
+}
 
