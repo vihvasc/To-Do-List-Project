@@ -42,3 +42,16 @@ function cleanList() {
 }
 
 cleanList();
+
+function limparCompletos() {
+  let btLimpaMarcados = document.getElementById('remover-finalizados');
+  btLimpaMarcados.addEventListener('click', function () {
+    let li = document.querySelectorAll('.completed');
+    for (let index of li)
+      index.remove();
+  })
+}
+
+limparCompletos();
+
+
