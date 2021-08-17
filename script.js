@@ -101,4 +101,4 @@ saveListButton.addEventListener('click', saveTaskList);
 //   }
 // }
 
-moveDownButton.addEventListener('click', moveDown);
+// moveDownButton.addEventListener('click', moveDown);
