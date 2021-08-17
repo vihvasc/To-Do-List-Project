@@ -5,6 +5,7 @@ const delCompletedButton = document.getElementById('remover-finalizados')
 const saveButton = document.getElementById('salvar-tarefas')
 const upButton = document.getElementById('mover-cima')
 const downButton = document.getElementById('mover-baixo')
+const removeSelectedButton = document.getElementById('remover-selecionado')
 
 function addTask() {
   const inputText = document.getElementById('texto-tarefa')
@@ -116,17 +117,10 @@ downButton.addEventListener('click', () => {
     }
   }
 })
-function makeLiObj(li) {
-  const styles = getComputedStyle(li)
-
-  const taskObj = {
-    text: li.innerText,
-    completed: styles.textDecoration.includes('line-through'),
-    selected: styles.backgroundColor.includes('rgb(128, 128, 128)'),
-  }
-  return taskObj
-}
-
+removeSelectedButton.addEventListener('click', () => {
+  const selected = document.querySelector('.selected')
+  selected.remove()
+})
 
 getSavedTasks()
 
