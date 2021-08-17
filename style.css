@@ -1,3 +1,73 @@
-li{
+:root {
+  --button-color-red: red;
+  --button-color-blue: blue;
+  --button-color-orange: orange;
+  --button-color-green: green;
+  --primary-color: green;
+}
+
+html {
+  background-color: var(--primary-color);
+}
+
+body {
+  border-radius: 10px;
   background-color: white;
+  padding: 30px;
+}
+
+header {
+  line-height: 5px;
+}
+
+li {
+  background-color: white;
+  line-height: 25px;
+}
+
+button {
+  border-radius: 10px 10px 10px 0;
+  border: none;
+  color: white;
+  padding: 5px 10px 5px 10px;
+  margin: 5px;
+}
+
+p {
+  font-style: italic;
+  color: grey;
+}
+
+#criar-tarefa {
+  padding: 5px 20px 5px 20px;
+}
+
+#criar-tarefa, #remover-finalizados {
+  background-color: var(--button-color-blue);
+}
+
+
+#salvar-tarefas {
+  background-color: var(--button-color-green);
+}
+
+#mover-cima, #mover-baixo{
+  background-color: var(--button-color-orange);
+  padding: 5px 15px 5px 15px;
+}
+
+#apaga-tudo, #remover-selecionado {
+  background-color: var(--button-color-red);
+}
+
+#remover-selecionado{
+  padding: 5px 15px 5px 15px;
+}
+
+button:hover{
+  opacity: 50%;
+}
+
+li:hover{
+  opacity: 70%;
 }

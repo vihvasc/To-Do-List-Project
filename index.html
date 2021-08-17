@@ -14,24 +14,25 @@
 
   <header>
     <h1>Minha Lista de Tarefas</h1>
+    <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
   </header>
-  <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
 
   <input id="texto-tarefa" type="text" placeholder="Adicione uma tarefa">
-  <button type="submit" id="criar-tarefa">Criar</button>
+  <button type="submit" id="criar-tarefa">Adicionar</button>
 
   <ol id="lista-tarefas"></ol>
 
-  <button id="apaga-tudo">Apagar lista</button>
-  <button id="remover-finalizados">Apagar itens finalizados</button>
+  <button id="remover-selecionado">X</button>
+
+  <button id="mover-cima">↑</button>
+
+  <button id="mover-baixo">↓</button>
+
+  <button id="remover-finalizados">Limpar Completos</button>
+
+  <button id="apaga-tudo">Limpar lista</button>
 
   <button id="salvar-tarefas">Salvar lista</button>
-
-  <button id="mover-cima">Mover para cima</button>
-
-  <button id="mover-baixo">Mover para baixo</button>
-
-  <button id="remover-selecionado">Remover Selecionado</button>
 
   <script src="script.js"></script>
 </body>
