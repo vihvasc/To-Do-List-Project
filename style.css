@@ -1,0 +1,52 @@
+body {
+    margin: 10px auto;
+    }
+    
+    .completed {
+    text-decoration: line-through solid rgb(0, 0, 0);
+    }
+    
+    #title {
+    margin-left: 15%;
+    }
+    
+    h4 {
+    margin-left: 20%;
+    
+    }
+    
+    #texto-tarefa {
+    margin-left: 20%;
+    }
+    
+    #lista-tarefas {
+    margin-left: 20%;
+    }
+    
+    #criar-tarefa {
+    
+    }
+    
+    #apaga-tudo {
+    
+    }
+    
+    #remover-finalizados {
+    
+    }
+    
+    #salvar-tarefas {
+    
+    }
+    
+    #mover-cima {
+    
+    }
+    
+    #mover-baixo {
+    
+    }
+    
+    #remover-selecionado{
+    
+    }
