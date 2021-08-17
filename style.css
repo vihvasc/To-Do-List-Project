@@ -1,13 +1,13 @@
 body {
-  background-color: rgb(64, 64, 173);
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+  background-color: rgb(64 , 64 , 173);
+  font-family: Trebuchet MS, Lucida Sans Unicode, Lucida Grande, Lucida Sans, Arial, sans-serif;
 }
 
 #container {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50% , -50%);
   width: 35%;
   background-color: white;
   padding: 4%;
@@ -27,21 +27,21 @@ p {
   margin-bottom: 16px;
 }
 
-input[type='text'] {
-  box-shadow: 0px 0px 5px white;
-  border: 1px solid rgba(0, 0, 0, 0.618);
+input {
+  box-shadow: 1px 1px 5px white;
+  border: 1px solid rgba(0 , 0 , 0 , 0.618);
   border-radius: 5px;
   margin-right: 4px;
 }
 
-input[type='text']:focus{
+input:focus {
   outline: none;
-  box-shadow: 2px 2px 2px rgb(64, 64, 173);
-  border:1px solid rgb(64, 64, 173);
+  box-shadow: 2px 2px 2px rgb(64 , 64 , 173);
+  border: 1px solid rgb(64 , 64 , 173);
 }
 
-input[type='text']:hover{
-  border: 1px solid rgb(64, 64, 173);
+input:hover {
+  border: 1px solid rgb(64 , 64 , 173);
 }
 
 .btn {
@@ -91,7 +91,7 @@ input[type='text']:hover{
 }
 
 #remover-finalizados {
-  background-color: rgb(56, 136, 56);
+  background-color: rgb(56 , 136 , 56);
 }
 
 #apaga-tudo {
@@ -99,40 +99,38 @@ input[type='text']:hover{
 }
 
 #salvar-tarefas {
-  background-color: rgb(12, 12, 196);
+  background-color: rgb(12 , 12 , 196);
 }
 
 #mover-cima:hover {
   transition: 0.3s;
-  background-color: rgb(0, 168, 0);
+  background-color: rgb(0 , 168 , 0);
 }
 
 #mover-baixo:hover {
   transition: 0.3s;
-  background-color: rgb(226, 164, 6);
+  background-color: rgb(226 , 164 , 6);
 }
 
 #remover-selecionado:hover {
   transition: 0.3s;
-  background-color: rgb(255, 57, 57);
+  background-color: rgb(255 , 57 , 57);
 }
 
 #remover-finalizados:hover {
   transition: 0.3s;
-  background-color: rgb(76, 172, 76);
+  background-color: rgb(76 , 172 , 76);
 }
 
 #apaga-tudo:hover {
   transition: 0.3s;
-  background-color: rgb(175, 62, 62);
+  background-color: rgb(175 , 62 , 62);
 }
 
 #salvar-tarefas:hover {
   transition: 0.3s;
-  background-color: rgb(60, 60, 187);
+  background-color: rgb(60 , 60 , 187);
 }
-
-
 
 .selected {
   background-color: gray;
@@ -141,5 +139,3 @@ input[type='text']:hover{
 .completed {
   text-decoration: line-through;
 }
-
-
