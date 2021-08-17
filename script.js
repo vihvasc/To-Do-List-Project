@@ -3,6 +3,7 @@ const addInput = document.getElementById('texto-tarefa'); // input
 const listOrd = document.getElementById('lista-tarefas');//lista ordenada
 const taskCreate = document.getElementsByTagName('li');//listas das tarefas criadas
 
+
 function inputTask() {
   addButton.addEventListener('click', function () {
     let li = document.createElement('li');
@@ -10,6 +11,7 @@ function inputTask() {
     addInput.value = "";
     listOrd.appendChild(li);
     addEvent();
+    removeSelector()
   });
 }
 inputTask()
@@ -21,7 +23,7 @@ function addEvent() {
     taskCreate[index].addEventListener('click', function () {
       removeSelector()
       taskCreate[index].style.backgroundColor = ' rgb(128, 128, 128)';
-    });
+      });
   }
 }
 
@@ -30,3 +32,16 @@ function removeSelector() {
     taskCreate[index].style.backgroundColor = "";
   }
 }
+
+function styleLine(event) {
+  if (event.target.classList.contains('completed')) {
+    event.target.classList.remove('completed');
+    event.target.style.textDecoration = "none";
+  } else {
+    event.target.classList.add('completed');
+    event.target.style.textDecoration = "line-through";
+  }
+}
+ listOrd.addEventListener('dblclick', styleLine);
+  
+
