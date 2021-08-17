@@ -58,6 +58,25 @@ function loadTasks() {
 
   if (localStorage.getItem('tasks') !== null) {
     taskList.innerHTML = JSON.parse(localStorage.getItem('tasks'));
+    selectedTask = document.getElementsByClassName('selected')[0];
+  }
+}
+
+function moveUp() {
+  try {
+    const previousTask = selectedTask.previousSibling;
+    previousTask.insertAdjacentElement('beforebegin', selectedTask);
+  } catch (TypeError) {
+    return;
+  }
+}
+
+function moveDown() {
+  try {
+    const nextTask = selectedTask.nextSibling;
+    nextTask.insertAdjacentElement('afterend', selectedTask);
+  } catch (TypeError) {
+    return;
   }
 }
 
@@ -69,6 +88,8 @@ window.onload = () => {
   const clearTaskListButton = document.getElementById('apaga-tudo');
   const clearCompletedTasksButton = document.getElementById('remover-finalizados');
   const saveButton = document.getElementById('salvar-tarefas');
+  const moveUpButton = document.getElementById('mover-cima');
+  const moveDownButton = document.getElementById('mover-baixo');
 
   addTaskButton.addEventListener('click', addTask);
   taskList.addEventListener('click', handleTaskListItemClick);
@@ -76,4 +97,6 @@ window.onload = () => {
   clearTaskListButton.addEventListener('click', clearTaskList);
   clearCompletedTasksButton.addEventListener('click', clearCompletedTasks);
   saveButton.addEventListener('click', saveTasks);
+  moveUpButton.addEventListener('click', moveUp);
+  moveDownButton.addEventListener('click', moveDown);
 };
