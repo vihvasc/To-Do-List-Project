@@ -1,9 +1,11 @@
 const text = document.getElementById('texto-tarefa');
+const listIndex = document.getElementById('lista-tarefas');
 const buttonAdd = document.getElementById('criar-tarefa');
 const buttonLimpar = document.getElementById('apaga-tudo');
 const buttonFinalizados = document.getElementById('remover-finalizados');
 const buttonSalvar = document.getElementById('salvar-tarefas');
-const listIndex = document.getElementById('lista-tarefas');
+const buttonUp = document.getElementById('mover-cima');
+const buttonDown = document.getElementById('mover-baixo');
 
 function pintarLi(event) {
   const list = document.querySelectorAll('li');
@@ -73,6 +75,28 @@ function listaSalva() {
   }
 }
 
+function moveUp() {
+  const selectedItem = document.querySelector('.selected');
+  if (selectedItem !== null) {
+    const previousItem = selectedItem.previousElementSibling;
+    const parentItem = selectedItem.parentNode;
+    if (selectedItem.previousElementSibling !== null) {
+      parentItem.insertBefore(selectedItem, previousItem);
+    }
+  }
+}
+
+function moveDown() {
+  const selectedItem = document.querySelector('.selected');
+  if (selectedItem !== null) {
+    const nextItem = selectedItem.nextElementSibling;
+    const parentItem = selectedItem.parentNode;
+    if (selectedItem.nextElementSibling !== null) {
+      parentItem.insertBefore(nextItem, selectedItem);
+    }
+  }
+}
+
 window.onload = function() {
   listaSalva();
 };
@@ -81,3 +105,5 @@ buttonAdd.addEventListener('click', addText);
 buttonLimpar.addEventListener('click', apagarLis);
 buttonFinalizados.addEventListener('click', apagarFinalizados);
 buttonSalvar.addEventListener('click', salvarLista);
+buttonUp.addEventListener('click', moveUp);
+buttonDown.addEventListener('click', moveDown);
