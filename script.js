@@ -2,11 +2,23 @@ const listaTarefas = document.getElementById('lista-tarefas');
 const criarTarefa = document.getElementById('criar-tarefa');
 const inputValue = document.getElementById('texto-tarefa');
 
+function getAllTasks() {
+  return document.querySelectorAll('#lista-tarefas li');
+}
+
+function loadLocalTasks() {
+  listaTarefas.innerHTML = localStorage.getItem('content');
+}
+
+loadLocalTasks();
+
 function handleAddTask() {
-  const task = document.createElement('li');
-  listaTarefas.appendChild(task);
-  task.innerText = inputValue.value;
-  inputValue.value = '';
+  if (inputValue.value !== '') {
+    const task = document.createElement('li');
+    listaTarefas.appendChild(task);
+    task.innerText = inputValue.value;
+    inputValue.value = '';
+  }
 }
 
 function addTask(event) {
@@ -17,7 +29,7 @@ function addTask(event) {
 criarTarefa.addEventListener('click', addTask);
 
 function selectTask(event) {
-  const allTasks = document.querySelectorAll('#lista-tarefas li');
+  const allTasks = getAllTasks();
   for (let i = 0; i < allTasks.length; i += 1) {
     allTasks[i].classList.remove('selected');
   }
@@ -35,7 +47,7 @@ listaTarefas.addEventListener('dblclick', completedTask);
 const botaoApagaTudo = document.getElementById('apaga-tudo');
 
 function clearAllTasks(event) {
-  const allTasks = document.querySelectorAll('#lista-tarefas li');
+  const allTasks = getAllTasks();
   for (let i = 0; i < allTasks.length; i += 1) {
     listaTarefas.removeChild(allTasks[i]);
   }
@@ -59,8 +71,11 @@ botaoRemoverFinalizados.addEventListener('click', clearCompletedTasks);
 const removerSelecionado = document.getElementById('remover-selecionado');
 
 function clearSelectedTask(event) {
-  const selectedTask = document.querySelector('.selected');
-  listaTarefas.removeChild(selectedTask);
+  if (document.querySelector('.selected') !== null) {
+    const selectedTask = document.querySelector('.selected');
+    console.log(typeof selectedTask);
+    listaTarefas.removeChild(selectedTask);
+  }
   event.preventDefault();
 }
 
@@ -72,7 +87,7 @@ function moveTaskUp(event) {
   if (document.querySelector('.selected') !== null) {
     const selectedTask = document.querySelector('.selected');
     const previousTask = selectedTask.previousElementSibling;
-    const allTasks = document.querySelectorAll('#lista-tarefas li');
+    const allTasks = getAllTasks();
 
     if (allTasks[0].innerText !== selectedTask.innerText) {
       listaTarefas.insertBefore(selectedTask, previousTask);
@@ -90,7 +105,7 @@ function moveTaskDown(event) {
   if (document.querySelector('.selected') !== null) {
     const selectedTask = document.querySelector('.selected');
     const nextTask = selectedTask.nextElementSibling;
-    const allTasks = document.querySelectorAll('#lista-tarefas li');
+    const allTasks = getAllTasks();
 
     if (allTasks[allTasks.length - 1].innerText !== selectedTask.innerText) {
       listaTarefas.insertBefore(nextTask, selectedTask);
@@ -100,3 +115,12 @@ function moveTaskDown(event) {
 }
 
 moveDown.addEventListener('click', moveTaskDown);
+
+const salvarTarefas = document.getElementById('salvar-tarefas');
+
+function saveTasks(event) {
+  localStorage.setItem('content', listaTarefas.innerHTML);
+  event.preventDefault();
+}
+
+salvarTarefas.addEventListener('click', saveTasks);
