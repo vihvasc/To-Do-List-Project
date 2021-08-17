@@ -1,6 +1,7 @@
-const botao = document.querySelector('#criar-tarefa');
+const botaoAdicionar = document.querySelector('#criar-tarefa');
 const input = document.querySelector('#texto-tarefa');
 const lista = document.getElementById('lista-tarefas');
+const botaoApagar = document.querySelector('#apaga-tudo');
 let filhoDaLista = document.createElement('li');
 let classeDoFilhoDaLista = document.querySelector('.list');
 
@@ -8,7 +9,8 @@ let classeDoFilhoDaLista = document.querySelector('.list');
 
 // coloquei o .value, pois ele me da o valor do input, e assim consigo manipular o que fica dentro dele.
 
-botao.addEventListener('click', interacaoBotaoAdicionar);
+
+botaoAdicionar.addEventListener('click', interacaoBotaoAdicionar);
 function interacaoBotaoAdicionar() {
 	let inputTexto = input.value;
 // ".value" serve aqui para pegar o que tem dentro do input
@@ -34,7 +36,6 @@ function mudandoBackground(evento) {
 	const classSelected = document.querySelector('.selected');
 	evento.target.classList.toggle('selected');
 	if (classSelected) {
-		console.log(classSelected)
 		classSelected.classList.remove('selected');
 	}
 }
@@ -46,4 +47,19 @@ function mudandoBackground(evento) {
 function selecionandoComDoisClicks (doisClicks) {
 
 	doisClicks.target.classList.toggle('completed');
+}
+
+
+
+botaoApagar.addEventListener('click', interacaoBotaoApagar);
+function interacaoBotaoApagar() {
+	const classeLista = document.querySelectorAll('.list');
+	const classOl = document.querySelector('.classOl')
+	// const todasAsClassesLista = document.querySelectorAll('li');
+	// const removendoAsClassesLista = classeLista.classList.remove('list');
+	if (classeLista) {
+		for (let index = 0; index < classeLista.length; index += 1) {
+			classeLista[index].remove();
+		}
+	}
 }

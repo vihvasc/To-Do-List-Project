@@ -12,4 +12,6 @@
 
 .completed {
   text-decoration:line-through solid rgb(0, 0, 0);
+  background-color: rgb(71, 71, 71);
+  color: white;
 }
