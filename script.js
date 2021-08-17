@@ -29,13 +29,15 @@ function addTask() {
     createButton('criar-tarefa', 'Nova Tarefa', 'lista-tarefas');
     const criarTarefa = document.getElementById('criar-tarefa');
     criarTarefa.addEventListener ('click', addTask);
-    input.addEventListener ('keypress', function (event) {
-      if (event.key === 'Enter') {
-        addTask();
-      }
-  });
+    input.addEventListener ('keypress', checkEnterPressed);
+  }
+  createTaskButton();
+  
+function checkEnterPressed(event) {
+  if (event.key === 'Enter') {
+    addTask();
+  }
 }
-createTaskButton();
 
 function addClass(event) {
   const selectedClass = document.querySelector('.selected');
@@ -48,12 +50,26 @@ function addClass(event) {
 }
 
 function finishedTask(event) {
-  const completedTask = document.querySelector('.completed')
-  if (completedTask) {
-    event.target.style.textDecoration = '';
-    event.target.classList.remove('completed');
-  } else {
-  event.target.style.textDecoration = 'line-through'
-  event.target.classList.add('completed')
+  const selectedTask = document.querySelector('.selected');
+  if (selectedTask) {
+    if (selectedTask.classList.contains('completed')) {
+      event.target.classList.remove('completed');
+    } else {
+      event.target.classList.add('completed')
+    }
   }
 }
+
+// const completedTask = document.querySelectorAll('.completed');
+
+// function createEraseAllButton() {
+//   createButton('apaga-tudo', 'Apagar Tudo', 'lista-tarefas');
+//   const createdTasks = document.querySelectorAll('#tarefa');
+//   if (createdTasks) {
+//     for (let task = 0; task < createdTasks.length; task += 1){
+      
+//     }
+//   }
+// }
+// createEraseAllButton();
+
