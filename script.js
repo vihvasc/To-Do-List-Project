@@ -21,6 +21,14 @@ function clean() {
 }
 clean();
 
+function removeSelect() {
+  const buttonRemove = document.getElementById('remover-selecionado');
+  const valueSelect = document.querySelector('.select');
+  buttonRemove.addEventListener('click', () => {
+    valueSelect.remove();
+  });
+}
+
 function taskComplete() {
   const li = document.querySelectorAll('li');
   for (let key = 0; key < li.length; key += 1) {
@@ -43,6 +51,7 @@ function cleanBackgrood() {
   const li = document.querySelectorAll('li');
   for (let key = 0; key < li.length; key += 1) {
     li[key].style.backgroundColor = '#1a1a1d ';
+    li[key].className = '';
   }
 }
 
@@ -52,6 +61,8 @@ function listColor() {
     li[key].addEventListener('click', () => {
       cleanBackgrood();
       li[key].style.backgroundColor = 'rgb(128, 128, 128)';
+      li[key].className = 'select';
+      removeSelect();
     });
   }
 }
@@ -70,6 +81,42 @@ function salve() {
   });
 }
 
+// Requisito 13
+// function trocar(posicao) {
+//   const li1 = document.querySelectorAll('li');
+//   for (let key = 0; key < li1.length; key += 1) {
+//     li1[key].addEventListener('click', () => {
+//       posicao.parentNode.insertBefore(posicao, li1[key].previousElementSibling);
+//     });
+//   }
+// }
+
+// function moveUpLi() {
+//   const li = document.querySelectorAll('li');
+//   for (let key = 0; key < li.length; key += 1) {
+//     li[key].addEventListener('click', trocar(li[key]));
+//   }
+// }
+
+// function moveUp() {
+//   const buttonUp = document.querySelector('#mover-cima');
+//   buttonUp.addEventListener('click', moveUpLi);
+// }
+
+// function moveDownLi() {
+//   const li = document.querySelectorAll('li');
+//   for (let key = 0; key < li.length; key += 1) {
+//     li[key].addEventListener('click', () => {
+//       li[key].parentNode.insertBefore(li[key].nextElementSibling, li[key]);
+//     });
+//   }
+// }
+
+// function moveDown() {
+//   const buttonUp = document.querySelector('#mover-baixo');
+//   buttonUp.addEventListener('click', moveDownLi);
+// }
+
 function addTaks() {
   const button = document.getElementById('criar-tarefa');
   button.addEventListener('click', () => {
@@ -79,9 +126,9 @@ function addTaks() {
     li.innerText = valueInpt.value;
     valueInpt.value = '';
     list.appendChild(li);
+    localStorage.clear();
     listColor();
     taskComplete();
-    localStorage.clear();
     salve();
     clean();
   });
