@@ -2,6 +2,7 @@ const header = document.querySelector('#header');
 const input = document.querySelector('#texto-tarefa');
 const button = document.querySelector('#criar-tarefa');
 const buttonClear = document.querySelector('#apaga-tudo');
+const buttonRemove = document.querySelector('#remover-finalizados');
 const ol = document.querySelector('#lista-tarefas');
 const listItens = document.getElementsByClassName('list-item');
 
@@ -30,8 +31,6 @@ function createListItem() {
   input.value = '';
 }
 
-button.addEventListener('click', createListItem);
-
 function targetItem(event) {
   for (let index = 0; index < listItens.length; index += 1) {
     if (listItens[index].classList.contains('target')) {
@@ -44,21 +43,33 @@ function targetItem(event) {
   }
 }
 
-ol.addEventListener('click', targetItem);
-
 function setCompleted(event) {
   if (event.target.classList.contains('completed')) {
-      event.target.classList.remove('completed');
+    event.target.classList.remove('completed');
   }
   else {
     event.target.classList.add('completed');
   }  
 }
 
-ol.addEventListener('dblclick', setCompleted);
-
 function clearAll() {
-    ol.innerHTML = '';
+  ol.innerHTML = '';
+}
+
+function removeFinished() {
+  let elements = document.getElementsByClassName('completed');
+  let cleaner = [];
+  for (let element of elements) {
+    cleaner.push(element);
+  }
+
+  for (let element of cleaner) {
+    element.remove();
+  }
 }
 
 buttonClear.addEventListener('click', clearAll);
+ol.addEventListener('dblclick', setCompleted);
+ol.addEventListener('click', targetItem);
+button.addEventListener('click', createListItem);
+buttonRemove.addEventListener('click', removeFinished);
