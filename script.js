@@ -103,10 +103,10 @@ moveDownButton.addEventListener('click', () => {
   }
 });
 
-// // Desafio 14 - Adiciona botão que remove itens selecionados
-// const removeSelectedButton = document.getElementById('remover-selecionado');
+// Desafio 14 - Adiciona botão que remove itens selecionados
+const removeSelectedButton = document.getElementById('remover-selecionado');
 
-// removeSelectedButton.addEventListener('click', () => {
-//   const selected = document.querySelector('.selected');
-//   selected.remove();
-// });
+removeSelectedButton.addEventListener('click', () => {
+  const selected = document.querySelector('.selected');
+  selected.remove();
+});
