@@ -4,6 +4,7 @@ window.onload = function () {
   let list = document.getElementById('lista-tarefas'); //pega a ol
   let button = document.getElementById('criar-tarefa'); //pega o button
   let allTheTasks = document.getElementsByClassName('task'); //pega o li
+  let removeAllTasks = document.getElementById('apaga-tudo'); //pega o button de remover
 
   button.addEventListener('click', renderTasks);
 
@@ -40,5 +41,10 @@ window.onload = function () {
         tasks.classList.add('completed');
       }
     }
+  }
+
+  removeAllTasks.addEventListener('click', removeTasks);
+  function removeTasks() {
+    list.innerText = '';
   }
 };
