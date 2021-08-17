@@ -31,3 +31,14 @@ btnDeleteAllList.addEventListener('click', function () {
   while (taskList.firstChild)
     taskList.removeChild(taskList.lastChild);
 }); //fonte: https://qastack.com.br/programming/3955229/remove-all-child-elements-of-a-dom-node-in-javascript
+
+// ao clicar
+const btnRmDone = document.getElementById('remover-finalizados');
+btnRmDone.addEventListener('click', function rmTaskDone() {
+  //todos os elementos marcados
+  let completed = document.querySelectorAll('.completed');
+  // são removidos
+  for (let i = 0; i < completed.length; i += 1) {
+    completed[i].remove();
+  }
+});
