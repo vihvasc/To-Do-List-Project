@@ -1,4 +1,5 @@
 const listaTarefas = 'lista-tarefas';
+const textoTarefa = 'texto-tarefa';
 
 // Requisitos 7 e 8 - Clicar em um item da lista altera sua cor de fundo. Apenas um item pode ser selecionado.
 function handleListBackgroundColor(event) {
@@ -45,13 +46,18 @@ function restoreLocalStorage() {
 // Requisitos 5 e 6 - Cria um novo item ao final da lista e apaga o valor do input.
 function handleNewTask() {
   const newTask = document.createElement('li');
-  newTask.innerText = document.getElementById('texto-tarefa').value;
+
+  if (!document.getElementById(textoTarefa).value) {
+    return alert('Preencha o campo antes de adicionar uma tarefa!');
+  }
+
+  newTask.innerText = document.getElementById(textoTarefa).value;
 
   const orderedList = document.getElementById(listaTarefas);
   orderedList.appendChild(newTask);
 
   // Apaga o input digitado.
-  document.getElementById('texto-tarefa').value = '';
+  document.getElementById(textoTarefa).value = '';
 
   // Adiciona Event Listener a Lista.
   addItemListEvents(orderedList.childNodes);
@@ -95,7 +101,12 @@ function addCompletedClearButtonEvent() {
 function storageTasks() {
   const orderedList = document.getElementById(listaTarefas);
 
+  if (!orderedList.innerHTML) {
+    return alert('Adiciona uma tarefa antes de salvar!');
+  }
+
   localStorage.setItem('taskList', JSON.stringify(orderedList.innerHTML));
+  return alert('Tarefas Salvas!');
 }
 
 function addStorageTasksButtonEvent() {
@@ -116,6 +127,69 @@ function addDeleteSelectedTaskItemButton() {
   deleteTaskButton.addEventListener('click', deleteSelectedTaskItem);
 }
 
+// Requisito 13 - Criar botão de mover tarefa para cima e outro botão para mover para baixo.
+// Verifica se é possível mover a tarefa para cima ou para baixo.
+function taskItemMovingUpError(taskItems, i) {
+  const indexPosition = i - 1 < 0;
+  if (taskItems[i].id === 'selected' && indexPosition) {
+    return true;
+  }
+
+  return false;
+}
+
+// Move o item da lista para cima
+function handleMoveTaskUp() {
+  const taskItems = document.querySelectorAll('li');
+  for (let i = 0; i < taskItems.length; i += 1) {
+    if (taskItemMovingUpError(taskItems, i)) {
+      return alert('Não é possível mover esta tarefa para cima!');
+    }
+
+    if (taskItems[i].id === 'selected') {
+      const orderedList = document.getElementById(listaTarefas);
+
+      orderedList.insertBefore(taskItems[i], taskItems[i].previousElementSibling);
+    }
+  }
+}
+
+function addMoveTaskUpButtonEvent() {
+  const buttonUp = document.getElementById('mover-cima');
+
+  buttonUp.addEventListener('click', handleMoveTaskUp);
+}
+
+function taskItemMovingDownError(taskItems, i) {
+  const indexPosition = i + 1 >= taskItems.length;
+  if (taskItems[i].id === 'selected' && indexPosition) {
+    return true;
+  }
+
+  return false;
+}
+// Move o item da lista para baixo
+function handleMoveTaskDown() {
+  const taskItems = document.querySelectorAll('li');
+  for (let i = 0; i < taskItems.length; i += 1) {
+    if (taskItemMovingDownError(taskItems, i)) {
+      return alert('Não é possível mover esta tarefa para baixo!');
+    }
+
+    if (taskItems[i].id === 'selected') {
+      const orderedList = document.getElementById(listaTarefas);
+
+      orderedList.insertBefore(taskItems[i].nextElementSibling, taskItems[i]);
+    }
+  }
+}
+
+function addMoveTaskDownButtonEvent() {
+  const buttonDown = document.getElementById('mover-baixo');
+
+  buttonDown.addEventListener('click', handleMoveTaskDown);
+}
+
 window.onload = function () {
   restoreLocalStorage();
   addNewTaskButtonEvent();
@@ -123,4 +197,6 @@ window.onload = function () {
   addCompletedClearButtonEvent();
   addStorageTasksButtonEvent();
   addDeleteSelectedTaskItemButton();
+  addMoveTaskUpButtonEvent();
+  addMoveTaskDownButtonEvent();
 };
