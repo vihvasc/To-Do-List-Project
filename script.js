@@ -8,6 +8,7 @@ const itemsTags = [];
 const itemsTexts = [];
 const buttonMoveItemUp = document.getElementById('mover-cima');
 const buttonMoveItemDown = document.getElementById('mover-baixo');
+const buttonRemoveSelectedItem = document.getElementById('remover-selecionado');
 
 function handleTaskInputReceive() {
   const inputText = inputTextBox.value;
@@ -24,9 +25,15 @@ function handleSelectedItemBgColor() {
 }
 
 function handleSelectedItem(event) {
-  const listItem = document.querySelector('.selected');
-  listItem.classList.remove('selected');
-  event.target.classList.add('selected');
+  const { target } = event;
+  target.classList.add('selected');
+  const listItem = document.querySelectorAll('.selected');
+  for (let index = 0; index < listItem.length; index += 1) {
+    if (target !== listItem[index]) {
+      listItem[index].classList.remove('selected');
+    }
+  }
+
   handleSelectedItemBgColor();
 }
 
@@ -112,25 +119,28 @@ function handleRetrieveList() {
   }
 }
 
-const fullList = document.getElementById('lista-tarefas');
+const updatedList = document.getElementById('lista-tarefas');
 
 function handleMoveItemUp() {
-  // const fullList = document.getElementById('lista-tarefas');
   const listItems = document.getElementsByClassName('list-item');
   const selectedTask = document.querySelector('.selected');
   if (selectedTask !== listItems[0]) {
-    fullList.insertBefore(selectedTask, selectedTask.previousElementSibling);
+    updatedList.insertBefore(selectedTask, selectedTask.previousElementSibling);
   }
 }
 
 function handleMoveItemDown() {
-  // const fullList = document.getElementById('lista-tarefas');
   const listItems = document.getElementsByClassName('list-item');
   const index = listItems.length;
   const selectedTask = document.querySelector('.selected');
   if (selectedTask !== listItems[index - 1]) {
-    fullList.insertBefore(selectedTask.nextElementSibling, selectedTask);
+    updatedList.insertBefore(selectedTask.nextElementSibling, selectedTask);
   }
+}
+
+function handleSelectedItemRemove() {
+  const selectedItem = document.querySelector('.selected');
+  taskList.removeChild(selectedItem);
 }
 
 window.onload = function createToDoListPage() {
@@ -141,5 +151,6 @@ window.onload = function createToDoListPage() {
   buttonSaveList.addEventListener('click', handleSaveList);
   buttonMoveItemUp.addEventListener('click', handleMoveItemUp);
   buttonMoveItemDown.addEventListener('click', handleMoveItemDown);
+  buttonRemoveSelectedItem.addEventListener('click', handleSelectedItemRemove);
   window.reload = handleRetrieveList();
 };
