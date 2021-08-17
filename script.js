@@ -6,7 +6,7 @@ const buttonFinalizados = document.getElementById('remover-finalizados');
 const buttonSalvar = document.getElementById('salvar-tarefas');
 const buttonUp = document.getElementById('mover-cima');
 const buttonDown = document.getElementById('mover-baixo');
-const buttonDelete = document.getElementById('remover-selecionado')
+const buttonDelete = document.getElementById('remover-selecionado');
 
 function pintarLi(event) {
   const list = document.querySelectorAll('li');
@@ -101,7 +101,7 @@ function moveDown() {
 function deleteItem() {
   const selectedItem = document.querySelector('.selected');
   if (selectedItem !== null) {
-    selectedItem.parentNode.removeChild(selectedItem)
+    selectedItem.parentNode.removeChild(selectedItem);
   }
 }
 
