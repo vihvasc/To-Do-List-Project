@@ -32,14 +32,12 @@ window.onload = function () {
     }
   }
 
-  function finishTask() {
-    for (let i = 0; i < allTheTasks.length; i += 1) {
-      let tasks = allTheTasks[i];
-      if (tasks.className === 'task completed') {
-        tasks.classList.remove('completed');
-      } else {
-        tasks.classList.add('completed');
-      }
+  function finishTask(event) {
+    let clicked = event.target;
+    if (clicked.className === 'task completed') {
+      clicked.classList.remove('completed');
+    } else {
+      clicked.classList.add('completed');
     }
   }
 

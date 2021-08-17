@@ -6,7 +6,7 @@
 }
 
 body {
-  background: #f7f0b6;
+  background: #FFE9B9;
   font-family: 'Karla', sans-serif;
   font-size: 1.3em;
 }
@@ -28,7 +28,7 @@ input {
 }
 
 .container {
-  background: #eff8d7;
+  background: #DBEAFE;
   width: 800px;
   height: 500px;
   margin: 80px auto;
