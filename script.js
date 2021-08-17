@@ -2,6 +2,7 @@ let ordenedList = document.querySelector('#lista-tarefas');
 let taskItens = document.getElementsByClassName('task-item');
 let taskInput = document.querySelector('#texto-tarefa');
 let addButton = document.querySelector('#criar-tarefa');
+let clearButton = document.querySelector('#apaga-tudo')
 
 
 
@@ -42,13 +43,16 @@ function lineThrough(event){
     event.target.className = 'task-item'
   } 
 }
+function clearList(){
+  ordenedList.innerHTML = '';
+}
 
 addButton.addEventListener('click', addList)
+clearButton.addEventListener('click', clearList)
 ordenedList.addEventListener('click', clearHighlight)
 ordenedList.addEventListener('dblclick', lineThrough)
 document.addEventListener('keyup', function(e){
-  if (e.key === 'Enter')
-  addButton.click()
-  console.log('alo');
+  if (e.key === 'Enter'){
+    addButton.click();
+  }
 })
-
