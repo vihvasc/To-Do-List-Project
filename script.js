@@ -84,7 +84,6 @@ function saveTasks() {
     const item = takeTasks[index];
     nameTasks[item.innerHTML] = item.className;
   }
-  console.log(nameTasks);
 
   const stringTasks = JSON.stringify(nameTasks);
   localStorage.setItem('tasks', stringTasks);
