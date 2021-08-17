@@ -12,7 +12,7 @@ button1.addEventListener("click",addTasksItem);
 let newTextBox = "";
 function addTasksItem (){
 let textBox = document.getElementById("texto-tarefa");
-let taskList = document.querySelector("#lista-tarefas");
+let taskList = document.getElementById("lista-tarefas");
 let listLi = document.createElement("li");
 listLi.className = "tasks";
 listLi.innerHTML = textBox.value;
@@ -20,17 +20,16 @@ taskList.appendChild(listLi);
 textBox.value = newTextBox;
 
 /*EVENTO-CLICK NA TAREFA-MUDAR BACKGROUND COLOR*/
-let newColor = "rgb(128, 128, 128)";
-let tasksLi = document.querySelectorAll(".tasks");
-listLi.addEventListener("click",function(event){
-    if(listLi.style.backgroundColor = "white" && tasksLi.length >= 0){
-        event.target.style.backgroundColor = newColor;
+listLi.addEventListener("click",newColor1);
+
+function newColor1 (event){
+    let classList = document.getElementsByClassName("tasks");
+    let newColor = "rgb(128, 128, 128)";
+    for (let index =0 ; index < classList.length ; index += 1){
+        classList[index].style.backgroundColor = "";
     }
-})    
+    event.target.style.backgroundColor = newColor;
+   
 }
-
-
-
-
-
-
+    
+}

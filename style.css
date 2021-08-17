@@ -7,3 +7,8 @@
 .tasks{
     background-color: white;
 }
+
+.completed{
+   text-decoration: line-through;
+   color: solid rgb(0, 0, 0);
+}
