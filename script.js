@@ -3,9 +3,8 @@ const inputTask = document.getElementById('texto-tarefa');
 const buttonAdd = document.getElementById('criar-tarefa');
 const taskList = document.getElementById('lista-tarefas');
 const buttonClearTasks = document.getElementById('apaga-tudo'); // requisito 10
-const buttonClearCompletedTasks = document.getElementById(
-  'remover-finalizados'
-); // requisito 11
+const buttonClearCompletedTasks = document.getElementById('remover-finalizados'); // requisito 11
+const buttonRemoveSelectedTask = document.getElementById('remover-selecionado'); // requisito 14
 
 // Criando uma tarefa nova como item list para ser usado na OL depois
 
@@ -47,11 +46,21 @@ function clearTasks() {
 }
 
 console.log(taskList);
-function clearCompletedTasks() {
+function clearCompletedTasks() { // requisito 11
   const lists = taskList.children;
   for (let index = lists.length - 1; index >= 0; index -= 1) {
     const completed = lists[index];
     if (completed.classList.contains('completed')) {
+      completed.remove();
+    }
+  }
+}
+
+function removeSelectedTask() {
+  const lists = taskList.children;
+  for (let index = lists.length - 1; index >= 0; index -= 1) {
+    const completed = lists[index];
+    if (completed.classList.contains('selected')) {
       completed.remove();
     }
   }
@@ -71,10 +80,16 @@ function listenerButtonClearCompletedTasks() {
   buttonClearCompletedTasks.addEventListener('click', clearCompletedTasks);
 }
 
+function listenerButtonRemoveSelectedTask() {
+  // requisito 14
+  buttonRemoveSelectedTask.addEventListener('click', removeSelectedTask);
+}
+
 function callAllFunctions() {
   listenerButtonAdd();
   listenerButtonClearTask(); // requisito 10
   listenerButtonClearCompletedTasks(); // requisito 11
+  listenerButtonRemoveSelectedTask(); // requisito 14
 }
 
 console.log(body);
