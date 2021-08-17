@@ -360,7 +360,7 @@ O não cumprimento de um requisito, total ou parcialmente, impactará em sua ava
 
 - _Caso especial!_ Será verificado que, caso se tente subir o elemento no topo da lista ou, caso se tente descer o último elemento da lista, esta não deve ser alterada
 
-### 14 - Adicione um botão com id="remover-selecionado" que, quando clicado, remove o item selecionado
+### 14 - Adicione um botão com nid="remover-selecionado" que, quando clicado, remove o item selecionado
 
 **O que será verificado:**
 
