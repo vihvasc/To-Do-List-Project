@@ -11,7 +11,12 @@ function AddTarefas() {
   button.id = "criar-tarefa"
   BODY.appendChild(button)
   let List = document.getElementById("lista-tarefas")
-
+  let buttonClear = document.createElement("button")
+  BODY.appendChild(buttonClear)
+  buttonClear.id = "apaga-tudo"
+  let buttonClearFinisheds = document.createElement("button")
+  buttonClearFinisheds.id = "remover-finalizados"
+  BODY.appendChild(buttonClearFinisheds)
   let TextOfInput;
 
 
@@ -22,6 +27,14 @@ function AddTarefas() {
 
 
   }
+  buttonClear.addEventListener("click", ClearAll)
+  function ClearAll() {
+    List.innerText = ""
+  }
+
+
+
+
 
   button.addEventListener("click", clickAddTarefa)
   function clickAddTarefa() {
@@ -41,13 +54,24 @@ function AddTarefas() {
        li.classList.remove("completed")
      } else {
        li.classList.add("completed")
+       li.classList.add("finish")
      }
     }
+
+    /*
+    buttonClearFinisheds.addEventListener("click", ClearFinisheds)
+  function ClearFinisheds(){
   
+      
+      let finishs = document.querySelectorAll(".finish")      
+
+      List.removeChild(finishs)
+    
+  }
+  */  //terminar essa parte
      
   
  
-  
   function AlternBackground() {
     let remove = document.querySelectorAll(".li")
     
