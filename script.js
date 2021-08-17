@@ -32,4 +32,13 @@ function lineThrough() {
 
 lineThrough();
 
+function cleanList() {
+  let botaoLimpar = document.getElementById('apaga-tudo');
+  botaoLimpar.addEventListener('click', function () {
+    let li = document.querySelectorAll('li');
+    for (let index of li)
+      index.remove();
+  })
+}
 
+cleanList();
