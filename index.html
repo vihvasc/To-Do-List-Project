@@ -1,39 +1,42 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    />
-    <script defer src="./js/script.js"></script>
-    <title>Lista de Tarefas</title>
-  </head>
-  <body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto ToDoList</title>
+    <link rel="stylesheet" href="style.css" />  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <script defer src="script.js"></script>
+</head>
+<body>
     <header>
-      <h1>Minha Lista de <span>Tarefas</span></h1>
-      <p id="funcionamento"><em>Clique duas vezes em um item para marcá-lo como completo</em></p>
+        <div class="titles">        
+            <h1 class="title">Minha Lista de <span>Tarefas</span></h3>
+            <p id="funcionamento" class="subtitle">Clique duas vezes em um item para marcá-lo como completo</p>
+          </div>  
     </header>
     <main>
-      <div class="container">
-        <form action="">
-          <input id="texto-tarefa" type="text" class="todo-input" placeholder="Adicione sua tarefa"/>
-          <button class="todo-button">
-            <i class="fas fa-plus-square"></i>
-          </button>
-        </form>
-        <div class="todo-container">
-          <ol id = "lista-tarefas" class="todo-list"></ol>
-        </div>
-      </div>
+        <section id="form">
+            <form>
+          <input id="texto-tarefa" type="text" >
+          <button id="criar-tarefa"><i class="fas fa-plus-square"></i></button>
+          <button id="remover-selecionado"><i class="far fa-trash-alt"></i></button>
+          <button id="mover-cima"><i class="fas fa-arrow-up"></i></button>
+          <button id="mover-baixo"><i class="fas fa-arrow-down"></i></button>
+            </form>
+        </section>
+        <section id="container">
+            <ol id="lista-tarefas">          
+            </ol> 
+        </section>       
     </main>
     <footer>
-      <div class="rodape">
-        <p class="text-rodape">GustavoSouza2021-Todos os direitos reservados</p>
-      </div>
+        <div class="buttons">
+        <button class="btn" id="apaga-tudo"> Apagar Tudo</button>
+        <button class="btn" id="remover-finalizados"> Remover Finalizados</button>
+        <button class="btn" id="salvar-tarefas"> Salvar Tarefas</button>  
+        </div>
     </footer>
-  </body>
+</body>
 </html>
