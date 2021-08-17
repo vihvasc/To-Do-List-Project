@@ -33,9 +33,16 @@ selectOl.addEventListener('dblclick', (event) => {
 // limpar a lista
 const eraserAll = document.querySelector('#apaga-tudo');
 
-eraserAll.addEventListener('click', (event) => {
+eraserAll.addEventListener('click', () => {
   const olPai = document.getElementById('lista-tarefas');
   while (olPai.firstChild) {
     olPai.removeChild(olPai.firstChild);
+  }
+});
+const eraserSelected = document.querySelector('#remover-finalizados');
+eraserSelected.addEventListener('click', () => {
+  const liCompleted = document.querySelectorAll('.completed');
+  for (let i = 0; i < liCompleted.length; i += 1) {
+    liCompleted[i].remove();
   }
 });
