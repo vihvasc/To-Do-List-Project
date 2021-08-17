@@ -14,7 +14,7 @@ function corTarefa(event) {
   let backgroundColorPadrao = 'white';
   let itemListaTarefa = document.querySelectorAll('.item');
   let selectColor = 'rgb(128, 128, 128)';
- for (let index = 0; index < itemListaTarefa.length; index += 1){
+  for (let index = 0; index < itemListaTarefa.length; index += 1) {
     if (itemListaTarefa[index].style.backgroundColor !== backgroundColorPadrao) {
       itemListaTarefa[index].style.backgroundColor = backgroundColorPadrao;
     }
@@ -27,3 +27,9 @@ function completTarefa(event) {
   event.target.classList.toggle('completed');
 }
 listaTarefa.addEventListener('dblclick', completTarefa);
+
+let buttonApagar = document.querySelector('#apaga-tudo');
+  function apagarLista() {
+    listaTarefa.parentNode.removeChild(listaTarefa);
+}
+buttonApagar.addEventListener('click', apagarLista);
