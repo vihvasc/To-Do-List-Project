@@ -13,7 +13,7 @@ body {
   background: white;
 }
 
-header,
+header ,
 form,
 footer {
   font-size: 1.2rem;
@@ -40,12 +40,12 @@ p {
 span {
   color: purple;
 }
-form input{
+ form input{
   border: 1px black solid;
   border-radius: 0.25rem;
 }
 
-form input,
+form input, 
 form button {
   padding: 0.5rem;
   font-size: 1.5rem;
@@ -86,7 +86,7 @@ form button#remover-selecionado:hover {
   border-radius: 5rem;
 }
 
-.btn:hover {  
+.btn:hover { 
   background: purple;
   color: white;
 }
@@ -122,6 +122,7 @@ section#container {
   justify-content: space-between;
   margin: 1rem;
 }
+
 .completed {
   text-decoration: line-through;
 }

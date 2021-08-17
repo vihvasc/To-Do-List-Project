@@ -15,7 +15,7 @@ function createTask(event) {
   listItem.classList.add('selected');
   toDoList.appendChild(listItem);
   listItem.innerText = inputText.value;
-  inputText.value = '';  
+  inputText.value = '';
 }
 btnCreatetask.addEventListener('click', createTask);
 
@@ -28,13 +28,8 @@ toDoList.addEventListener('click', (event) => {
   selectedList.style.backgroundColor = 'rgb(128, 128, 128)';
 });
 
-btnDeleteList.addEventListener('click', (e) => {
-  console.log(e.target);
-  const item = e.target;
-  if (item.classList[0] === 'deleteTask') {
-    const todo = item.parentElement;
-    todo.remove();
-  }
+btnDeleteList.addEventListener('click', () => {
+  toDoList.innerHTML = '';
 });
 
 toDoList.addEventListener('dblclick', (event) => {
