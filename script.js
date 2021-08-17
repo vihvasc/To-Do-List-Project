@@ -1,10 +1,10 @@
 const tags = ['body', 'header', 'h1', 'div', 'p', 'main', 'section', 'input', 'ol', 'button',
   'li'];
 const ids = ['', 'header', 'funcionamento', 'texto-tarefa', 'lista-tarefas', 'criar-tarefa',
-  'apaga-tudo', 'remover-finalizados'];
+  'apaga-tudo', 'remover-finalizados', 'salvar-tarefas'];
 const innerTexts = ['', 'Minha Lista de Tarefas', 'Clique duas vezes em um item para marcá-lo'
-  + ' como completo', 'Nova', '[AVISO] - Digite o nome da tarefa para continuar...', 'Apagar',
-  'Remover Finalizados'];
+  + ' como completo', 'Nova', '[AVISO] - Digite o nome da tarefa para continuar...', 'Apagar', 
+'Remover Finalizados', 'Salvar Tarefas'];
 const classes = ['', 'selected', 'completed'];
 
 function createList(myArray) {
@@ -49,9 +49,8 @@ function createPageStructure() {
   createElements([tags[6], 2, tags[9], ids[5], classes[0], innerTexts[3]]);
   createElements([tags[6], 2, tags[9], ids[6], classes[0], innerTexts[5]]);
   createElements([tags[6], 2, tags[9], ids[7], classes[0], innerTexts[6]]);
+  createElements([tags[6], 2, tags[9], ids[8], classes[0], innerTexts[7]]);
 }
-
-createPageStructure();
 
 function createNewTask() {
   const inputTextoTarefa = document.getElementById(ids[3]);
@@ -72,8 +71,6 @@ function btnNewTask() {
   btnCriarTarefa.addEventListener('click', createNewTask);
 }
 
-btnNewTask();
-
 function selectListItem(event) {
   const liListItem = event;
   const liSelecteItem = document.getElementsByClassName(classes[1]);
@@ -90,8 +87,6 @@ function clickListItem() {
   olListaTarefas.addEventListener('click', selectListItem);
 }
 
-clickListItem();
-
 function dblListItem(event) {
   const liListItem = event;
   if (liListItem.target.className.includes(classes[2])) {
@@ -106,8 +101,6 @@ function dblclickListItem() {
   olListaTarefas.addEventListener('dblclick', dblListItem);
 }
 
-dblclickListItem();
-
 function removeList() {
   const olListaTarefas = document.getElementById(ids[4]);
   const numItensList = olListaTarefas.childElementCount;
@@ -120,8 +113,6 @@ function btnRemoveList() {
   const btnApagaTudo = document.getElementById(ids[6]);
   btnApagaTudo.addEventListener('click', removeList);
 }
-
-btnRemoveList();
 
 function removeSelected() {
   const olListaTarefas = document.getElementById(ids[4]);
@@ -138,4 +129,50 @@ function btnRemoveSelected() {
   btnRemoverFinalizados.addEventListener('click', removeSelected);
 }
 
-btnRemoveSelected();
+function saveTasks() {
+  const olListaTarefas = document.getElementById(ids[4]);
+  const numItensList = olListaTarefas.childElementCount;
+  const listTasks = [];
+  for (let index = 0; index < numItensList; index += 1) {
+    const listItem = {
+      innerText: olListaTarefas.children[index].innerText,
+      className: olListaTarefas.children[index].className,
+    };
+    listTasks.push(listItem);
+  }
+  localStorage.setItem('ToDoListTasks', JSON.stringify(listTasks));
+}
+
+function btnSaveTasks() {
+  const btnSalvarTarefas = document.getElementById(ids[8]);
+  btnSalvarTarefas.addEventListener('click', saveTasks);
+}
+
+function recoverySavedTasks() {
+  const olListaTarefas = document.getElementById(ids[4]);
+  const listTasks = JSON.parse(localStorage.getItem('ToDoListTasks'));
+  for (let index = 0; index < listTasks.length; index += 1) {
+    const liListItem = document.createElement(tags[10]);
+    liListItem.innerText = listTasks[index].innerText;
+    liListItem.className = listTasks[index].className;
+    olListaTarefas.appendChild(liListItem);
+  }
+}
+
+function existSavedTasks() {
+  const savedTasks = localStorage.getItem('ToDoListTasks');
+  if (savedTasks !== null && savedTasks !== '') {
+    recoverySavedTasks();
+  }
+}
+
+window.onload = function startPage() {
+  createPageStructure();
+  btnNewTask();
+  clickListItem();
+  dblclickListItem();
+  btnRemoveList();
+  btnRemoveSelected();
+  btnSaveTasks();
+  existSavedTasks();
+};
