@@ -99,3 +99,16 @@ function buttonDown() {
 }
 
 buttonDown();
+
+function removeSelected() {
+  const removeSelectedd = document.getElementById('remover-selecionado');
+  removeSelectedd.addEventListener('click', () => {
+    for (let index = 0; index < liSelect.length; index += 1) {
+      if (liSelect[index].style.backgroundColor === 'rgb(128, 128, 128)') {
+        liSelect[index].remove();
+      }
+    }
+  });
+}
+
+removeSelected();
