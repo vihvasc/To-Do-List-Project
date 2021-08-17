@@ -76,6 +76,5 @@ function getSavedList() {
     let itemSavedList = document.createElement('li');
     itemSavedList.innerText = liText; 
     list.appendChild(itemSavedList);
-    console.log(liText);
   })
 }
