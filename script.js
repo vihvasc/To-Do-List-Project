@@ -28,17 +28,14 @@ addBtn.id = 'criar-tarefa';
 addBtn.innerText = 'Adicionar!';
 document.body.appendChild(addBtn);
 
-const selectedBackground = 'rgb(128, 128, 128)';
-
-function applyBackground(selectedItem) {
-  const oldSelected = document.querySelector('.selected');
-  if (oldSelected) {
-    oldSelected.style.background = '';
-    oldSelected.classList.remove('selected');
+function applyBackground(selTask) {
+  const selected = document.querySelectorAll('.selected');
+  if (selected[0] === undefined) {
+    selTask.classList.toggle('selected');
+  } else {
+    selected[0].classList.remove('selected');
+    selTask.classList.toggle('selected');
   }
-  const item = selectedItem;
-  item.style.background = selectedBackground;
-  item.classList.add('selected');
 }
 
 function selectTask(event) {
@@ -92,22 +89,22 @@ document.body.appendChild(removeDoneTasksBtn);
 
 function saveTaskList() {
   const listOfTasks = document.querySelectorAll('li');
-  sessionStorage.setItem('TaskListLength', listOfTasks.length);
+  localStorage.setItem('TaskListLength', listOfTasks.length);
   for (let i = 0; i < listOfTasks.length; i += 1) {
     const savedItem = `Item${i}`;
     const savedClassIndex = `Class${i}`;
     const savedClass = listOfTasks[i].classList.contains('completed');
-    sessionStorage.setItem(savedItem, listOfTasks[i].innerText);
-    sessionStorage.setItem(savedClassIndex, savedClass);
+    localStorage.setItem(savedItem, listOfTasks[i].innerText);
+    localStorage.setItem(savedClassIndex, savedClass);
   }
 }
 
 function loadTaskList() {
-  const taskListLength = sessionStorage.getItem('TaskListLength');
+  const taskListLength = localStorage.getItem('TaskListLength');
   for (let i = 0; i < taskListLength; i += 1) {
     const loadedItem = document.createElement('li');
-    const taskText = sessionStorage.getItem(`Item${i}`);
-    const taskClass = String(sessionStorage.getItem(`Class${i}`));
+    const taskText = localStorage.getItem(`Item${i}`);
+    const taskClass = String(localStorage.getItem(`Class${i}`));
     console.log(taskClass);
     loadedItem.innerText = taskText;
     loadedItem.addEventListener('click', selectTask);
@@ -126,3 +123,68 @@ saveTaskListBtn.innerText = 'Salvar';
 document.body.appendChild(saveTaskListBtn);
 
 window.onload = loadTaskList;
+
+function moveUp() {
+  const selectedTask = document.querySelector('.selected');
+  if (selectedTask) {
+    const prevTask = selectedTask.previousElementSibling;
+    if (prevTask === null) {
+      return;
+    }
+    const taskInfo = {
+      selectedText: selectedTask.innerText,
+      selectedClass: selectedTask.className,
+      prevText: prevTask.innerText,
+      prevClass: prevTask.className,
+    };
+    console.log(taskInfo);
+    selectedTask.innerText = taskInfo.prevText;
+    selectedTask.className = taskInfo.prevClass;
+    prevTask.innerText = taskInfo.selectedText;
+    prevTask.className = taskInfo.selectedClass;
+  }
+}
+
+const moveUpBtn = document.createElement('button');
+moveUpBtn.addEventListener('click', moveUp);
+moveUpBtn.id = 'mover-cima';
+moveUpBtn.innerText = 'Mover Acima';
+document.body.appendChild(moveUpBtn);
+
+function moveDown() {
+  const selectedTask = document.querySelector('.selected');
+  if (selectedTask !== null) {
+    const nextTask = selectedTask.nextElementSibling;
+    if (nextTask === null) {
+      return;
+    }
+    const taskInfo = {
+      selectedText: selectedTask.innerText,
+      selectedClass: selectedTask.className,
+      prevText: nextTask.innerText,
+      prevClass: nextTask.className,
+    };
+    console.log(taskInfo);
+    selectedTask.innerText = taskInfo.prevText;
+    selectedTask.className = taskInfo.prevClass;
+    nextTask.innerText = taskInfo.selectedText;
+    nextTask.className = taskInfo.selectedClass;
+  }
+}
+
+const moveDownBtn = document.createElement('button');
+moveDownBtn.addEventListener('click', moveDown);
+moveDownBtn.id = 'mover-baixo';
+moveDownBtn.innerText = 'Mover Abaixo';
+document.body.appendChild(moveDownBtn);
+
+function rmvSelected() {
+  const selected = document.querySelector('.selected');
+  selected.remove();
+}
+
+const rmvSelectedBtn = document.createElement('button');
+rmvSelectedBtn.addEventListener('click', rmvSelected);
+rmvSelectedBtn.id = 'remover-selecionado';
+rmvSelectedBtn.innerText = 'Remover';
+document.body.appendChild(rmvSelectedBtn);
