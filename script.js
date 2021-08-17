@@ -16,6 +16,12 @@ buttonAdd.addEventListener('click', () => {
 const selectOl = document.querySelector('ol');
 selectOl.addEventListener('click', (event) => {
   if (event.target.classList.contains('lista')) {
-    event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+    const attributeRemove = document.getElementsByTagName('li');
+    // console.log(attributeRemove);
+    for (let i = 0; i < attributeRemove.length; i += 1) {
+      attributeRemove[i].removeAttribute('style');
+      console.log('testado');
+    }
+ event.target.style.backgroundColor = 'rgb(128, 128, 128)';
   }
 });
