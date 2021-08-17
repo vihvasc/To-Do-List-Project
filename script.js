@@ -4,6 +4,8 @@ const itens = document.getElementById('lista-tarefas');
 const eraserAll = document.getElementById('apaga-tudo');
 const clearTaskCompleted = document.getElementById('remover-finalizados');
 const buttonSave = document.getElementById('salvar-tarefas');
+const buttonMoveUp = document.getElementById('mover-cima');
+const buttonMoveDown = document.getElementById('mover-baixo');
 
 // adiciona tarefa
 function addTask() {
@@ -73,7 +75,7 @@ function removeCompleteTask() {
 
 clearTaskCompleted.addEventListener('click', removeCompleteTask);
 
-// salva tarefas no local storage como objeto
+// salva tarefas no local storage como objeto, inspirado na ideia do colega de turma Rodrigo Lima.
 function saveTasks() {
   const nameTasks = {};
   const takeTasks = document.querySelectorAll('.item');
@@ -103,6 +105,7 @@ function crateli(savedKeys, savedValues) {
     const li = document.createElement('li');
     li.innerText = savedKeys[index];
     li.className = savedValues[index];
+    li.classList.remove('selected');
     itens.appendChild(li);
   }
 }
@@ -117,3 +120,49 @@ function createSavedList() {
 if (localStorage.getItem('tasks') !== null) {
   createSavedList();
 }
+
+// mover elementos
+function moveUp() {
+  const elementSelected = document.querySelector('.selected');
+  if (elementSelected === null) {
+    return;
+  }
+  const elementUp = elementSelected.previousElementSibling;
+  if (elementUp === null) {
+    return;
+  }
+  const selectedClass = elementSelected.className;
+  const selectedText = elementSelected.innerText;
+  const upClass = elementUp.className;
+  const upText = elementUp.innerText;
+
+  elementSelected.className = upClass;
+  elementSelected.innerText = upText;
+  elementUp.className = selectedClass;
+  elementUp.innerText = selectedText;
+}
+
+buttonMoveUp.addEventListener('click', moveUp);
+
+function moveDonw() {
+  const elementSelected = document.querySelector('.selected');
+  if (elementSelected === null) {
+    return;
+  }
+  const elementDonw = elementSelected.nextElementSibling;
+  if (elementDonw === null) {
+    return;
+  }
+  const selectedClass = elementSelected.className;
+  const selectedText = elementSelected.innerText;
+  const donwClass = elementDonw.className;
+
+  const downText = elementDonw.innerText;
+
+  elementSelected.className = donwClass;
+  elementSelected.innerText = downText;
+  elementDonw.className = selectedClass;
+  elementDonw.innerText = selectedText;
+}
+
+buttonMoveDown.addEventListener('click', moveDonw);
