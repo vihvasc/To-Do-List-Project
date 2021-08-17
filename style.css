@@ -1,12 +1,19 @@
 label {
     display: block;
+    width: 30%;
+    height: 24px;
+    border: solid rgb(0, 0, 0);
+    border-bottom-width: 0,5px;   
 }
-
 .descricao {
-    display: inline-block;
-    padding: 5px;
+    margin-left: 2px;
+}
+.delete {
+    float: right;
+    margin: 2px;
 }
 
 .completed {
     text-decoration:  solid rgb(0, 0, 0);
 }
+
