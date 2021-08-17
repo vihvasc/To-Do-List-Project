@@ -34,6 +34,7 @@ function adicionaItemCompleto(event) {
   } else {
     event.target.classList.remove('completed');
   }
+  event.target.classList.add('completed');
 }
 
 listaTarefas.addEventListener('dblclick', adicionaItemCompleto);
@@ -48,3 +49,14 @@ function apagarLista() {
 }
 
 botaoApagar.addEventListener('click', apagarLista);
+
+// Apagar apenas finalizados
+function apagarFinalizados() {
+  const finalizados = document.getElementsByClassName('completed');
+  while (finalizados.length > 0) {
+    finalizados[0].parentElement.removeChild(finalizados[0]);
+  }
+}
+
+const botaoApagarCompletas = document.getElementById('remover-finalizados');
+botaoApagarCompletas.addEventListener('click', apagarFinalizados);
