@@ -49,7 +49,7 @@ ol li {
 #buttons {
   display: inline-block;
   width: 150px;
-  border: 2px solid rgb(0,127,255);
+  border: 2px solid rgb(0 , 127 , 255);
   border-radius: 20px;
   margin-top: 20px;
   background-color: white;
@@ -58,6 +58,10 @@ ol li {
 #buttons button {
   display: block;
   margin: 20px auto;
+}
+
+#header-input button {
+  margin-right: 20px;
 }
 
 #buttons button:hover {
@@ -72,7 +76,7 @@ ol li {
 #list {
   display: inline-block;
   position: absolute;
-  border: 2px solid rgb(0,127,255);
+  border: 2px solid rgb(0 , 127 , 255);
   margin-top: 20px;
   margin-left: 20px;
   border-radius: 20px;
@@ -135,12 +139,8 @@ ol li {
   position: relative;
 }
 
-#header-input button {
-  margin-right: 20px;
-}
-
 main {
-  background-color: rgb(218, 188, 188);
+  background-color: rgb(218 ,188 ,188);
   padding: 10px;
   border-radius: 30px;
 }
@@ -157,7 +157,7 @@ h2 {
 }
 
 body {
-  background-color: rgb(6, 6, 83)
+  background-color: rgb(6 ,6 ,83);
 }
 
 footer h2 {
