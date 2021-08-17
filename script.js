@@ -188,14 +188,27 @@ removerFinalizados();
 // ***** Será verificado que existe um elemento button com o id salvar-tarefas
 // ***** Será verificado que, quando a lista tiver vários elementos, alguns dos quais marcados como finalizados, um recarregamento da página mantém a lista exatamente como está.
 
-function salvarTarefas() {
-    const botaoSalvar = document.createElement('button');
-    botaoSalvar.textContent = 'Salvar Tarefas';
-    botaoSalvar.addEventListener('click', function () {
-    })
-    body.appendChild(botaoSalvar);
+function botaoSalvar() {
+  const botaoSalvar = document.createElement('button');
+  botaoSalvar.textContent = 'Salvar Tarefas';
+  botaoSalvar.addEventListener('click', salvaTarefas);
+  body.appendChild(botaoSalvar);
 }
-salvarTarefas();
+botaoSalvar();
+
+function salvaTarefas() {
+  
+  let listaOrdenada = document.querySelectorAll('li');
+  let arrayDeTarefas = new Array();
+  
+  for (let index = 0; index < listaOrdenada.length; index += 1) {
+    arrayDeTarefas.push(listaOrdenada[index].textContent);
+  }
+  console.log(arrayDeTarefas);
+  localStorage.setItem("arrayDeTarefas", JSON.stringify(arrayDeTarefas));
+  // localStorage.setItem("arrayDeTarefas", arrayDeTarefas.toString() ); // Function de Teste
+}
+// salvaTarefas();
 
 // 14 - Adicione um botão com id="remover-selecionado" que, quando clicado, remove o item selecionado
 // *** O que será verificado:
