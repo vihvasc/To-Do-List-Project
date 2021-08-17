@@ -15,7 +15,6 @@ function taskGenerator() {
 
 function cliclli() {
   const listTask = document.querySelectorAll('.list');
-
   for (const element of listTask) {
     element.addEventListener('click', (event) => {
       if (element.classList !== 'select') {
@@ -29,7 +28,7 @@ function cliclli() {
 
 function removeClassList() {
   const listTask = document.querySelectorAll('.list');
-  Array.from(listTask).forEach((event) => {
+  listTask.forEach((event) => {
     event.classList.remove('select');
     event.style.backgroundColor = null;
   });
