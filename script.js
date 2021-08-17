@@ -108,3 +108,48 @@ function removeFinalized() {
     item[index].remove();
   }
 }
+//requisito 12
+
+function MakeSaveButton() {
+  let saveButton = document.createElement('button');
+  let divSaveButton = document.createElement('div');
+  saveButton.id = 'salvar-tarefas';
+  saveButton.innerText = 'Salvar Tarefas';
+  saveButton.addEventListener('click', saveList);
+  document.body.appendChild(divSaveButton);
+  divSaveButton.appendChild(saveButton);
+}
+MakeSaveButton();
+
+function saveList() {
+  let propriedadesDaTarefa = [];
+  let listItem = document.getElementsByTagName('li');
+  for (let index = 0; index < listItem.length; index += 1) {
+    let objTarefa = {
+      texto: listItem[index].innerText,
+      corDeFundo: listItem[index].style.backgroundColor,
+      nomeDaClasse: listItem[index].className,
+    };
+    propriedadesDaTarefa.push(objTarefa);
+  }
+  localStorage.setItem('listaAtual', JSON.stringify(propriedadesDaTarefa));
+  alert('Lista salva com sucesso');
+}
+
+function recoverSaveList() {
+  let recoverList = JSON.parse(localStorage.getItem('listaAtual'));
+  for (let index = 0; index < recoverList.length; index += 1) {
+    let li = document.createElement('li');
+    li.innerText = recoverList[index].texto;
+    li.style.backgroundColor = recoverList[index].corDeFundo;
+    li.className = recoverList[index].nomeDaClasse;
+    li.addEventListener('click', changeListItemBackgroundColor);
+    li.addEventListener('dblclick', elementoRiscado);
+    list.appendChild(li);
+  }
+}
+window.onload = () => {
+  if (localStorage.getItem('listaAtual')) {
+    recoverSaveList();
+  }
+};
