@@ -2,6 +2,7 @@ const input = document.getElementById('texto-tarefa');
 const buttonAdd = document.getElementById('criar-tarefa');
 const buttonClearList = document.getElementById('apaga-tudo');
 const buttonRemoveCompleted = document.getElementById('remover-finalizados');
+const buttonSaveList = document.getElementById('salvar-tarefas');
 const listTasks = document.getElementById('lista-tarefas');
 const arrayList = document.getElementsByTagName('li');
 
@@ -53,3 +54,15 @@ function clearCompleted() {
 }
 
 buttonRemoveCompleted.addEventListener('click', clearCompleted);
+
+// Requisito 12
+function saveList() {
+  const listTasksHTML = listTasks.innerHTML;
+  localStorage.setItem('listTasksSave', listTasksHTML);
+}
+
+buttonSaveList.addEventListener('click', saveList);
+
+window.onload = () => {
+  listTasks.innerHTML = localStorage.getItem('listTasksSave');
+};
