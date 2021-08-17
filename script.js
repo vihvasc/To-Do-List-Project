@@ -40,8 +40,16 @@ function deletAllList (){
 		listOfLi[cont].remove();
 	}
 }
+let removesFinalizados = document.getElementById("remover-finalizados");
+removesFinalizados.addEventListener("click",removeFinalizados);
 
+function removeFinalizados(){
+	let listOfLi = document.querySelectorAll(".completed")
+	for(let cont = 0;cont < listOfLi.length;cont += 1){
+		listOfLi[cont].remove();
 
+}
+}
  
 
 
