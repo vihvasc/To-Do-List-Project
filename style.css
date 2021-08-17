@@ -19,7 +19,6 @@ header {
 }
 
 p , input , button , ol {
-  color: #525252;
   margin: 10px;
 }
 
@@ -29,8 +28,4 @@ input {
 
 ol {
   list-style-position: inside;
-}
-
-.selected {
-  background-color: #808080;
 }
