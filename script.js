@@ -12,6 +12,7 @@ function addClasses(){
   for(let i = 0; i < tamanho; i ++){
     let name = `list${i}Class`;
     let classe = window.localStorage.getItem(name);
+    console.log(classe);
     list[i].className = classe;
   }
 }
@@ -28,6 +29,7 @@ function restoreList(){
     ol.appendChild(li);
   }
   addClasses();
+  createListEvents();
 }
 createEvent();
 //função que pega o valor digitado no input
@@ -115,6 +117,7 @@ function changeColor (){
     let name = `list${i}`;
     let nameClass = `list${i}Class`;
     let listClass = list[i].classList;
+    console.log(listClass);
     let text = list[i].innerText;
     window.localStorage.setItem(name, text)
     window.localStorage.setItem(nameClass, listClass);
@@ -264,7 +267,7 @@ function selectElement(){
 
 //função para criar eventos de clique e double click em items da lista
 function createListEvents(){
-  const listItem = document.querySelectorAll(".item-list");
+  const listItem = document.querySelectorAll("li");
   for(let i = 0; i < listItem.length; i ++){
     listItem[i].addEventListener('click', selectElement);
   }
