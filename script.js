@@ -1,3 +1,19 @@
+let listaDeTarefas = document.getElementById('lista-tarefas');
+listaDeTarefas.addEventListener('click', mudaFundo);
+listaDeTarefas.addEventListener('dblclick', riscaTarefa)
+
+let clickAddBotao = document.getElementById('criar-tarefa');
+clickAddBotao.addEventListener('click', addTarefa);
+
+let botaoLimpar = document.getElementById('apaga-tudo');
+botaoLimpar.addEventListener('click', limpar);
+
+let botaoLimparCompletos = document.getElementById('remover-finalizados');
+botaoLimparCompletos.addEventListener('click', limparCompleted);
+
+let botaoSalvarLista = document.getElementById('salvar-tarefas');
+botaoSalvarLista.addEventListener('click', salvarLista);
+
 // funcionalidade do botao de adicionar tarefa
 function addTarefa() {
   let digitado = document.getElementById('texto-tarefa').value;
@@ -28,17 +44,17 @@ function riscaTarefa(event) {
 }
 // botao limpar
 function limpar () {
-  let pai = document.getElementById('lista-tarefas')
-  let filhosApagado = document.getElementsByClassName('liItem');
-  pai.removeChild(filhosApagado);
+  let pai = document.getElementById('lista-tarefas');
+  pai.innerHTML = '';
 }
 
-let listaDeTarefas = document.getElementById('lista-tarefas');
-listaDeTarefas.addEventListener('click', mudaFundo);
-listaDeTarefas.addEventListener('dblclick', riscaTarefa)
-
-let clickAddBotao = document.getElementById('criar-tarefa');
-clickAddBotao.addEventListener('click', addTarefa);
-
-let botaoLimpar = document.getElementById('apaga-tudo');
-botaoLimpar.addEventListener('click', limpar);
+// botao limpar completed
+function limparCompleted () {
+  let listaDeCompletos = document.querySelectorAll('.liItem');
+  let paiListaDeCompletos = document.getElementById('lista-tarefas');
+  for (let contador = 0; contador < listaDeCompletos.length; contador += 1) {
+    if (listaDeCompletos[contador].classList.contains('completed')) {
+      paiListaDeCompletos.removeChild(listaDeCompletos[contador]);
+    }
+  }
+}
