@@ -19,16 +19,19 @@ listas.addEventListener("dblclick", realizado)
 let limparLista = document.getElementById("apaga-tudo")
 limparLista.addEventListener("click", limpar)
 
+let limparCompletados = document.getElementById("remover-finalizados")
+limparCompletados.addEventListener("click", limparSelecionado)
+
 
 function pintar(event) {
 resultado = event.target
 resultado.classList.add("selected");
 let li = document.getElementsByTagName("li")
-    for(i = 0; i < li.length; i +=1){
-        if(li[i].className === resultado.className && li[i] !== resultado) {
-            li[i].classList.remove("selected")
-        }
-    }
+     for(i = 0; i < li.length; i +=1){
+         if(li[i] !== resultado) {
+             li[i].classList.remove("selected")
+         }
+     }
 }
 
 
@@ -50,3 +53,11 @@ function limpar (){
     parametro.innerText = ""
 }
 
+function limparSelecionado () {
+let li = document.getElementsByTagName("li")
+    for(i = li.length - 1; i >= 0; i-=1){
+        if(li[i].classList.contains("completed")) {
+            li[i].remove()
+        }
+    }
+}
