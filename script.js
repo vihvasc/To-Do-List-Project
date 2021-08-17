@@ -1,18 +1,22 @@
 // Cria Elementos
 createInput(); // Cria input para adicionar tarefas
 createButton('Adicionar', 'criar-tarefa', 'input-button'); // cria botão para adicioonar tarefas
-createButton('X', 'remover-selecionado', 'button-container'); //Cria botão para apagar a tarefa selecionada
-createButton('Limpar Lista', 'apaga-tudo', 'button-container'); //Cria botão para apagar todas tarefas
-createButton('Limpar Completos', 'remover-finalizados', 'button-container'); //Cria botão para apagar tarefas completadas
+createButton('X', 'remover-selecionado', 'button-container'); // Cria botão para apagar a tarefa selecionada
+createButton('^', 'mover-cima', 'button-container'); // Cria botão para mover task para cima
+createButton('v', 'mover-baixo', 'button-container'); // Cria botão para mover task para baixo
+createButton('Limpar Lista', 'apaga-tudo', 'button-container'); // Cria botão para apagar todas tarefas
+createButton('Limpar Completos', 'remover-finalizados', 'button-container'); // Cria botão para apagar tarefas completadas
 
 const inputButton = document.getElementById('criar-tarefa');
 const input = document.getElementById('texto-tarefa');
 const taskList = document.getElementById('lista-tarefas');
+const removeSelectedTaskButton = document.getElementById('remover-selecionado');
+const moveUpButton = document.getElementById('mover-cima');
+const moveDownButton = document.getElementById('mover-baixo');
 const clearListButton = document.getElementById('apaga-tudo');
 const clearCompletedtasksButton = document.getElementById(
   'remover-finalizados'
 );
-const removeSelectedTaskButton = document.getElementById('remover-selecionado');
 
 // Adiciona Eventos
 inputButton.addEventListener('click', addNewTask);
@@ -85,7 +89,6 @@ function clearCompletedsTasks() {
   let CompletedTasks = document.querySelectorAll('.completed');
 
   for (let task of CompletedTasks) {
-    console.log(task);
     task.remove();
   }
 }
