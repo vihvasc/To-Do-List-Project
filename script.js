@@ -2,7 +2,8 @@ const inputText = document.getElementById('texto-tarefa'); // texto do input
 const lo = document.getElementById('lista-tarefas'); // lista ordenada
 const addButton = document.getElementById('criar-tarefa'); // botão adicionar tarefa
 const createTask = document.getElementsByTagName('li'); // seleciona todas com a classe tarefa
-const deleteList = document.getElementById('apaga-tudo') //botão limpar
+const deleteList = document.getElementById('apaga-tudo'); // botão limpar
+const deleteCompleted = document.getElementById('remover-finalizados'); // botão limpar completos
 
 function addTask() {
   addButton.addEventListener('click', () => {
@@ -43,3 +44,13 @@ function tachado(event) {
 deleteList.addEventListener('click', () => {
   lo.innerHTML = '';
 });
+
+function deleteComp() {
+  let classCompleted = document.querySelector('.completed');
+  while (classCompleted) {
+    classCompleted.remove();
+    classCompleted = document.querySelector('.completed');
+  }
+}
+deleteCompleted.addEventListener('click', deleteComp);
+
