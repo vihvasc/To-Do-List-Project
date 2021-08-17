@@ -1,10 +1,11 @@
 const tags = ['body', 'header', 'h1', 'div', 'p', 'main', 'section', 'input', 'ol', 'button',
   'li'];
 const ids = ['', 'header', 'funcionamento', 'texto-tarefa', 'lista-tarefas', 'criar-tarefa',
-  'apaga-tudo', 'remover-finalizados', 'salvar-tarefas', 'mover-cima', 'mover-baixo'];
+  'apaga-tudo', 'remover-finalizados', 'salvar-tarefas', 'mover-cima', 'mover-baixo', 'remov'
+  + 'er-selecionado'];
 const innerTexts = ['', 'Minha Lista de Tarefas', 'Clique duas vezes em um item para marcá-lo'
-  + ' como completo', 'Nova', '[AVISO] - Digite o nome da tarefa para continuar...', 'Apagar', 
-'Remover Finalizados', 'Salvar Tarefas', '▲', '▼'];
+  + ' como completo', 'Nova', '[AVISO] - Digite o nome da tarefa para continuar...', 'Apagar',
+'Remover Finalizados', 'Salvar Tarefas', '▲', '▼', 'Remove Selecionado'];
 const classes = ['', 'selected', 'completed'];
 
 function createList(myArray) {
@@ -52,6 +53,7 @@ function createPageStructure() {
   createElements([tags[6], 2, tags[9], ids[8], classes[0], innerTexts[7]]);
   createElements([tags[6], 2, tags[9], ids[9], classes[0], innerTexts[8]]);
   createElements([tags[6], 2, tags[9], ids[10], classes[0], innerTexts[9]]);
+  createElements([tags[6], 2, tags[9], ids[11], classes[0], innerTexts[10]]);
 }
 
 function createNewTask() {
@@ -116,7 +118,7 @@ function btnRemoveList() {
   btnApagaTudo.addEventListener('click', removeList);
 }
 
-function removeSelected() {
+function removeFinished() {
   const olListaTarefas = document.getElementById(ids[4]);
   const numItensList = olListaTarefas.childElementCount;
   for (let index = (numItensList - 1); index >= 0; index -= 1) {
@@ -126,9 +128,9 @@ function removeSelected() {
   }
 }
 
-function btnRemoveSelected() {
+function btnRemoveFinished() {
   const btnRemoverFinalizados = document.getElementById(ids[7]);
-  btnRemoverFinalizados.addEventListener('click', removeSelected);
+  btnRemoverFinalizados.addEventListener('click', removeFinished);
 }
 
 function saveTasks() {
@@ -210,15 +212,29 @@ function btnLiMoveDown() {
   btnMoverBaixo.addEventListener('click', liMoveDown);
 }
 
+function removeSelected() {
+  const olListaTarefas = document.getElementById(ids[4]);
+  const liSelectedItem = document.getElementsByClassName(classes[1])[0];
+  if (liSelectedItem) {
+    olListaTarefas.removeChild(liSelectedItem);
+  }
+}
+
+function btnRemoveSelected() {
+  const btnRemoverSelecionado = document.getElementById(ids[11]);
+  btnRemoverSelecionado.addEventListener('click', removeSelected);
+}
+
 window.onload = function startPage() {
   createPageStructure();
   btnNewTask();
   clickListItem();
   dblclickListItem();
   btnRemoveList();
-  btnRemoveSelected();
+  btnRemoveFinished();
   btnSaveTasks();
   existSavedTasks();
   btnLiMoveUp();
   btnLiMoveDown();
+  btnRemoveSelected();
 };
