@@ -46,6 +46,10 @@ header {
   border: 1.5px solid gray;
 }
 
+li {
+  cursor: pointer;
+}
+
 .itens {
   background-color: white;
 }

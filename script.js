@@ -41,8 +41,21 @@ lista.addEventListener('dblclick', (ev) => {
 });
 
 // Desafio 10 - Cria botão que limpa a minha ol
-const buttonRemove = document.getElementById('apaga-tudo');
+const buttonRemoveList = document.getElementById('apaga-tudo');
 
-buttonRemove.addEventListener('click', () => {
+buttonRemoveList.addEventListener('click', () => {
   lista.innerHTML = '';
+});
+
+// Desafio 11 - Cria botão que limpa itens com a classe completed
+const buttonRemoveCompleted = document.getElementById('remover-finalizados');
+
+buttonRemoveCompleted.addEventListener('click', () => {
+  const listCompleted = document.querySelectorAll('.completed');
+
+  for (let i = 0; i < listCompleted.length; i += 1) {
+    lista.removeChild(listCompleted[i]);
+  }
+
+  console.log(listCompleted);
 });
