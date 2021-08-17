@@ -3,6 +3,16 @@ const taskInput = document.querySelector('#texto-tarefa');
 const taskList = document.querySelector('#lista-tarefas');
 const taskItem = document.getElementsByClassName('task');
 
+function doubleClick(event) {
+  const elemento = event.target;
+
+  if (elemento.classList.contains('completed')) {
+    elemento.classList.remove('completed');
+  } else {
+    elemento.classList.add('completed');
+  }
+}
+
 function createTask() {
   const listItem = document.createElement('li');
 
@@ -10,6 +20,7 @@ function createTask() {
   listItem.classList.add('task');
   taskList.appendChild(listItem);
   taskInput.value = '';
+  taskList.addEventListener('dblclick', doubleClick);
 }
 
 createTasks.addEventListener('click', createTask);
