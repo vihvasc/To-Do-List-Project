@@ -1,7 +1,8 @@
 const input = document.getElementById('texto-tarefa');
-const olList = document.getElementById('lista-tarefas');
+let olList = document.getElementById('lista-tarefas');
 const button = document.getElementById('criar-tarefa');
 const liSelect = document.getElementsByTagName('li');
+const clearButton = document.getElementById('apaga-tudo');
 
 function paintingLiBackground(event) {
   for (let index = 0; index < liSelect.length; index += 1) {
@@ -32,3 +33,11 @@ function addInputValue() {
 }
 
 addInputValue();
+
+function addButton () {
+  clearButton.addEventListener('click', () => {
+    olList.innerHTML = '';
+  });
+}
+
+addButton();
