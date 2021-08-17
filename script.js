@@ -4,22 +4,12 @@ const criarTarefa = document.getElementById('criar-tarefa'); // Botão adicionar
 const tarefasCriadas = document.getElementsByTagName('li'); // Todas tarefas criadas
 const botaoLimparTarefas = document.getElementById('apaga-tudo'); // Botão de limpar tarefas criadas
 
-
 function changeColor(event) {
   for (let index = 0; index < tarefasCriadas.length; index += 1) {
     tarefasCriadas[index].style.backgroundColor = '';
   }
   const taskTarget = event.target;
   taskTarget.style.backgroundColor = 'rgb(128, 128, 128)';
-}
-
-function addNewTask() {
-  const li = document.createElement('li');
-  li.innerText = taskInput.value;
-  li.addEventListener('click', changeColor);
-  li.addEventListener('dblclick', toggleCompleted);
-  listaTarefas.appendChild(li);
-  taskInput.value = '';
 }
 
 function toggleCompleted(event) {
@@ -31,6 +21,15 @@ function toggleCompleted(event) {
   }
 }
 
+function addNewTask() {
+  const li = document.createElement('li');
+  li.innerText = taskInput.value;
+  li.addEventListener('click', changeColor);
+  li.addEventListener('dblclick', toggleCompleted);
+  listaTarefas.appendChild(li);
+  taskInput.value = '';
+}
+
 function removeAllTasks() {
   let allTasksCreated = listaTarefas.lastElementChild;
   while (allTasksCreated) {
@@ -40,9 +39,9 @@ function removeAllTasks() {
 }
 
 criarTarefa.addEventListener('click', addNewTask);
-taskInput.addEventListener('keypress', function(event) {
-  let enterPressed = event;
-  if (enterPressed.key === 'Enter') {
+taskInput.addEventListener('keypress', (event) => {
+  const keyPressed = event;
+  if (keyPressed.key === 'Enter') {
     addNewTask();
   }
 });
