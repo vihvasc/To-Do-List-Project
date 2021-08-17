@@ -79,3 +79,75 @@ function removeCompletedTasks(){
         
     }
 }
+
+/* CRIAR BOTÃO PARA SALVAR AS TAREFAS NO LOCAL STORAGE*/
+let createButtonSave = document.createElement("button");
+let buttonRemoveSave = section.appendChild(createButtonSave);
+buttonRemoveSave.id = "salvar-tarefas";
+buttonRemoveSave.innerText = "Salvar";
+
+buttonRemoveSave.addEventListener("click", saveTasks);
+let newArray = [];
+function saveTasks(){
+        let objectedList = document.querySelector("#lista-tarefas"); 
+        let selectedTasks = objectedList.children;
+        localStorage.clear();
+        
+        if(selectedTasks.length > 0){
+            for(listLi of selectedTasks){
+                let taskComplete;
+                if(listLi.classList.contains("tasks completed")){
+                    taskComplete = true;
+                }
+                else{
+                    taskComplete = false;
+                }
+                newArray.push({task:listLi.innerText, completed: taskComplete});
+            }
+            localStorage.setItem("tasks", JSON.stringify(newArray));
+        }  
+    }
+
+    window.onload = function(){
+        let Storage = JSON.parse(localStorage.getItem("tasks"));
+        let objected1 = document.querySelector("#lista-tarefas"); 
+        if(Storage !== null){
+            for (let task of Storage){
+                let selectedI = document.createElement("li");
+                selectedI.innerText = task.task;
+                objected1.appendChild(selectedI);
+
+                if(task.taskComplete === true){
+                    console.log(selectedI);
+                    objected1.lastChild.classList.add("completed");
+                    objected1.lastChild.style.textDecoration = "line-through solid rgb(0,0,0)";
+                    
+                }
+
+            }
+        }
+    }
+
+    /* CRIAR BOTÃO PARA APAGAR A TASK SELECIONADA*/
+
+let createButtonDeleteSelected = document.createElement("button");
+let buttonDeleteSelected = section.appendChild(createButtonDeleteSelected);
+buttonDeleteSelected.id = "remover-selecionado";
+buttonDeleteSelected.innerText = "Remover selecionado";
+
+buttonDeleteSelected.addEventListener("click", removeSelectedTasks);
+
+function removeSelectedTasks(){
+    let tasksSelected = document.getElementsByClassName("tasks");
+    for(let index5 = 0 ; index5 < tasksSelected.length ; index5 +=1){
+        if(tasksSelected[index5].style.backgroundColor === "rgb(128, 128, 128)"){
+            tasksSelected[index5].remove();
+        }
+        
+
+    }
+
+}
+
+
+
