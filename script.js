@@ -1,7 +1,3 @@
-// addeventlistener no botão com id "criar-tarefa";
-// criar <il> filhos da <ol> com id "lista-tarefas";
-// criar uma variável com o valor "innertext" do input com id "texto-tarefa"
-
 function adicionaTarefa() {
   let botao = document.getElementById('criar-tarefa');
 
@@ -14,13 +10,16 @@ function adicionaTarefa() {
     console.log(li);
     document.getElementById('texto-tarefa').value = '';
     li.addEventListener('click', function (event) {
-      event.target.classList.add('task');
+      let li = document.getElementsByTagName('li');
+      for (let index of li) {
+        index.style.backgroundColor = 'white';
+      }
+      event.target.style.backgroundColor = 'gray';
     })
   })
 }
 
 adicionaTarefa();
-
 
 
 // adicionar addeventlistener nas <li> 
