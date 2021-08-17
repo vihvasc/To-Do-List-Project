@@ -49,9 +49,10 @@ ol li {
 #buttons {
   display: inline-block;
   width: 150px;
-  border: 2px solid rgb(118, 209, 0);;
+  border: 2px solid rgb(0,127,255);
   border-radius: 20px;
   margin-top: 20px;
+  background-color: white;
 }
 
 #buttons button {
@@ -71,7 +72,7 @@ ol li {
 #list {
   display: inline-block;
   position: absolute;
-  border: 2px solid rgb(118, 209, 0);
+  border: 2px solid rgb(0,127,255);
   margin-top: 20px;
   margin-left: 20px;
   border-radius: 20px;
@@ -79,6 +80,7 @@ ol li {
   height: 309.45px;
   width: 300px;
   overflow-y: auto;
+  background-color: white;
 }
 
 #apaga-tudo {
@@ -124,4 +126,42 @@ ol li {
   border-radius: 50%;
   background-size: cover;
   border: 1px solid red;
+}
+
+#header-input input {
+  margin-right: 20px;
+  vertical-align: middle;
+  bottom: 20px;
+  position: relative;
+}
+
+#header-input button {
+  margin-right: 20px;
+}
+
+main {
+  background-color: rgb(218, 188, 188);
+  padding: 10px;
+  border-radius: 30px;
+}
+
+h1 {
+  color: white;
+  margin-left: 10px;
+  text-decoration: underline;
+}
+
+h2 {
+  color: blue;
+  font-style: italic;
+}
+
+body {
+  background-color: rgb(6, 6, 83)
+}
+
+footer h2 {
+  color: white;
+  margin-left: 10px;
+  font-style: normal;
 }
