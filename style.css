@@ -1,3 +1,9 @@
+header {
+  text-align: center;
+  margin: 30px 30px;
+  font-size: 40px;
+}
+
 .selected {
   background-color: gray;
 }

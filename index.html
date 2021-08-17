@@ -1,21 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <header>Minha Lista de Tarefas</header>
-        <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
-        <input id="texto-tarefa">
-        <ol id="lista-tarefas"></ol>
-        <button id="mover-cima">Subir</button>
-        <button id="mover-baixo">Descer</button>
-        <button id="criar-tarefa">Adicionar</button>
-        <button id="apaga-tudo">Apagar Tudo</button>
-        <button id="remover-selecionado">Apagar Selecionado</button>
-        <button id="remover-finalizados">Limpa Finalizados</button>
-        <button id="salvar-tarefas">Salvar tarefas</button>
-        <script src="script.js"></script>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>Minha Lista de Tarefas</header>
+    <main>
+      <p id="funcionamento">
+        Clique duas vezes em um item para marcá-lo como completo
+      </p>
+      <div>
+        <div class="task-list-box">
+          <ol id="lista-tarefas"></ol>
+        </div>
+        <div class="task-list-options">
+          <div class="task-list-operations">
+            <h2>Adicione uma tarefa</h2>
+            <input id="texto-tarefa" />
+            <button id="criar-tarefa">Adicionar</button>
+            <button id="remover-selecionado">Remover</button>
+            <button id="mover-cima">Subir</button>
+            <button id="mover-baixo">Descer</button>
+          </div>
+          <div class="task-list-general">
+            <button id="apaga-tudo">Apagar Tudo</button>
+            <button id="remover-finalizados">Limpa Finalizados</button>
+            <button id="salvar-tarefas">Salvar tarefas</button>
+            <script src="script.js"></script>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
