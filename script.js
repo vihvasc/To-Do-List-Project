@@ -1,15 +1,18 @@
 // Cria Elementos
-createButton('Adicionar', 'criar-tarefa', 'input-button');
-createInput();
+createInput(); // Cria input para adicionar tarefas
+createButton('Adicionar', 'criar-tarefa', 'input-button'); // cria botão para adicioonar tarefas
+createButton('Limpar Lista', 'apaga-tudo', 'button-container'); //Cria botão para apagar todas tarefas
 
 const inputButton = document.getElementById('criar-tarefa');
 const input = document.getElementById('texto-tarefa');
 const taskList = document.getElementById('lista-tarefas');
+const clearListButton = document.getElementById('apaga-tudo');
 
 // Adiciona Eventos
 inputButton.addEventListener('click', addNewTask);
 taskList.addEventListener('click', selectItem);
 taskList.addEventListener('dblclick', completeItem);
+clearListButton.addEventListener('click', clearList);
 
 // Cria o input para adicionar Tarefas
 function createInput() {
@@ -36,6 +39,7 @@ function addNewTask() {
 
   if (input.value) {
     newtask.innerText = input.value;
+    newtask.classList.add('list-item');
     taskList.appendChild(newtask);
     input.value = '';
   } else {
@@ -54,7 +58,16 @@ function selectItem(event) {
   event.target.classList.toggle('selected');
 }
 
-//Adiciona a classe completed a um item
+// Adiciona a classe completed a um item
 function completeItem(event) {
   event.target.classList.toggle('completed');
+}
+
+// Remove todos itens da lista
+function clearList() {
+  let tasks = document.querySelectorAll('.list-item');
+
+  for (let task of tasks) {
+    task.remove();
+  }
 }
