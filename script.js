@@ -3,6 +3,7 @@ const listaTarefas = document.getElementById('lista-tarefas'); // Lista Ordenada
 const criarTarefa = document.getElementById('criar-tarefa'); // Botão adicionar tarefa
 const tarefasCriadas = document.getElementsByTagName('li'); // Todas tarefas criadas
 const botaoLimparTarefas = document.getElementById('apaga-tudo'); // Botão de limpar tarefas criadas
+const botaoLimpatConcluidos = document.getElementById('remover-finalizados'); // Botão de limpar tarefas concluídas
 
 function changeColor(event) {
   for (let index = 0; index < tarefasCriadas.length; index += 1) {
@@ -38,6 +39,14 @@ function removeAllTasks() {
   }
 }
 
+function removeTasksCompleted() {
+  let tasksCompleted = document.querySelector('.completed');
+  while (tasksCompleted) {
+    tasksCompleted.remove();
+    tasksCompleted = document.querySelector('.completed');
+  }
+}
+
 criarTarefa.addEventListener('click', addNewTask);
 taskInput.addEventListener('keypress', (event) => {
   const keyPressed = event;
@@ -46,3 +55,4 @@ taskInput.addEventListener('keypress', (event) => {
   }
 });
 botaoLimparTarefas.addEventListener('click', removeAllTasks);
+botaoLimpatConcluidos.addEventListener('click', removeTasksCompleted);
