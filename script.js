@@ -3,6 +3,8 @@ const btnAddTask = document.getElementById('criar-tarefa');
 const btnEraseAllTasks = document.getElementById('apaga-tudo');
 const btnEraseCompleteTasks = document.getElementById('remover-finalizados');
 const btnSave = document.getElementById('salvar-tarefas');
+const btnMoveUp = document.getElementById('mover-cima');
+const btnMoveDown = document.getElementById('mover-baixo');
 const taskList = document.getElementById('lista-tarefas');
 
 // Apaga os itens concluídos da lista.
@@ -54,6 +56,28 @@ function addTask() {
   taskList.appendChild(taskElement);
 }
 
+// Move tarefa para a posição abaixo.
+function moveTaskDown() {
+  const selectedTask = document.querySelector('.selected');
+  if (selectedTask) {
+    const nextSibling = selectedTask.nextElementSibling;
+    if (nextSibling) {
+      selectedTask.insertAdjacentElement('beforebegin', nextSibling);
+    }
+  }
+}
+
+// Move tarefa para a posição acima.
+function moveTaskUp() {
+  const selectedTask = document.querySelector('.selected');
+  if (selectedTask) {
+    const previousSibling = selectedTask.previousElementSibling;
+    if (previousSibling) {
+      previousSibling.insertAdjacentElement('beforebegin', selectedTask);
+    }
+  }
+}
+
 // Carrega tarefas do webStorage
 function loadList() {
   const list = localStorage.getItem('list');
@@ -78,6 +102,8 @@ function addAllListeners() {
   btnEraseAllTasks.addEventListener('click', eraseAllTasks);
   btnEraseCompleteTasks.addEventListener('click', eraseCompleteTasks);
   btnSave.addEventListener('click', saveList);
+  btnMoveDown.addEventListener('click', moveTaskDown);
+  btnMoveUp.addEventListener('click', moveTaskUp);
 }
 
 function init() {
