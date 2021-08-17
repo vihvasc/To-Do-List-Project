@@ -5,7 +5,7 @@ const buttonClear = document.getElementById("apaga-tudo");
 const buttonClearListCompleted = document.getElementById("remover-finalizados")
 const mainList = document.getElementById("lista-tarefas");
 
-function createTask (event){
+function createTask (){
     let taskList = document.createElement("li");
     taskList.innerHTML = textAssignment.value;
     taskList.addEventListener("click", clickBackground);
@@ -33,12 +33,12 @@ function listStrip (event){
     listTarget.classList.toggle("completed");
 }
 
-function clearListAll (event){
+function clearListAll (){
     mainList.innerHTML = "";
 }
 buttonClear.addEventListener("click", clearListAll)
 
-function removeCompletion (event){
+function removeCompletion (){
     let listComplete = document.querySelectorAll(".completed");
     for (let index = 0; index < listComplete.length; index += 1){
         listComplete[index].remove();
