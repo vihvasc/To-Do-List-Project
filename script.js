@@ -27,12 +27,12 @@ function alternarCompletado(evento) {
   }
 }
 
-function addNewTask() {
-  const li = document.createElement('li');
-  li.innerText = campoInput.value;
-  li.addEventListener('click', mudarCorTarefa);
-  li.addEventListener('dblclick', alternarCompletado);
-  listaTarefas.appendChild(li);
+function adicionarNovaTarefa() {
+  const liTag = document.createElement('li');
+  liTag.innerText = campoInput.value;
+  liTag.addEventListener('click', mudarCorTarefa);
+  liTag.addEventListener('dblclick', alternarCompletado);
+  listaTarefas.appendChild(liTag);
   campoInput.value = '';
 }
 
@@ -55,11 +55,11 @@ function removeTasksCompleted() {
 function enterPressed(event) {
   const keyPressed = event;
   if (keyPressed.key === 'Enter') {
-    addNewTask();
+    adicionarNovaTarefa();
   }
 }
 
-criarTarefa.addEventListener('click', addNewTask);
+criarTarefa.addEventListener('click', adicionarNovaTarefa);
 campoInput.addEventListener('keypress', enterPressed);
 limparTarefas.addEventListener('click', removeAllTasks);
 limparConcluidos.addEventListener('click', removeTasksCompleted);
