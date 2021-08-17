@@ -4,6 +4,7 @@ const criarTarefa = document.getElementById('criar-tarefa'); // Botão adicionar
 const tarefasCriadas = document.getElementsByTagName('li'); // Todas tarefas criadas
 const limparTarefas = document.getElementById('apaga-tudo'); // Botão de limpar tarefas criadas
 const limparConcluidos = document.getElementById('remover-finalizados'); // Botão de limpar tarefas concluídas
+const salvarTarefas = document.getElementById('salvar-tarefas'); // Botão de salvar terafas
 
 function mudarCorTarefa(evento) {
   const tarefasAtuais = [...tarefasCriadas];
@@ -61,7 +62,45 @@ function enterPressionado(evento) {
   }
 }
 
+function salvar() {
+  const tarefasAtuais = [...tarefasCriadas];
+  const propriedadesDaTarefa = [];
+
+  tarefasAtuais.forEach((tarefa) => {
+    const objTarefa = {
+      texto: tarefa.innerText,
+      corDeFundo: tarefa.style.backgroundColor,
+      nomeDaClasse: tarefa.className,
+    };
+    propriedadesDaTarefa.push(objTarefa);
+  });
+  
+  localStorage.setItem('listaAtual', JSON.stringify(propriedadesDaTarefa));
+  alert('Lista salva com sucesso!')
+}
+
+function recuperarListaSalva() {
+  const listaRecuperada = JSON.parse(localStorage.getItem('listaAtual'));
+
+  listaRecuperada.forEach((tarefa) => {
+    const li = document.createElement('li');
+    li.innerText = tarefa.texto;
+    li.style.backgroundColor = tarefa.corDeFundo;
+    li.className = tarefa.nomeDaClasse;
+    li.addEventListener('click', mudarCorTarefa);
+    li.addEventListener('dblclick', alternarCompletado);
+    listaTarefas.appendChild(li);
+  })
+}
+
 criarTarefa.addEventListener('click', adicionarNovaTarefa);
 campoInput.addEventListener('keypress', enterPressionado);
 limparTarefas.addEventListener('click', removerTodasTarefas);
 limparConcluidos.addEventListener('click', removerTarefasCompletadas);
+salvarTarefas.addEventListener('click', salvar);
+
+window.onload = function () {
+  if (localStorage.getItem('listaAtual')) {
+    recuperarListaSalva()
+  }
+}
