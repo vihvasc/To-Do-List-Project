@@ -1,15 +1,24 @@
 const buttonAddTask = document.getElementById('criar-tarefa');
-buttonAddTask.addEventListener('click',addTask);
 const taskList = document.getElementById('lista-tarefas');
 taskList.innerHTML = localStorage.getItem('saved-list');
 const allTasks = document.getElementsByClassName('task');
 const removeDoneButton = document.getElementById('remover-finalizados');
-removeDoneButton.addEventListener('click', removeTasksDone);
-const removeAllButton = document.getElementById('apaga-tudo');
-removeAllButton.addEventListener('click', removeAllTasks);
 const saveTasks = document.getElementById('salvar-tarefas');
-saveTasks.addEventListener('click', save);
+const moveUpButton = document.getElementById('mover-cima');
+const removeAllButton = document.getElementById('apaga-tudo');
+const moveDownButton = document.getElementById('mover-baixo')
+const removeSelected = document.getElementById('remover-selecionado')
 
+function createStaticButtons(){
+    buttonAddTask.addEventListener('click',addTask);
+    removeDoneButton.addEventListener('click', removeTasksDone);
+    removeAllButton.addEventListener('click', removeAllTasks);
+    saveTasks.addEventListener('click', save);
+    moveUpButton.addEventListener('click', moveUp)
+    moveDownButton.addEventListener('click', moveDown)
+    removeSelected.addEventListener('click', removeItem)
+}
+createStaticButtons();
 function addTask(){
     let textInput = document.getElementById('texto-tarefa').value 
     let newTask = document.createElement('li')
@@ -24,11 +33,11 @@ function addTask(){
 function changeColor(event){
     let index = allTasks.length
     for(let count = 0;count < index; count += 1){
-        if(window.getComputedStyle(allTasks[count]).backgroundColor === 'rgb(128, 128, 128)'){
-            allTasks[count].style.backgroundColor = 'white'
+        if(allTasks[count].classList.contains('selected')){
+            allTasks[count].classList.toggle('selected')
         }
     }
-    event.target.style.backgroundColor = 'rgb(128, 128, 128)'
+    event.target.classList.toggle('selected')
 }
 function taskDone(event){
     let currentTask = event.target
@@ -54,4 +63,40 @@ function removeAllTasks(){
 function save(){
     localStorage.setItem('saved-list', taskList.innerHTML)
 }
- 
+function moveUp(){
+    let index = allTasks.length
+    for(let count = 0;count < index; count += 1){
+        if(allTasks[count].classList.contains('selected')){
+           var taskSelected = allTasks[count];
+           var taskSelectedId = count
+        }
+    }
+    if(taskSelectedId > 0){
+    var a = allTasks[taskSelectedId].parentNode;
+    a.insertBefore(allTasks[taskSelectedId], allTasks[taskSelectedId - 1])
+    }
+}
+function moveDown(){
+    let index = allTasks.length
+    for(let count = 0;count < index; count += 1){
+        if(allTasks[count].classList.contains('selected')){
+           var taskSelected = allTasks[count];
+           var taskSelectedId = count
+        }
+        
+    }
+    if(taskSelectedId < allTasks.length-1){
+    var b = allTasks[taskSelectedId].parentNode;
+    c = allTasks[taskSelectedId]
+    b.insertBefore(allTasks[taskSelectedId], c.nextSibling.nextSibling)
+    }
+
+}
+function removeItem(){
+    let index = allTasks.length
+    for(let count = 0;count < index; count += 1){
+        if(allTasks[count].classList.contains('selected')){
+            allTasks[count].remove();
+        }
+    }
+}

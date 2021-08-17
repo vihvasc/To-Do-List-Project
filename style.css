@@ -1,3 +1,38 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+    background-color: bisque;
+}
 .completed{
     text-decoration: line-through;
+}
+.selected{
+    background-color: rgb(128, 128, 128);
+}
+.main-section{
+    background-color: aqua;
+    padding: 20px;
+    margin-left: 70px;
+    margin-right: 70px;
+}
+h1{
+    font-size: 50px;
+}
+button{
+    border-radius: 15%;
+    color: white;
+}
+#criar-tarefa{
+    background-color: green;
+}
+#remover-finalizados{
+    background-color: red;
+}
+#apaga-tudo{
+    background-color: red;
+}
+#salvar-tarefas{
+    background-color: blue;
+}
+#mover-cima, #mover-baixo{
+    background-color: orange;
 }
