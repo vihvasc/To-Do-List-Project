@@ -5,36 +5,14 @@ function addTagById(myTag, id, text) {
   document.body.appendChild(tag);
 }
 
-function removeListItem() {
-  const li = document.querySelectorAll('li');
-  li.forEach((item) => {
-    const actualItem = item;
-    actualItem.addEventListener('click', () => {
-      li.forEach((sameItem) => {
-        const checkColor = sameItem;
-        checkColor.style.backgroundColor = 'white';
-      });
-      actualItem.style.backgroundColor = 'rgb(128, 128, 128)';
+function selectListItem(ol, li) {
+  li.addEventListener('click', () => {
+    ol.childNodes.forEach((item) => {
+      item.style.backgroundColor = 'white';
     });
+    li.style.backgroundColor = 'rgb(128, 128, 128)';
   });
-}
 
-function addListItem() {
-  const button = document.getElementById('criar-tarefa');
-  const userText = document.getElementById('texto-tarefa');
-
-  button.addEventListener('click', () => {
-    if (userText.value !== '') {
-      console.log(userText.value);
-      const ol = document.getElementById('lista-tarefas');
-      const li = document.createElement('li');
-      li.id = userText.value;
-      li.innerText = userText.value;
-      ol.appendChild(li);
-      userText.value = '';
-      removeListItem();
-    }
-  });
 }
 
 function addTaskButton() {
@@ -64,6 +42,34 @@ function addTitle() {
   const h1 = document.createElement('h1');
   h1.innerText = 'Minha Lista de Tarefas';
   header.appendChild(h1);
+}
+
+function completedTask(li) {
+  li.addEventListener('dblclick', () => {
+    if (li.className !== 'completed') {
+      li.className = 'completed'
+    } else {
+      li.className = 'incompleted';
+    }
+  });
+}
+
+function addListItem() {
+  const button = document.getElementById('criar-tarefa');
+  const userText = document.getElementById('texto-tarefa');
+
+  button.addEventListener('click', () => {
+    if (userText.value !== '') {
+      const ol = document.getElementById('lista-tarefas');
+      const li = document.createElement('li');
+      li.id = userText.value;
+      li.innerText = userText.value;
+      selectListItem(ol, li);
+      completedTask(li);
+      ol.appendChild(li);
+      userText.value = '';
+    }
+  });
 }
 
 function todoList() {
