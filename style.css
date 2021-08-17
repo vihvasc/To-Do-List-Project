@@ -1,0 +1,12 @@
+label {
+    display: block;
+}
+
+.descricao {
+    display: inline-block;
+    padding: 5px;
+}
+
+.completed {
+    text-decoration:  solid rgb(0, 0, 0);
+}
