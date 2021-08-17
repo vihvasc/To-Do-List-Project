@@ -1,12 +1,22 @@
 
 #criar-tarefa{
-    border-radius: 1px;
+    border-radius: 10px;
     padding: 2px 7px;
     margin-left: 10px;
     margin-bottom: 15px;
     color: white;
+} 
+
+#apaga-tudo{
+border-radius: 12px;
+padding: 4px 26px;
+background-color: rgb(255, 99, 71);
+}   
    
-  }
+  
+.rgb{
+    background-color: rgb(128,128,128);
+}
 
   .completed{
       text-decoration: line-through;

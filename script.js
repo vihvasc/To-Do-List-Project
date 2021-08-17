@@ -1,4 +1,5 @@
 let section = document.getElementsByTagName('section')[0];
+let secTion = document.getElementsByTagName('section')[1];
 
 let input = document.createElement('input');
 input.type = 'text';
@@ -14,6 +15,12 @@ section.appendChild(button);
 let listaOrdenada = document.createElement('ol');
 listaOrdenada.id = 'lista-tarefas';
 section.appendChild(listaOrdenada);
+
+let buttonClear = document.createElement('button');
+buttonClear.id = 'apaga-tudo';
+buttonClear.innerText = 'Limpar Lista';
+secTion.appendChild(buttonClear);
+
 
 //-------------------------------------------
 
@@ -39,4 +46,10 @@ textoLi.addEventListener('click', function (event) {
 //Risca e Retira risco
 textoLi.addEventListener('dblclick',function(event){
 event.target.classList.toggle('completed');
+})
+
+//Botrão apaga tudo
+
+buttonClear.addEventListener('click', function(event){
+
 })
