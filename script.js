@@ -4,6 +4,7 @@ let p1 = document.getElementById('funcionamento');
 p1.innerText = 'Clique duas vezes em um item para marcá-lo como completo';
 
 let getButton = document.getElementById('criar-tarefa');
+getButton.innerText = 'Cria Tarefa'
 function clearText (){
   document.querySelector('#texto-tarefa').value = '';
 }
@@ -40,9 +41,20 @@ function addCompletedTask(event){
 event.target.classList.toggle('completed');
 }
 let getButton2 = document.getElementById('apaga-tudo')
+getButton2.innerText = 'Apaga Tudo'
 function removeTask(){
   let ol = document.getElementById('lista-tarefas');
   for(i = 0; i < ol.children.length; i = 0)
   ol.removeChild(ol.childNodes[i]);
 }
 getButton2.addEventListener('click', removeTask);
+
+let getButton3 = document.getElementById('remover-finalizados');
+getButton3.innerText = 'Apaga Finalizados'
+function removeFinalizedTasks(){
+  let li = document.querySelectorAll('.completed');
+  for(i = 0; i < li.length; i += 1){  
+    li[i].remove();
+}
+}
+getButton3.addEventListener('click', removeFinalizedTasks)
