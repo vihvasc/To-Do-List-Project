@@ -73,3 +73,17 @@ function createEraseAllButton() {
   apagaTudo.addEventListener('click', eraseAll);
 }
 createEraseAllButton();
+
+function eraseFinished() {
+  let completedTasks = document.querySelectorAll('.completed');
+  for (let task = 0; task < completedTasks.length; task += 1) {
+    completedTasks[task].remove();
+  }
+}
+
+function createRemoveFinishedButton() {
+  createButton('remover-finalizados', 'Remover Finalizados', 'lista-tarefas');
+  const removerFinalizados = document.getElementById('remover-finalizados');
+  removerFinalizados.addEventListener('click', eraseFinished);
+}
+createRemoveFinishedButton();
