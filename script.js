@@ -3,6 +3,8 @@ const takeBtnNewTask = document.getElementById('criar-tarefa');
 const takeBtnClearAll = document.getElementById('apaga-tudo');
 const takeBtnClearDone = document.getElementById('remover-finalizados');
 const takeBtnSaveTasks = document.getElementById('salvar-tarefas');
+const takeBtnMoveUp = document.getElementById('mover-cima');
+const takeBtnMoveDown = document.getElementById('mover-baixo');
 
 const input = document.getElementById('texto-tarefa');
 
@@ -77,6 +79,45 @@ function clearDoneTasks() {
   }
 }
 
+function moveItemUp() {
+  const takeSelected = document.querySelector('.selected');
+  if (takeSelected) {
+    const imraoAnterior = takeSelected.previousSibling;
+    if (imraoAnterior) {
+      const info = {
+        textoSelected: takeSelected.innerHTML,
+        classSelected: takeSelected.className,
+        textoPrevious: imraoAnterior.innerHTML,
+        classPrevious: imraoAnterior.className,
+      };
+      imraoAnterior.innerHTML = info.textoSelected;
+      imraoAnterior.className = info.classSelected;
+      takeSelected.innerHTML = info.textoPrevious;
+      takeSelected.className = info.classPrevious;
+      imraoAnterior.classList.remove('selected');
+    }
+  }
+}
+
+function moveItemDown() {
+  const takeSelected = document.querySelector('.selected');
+  if (takeSelected) {
+    const imraoSeguinte = takeSelected.nextSibling;
+    if (imraoSeguinte) {
+      const info = {
+        textoSelected: takeSelected.innerHTML,
+        classSelected: takeSelected.className,
+        textoNext: imraoSeguinte.innerHTML,
+        classNext: imraoSeguinte.className,
+      };
+      imraoSeguinte.innerHTML = info.textoSelected;
+      imraoSeguinte.className = info.classSelected;
+      takeSelected.innerHTML = info.textoNext;
+      takeSelected.className = info.classNext;
+    }
+  }
+}
+
 // A ideia de salvar os items da lista em objetos foi baseada em um conversa que tive com o colega Guilherme Saboia, turma 15, tribo b.
 
 function saveTasks() {
@@ -125,6 +166,8 @@ function afterLoad() {
   takeBtnClearAll.addEventListener('click', clearTaskList);
   takeBtnClearDone.addEventListener('click', clearDoneTasks);
   takeBtnSaveTasks.addEventListener('click', saveTasks);
+  takeBtnMoveUp.addEventListener('click', moveItemUp);
+  takeBtnMoveDown.addEventListener('click', moveItemDown);
 }
 
 window.onload = afterLoad;
