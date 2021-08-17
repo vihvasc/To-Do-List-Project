@@ -2,6 +2,7 @@ const addButton = document.getElementById('criar-tarefa')
 const list = document.getElementById('lista-tarefas')
 const delButton = document.getElementById('apaga-tudo')
 const delCompletedButton = document.getElementById('remover-finalizados')
+const saveButton = document.getElementById('salvar-tarefas')
 
 function addTask() {
   const inputText = document.getElementById('texto-tarefa')
@@ -49,7 +50,6 @@ function deleteAll() {
 function deleteCompleted () {
   const elementsList = document.querySelectorAll('.completed')
   const arrayWithElements = []
-  console.log(elementsList)
   for (let element of elementsList) {
     arrayWithElements.push(element)
   }
@@ -58,8 +58,48 @@ function deleteCompleted () {
     element.remove()
   }
 }
+
+
+function saveTasks() {
+  const tasksElements = document.getElementsByTagName('li')
+  const taskList = []
+
+  for(let i = 0; i < tasksElements.length; i += 1){
+    const styles = getComputedStyle(tasksElements[i])
+
+    const taskObj = {
+      text: tasksElements[i].innerText,
+      completed: styles.textDecoration.includes('line-through'),
+      selected: styles.backgroundColor.includes('rgb(128, 128, 128)'),
+    }
+    taskList.push(taskObj)
+  }
+  localStorage.setItem('tasks', JSON.stringify(taskList))
+
+}
+function getSavedTasks() {
+  if (localStorage.hasOwnProperty('tasks')) {
+    let localStorageTasks = JSON.parse(localStorage.getItem('tasks'))
+    for(obj of localStorageTasks){
+      let li = document.createElement('li')
+      li.innerText = obj.text
+      if(obj.completed){
+        li.classList.add('completed')
+      }
+      if(obj.selected){
+        li.style.backgroundColor = 'rgb(128, 128, 128)'
+        li.classList.add('selected')
+      }
+      list.appendChild(li)
+    }
+  }
+}
+
+getSavedTasks()
+
 addButton.addEventListener('click', addTask)
 list.addEventListener('click', changeLiColor)
 list.addEventListener('dblclick', scratchTask)
 delButton.addEventListener('click', deleteAll)
 delCompletedButton.addEventListener('click', deleteCompleted)
+saveButton.addEventListener('click', saveTasks)
