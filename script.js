@@ -9,6 +9,7 @@ const taskList = document.getElementById('lista-tarefas');
 // Adiciona Eventos
 inputButton.addEventListener('click', addNewTask);
 taskList.addEventListener('click', selectItem);
+taskList.addEventListener('dblclick', completeItem);
 
 // Cria o input para adicionar Tarefas
 function createInput() {
@@ -51,4 +52,9 @@ function selectItem(event) {
   }
 
   event.target.classList.toggle('selected');
+}
+
+//Adiciona a classe completed a um item
+function completeItem(event) {
+  event.target.classList.toggle('completed');
 }
