@@ -54,17 +54,15 @@ function addNewItem() {
 }
 addNewItem();
 
-//requisito 7
+//requisito 7 e 8
 function changeListItemBackgroundColor(event) {
   let li = event.target;
+  let listItem = document.getElementsByTagName('li');
+  for (let index = 0; index < listItem.length; index++) {
+    listItem[index].style.backgroundColor = '';
+  }
   li.style.backgroundColor = 'rgb(128, 128, 128)';
 }
-
-//requisito 8
-//preciso excluir a cor da anterior
-// function removebackgrondColor(){
-
-// }
 
 // requisito 9
 function elementoRiscado(event) {
@@ -77,7 +75,7 @@ function elementoRiscado(event) {
 }
 
 //  requisito 10
-function clearItems() {
+function clearAllItems() {
   let buttonClear = document.createElement('button');
   let divButtonClear = document.createElement('div');
   document.body.appendChild(divButtonClear);
@@ -89,7 +87,7 @@ function clearItems() {
     document.location.reload(true);
   });
 }
-clearItems();
+clearAllItems();
 
 //requisito 11
 function makeButtonRemove() {
