@@ -5,6 +5,7 @@ window.onload = function () {
   let button = document.getElementById('criar-tarefa'); //pega o button
   let allTheTasks = document.getElementsByClassName('task'); //pega o li
   let removeAllTasks = document.getElementById('apaga-tudo'); //pega o button de remover
+  let removeSelectedTasks = document.getElementById('remover-finalizados'); //pega o button de remover as tags tachadas
 
   button.addEventListener('click', renderTasks);
 
@@ -44,5 +45,14 @@ window.onload = function () {
   removeAllTasks.addEventListener('click', removeTasks);
   function removeTasks() {
     list.innerText = '';
+  }
+
+  removeSelectedTasks.addEventListener('click', removeFinishedTasks);
+
+  function removeFinishedTasks() {
+    let completed = document.querySelectorAll('.completed');
+    for (let i = 0; i < completed.length; i += 1) {
+      list.removeChild(completed[i]);
+    }
   }
 };
