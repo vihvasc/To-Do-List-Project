@@ -76,9 +76,11 @@ function criaTarefa() {
       for (let index = 0; index < elementosDaLista.length; index += 1) {
         // elementosDaLista[index].className = 'item-lista ';
         elementosDaLista[index].style.backgroundColor = '';
+        elementosDaLista[index].id = '';
       }
       // Deve-se, ao sair do for, adicionar a propriedade selected e rgb(125,128,128) ao item Selecionado
       novoItem.style.backgroundColor = 'rgb(128,128,128)';
+      novoItem.id = 'selecionado';
       // novoItem.className = 'item-lista selected';
     })
     novoItem.addEventListener('dblclick', function () {
@@ -195,11 +197,23 @@ function salvarTarefas() {
 }
 salvarTarefas();
 
-function localStorage(elementos) {
-  localStorage.setItem('elementos', JSON.stringify(elementos));
-  // localStorage.push(elementos);
+// 14 - Adicione um botão com id="remover-selecionado" que, quando clicado, remove o item selecionado
+// *** O que será verificado:
+// ***** Será verificada a presença de um elemento button com um id remover-selecionado
+// ***** Será verificado que, no clicar no botão, somente o elemento selecionado é removido
 
+function removerSelecionado() {
+    const botaoRemover = document.createElement('button');
+    botaoRemover.textContent = 'Remover Selecionado';
+    botaoRemover.id = 'remover-selecionado';
+    botaoRemover.addEventListener('click', function () {
+      const elementoSelecionado = document.getElementById('selecionado');
+      elementoSelecionado.remove();
+
+    })
+    body.appendChild(botaoRemover);
 }
+removerSelecionado();
 
 // 1
 // ***
