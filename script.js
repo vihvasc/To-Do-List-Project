@@ -20,6 +20,7 @@ function addTask() {
     createLi.innerText = input.value;
     createLi.id = 'tarefa';
     createLi.addEventListener('click', addClass);
+    createLi.addEventListener('dblclick', finishedTask)
     taskList.appendChild(createLi);
     input.value = '';
   }
@@ -47,5 +48,12 @@ function addClass(event) {
 }
 
 function finishedTask(event) {
-  const 
+  const completedTask = document.querySelector('.completed')
+  if (completedTask) {
+    event.target.style.textDecoration = '';
+    event.target.classList.remove('completed');
+  } else {
+  event.target.style.textDecoration = 'line-through'
+  event.target.classList.add('completed')
+  }
 }
