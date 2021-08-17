@@ -34,4 +34,15 @@ function liRisk(event) {
 
     event.target.className = 'liTag completed';
 }
-listTask.addEventListener('dbclick', liRisk);
+listTask.addEventListener('dblclick', liRisk);
+
+function liNoRisk(event) {
+    let liTag = listTask.children;
+    for (let i = 0; i < liTag.length; i++) {
+        if (liTag[i].className = 'liTag completed'){
+            event.target.className = 'liTag';
+        }
+    }
+
+    
+}
