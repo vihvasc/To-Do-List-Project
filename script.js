@@ -205,6 +205,7 @@ function limpaLista() {
         for (let index = 0; index < elementosLista.length; index +=1) {
           elementosLista[index].remove();
         }
+      salvaTarefas()
     })
     body.appendChild(botaoLimpar);
 }
