@@ -87,3 +87,11 @@ btnMoveDown.addEventListener('click', () => {
     getParentOfSelected.insertBefore(nextElemOfSelected, getElemSelected);
   }
 });
+
+const btnDeleteSelected = document.getElementById('remover-selecionado');
+btnDeleteSelected.addEventListener('click', () => {
+  const taskSected = document.querySelectorAll('.selected');
+  for (let until = 0; until < taskSected.length; until += 1) {
+    taskSected[until].remove();
+  }
+});
