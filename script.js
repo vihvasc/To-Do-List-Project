@@ -77,16 +77,9 @@ function recoverySavedList() {
     li.style.backgroundColor = recoveryList[index].bgColor;
     li.className = recoveryList[index].className;
     ordererList.appendChild(li);
+    eventClickAndDbClick();
   }
 }
-
-// function enterKey(evento) {
-//   const teclaPressionada = evento;
-//   teclaPressionada.addEventListener('enter', addTask);
-//   if (teclaPressionada === 'Enter') {
-//     addTask();
-//   }
-// }
 
 function allTask() {
   addTask();
