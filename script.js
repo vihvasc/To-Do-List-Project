@@ -26,15 +26,14 @@ function alteraCor(evento){
  // requisito 9 
   function marcaItem(evento){
     let listaTotal = document.getElementsByTagName('li');       
-        
+    
         if(evento.target.classList.contains('completed')) {
             evento.target.classList.remove('completed')
         } else{
             evento.target.classList.add('completed')
         }   
        
-     }    
-    
+     }       
 
 // requisito 10
 function apagaTudo(){
@@ -44,7 +43,16 @@ function apagaTudo(){
 let button = document.getElementById('apaga-tudo');
 button.addEventListener('click', apagaTudo);   
 
-    
-    
+// requisito 11
+function limpaFinalizados(){       
+    let listaTotal = document.querySelectorAll('.completed');
+    for (let i of listaTotal){        
+       i.remove();
+     } 
+
+}  
+let button3 = document.getElementById('remover-finalizados');
+button3.addEventListener('click', limpaFinalizados);
+   
 
     
