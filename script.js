@@ -1,19 +1,33 @@
-// requisito 5
 const createTasks = document.querySelector('#criar-tarefa');
+const taskInput = document.querySelector('#texto-tarefa');
+const taskList = document.querySelector('#lista-tarefas');
+const taskItem = document.getElementsByClassName('task');
 
 function createTask() {
-  const input = document.querySelector('#texto-tarefa').value;
   const listItem = document.createElement('li');
-  const taskContainer = document.querySelector('#lista-tarefas');
 
-  listItem.innerHTML = input;
-  // requisito 7
-  listItem.addEventListener('click', (event) => {
-    event.target.style.backgroundColor = 'rgb(128,128,128)';
-  });
-  taskContainer.appendChild(listItem);
-
-  document.querySelector('#texto-tarefa').value = '';
+  listItem.innerHTML = taskInput.value;
+  listItem.classList.add('task');
+  taskList.appendChild(listItem);
+  taskInput.value = '';
 }
 
 createTasks.addEventListener('click', createTask);
+
+function addBackgroundColor(event) {
+  const elemento = event.target;
+  if (elemento.style.backgroundColor === '') {
+    elemento.style.backgroundColor = 'rgb(128, 128, 128)';
+  }
+}
+
+function removeBackgroundColor(event) {
+  for (let index = 0; index < taskItem.length; index += 1) {
+    if (taskItem[index].style.backgroundColor === 'rgb(128, 128, 128)') {
+      taskItem[index].style.backgroundColor = '';
+    }
+  }
+  addBackgroundColor(event);
+}
+
+taskList.addEventListener('click', removeBackgroundColor);
