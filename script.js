@@ -119,17 +119,23 @@ function createSaveButton() {
 
 function moveTaskUp() {
   const selectedElement = document.getElementById('selected');
-  const targetElement = selectedElement.previousElementSibling;
-  const selectedObject = transformElementToObject(selectedElement);
-  const targetObject = transformElementToObject(targetElement);
 
-  selectedElement.innerText = targetObject.text;
-  selectedElement.className = targetObject.class;
-  selectedElement.id = '';
+  if (selectedElement) {
+    const targetElement = selectedElement.previousElementSibling;
 
-  targetElement.innerText = selectedObject.text;
-  targetElement.className = selectedObject.class;
-  targetElement.id = 'selected';
+    if (targetElement) {
+      const selectedObject = transformElementToObject(selectedElement);
+      const targetObject = transformElementToObject(targetElement);
+
+      selectedElement.innerText = targetObject.text;
+      selectedElement.className = targetObject.class;
+      selectedElement.id = '';
+
+      targetElement.innerText = selectedObject.text;
+      targetElement.className = selectedObject.class;
+      targetElement.id = 'selected';
+    }
+  }
 }
 
 function createMoveUpButton() {
@@ -144,17 +150,23 @@ function createMoveUpButton() {
 
 function moveTaskDown() {
   const selectedElement = document.getElementById('selected');
-  const targetElement = selectedElement.nextElementSibling;
-  const selectedObject = transformElementToObject(selectedElement);
-  const targetObject = transformElementToObject(targetElement);
 
-  selectedElement.innerText = targetObject.text;
-  selectedElement.className = targetObject.class;
-  selectedElement.id = '';
+  if (selectedElement) {
+    const targetElement = selectedElement.nextElementSibling;
 
-  targetElement.innerText = selectedObject.text;
-  targetElement.className = selectedObject.class;
-  targetElement.id = 'selected';
+    if (targetElement) {
+      const selectedObject = transformElementToObject(selectedElement);
+      const targetObject = transformElementToObject(targetElement);
+
+      selectedElement.innerText = targetObject.text;
+      selectedElement.className = targetObject.class;
+      selectedElement.id = '';
+
+      targetElement.innerText = selectedObject.text;
+      targetElement.className = selectedObject.class;
+      targetElement.id = 'selected';
+    }
+  }
 }
 
 function createMoveDownButton() {
