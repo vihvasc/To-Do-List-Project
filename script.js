@@ -14,13 +14,13 @@ section.appendChild(button);
 
 let listaOrdenada = document.createElement('ol');
 listaOrdenada.id = 'lista-tarefas';
+listaOrdenada.className = 'lista-apagar';
 section.appendChild(listaOrdenada);
 
 let buttonClear = document.createElement('button');
 buttonClear.id = 'apaga-tudo';
 buttonClear.innerText = 'Limpar Lista';
 secTion.appendChild(buttonClear);
-
 
 //-------------------------------------------
 
@@ -44,12 +44,15 @@ textoLi.addEventListener('click', function (event) {
 });
 
 //Risca e Retira risco
-textoLi.addEventListener('dblclick',function(event){
-event.target.classList.toggle('completed');
-})
+textoLi.addEventListener('dblclick', function (event) {
+  event.target.classList.toggle('completed');
+});
 
 //Botrão apaga tudo
 
-buttonClear.addEventListener('click', function(event){
-
-})
+buttonClear.addEventListener('click', function (event) {
+  let clearList = document.querySelectorAll('li');
+  for (let i = 0; i < clearList.length; i += 1) {
+    clearList[i].remove();
+  }
+});
