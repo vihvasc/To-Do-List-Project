@@ -11,7 +11,7 @@ function createTask() {
     inputTypeTask.value = '';
     createItem.addEventListener('dblclick', () => {
       createItem.classList.toggle('completed');
-    }); //fonte: https://qastack.com.br/programming/5497073/how-to-differentiate-single-click-event-and-double-click-event
+    }); // fonte: https://qastack.com.br/programming/5497073/how-to-differentiate-single-click-event-and-double-click-event
   });
 }
 createTask();
@@ -27,7 +27,7 @@ taskList.addEventListener('click', (event) => {
   getSelected.style.backgroundColor = 'rgb(128, 128, 128)';
 });
 
-//botão apaga todos os itens da lista de uma vez
+// botão apaga todos os itens da lista de uma vez
 const btnDeleteAllList = document.getElementById('apaga-tudo');
 btnDeleteAllList.addEventListener('click', function () {
   while (taskList.firstChild)
@@ -43,15 +43,47 @@ btnRmDone.addEventListener('click', function rmTaskDone() {
   }
 });
 
-//evento de clique
+// evento de clique
 const btnSaveTask = document.getElementById('salvar-tarefas');
 btnSaveTask.addEventListener('click', function saveTask() {
   //função de salvar
   localStorage.setItem(1, taskList.innerHTML);
 });
-//observei a necessidade de carregar o item novamente no  html mostrar o que foi salvo
-//para manter a lista como estava
+// observei a necessidade de carregar o item novamente no  html mostrar o que foi salvo
+// para manter a lista como estava
 function loadSaveTask() {
   taskList.innerHTML = localStorage.getItem(1);
 }
 loadSaveTask();
+
+const btnMoveUp = document.getElementById('mover-cima');
+btnMoveUp.addEventListener('click', () => {
+  if (document.querySelector('.selected') === null) {
+    return;
+  }
+  const getParentOfSelected = document.querySelector('.selected').parentNode;
+  const getPreviousElemSibling = document.querySelector('.selected').previousElementSibling;
+  const getElemSelected = document.querySelector('.selected');
+
+  if (getPreviousElemSibling === null) {
+    alert('Não é possível.');
+  } else {
+    getParentOfSelected.insertBefore(getElemSelected, getPreviousElemSibling);
+  }
+});
+
+const btnMoveDown = document.getElementById('mover-baixo');
+btnMoveDown.addEventListener('click', () => {
+  if (document.querySelector('.selected') === null) {
+    return;
+  }
+  const getParentOfSelected = document.querySelector('.selected').parentNode;
+  const nextElemOfSelected = document.querySelector('.selected').nextElementSibling;
+  const getElemSelected = document.querySelector('.selected');
+
+  if (nextElemOfSelected === null) {
+    alert('Não é possível.');
+  } else {
+    getParentOfSelected.insertBefore(nextElemOfSelected, getElemSelected);
+  }
+});
