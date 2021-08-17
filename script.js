@@ -3,6 +3,7 @@ const input = document.querySelector('#texto-tarefa'); // input
 const addTaskButton = document.querySelector('#criar-tarefa');// botão adicionar tarefa.
 const createdTasks = document.getElementsByTagName('li');
 const deleteButton = document.getElementById('apaga-tudo');
+const deleteCompletedTask = document.getElementById('remover-finalizados');
 
 function removeColor(event) {
   const currentTask = event.target;
@@ -41,6 +42,15 @@ function addTask() {
 deleteButton.addEventListener('click', () => {
   ordererList.innerHTML = '';
 });
+
+function clearCompletedTask() {
+  let completedList = document.querySelector('.completed');
+  while (completedList) {
+    completedList.remove();
+    completedList = document.querySelector('.completed');
+  }
+}
+deleteCompletedTask.addEventListener('click', clearCompletedTask);
 
 function allTask() {
   addTask();
