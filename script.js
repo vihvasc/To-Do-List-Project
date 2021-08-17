@@ -3,7 +3,9 @@ let taskList = document.getElementById('lista-tarefas')
 let inputTask = document.getElementById('texto-tarefa')
 let deleteListBtn = document.getElementById('apaga-tudo')
 let removeCompleted = document.getElementById('remover-finalizados')
+let removeBtn = document.getElementById('remover-selecionado')
 
+removeBtn.addEventListener('click', removeItem)
 removeCompleted.addEventListener('click', removeCompletedItens)
 deleteListBtn.addEventListener('click', deleteTasks)
 addTaskBtn.addEventListener('click', addToList)
@@ -40,6 +42,15 @@ function removeCompletedItens(event) {
   let list = document.querySelectorAll('.li')
   for (let i = 0; i < list.length; i += 1) {
     if (list[i].classList.contains('completed')) {
+      list[i].remove()
+    }
+  }
+}
+
+function removeItem(event) {
+  let list = document.querySelectorAll('.li')
+  for (let i = 0; i < list.length; i += 1) {
+    if (list[i].classList.contains('selected')) {
       list[i].remove()
     }
   }
