@@ -60,12 +60,12 @@ function changeListItemBackgroundColor(event) {
   let listItem = document.getElementsByTagName('li');
   for (let index = 0; index < listItem.length; index++) {
     listItem[index].style.backgroundColor = '';
-    if (listItem[index].classList == 'selected') {
-      listItem[index].classList.remove('selected');
+    if (listItem[index].id == 'selected') {
+      listItem[index].id = '';
     }
   }
   li.style.backgroundColor = 'rgb(128, 128, 128)';
-  li.classList = 'selected';
+  li.id = 'selected';
 }
 
 // requisito 9
@@ -74,7 +74,7 @@ function elementoRiscado(event) {
   if (listItem.classList.contains('completed')) {
     listItem.classList.remove('completed');
   } else {
-    listItem.classList = 'completed';
+    listItem.classList.add('completed');
   }
 }
 
@@ -174,6 +174,6 @@ function makeRemoveButton() {
 makeRemoveButton();
 
 function removeSelected() {
-  let item = document.querySelector('.selected');
+  let item = document.querySelector('#selected');
   item.remove();
 }
