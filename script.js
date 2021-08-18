@@ -37,11 +37,37 @@ function addTarefas() {
 let buttonAdicionar = document.getElementById('criar-tarefa');
 buttonAdicionar.addEventListener('click', addTarefas);
 
+
+
 //Colorir Cinza
 let textoLi = document.getElementById('lista-tarefas');
-textoLi.addEventListener('click', function (event) {
-  event.target.style.backgroundColor = 'rgb(128,128,128)';
-});
+
+textoLi.addEventListener('click', function(event){
+const element = event.target;
+let classCor = document.querySelector('.colorSelect');
+console.log(classCor);
+if(classCor && classCor !== element){
+  classCor.classList.remove('colorSelect');
+}
+element.classList.toggle('colorSelect');
+
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Risca e Retira risco
 textoLi.addEventListener('dblclick', function (event) {
