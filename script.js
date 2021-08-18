@@ -1,12 +1,13 @@
 const ordererList = document.getElementById('lista-tarefas');// lista ordenada.
-const input = document.querySelector('#texto-tarefa'); // input
+const input = document.querySelector('#texto-tarefa'); // input.
 const addTaskButton = document.querySelector('#criar-tarefa');// botão adicionar tarefa.
-const createdTasks = document.getElementsByTagName('li');
-const deleteButton = document.getElementById('apaga-tudo');
-const deleteCompletedTask = document.getElementById('remover-finalizados');
-const buttonSaveList = document.getElementById('salvar-tarefas');
-const buttonUp = document.getElementById('mover-cima');
-const buttonDown = document.getElementById('mover-baixo');
+const createdTasks = document.getElementsByTagName('li');// lista.
+const deleteButton = document.getElementById('apaga-tudo');// botão de apagar tudo.
+const deleteCompletedTask = document.getElementById('remover-finalizados');// botão de remover finalizados.
+const buttonSaveList = document.getElementById('salvar-tarefas');// botão de salvar tarefas.
+const buttonUp = document.getElementById('mover-cima');// botão de mover pra cima.
+const buttonDown = document.getElementById('mover-baixo');// botão de mover pra baixo.
+const removeSelectedButton = document.getElementById('remover-selecionado');// botão de remover selecionado.
 
 function addRemoveColor(event) {
   const currentTask = event.target;
@@ -84,11 +85,9 @@ function recoverySavedList() {
 }
 
 function moveUp() {
-  let selected = null;
   for (let index = 0; index < createdTasks.length; index += 1) {
-    selected = index;
     if (createdTasks[index].style.backgroundColor !== '' && index > 0) {
-      ordererList.insertBefore(createdTasks[selected], createdTasks[selected].previousSibling);
+      ordererList.insertBefore(createdTasks[index], createdTasks[index].previousSibling);
       return;
     }
   }
@@ -96,16 +95,23 @@ function moveUp() {
 buttonUp.addEventListener('click', moveUp);
 
 function moveDown() {
-  let selected = null;
   for (let index = 0; index < createdTasks.length; index += 1) {
-    selected = index;
     if (createdTasks[index].style.backgroundColor !== '' && index < createdTasks.length - 1) {
-      ordererList.insertBefore(createdTasks[selected].nextSibling, createdTasks[selected]);
+      ordererList.insertBefore(createdTasks[index].nextSibling, createdTasks[index]);
       return;
     }
   }
 }
 buttonDown.addEventListener('click', moveDown);
+
+function removeSelected() {
+  for (let index = 0; index < createdTasks.length; index += 1) {
+    if (createdTasks[index].style.backgroundColor === 'rgb(128, 128, 128)') {
+      createdTasks[index].remove();
+    }
+  }
+}
+removeSelectedButton.addEventListener('click', removeSelected);
 
 function allTask() {
   addTask();
