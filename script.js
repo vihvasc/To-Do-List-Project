@@ -4,6 +4,8 @@ const button = document.querySelector('#criar-tarefa');
 const buttonClear = document.querySelector('#apaga-tudo');
 const buttonRemove = document.querySelector('#remover-finalizados');
 const buttonSaveTasks = document.querySelector('#salvar-tarefas');
+const buttonUp = document.querySelector('#mover-cima');
+const buttonDown = document.querySelector('#mover-baixo');
 const ol = document.querySelector('#lista-tarefas');
 const listItens = document.getElementsByClassName('list-item');
 
@@ -48,6 +50,7 @@ function setCompleted(event) {
 
 function clearAll() {
   ol.innerHTML = '';
+  localStorage.clear();
 }
 
 function removeFinished() {
@@ -61,6 +64,10 @@ function removeFinished() {
     element.remove();
   }
 }
+
+/* Emplementei as funções saveTasks(), createTasks() e getTasks()
+com ajuda do Ericksson Siqueira, o link para o projeto é:
+https://github.com/tryber/sd-015-b-project-todo-list/pull/98/files */
 
 function saveTasks() {
   const listItem = document.getElementsByClassName('list-item');
@@ -79,7 +86,6 @@ function saveTasks() {
   }
 
   localStorage.setItem('tasks', JSON.stringify(tasks));
-  console.log(tasks);
 }
 
 function createTasks(storageList) {
@@ -106,6 +112,30 @@ function getTasks() {
   }
 }
 
+function moveUp() {
+  let target = document.querySelector('.target');
+  if (target.classList.contains('target')) {
+    if (target === target.parentElement.firstChild) {
+      alert('Vai subir mais pra onde?');
+    }
+    else {
+      target.parentElement.insertBefore(target, target.previousSibling);
+    }
+  }
+}
+
+function moveDown() {
+  let target = document.querySelector('.target');
+  if (target.classList.contains('target')) {
+    if (target === target.parentElement.lastChild) {
+      alert('Vai descer mais pra onde?');
+    }
+    else {
+      target.parentElement.insertBefore(target.nextSibling, target);
+    }
+  }
+}
+
 getTasks();
 
 buttonClear.addEventListener('click', clearAll);
@@ -114,3 +144,5 @@ ol.addEventListener('click', targetItem);
 button.addEventListener('click', createListItem);
 buttonRemove.addEventListener('click', removeFinished);
 buttonSaveTasks.addEventListener('click', saveTasks);
+buttonUp.addEventListener('click', moveUp);
+buttonDown.addEventListener('click', moveDown);
