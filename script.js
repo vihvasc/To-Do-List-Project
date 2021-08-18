@@ -55,31 +55,34 @@ function clearSelected() {
 const btnClearSelected = document.getElementById('remover-selecionado');
 btnClearSelected.addEventListener('click', clearSelected);
 
-function updateLocalStorage() {
-  const oldTasks = JSON.parse(localStorage.getItem('allTasks'));
-  const tasksLists = document.getElementById('lista-tarefas');
-  for (let i = 0; i < tasksLists.length; i += 1) {
-    const taskItem = document.createElement('li');
-    taskItem.innerHTML = tasksLists[i].innerHTML;
-    taskItem.classList = tasksLists[i].classList;
-    oldTasks.push(taskItem);
-  }
-  localStorage.setItem('allTasks', JSON.stringify(oldTasks));
+// Rever e finalizar a partir daqui
+function saveBtn() {
+  const oldTasks = JSON.parse(localStorage.getItem('savedTasks'));
+  const list = ol.innerHTML;
+  oldTasks.push(list);
+  localStorage.setItem('savedTasks', JSON.stringify(oldTasks));
+  // naoEntendiPraQServe();
 }
 
+// function naoEntendiPraQServe() {
+//   const oldTasks = JSON.parse(localStorage.getItem('phrases'));
+//   const newOl = document.createElement('ol');
+//   const sectionList = document.getElementById('sectionList');
+//   newOl.innerHTML = oldTasks;
+//   sectionList.appendChild(newOl);
+// }
 window.onload = () => {
-  if (localStorage.getItem('allTasks') === null) {
-    localStorage.setItem('allTasks', JSON.stringify([]));
+  if (localStorage.getItem('savedTasks') === null) {
+    localStorage.setItem('savedTasks', JSON.stringify([]));
   } else {
-    const tasksList = JSON.parse(localStorage.getItem('allTasks'));
-    for (let i = 0; i < tasksList.length; i += 1) {
-      const newTask = document.createElement('li');
-      newTask.innerText = tasksList[i].text;
-      newTask.classList = tasksList[i].classList;
-      ol.appendChild(newTask);
-    }
+    const sectionList = document.getElementById('sectionList');
+    const savedTasks = JSON.parse(localStorage.getItem('savedTasks'));
+    const oldOl = document.createElement('ol');
+    oldOl.innerHTML = savedTasks;
+    oldOl.id = 'lista-tarefas';
+    sectionList.appendChild(oldOl);
   }
 };
 
 const btnSave = document.getElementById('salvar-tarefas');
-btnSave.addEventListener('click', updateLocalStorage);
+btnSave.addEventListener('click', saveBtn);
