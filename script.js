@@ -76,3 +76,36 @@
     listaTarefa.innerHTML = localStorage.getItem("key");
   }
   window.onload = getList;
+
+  function removeSelecionados(){
+    let arrayLista = Array.from(listaTarefa.children);
+      for(let index = 0; index < arrayLista.length; index += 1){
+          if(arrayLista[index].classList.contains("selected")){
+              listaTarefa.removeChild(arrayLista[index]);
+          }
+      }
+  }
+  document.getElementById("remover-selecionado").addEventListener("click", removeSelecionados);
+
+  function upList(){
+    let arrayList = Array.from(listaTarefa.children);
+    for(let index = 0; index < arrayList.length; index += 1){
+      if(arrayList[index].classList.contains("selected")){
+        arrayList[index].classList.remove("selected")
+        arrayList[index - 1].classList.add("selected");
+      }
+    }
+  }
+  document.getElementById("mover-cima").addEventListener("click", upList);
+ 
+   
+
+  function downList() {
+    let arrayList = Array.from(listaTarefa.children);
+    for( let i = 0; i < arrayList.length; i += 1) {
+      if(arrayList[i].classList.contains("selected")) {
+        listaTarefa.insertBefore(arrayList[i], arrayList[i+2]);
+      }
+    }
+  }
+  document.getElementById("mover-baixo").addEventListener("click", downList);
