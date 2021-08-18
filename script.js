@@ -51,6 +51,17 @@ function riscarElemento(origem){
      for(i=0; i<itensDaLista.length; i+=1){
          listaDeTarefas.removeChild(itensDaLista[i])
      }
-
-
  }
+
+// botão para remover os finalizados
+
+const bRemoverOsFinalizados = document.querySelector("#remover-finalizados");
+
+bRemoverOsFinalizados.addEventListener("click", removF);
+
+function removF(origem){
+    let itensDaListaCompletado = document.querySelectorAll("li.completed");
+    for(i=0; i<itensDaListaCompletado.length; i +=1){
+        listaDeTarefas.removeChild(itensDaListaCompletado[i])
+    }
+}
