@@ -1,6 +1,7 @@
 const button = document.getElementById('criar-tarefa');
 const list = document.getElementById('lista-tarefas');
 const textInput = document.getElementById('texto-tarefa');
+const buttonClear = document.getElementById('apaga-tudo');
 
 // Cria o ítem na lista
 function creatItem() {
@@ -31,3 +32,12 @@ function lineThroughItem(event) {
 }
 
 list.addEventListener('dblclick', lineThroughItem);
+
+// Apaga lista de atividades;
+function clearList() {
+  while (list.firstChild) {
+    list.removeChild(list.firstChild);
+  }
+}
+
+buttonClear.addEventListener('click', clearList);
