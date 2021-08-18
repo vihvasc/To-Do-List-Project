@@ -8,7 +8,6 @@ function criarElementoTabela(origem){
     criarElemento.innerText = valorDeInput.value;
     listaDeTarefas.appendChild(criarElemento);
     valorDeInput.value = ""
-
 }
 
 // Fazer o botão adicionar o Elemento 
