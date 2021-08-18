@@ -10,26 +10,18 @@
 }
 
 body {
-  background: white;
+  background-color: white;
 }
 
-header ,
+header,
 form,
+section,
 footer {
   font-size: 1.2rem;
-  min-height: 20vh;
+  min-height: 15vh;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-section#footer {
-  width: 100%;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  background-color: black;
-  bottom: 0;
 }
 
 p {
@@ -40,40 +32,45 @@ p {
 span {
   color: purple;
 }
- form input {
-  border: 1px black solid;
-  border-radius: 0.25rem;
-}
 
 form input {
+  border: 1px black solid;
+  border-radius: 0.25rem;
   padding: 0.5rem;
   font-size: 1.5rem;
   background: white;
 }
 
-form button {
-  color: black;
-  background: white;
+form button{
   cursor: pointer;
   padding: 0.5rem;
   font-size: 1.5rem;
   transition: all 0.3s ease;
+  background-color: white;
 }
 
-form button.criar-tarefa:hover {
+.criar-tarefa{
   color: green;
 }
 
-form button.mover-cima:hover {
+.mover-cima{
   color: blue;
 }
 
-form button.mover-baixo:hover {
+.mover-baixo{
   color: orange;
 }
-
-form button.remover-selecionado:hover {
+.remover-selecionado {
   color: red;
+}
+
+#footer {
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  bottom: 0;
 }
 
 .btn {
@@ -87,26 +84,9 @@ form button.remover-selecionado:hover {
   border-radius: 5rem;
 }
 
-.btn:hover { 
+.btn:hover {
   background: purple;
   color: white;
-}
-
-section#container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#lista-tarefas {
-  min-width: 31%;    
-}
-
-.container {
-  margin: 0.5rem;
-  color: black;
-  font-size: 1.2rem;
-  display: block;
 }
 
 .todo {
@@ -114,16 +94,22 @@ section#container {
   color: black;
   font-size: 1.2rem;
   display: block;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  min-width: 31%;
+  cursor: pointer;
 }
 
-.todo li {
-  flex: 1;
-  justify-content: space-between;
-  margin: 1rem;
+.itemtask {
+  flex: 1;  
+  margin-top: 1rem;
+  cursor: pointer;
 }
 
 .completed {
   text-decoration: line-through;
+}
+
+.selected {
+  background-color: rgb(128, 128, 128);  
 }
