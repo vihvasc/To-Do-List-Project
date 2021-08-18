@@ -45,9 +45,14 @@ function generateButtonDelete() {
 }
 function saveLocal() {
   const arraySavedList = [];
-  const taskList = Array.from(list.children);
+  const taskList = document.getElementsByClassName('item-list');
+  const classCompleted = document.getElementsByClassName('completed');
   for (let index = 0; index < taskList.length; index += 1) {
-    arraySavedList.push(taskList[index].innerHTML);
+   if (taskList[index].classList.contains('completed')) {
+    arraySavedList.push({texto:taskList[index].innerText, classe: true});
+   } else {
+    arraySavedList.push({texto:taskList[index].innerText, classe: false});
+   }  
   }
   localStorage.setItem('myList', JSON.stringify(arraySavedList));
 }
@@ -57,12 +62,17 @@ function buttonSaveList() {
 }
 function getSavedList() {
   const localList = JSON.parse(localStorage.getItem('myList'));
+  console.log(localList);
   if (!localList) return;
-  localList.forEach(function (liText) {
-    const itemSavedList = document.createElement('li');
-    itemSavedList.innerHTML = liText;
+  for (let index = 0; index < localList.length; index += 1) {
+    const liObject = localList[index];
+    let itemSavedList = document.createElement('li');
+    itemSavedList.innerText = liObject.texto;
+    if (liObject.classe) {
+      itemSavedList.classList.add('completed');
+    }
     list.appendChild(itemSavedList);
-  });
+  };
 }
 
 function criaListaTarefas() {
