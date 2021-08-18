@@ -1,23 +1,45 @@
-const butao = document.getElementById('criar-tarefa');
+const butaoCriar = document.getElementById('criar-tarefa');
+const butaoApagar = document.getElementById('apaga-tudo');
 
 function toDoList() {
   const listaTarefas = document.getElementById('lista-tarefas');
   const input = document.getElementById('texto-tarefa');
   const li = document.createElement('li');
 
-  li.innerText = input.value;
-  li.addEventListener('click', function (event) {       
-    
-    const classe = document.querySelector('.selected');
-    if (classe) { 
-      classe.classList.remove('selected');
-      classe.style.backgroundColor = 'white'
+  li.innerHTML = input.value;
+  listaTarefas.appendChild(li);
+  input.value = '';
+  li.addEventListener('click', function (event) {
+    const selected = document.querySelector('.selected');
+
+    if (selected) {
+      selected.classList.remove('selected');
+      selected.style.backgroundColor = 'white';
     }
 
     event.target.style.backgroundColor = 'rgb(128,128,128)';
     event.target.classList.add('selected');
+
+    butaoApagar.addEventListener('click', function () {
+      const listaTarefas = document.getElementById('lista-tarefas');
+      
+      if (listaTarefas.parentNode) {
+      listaTarefas.parentNode.removeChild(listaTarefas);
+      }
+    });
   });
-  listaTarefas.appendChild(li);
-  input.value = '';
+
+  li.addEventListener('dblclick', function (event) {
+    // event.classList.toggle('completed');
+    const completed = event.target.classList;
+    
+    if (completed.contains('completed')) {
+      event.target.classList.remove('completed');
+    } else {
+      event.target.classList.add('completed');
+    }      
+  });
 }
-butao.addEventListener('click', toDoList);
+
+butaoCriar.addEventListener('click', toDoList);
+  
