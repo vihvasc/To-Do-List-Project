@@ -1,3 +1,8 @@
+function clearAllTasks() {
+  const ol = document.getElementById('lista-tarefas');
+  ol.innerHTML = '';
+}
+
 function clearColorTask() {
   const tasks = document.getElementsByTagName('li');
   for (let i = 0; i < tasks.length; i += 1) {
@@ -35,3 +40,13 @@ function createdTask() {
   document.getElementById('texto-tarefa').value = '';
 }
 createdTask();
+
+function createButtonClearTasks() {
+  const buttonClear = document.createElement('button');
+  const section = document.getElementById('buttons');
+  section.appendChild(buttonClear);
+  buttonClear.addEventListener('click', clearAllTasks);
+  buttonClear.id = 'apaga-tudo';
+  buttonClear.innerText = 'Limpar';
+}
+createButtonClearTasks();
