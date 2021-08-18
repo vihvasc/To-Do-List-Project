@@ -16,10 +16,14 @@ body {
   border-radius: 20px;
   color: rgb(242, 200, 246);
   background-color: rgb(212, 129, 177);
+<<<<<<< HEAD
   display: inline-block;
   margin: auto;
   margin-top: 15px;
   padding: 30px;
+=======
+  padding: 30px;git
+>>>>>>> 07f8d56cc663fcc514ca2a3c92964dccaa676049
 }
 
 #tasks-container *{
