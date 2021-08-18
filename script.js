@@ -167,6 +167,7 @@ function makeRemoveButton() {
   document.body.appendChild(divButtonRemoveselected);
   divButtonRemoveselected.appendChild(buttonRemoveSelected);
   buttonRemoveSelected.id = 'remover-selecionado';
+  divButtonRemoveselected.id = 'remove-selected';
   buttonRemoveSelected.innerText = 'Remover Selecionado';
   buttonRemoveSelected.addEventListener('click', removeSelected);
   divButtonRemoveselected = 'button-remove-selected';
