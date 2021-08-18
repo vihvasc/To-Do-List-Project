@@ -60,8 +60,12 @@ function changeListItemBackgroundColor(event) {
   let listItem = document.getElementsByTagName('li');
   for (let index = 0; index < listItem.length; index++) {
     listItem[index].style.backgroundColor = '';
+    if (listItem[index].classList == 'selected') {
+      listItem[index].classList.remove('selected');
+    }
   }
   li.style.backgroundColor = 'rgb(128, 128, 128)';
+  li.classList = 'selected';
 }
 
 // requisito 9
@@ -81,7 +85,7 @@ function clearAllItems() {
   document.body.appendChild(divButtonClear);
   divButtonClear.id = 'button-apaga-tudo';
   buttonClear.id = 'apaga-tudo';
-  buttonClear.innerText = 'Apagar';
+  buttonClear.innerText = 'Apagar Tudo';
   divButtonClear.appendChild(buttonClear);
   buttonClear.addEventListener('click', function () {
     document.location.reload(true);
@@ -95,7 +99,7 @@ function makeButtonRemove() {
   let divbButtonRemove = document.createElement('div');
   divbButtonRemove.id = 'button-remove-finished';
   buttonRemove.id = 'remover-finalizados';
-  buttonRemove.innerText = 'Remover Finalizados';
+  buttonRemove.innerText = 'Remover Tarefas Finalizadas';
   buttonRemove.addEventListener('click', removeFinalized);
   document.body.appendChild(divbButtonRemove);
   divbButtonRemove.appendChild(buttonRemove);
@@ -113,8 +117,9 @@ function removeFinalized() {
 function MakeSaveButton() {
   let saveButton = document.createElement('button');
   let divSaveButton = document.createElement('div');
+  divSaveButton.id = 'save';
   saveButton.id = 'salvar-tarefas';
-  saveButton.innerText = 'Salvar Tarefas';
+  saveButton.innerText = 'Salvar Todas Tarefas';
   saveButton.addEventListener('click', saveList);
   document.body.appendChild(divSaveButton);
   divSaveButton.appendChild(saveButton);
@@ -153,3 +158,22 @@ window.onload = () => {
     recoverSaveList();
   }
 };
+// requisito 13
+
+//requisito 14
+function makeRemoveButton() {
+  let divButtonRemoveselected = document.createElement('div');
+  let buttonRemoveSelected = document.createElement('button');
+  document.body.appendChild(divButtonRemoveselected);
+  divButtonRemoveselected.appendChild(buttonRemoveSelected);
+  buttonRemoveSelected.id = 'remover-selecionado';
+  buttonRemoveSelected.innerText = 'Remover Selecionado';
+  buttonRemoveSelected.addEventListener('click', removeSelected);
+  divButtonRemoveselected = 'button-remove-selected';
+}
+makeRemoveButton();
+
+function removeSelected() {
+  let item = document.querySelector('.selected');
+  item.remove();
+}

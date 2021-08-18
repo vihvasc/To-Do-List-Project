@@ -1,4 +1,51 @@
-.completed{
-    text-decoration: line-through solid rgb(0, 0, 0);
-    
+body {
+  font-family: 'Saira Condensed', sans-serif;
+  background-color: #55ffff;
+}
+
+header {
+  text-align: center;
+  font-family: 'Saira Condensed@900', sans-serif;
+  color: #ff5555;
+  font-size: 50px;
+  background-color: #000000;
+}
+p {
+  font-size: 20px;
+}
+button {
+  background-color: #ff5555;
+}
+li {
+  border-radius: 3px;
+}
+#button-criar-tarefa {
+  display: inline-block;
+  margin-right: 30px;
+  margin-bottom: 7px;
+  margin: top 0px;
+}
+#button-apaga-tudo {
+  display: inline-block;
+  margin-right: 30px;
+}
+#button-remove-finished {
+  margin-bottom: 7px;
+  display: inline-block;
+  margin-right: 30px;
+}
+#save {
+  display: inline-block;
+}
+
+#texto-tarefa {
+  width: 250px;
+}
+#lista-tarefas {
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 8px;
+  margin: 6px;
+}
+.completed {
+  text-decoration: line-through solid rgb(0, 0, 0);
 }
