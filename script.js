@@ -4,7 +4,9 @@ let inputTask = document.getElementById('texto-tarefa')
 let deleteListBtn = document.getElementById('apaga-tudo')
 let removeCompleted = document.getElementById('remover-finalizados')
 let removeBtn = document.getElementById('remover-selecionado')
+let saveBtn = document.getElementById('salvar-tarefas')
 
+saveBtn.addEventListener('click', saveTasks)
 removeBtn.addEventListener('click', removeItem)
 removeCompleted.addEventListener('click', removeCompletedItens)
 deleteListBtn.addEventListener('click', deleteTasks)
@@ -54,4 +56,18 @@ function removeItem(event) {
       list[i].remove()
     }
   }
+}
+
+function saveTasks() {
+  localStorage.setItem('tasks', JSON.stringify(taskList.innerHTML)) 
+}
+
+function loadTasks() {
+  if (localStorage.getItem('tasks') !== null) {
+    taskList.innerHTML = JSON.parse(localStorage.getItem('tasks'))
+  }
+}
+
+window.onload = () => {
+  loadTasks()
 }
