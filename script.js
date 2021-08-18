@@ -19,5 +19,16 @@ botaoDeAtualização.addEventListener("click", criarElementoTabela);
 
 const elementosDaLista = document.querySelectorAll("li");
 function mudarCorDeFundo(origem){
-    origem.target.style.backgroundColor = "rgb(128,128,128)";
+    somenteUm();
+    origem.target.classList.add("select"); 
+}
+
+// somente um selecionado
+
+let elementoSelecionado2 = document.querySelectorAll(".select");
+function somenteUm(origem){
+    let elementoSelecionado = document.querySelectorAll(".select");
+       if (elementoSelecionado.length != 0){
+        elementoSelecionado[0].classList.remove("select");
+    }
 }
