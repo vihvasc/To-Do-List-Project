@@ -21,35 +21,16 @@ body {
 #criar-tarefa {
     background-color: rgb(88, 170, 236);
     color: white;
-    border-radius: 20%;
-    border: none;
-    padding: 2%;
-    width: 20%;
     font-weight: bold;
 }
-/* /* #apaga-tudo {
+#apaga-tudo {
     background-color: red;
     color: white;
     font-weight: bold;
-    border-radius: 20%;
-    border: none;
-    width: 15%;
-    padding: 2%;
-
-} */
-/* #remover-finalizados {
+}
+#remover-finalizados {
     background-color: green;
     color: white;
-    padding: 1%;
     font-weight: bold;
-    border-radius: 20%;
-    border: none;
-    width: 28%;
-    height: 20%;
-    padding: 2%;
-} */
-/* #remover-selecionado {
-    color: white;
-    font-weight: bold;
-    border: none;
-} */
+
+}

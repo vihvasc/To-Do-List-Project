@@ -90,23 +90,23 @@ function buttonRemoveSelected() {
 }
 buttonRemoveSelected()
 
-
-
 window.onload = function() {
     loadTasks ()
 };
 
-
 function moveUp() {
     let getClassSelected = document.querySelector('.selected');
-    let getNoOl = document.querySelectorAll('#lista-tarefas');
-    let selectedPreviousSibling = getClassSelected.previousElementSibling;
+    let getOl1 = document.querySelectorAll('#lista-tarefas');
 
-    for (let i = 0; i < getNoOl.length; i += 1) {
-        if (selectedPreviousSibling === null) {
-        } else {
-        getNoOl[i].insertBefore(getClassSelected, selectedPreviousSibling);
-        }
+    if (getClassSelected) {
+        let selectedPreviousSibling = getClassSelected.previousElementSibling;
+        console.log(getClassSelected);
+        for (let i = 0; i < getOl1.length; i += 1) {
+         if (selectedPreviousSibling === null) {
+         } else {
+         getOl1[i].insertBefore(getClassSelected, selectedPreviousSibling);
+         }
+     }
     }
 }
 function buttonMoveUp() {
@@ -117,16 +117,16 @@ buttonMoveUp()
 
 function moveDown() {
     let getClassSelected1 = document.querySelector('.selected');
-    let getNoOl1 = document.querySelectorAll('#lista-tarefas');
-    let selectedNextSibling = getClassSelected1.nextElementSibling;
-    console.log(getClassSelected1)
-    console.log(selectedNextSibling);
+    let getOl2 = document.querySelectorAll('#lista-tarefas');
 
-    for (let i = 0; i < getNoOl1.length; i += 1) {
-        if (selectedNextSibling === null){
-        } else {
-        getNoOl1[i].insertBefore(selectedNextSibling ,getClassSelected1);
-        console.log(getNoOl1[i]);
+    if (getClassSelected1) {
+        let selectedNextSibling = getClassSelected1.nextElementSibling;
+        for (let i = 0; i < getOl2.length; i += 1) {
+            if (selectedNextSibling === null){
+            } else {
+            getOl2[i].insertBefore(selectedNextSibling ,getClassSelected1);
+            console.log(getOl2[i]);
+            }
         }
     }
 }
