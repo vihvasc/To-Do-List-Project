@@ -6,10 +6,18 @@ function clearColorTask() {
   }
 }
 
+function finishedTask(e) {
+  const task = e.target;
+  if (task.className === 'completed') {
+    task.className = '';
+  } else {
+    task.className = 'completed';
+  }
+}
+
 function changeBackgroundColorTask(e) {
   if (e.target.style.backgroundColor === '') {
     e.target.style.backgroundColor = 'rgb(128, 128, 128)';
-    e.target.id = 'selected';
   }
 }
 
@@ -22,6 +30,7 @@ function createdTask() {
     list.appendChild(task);
     task.addEventListener('click', clearColorTask);
     task.addEventListener('click', changeBackgroundColorTask);
+    task.addEventListener('dblclick', finishedTask);
   }
   document.getElementById('texto-tarefa').value = '';
 }
