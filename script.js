@@ -45,9 +45,18 @@ function addedElementToList() {
 createButton.addEventListener('click', addedElementToList);
 
 const tarefas = document.getElementById('lista-tarefas');
+const itemDalista = document.getElementsByTagName('li');
 
 function AdicionarCor(event) {
-  event.target.classList.toggle('corDeFundo');
+  for (let index = 0; index < itemDalista.length; index += 1) {
+    if (itemDalista[index].classList.contains('corDoFundo')) {
+      itemDalista[index].classList.remove('corDoFundo');
+      itemDalista[index].style.backgroundColor = 'white';
+    }
+    const localDoClick = event.target;
+    localDoClick.classList.add('corDoFundo');
+    localDoClick.style.backgroundColor = 'gray';
+  }
 }
 
 tarefas.addEventListener('click', AdicionarCor);
