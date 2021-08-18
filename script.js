@@ -3,7 +3,8 @@ window.onload = function () {
   let inputBar = document.getElementById('texto-tarefa'); // pega o inputBar
   let taskList = document.getElementById('lista-tarefas'); // pega a OL
   let buttonAddTask = document.getElementById('criar-tarefa'); // pega o botão que cria tarefa
-  let createTask = document.getElementsByClassName('task');
+  let createTask = document.getElementsByClassName('task'); // peguei lista criada
+  // let removeClass = document.getElementsByClassName('selected'); // pega classe
 
   buttonAddTask.addEventListener('click', createList);
 
@@ -15,6 +16,16 @@ window.onload = function () {
       createTask.className = 'task';
       createTask.innerText = tasks;
       inputBar.value = '';
+
+      createTask.addEventListener('dblclick', changeClass);
+      function changeClass(event) {
+        let dbclick = event.target;
+        if (dbclick.className === 'task completed') {
+          dbclick.classList.remove('completed')
+        } else {
+          dbclick.classList.add('completed')
+        }
+      }
 
       createTask.addEventListener('click', function () {
         removeBg();
