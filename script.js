@@ -15,6 +15,9 @@ createButton.id = 'criar-tarefa';
 createButton.innerText = 'Adicionar';
 const createInputSectionAndButton = document.createElement('section');
 const createListSection = document.createElement('section');
+const buttonToDeleteTheList = document.createElement('button');
+buttonToDeleteTheList.id = 'apaga-tudo';
+buttonToDeleteTheList.innerText = 'Deletar tudo';
 
 corpoDoProjeto[0].appendChild(headerTitle);
 headerTitle.appendChild(title);
@@ -25,14 +28,38 @@ createSection.appendChild(createParagraph);
 createInputSectionAndButton.appendChild(createInput);
 createListSection.appendChild(createOrderedList);
 createInputSectionAndButton.appendChild(createButton);
+createInputSectionAndButton.appendChild(buttonToDeleteTheList);
 
-const addedValues = document.querySelector('#texto-tarefa');
-const text = addedValues;
 function addedElementToList() {
+  const addedValues = document.querySelector('#texto-tarefa');
+  const text = addedValues;
   const list = document.createElement('li');
   createOrderedList.appendChild(list);
-  list.className = 'lista';
   list.innerText = text.value;
   text.value = '';
 }
 createButton.addEventListener('click', addedElementToList);
+
+const tarefas = document.getElementById('lista-tarefas');
+console.log(tarefas);
+
+function AdicionarCor(event) {
+  event.target.classList.toggle('corDeFundo');
+}
+
+tarefas.addEventListener('click', AdicionarCor);
+
+// function adicionarRisco(event) {
+//   event.target.classList.toggle('completed');
+// }
+
+// tarefas.addEventListener('dblclick', adicionarRisco);
+
+// function deleteList() {
+//   const information = document.querySelectorAll('li');
+//   for (let index = 0; index < information.length; index += 1) {
+//     information[index].remove();
+//   }
+// }
+
+// buttonToDeleteTheList.addEventListener('click', deleteList);
