@@ -1,17 +1,17 @@
 body {
-  margin: 10px auto;
-}
-
-.completed {
-  text-decoration: line-through solid black;
-}
-
-#title {
-  margin-left: 15%;
+	margin: 20px auto;
 }
 
 h4 {
   margin-left: 20%;
+}
+
+.completed {
+	margin-left: 20%;
+}
+
+#title {
+  margin-left: 15%;
 }
 
 #texto-tarefa {
@@ -20,4 +20,12 @@ h4 {
 
 #lista-tarefas {
   margin-left: 20%;
+}
+
+.selected {
+  background-color: rgb ( 128 , 128 , 128);
+}
+
+.selected2 {
+	text-decoration: line-through solid black;
 }
