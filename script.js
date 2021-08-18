@@ -6,6 +6,8 @@ const buttonClearTasks = document.getElementById('apaga-tudo'); // requisito 10
 const buttonClearCompletedTasks = document.getElementById('remover-finalizados'); // requisito 11
 const buttonRemoveSelectedTask = document.getElementById('remover-selecionado'); // requisito 14
 const buttonSaveTasks = document.getElementById('salvar-tarefas'); // requisito 12
+const buttonMoveUp = document.getElementById('mover-cima'); // requisito 13
+const buttonMoveDown = document.getElementById('mover-baixo'); // requisito 13
 
 // Criando uma tarefa nova como item list para ser usado na OL depois
 
@@ -58,6 +60,7 @@ function clearCompletedTasks() { // requisito 11
 }
 
 function removeSelectedTask() {
+  // requisito 14
   const lists = taskList.children;
   for (let index = lists.length - 1; index >= 0; index -= 1) {
     const completed = lists[index];
@@ -68,7 +71,30 @@ function removeSelectedTask() {
 }
 
 function saveTasks() {
+  // requisito 12
   localStorage.setItem('Lista-de-Tarefas', taskList.innerHTML);
+}
+
+function moveUp() {
+  // requisito 13
+  const selectedTask = document.querySelector('.selected');
+  if (selectedTask) {
+    const previouslyPostion = selectedTask.previousElementSibling;
+    if (previouslyPostion) {
+      previouslyPostion.insertAdjacentElement('beforebegin', selectedTask);
+    }
+  }
+}
+
+function moveDown() {
+  // requisito 13
+  const selectedTask = document.querySelector('.selected');
+  if (selectedTask) {
+    const nextPosition = selectedTask.nextElementSibling;
+    if (nextPosition) {
+      selectedTask.insertAdjacentElement('beforebegin', nextPosition);
+    }
+  }
 }
 
 function listenerButtonAdd() {
@@ -90,9 +116,19 @@ function listenerButtonRemoveSelectedTask() {
   buttonRemoveSelectedTask.addEventListener('click', removeSelectedTask);
 }
 
-function listernerButtonSaveTasks() {
+function listenerButtonSaveTasks() {
   // requisito 12
   buttonSaveTasks.addEventListener('click', saveTasks);
+}
+
+function listenerButtonMoveUp() {
+  // requisito 13
+  buttonMoveUp.addEventListener('click', moveUp);
+}
+
+function listenerButtonMoveDown() {
+  // requisito 13
+  buttonMoveDown.addEventListener('click', moveDown);
 }
 
 function callAllFunctions() {
@@ -100,10 +136,12 @@ function callAllFunctions() {
   listenerButtonClearTask(); // requisito 10
   listenerButtonClearCompletedTasks(); // requisito 11
   listenerButtonRemoveSelectedTask(); // requisito 14
-  listernerButtonSaveTasks(); // requisito 12
-  const savedLocalStorage = localStorage.getItem('Lista-de-Tarefas');
-  console.log(savedLocalStorage);
-  taskList.innerHTML = savedLocalStorage;
+  listenerButtonSaveTasks(); // requisito 12
+  const savedLocalStorage = localStorage.getItem('Lista-de-Tarefas'); // requisito 12
+  // console.log(savedLocalStorage);
+  taskList.innerHTML = savedLocalStorage; // requisito 12
+  listenerButtonMoveUp(); // requisito 13
+  listenerButtonMoveDown(); // requisito 13
 }
 
 console.log(body);
