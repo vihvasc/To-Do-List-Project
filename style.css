@@ -17,6 +17,7 @@ ol > li {
 
 .selecionado {
   background-color: gray;
+  opacity: 0.8;
 }
 
 .completed {

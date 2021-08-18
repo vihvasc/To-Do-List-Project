@@ -14,12 +14,14 @@
     </header>
     <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
   
-    <input type="text" id="texto-tarefa" placeholder="Digite o nome do item aqui...">
+    <div class="container-input">
+      <input type="text" id="texto-tarefa" placeholder="Digite o nome do item aqui...">
+      <button id="criar-tarefa">Adcionar à lista</button>
+    </div>
   
     <ol id="lista-tarefas"></ol>
 
     <div class="container-botoes">
-      <button id="criar-tarefa">Adcionar à lista</button>
       <button id="apaga-tudo">Apagar Todas as Tarefas</button>
       <button id="remover-finalizados">Remover Tarefas Finalizadas</button>
     </div>
