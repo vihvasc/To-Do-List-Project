@@ -2,3 +2,6 @@
   text-decoration: line-through solid black;
 }
 
+li {
+  list-style-type: lower-roman;
+}
