@@ -55,11 +55,11 @@ function adicionarRisco(event) {
 
 tarefas.addEventListener('dblclick', adicionarRisco);
 
-// function deleteList() {
-//   const information = document.querySelectorAll('li');
-//   for (let index = 0; index < information.length; index += 1) {
-//     information[index].remove();
-//   }
-// }
+function deleteList() {
+  const information = document.querySelectorAll('li');
+  for (let index = 0; index < information.length; index += 1) {
+    information[index].remove();
+  }
+}
 
-// buttonToDeleteTheList.addEventListener('click', deleteList);
+buttonToDeleteTheList.addEventListener('click', deleteList);
