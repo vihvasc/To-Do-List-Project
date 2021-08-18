@@ -7,7 +7,6 @@ const btnMoveDown = document.querySelector('#mover-baixo');
 const btnRemoveTask = document.querySelector('#remover-selecionado');
 const toDoList = document.getElementById('lista-tarefas');
 const inputText = document.getElementById('texto-tarefa');
-const itemtask = document.querySelectorAll('.itemtask');
 
 function createTask(event) {
   event.preventDefault();
@@ -35,22 +34,44 @@ btnDeleteList.addEventListener('click', () => {
 });
 
 toDoList.addEventListener('dblclick', (event) => {
-  event.target.classList.toggle('completed');
+  const events = event;
+  events.target.classList.toggle('completed');
+});
+
+// btnRemoveTask.addEventListener('click', () => {});
+
+btnMoveUp.addEventListener('click', () => {
+  const taskMoveUp = document.querySelector('.selected');
+  if (toDoList.firstChild === taskMoveUp && toDoList != null) {
+    alert('A tarefa já está no topo!');
+  } else {
+    toDoList.insertBefore(taskMoveUp, taskMoveUp.previousElementSibling);
+  }
+});
+
+btnMoveDown.addEventListener('click', () => {
+  const taskMoveDown = document.querySelector('.selected');
+  if (toDoList.lastChild === taskMoveDown && toDoList != null) {
+    alert('A tarefa já está por último!');
+  } else {
+    toDoList.insertBefore(taskMoveDown.nextElementSibling, taskMoveDown);
+  }
 });
 
 btnDeleteCompletos.addEventListener('click', () => {
-  const tasksCompletos = document.getElementsByClassName('completed');  
+  const tasksCompletos = document.getElementsByClassName('completed');
   for (let index = 0; index < tasksCompletos.length; index += 1) {
     tasksCompletos[0].remove();
   }
 });
 
-btnRemoveTask.addEventListener('click', () => {});
-
-btnMoveUp.addEventListener('click', () => {});
-
-btnMoveDown.addEventListener('click', () => {});
-
 btnSalvarTasks.addEventListener('click', () => {
-  localStorage.setItem('task', toDoList.innerHTML);
+  localStorage.setItem('tasks', toDoList.innerHTML);
 });
+
+function inicializeLocalStorage() {
+  if (localStorage.getItem('tasks') !== null) {
+    toDoList.innerHTML = localStorage.getItem('tasks');
+  }
+}
+inicializeLocalStorage();
