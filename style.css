@@ -6,7 +6,7 @@
 }
 
 input {
-  border: 1px solid rgb(42,42,42);
+	border: 1px solid rgb(42,42,42);
 	text-align: center;
 	width: 300px;
 }
@@ -17,11 +17,19 @@ body {
 }
 
 button {
-  border: 1px solid rgb(13,13,13);
+	border: 1px solid rgb(13,13,13);
+	padding: 2.5px 5px;
+	border-radius: 6px;
+	box-shadow: 2px 2px 0px rgb(170, 170, 170);
 }
 
 section {
 	text-align: center;
+}
+
+ol {
+	margin: 20px auto;
+	width: 300px;
 }
 
 .selected {
@@ -37,7 +45,7 @@ section {
 }
 
 #funcionamento {
-	text-align: justify;
+	text-align: center;
 	margin-left: 10px;
 	font-size: 15px;
 	font-style: italic;
