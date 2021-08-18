@@ -49,11 +49,11 @@ function AdicionarCor(event) {
 
 tarefas.addEventListener('click', AdicionarCor);
 
-// function adicionarRisco(event) {
-//   event.target.classList.toggle('completed');
-// }
+function adicionarRisco(event) {
+  event.target.classList.toggle('completed');
+}
 
-// tarefas.addEventListener('dblclick', adicionarRisco);
+tarefas.addEventListener('dblclick', adicionarRisco);
 
 // function deleteList() {
 //   const information = document.querySelectorAll('li');
