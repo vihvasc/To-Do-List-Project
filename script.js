@@ -1,4 +1,4 @@
-const corpoDoProjeto = document.getElementsByTagName('body');
+const pageBody = document.getElementsByTagName('body');
 const headerTitle = document.createElement('header');
 const title = document.createElement('h1');
 title.innerText = 'Minha Lista de Tarefas';
@@ -18,17 +18,21 @@ const createListSection = document.createElement('section');
 const buttonToDeleteTheList = document.createElement('button');
 buttonToDeleteTheList.id = 'apaga-tudo';
 buttonToDeleteTheList.innerText = 'Deletar tudo';
+const buttonDeleteTask = document.createElement('button');
+buttonDeleteTask.id = 'remover-finalizados';
+buttonDeleteTask.innerText = 'Deletar tarefa';
 
-corpoDoProjeto[0].appendChild(headerTitle);
+pageBody[0].appendChild(headerTitle);
 headerTitle.appendChild(title);
-corpoDoProjeto[0].appendChild(createSection);
-corpoDoProjeto[0].appendChild(createInputSectionAndButton);
-corpoDoProjeto[0].appendChild(createListSection);
+pageBody[0].appendChild(createSection);
+pageBody[0].appendChild(createInputSectionAndButton);
+pageBody[0].appendChild(createListSection);
 createSection.appendChild(createParagraph);
 createInputSectionAndButton.appendChild(createInput);
 createListSection.appendChild(createOrderedList);
 createInputSectionAndButton.appendChild(createButton);
 createInputSectionAndButton.appendChild(buttonToDeleteTheList);
+createInputSectionAndButton.appendChild(buttonDeleteTask);
 
 function addedElementToList() {
   const addedValues = document.querySelector('#texto-tarefa');
@@ -41,7 +45,6 @@ function addedElementToList() {
 createButton.addEventListener('click', addedElementToList);
 
 const tarefas = document.getElementById('lista-tarefas');
-console.log(tarefas);
 
 function AdicionarCor(event) {
   event.target.classList.toggle('corDeFundo');
@@ -63,3 +66,13 @@ function deleteList() {
 }
 
 buttonToDeleteTheList.addEventListener('click', deleteList);
+
+function deletarTarefa() {
+  const information = document.querySelectorAll('li');
+  for (let index = 0; index < information.length; index += 1) {
+    if (information[index].classList.contains('completed')) {
+      information[index].remove();
+    }
+  }
+}
+buttonDeleteTask.addEventListener('click', deletarTarefa);
