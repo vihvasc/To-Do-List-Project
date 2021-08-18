@@ -13,9 +13,9 @@ body {
   background-color: white;
 }
 
-header,
-form,
-section,
+header, 
+form, 
+section, 
 footer {
   font-size: 1.2rem;
   min-height: 15vh;
@@ -41,7 +41,7 @@ form input {
   background: white;
 }
 
-form button{
+form button {
   cursor: pointer;
   padding: 0.5rem;
   font-size: 1.5rem;
@@ -49,15 +49,15 @@ form button{
   background-color: white;
 }
 
-.criar-tarefa{
+.criar-tarefa {
   color: green;
 }
 
-.mover-cima{
+.mover-cima {
   color: blue;
 }
 
-.mover-baixo{
+.mover-baixo {
   color: orange;
 }
 .remover-selecionado {
@@ -101,7 +101,7 @@ form button{
 }
 
 .itemtask {
-  flex: 1;  
+  flex: 1; 
   margin-top: 1rem;
   cursor: pointer;
 }
@@ -111,5 +111,5 @@ form button{
 }
 
 .selected {
-  background-color: rgb(128, 128, 128);  
-}
+  background-color: rgb(128, 128, 128); 
+} 
