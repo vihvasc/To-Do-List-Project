@@ -1,12 +1,52 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  background-color: rgb(193, 194, 180);
+}
+
+p {
+  color: rgb(15, 83, 142);
+}
+
+h1 {
+  color: rgb(193, 194, 180);
+  font-size: 30;
+  padding: 5px;
+  text-shadow: black;
+  background-color: rgb(15, 83, 142);
+}
+
 #criar-tarefa {
   display: inline;
   position: relative;
 }
 
-#texto-tarefa {
-  display: inline;
-}
-
 .completed {
   text-decoration: line-through solid black;
+}
+
+button {
+  background-color: rgb(15, 83, 142); /* Green */
+  color: rgb(193, 194, 180);
+  padding: 5px 10px;
+  font-size: 14px;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+}
+
+input {
+  border-radius: 4px;
+  padding-left: 3px;
+  padding: 5px;
+  background-color: rgb(15, 83, 142);
+  width: 200px;
+  border-style: none;
+  color: rgb(193, 194, 180);
+}
+
+#ols {
+  display: flex;
+  justify-content: center;
+  color: rgb(15, 83, 142);
 }
