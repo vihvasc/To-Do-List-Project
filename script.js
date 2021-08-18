@@ -1,6 +1,6 @@
 const btnCreatetask = document.getElementById('criar-tarefa');
 const btnDeleteList = document.getElementById('apaga-tudo');
-const btnDeleteCompletos = document.getElementById('remover-finalizados');
+const btnDeleteCompletos = document.querySelector('#remover-finalizados');
 const btnSalvarTasks = document.getElementById('salvar-tarefas');
 const btnMoveUp = document.querySelector('#mover-cima');
 const btnMoveDown = document.querySelector('#mover-baixo');
@@ -38,7 +38,10 @@ toDoList.addEventListener('dblclick', (event) => {
   events.target.classList.toggle('completed');
 });
 
-// btnRemoveTask.addEventListener('click', () => {});
+btnRemoveTask.addEventListener('click', () => {
+  const task = document.querySelector('.selected');
+  task.remove();
+});
 
 btnMoveUp.addEventListener('click', () => {
   const taskMoveUp = document.querySelector('.selected');
@@ -46,6 +49,7 @@ btnMoveUp.addEventListener('click', () => {
     alert('A tarefa já está no topo!');
   } else {
     toDoList.insertBefore(taskMoveUp, taskMoveUp.previousElementSibling);
+    taskMoveUp.classList.add('selected');
   }
 });
 
@@ -60,7 +64,8 @@ btnMoveDown.addEventListener('click', () => {
 
 btnDeleteCompletos.addEventListener('click', () => {
   const tasksCompletos = document.getElementsByClassName('completed');
-  for (let index = 0; index < tasksCompletos.length; index += 1) {
+  const comprimento = tasksCompletos.length;
+  for (let index = 0; index < comprimento; index += 1) {
     tasksCompletos[0].remove();
   }
 });
