@@ -1,8 +1,12 @@
 body {
-  background-color: rgb(239,225,243);
+  background-color: rgb(197, 180, 202);
   text-align: center;
 }
 
 .selected {
   background-color: gray;
+}
+
+.completed {
+  text-decoration: line-through;
 }

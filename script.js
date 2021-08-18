@@ -1,10 +1,8 @@
-//crio as variaveis que vão receber os valores dos botoes
 const inputTarefa = document.querySelector('#texto-tarefa');
 const listaTarefas = document.querySelector('#lista-tarefas');
 const botaoCriaTarefa = document.querySelector('#criar-tarefa');
 const botaoApagaTudo = document.querySelector('#apaga-tudo');
-/* 
-const botaoRemoveFinalizadas = document.querySelector('#remover-finalizados');
+/* const botaoRemoveFinalizadas = document.querySelector('#remover-finalizados');
 const botaoSalvarTarefas = document.querySelector('#salvar-tarefas');
 const botaoMoverCima = document.querySelector('#mover-cima');
 const botaoMoverBaixo = document.querySelector('#mover-baixo');
@@ -16,6 +14,7 @@ function criaTarefa() {
   listaTarefas.appendChild(itemLista);
   inputTarefa.value = '';
   itemLista.addEventListener('click', corFundo);
+  itemLista.addEventListener('dblclick', taxado);
   console.log(itemLista);
 }
 
@@ -33,8 +32,13 @@ function apagaTudo() {
     listaElementos[i].remove();
   }
 }
+function taxado(event) {
+  if (event.target.classList.contains('completed')) { 
+    // o className.includes('completed') tbm funciona
+    event.target.classList.remove('completed');
+  } else { event.target.classList.add('completed'); }
+}
 
-//ativo as variáveis para receber o click 
 botaoCriaTarefa.addEventListener('click', criaTarefa);
 botaoApagaTudo.addEventListener('click', apagaTudo);
 
@@ -43,4 +47,3 @@ botaoRemoveSelecionado.addEventListener('click', apagaSelecionados);
 botaoSalvarTarefas.addEventListener('click', salvaListaTarefas);
 botaoMoverCima.addEventListener('click', moverCima);
 botaoMoverBaixo.addEventListener('click', moverBaixo); */
-
