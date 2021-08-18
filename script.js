@@ -2,6 +2,7 @@ const button = document.getElementById('criar-tarefa');
 const list = document.getElementById('lista-tarefas');
 const textInput = document.getElementById('texto-tarefa');
 const buttonClear = document.getElementById('apaga-tudo');
+const buttonClearCompleted = document.getElementById('remover-finalizados');
 
 // Cria o ítem na lista
 function creatItem() {
@@ -41,3 +42,13 @@ function clearList() {
 }
 
 buttonClear.addEventListener('click', clearList);
+
+// Apaga apenas atividades finalizadas;
+function clearCompleted() {
+  const completed = document.getElementsByClassName('completed');
+  while (completed.length) {
+    list.removeChild(completed[0]);
+  }
+}
+
+buttonClearCompleted.addEventListener('click', clearCompleted);
