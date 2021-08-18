@@ -39,7 +39,13 @@ function inserir(){
     let item = document.createElement('li')
     item.innerText = input.value
     item.addEventListener('click', function() {
-        item.style.backgroundColor = 'rgb(128, 128, 128)'
+        let selected = document.querySelector('.selected')
+        if(selected === null){
+            item.className = 'selected'
+        } else {
+            selected.classList.remove('selected')
+            item.className = 'selected'
+        }
     })
     list.appendChild(item)
     input.value = ''
