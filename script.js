@@ -16,10 +16,18 @@ input.type = 'text'
 input.id = 'texto-tarefa'
 document.body.appendChild(input)
 
-input.addEventListener('change', function(){
+const btnInserir = document.createElement('button')
+btnInserir.innerText = 'Inserir'
+btnInserir.className = 'btn'
+btnInserir.id = 'criar-tarefa'
+document.body.appendChild(btnInserir)
+
+
+btnInserir.addEventListener('click', function(){
 
     let item = document.createElement('li')
     item.innerText = input.value
+    item.addEventListener
     list.appendChild(item)
     input.value = ''
 
