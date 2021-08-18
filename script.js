@@ -7,7 +7,7 @@ const deleteTask = document.getElementById('remover-finalizados');
 const buttonSave = document.getElementById('salvar-tarefas');
 const buttonUp = document.getElementById('mover-cima');
 const buttonDown = document.getElementById('mover-baixo');
-// const buttonRemove = document.querySelector('remover-selecionado');
+const buttonRemove = document.querySelector('#remover-selecionado');
 
 function removeColor() {
   for (let index = 0; index < liTask.length; index += 1) {
@@ -113,3 +113,13 @@ function moveDown() {
 }
 
 buttonDown.addEventListener('click', moveDown);
+
+function removeTask() {
+  for (let index = 0; index < liTask.length; index += 1) {
+    if (liTask[index].style.backgroundColor === 'rgb(128, 128, 128)') {
+      liTask[index].remove();
+    }
+  }
+}
+
+buttonRemove.addEventListener('click', removeTask);
