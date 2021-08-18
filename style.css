@@ -1,10 +1,21 @@
 .container {
   position: relative;
   margin: 0 auto;
-  padding: 20px;
+  padding: 40px;
   background-color: aliceblue;
   border-radius: 10px;
-  width: 600px;
+  width: 800px;
+}
+
+.container h1 {
+  font-family: fantasy;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.container p {
+  font-family: monospace;
+  font-size: 18px;
 }
 
 #texto-tarefa {
@@ -12,7 +23,9 @@
 }
 
 ol > li {
+  font-family: arial;
   font-size: 20px;
+  user-select: none;
 }
 
 .selecionado {
@@ -34,13 +47,14 @@ ol > li {
   display: inline-block;
   padding: 5px;
   color: blue;
+  border-radius: 10px;
 }
 
 #apaga-tudo {
   display: inline-block;
-  margin-left: 10px;
   padding: 5px;
   color: red;
+  border-radius: 10px;
 }
 
 #remover-finalizados {
@@ -48,4 +62,5 @@ ol > li {
   margin-left: 10px;
   padding: 5px;
   color: green;
+  border-radius: 10px;
 }
