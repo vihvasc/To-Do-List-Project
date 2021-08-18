@@ -1,34 +1,46 @@
+const section = document.createElement('section')
+section.id = 'section'
+document.body.appendChild(section)
+
 const title = document.createElement('header')
 title.innerHTML = 'Minha Lista de Tarefas'
-document.body.appendChild(title)
+section.appendChild(title)
 
 const p = document.createElement('p')
 p.id = 'funcionamento'
 p.innerHTML = 'Clique duas vezes em um item para marcá-lo como completo'
-document.body.appendChild(p)
+section.appendChild(p)
 
 const list = document.createElement('ol')
 list.id = 'lista-tarefas'
-document.body.appendChild(list)
+section.appendChild(list)
 
 const input = document.createElement('input')
 input.type = 'text'
 input.id = 'texto-tarefa'
-document.body.appendChild(input)
+section.appendChild(input)
 
 const btnInserir = document.createElement('button')
 btnInserir.innerText = 'Inserir'
 btnInserir.className = 'btn'
 btnInserir.id = 'criar-tarefa'
-document.body.appendChild(btnInserir)
+section.appendChild(btnInserir)
 
 
 btnInserir.addEventListener('click', function(){
+    if(input.value === ''){
+        alert('Digite uma tarefa válida!')
+    } else {
+        inserir();
+    }
+})
 
+function inserir(){
     let item = document.createElement('li')
     item.innerText = input.value
-    item.addEventListener
+    item.addEventListener('click', function() {
+        item.style.backgroundColor = 'rgb(128, 128, 128)'
+    })
     list.appendChild(item)
     input.value = ''
-
-})
+}

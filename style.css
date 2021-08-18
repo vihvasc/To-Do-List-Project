@@ -5,7 +5,15 @@ body{
 .btn{
     background-color: rgb(32, 199, 17);
     border-radius: 50%;
-    width: 6%;
+    width: 10%;
     padding: 4px;
     text-align: center;
+    border: null;
+}
+
+#section{
+    background-color: white;
+    text-align: center;
+    width: 50%;
+    height: 300px;
 }
