@@ -33,14 +33,24 @@ function buttonDeleteAll() {
   const buttonDeleteAllItens = document.getElementById('apaga-tudo');
   buttonDeleteAllItens.addEventListener('click', deleteAllLis);
 }
-function deleteSelectedItems() {
+function deleteCompletedItems() {
   const mySelectedItems = document.querySelectorAll('.completed');
   for (let index = 0; index < mySelectedItems.length; index += 1) {
     mySelectedItems[index].remove();
   }
 }
-function generateButtonDelete() {
+function generateDeleteCompleted() {
   const buttonDeleteSelectedItems = document.getElementById('remover-finalizados');
+  buttonDeleteSelectedItems.addEventListener('click', deleteCompletedItems);
+}
+function deleteSelectedItems() {
+  const mySelectedItems = document.querySelectorAll('.selected');
+  for (let index = 0; index < mySelectedItems.length; index += 1) {
+    mySelectedItems[index].remove();
+  }
+}
+function generateDeleteSelected() {
+  const buttonDeleteSelectedItems = document.getElementById('remover-selecionado');
   buttonDeleteSelectedItems.addEventListener('click', deleteSelectedItems);
 }
 function saveLocal() {
@@ -62,7 +72,6 @@ function buttonSaveList() {
 }
 function getSavedList() {
   const localList = JSON.parse(localStorage.getItem('myList'));
-  console.log(localList);
   if (!localList) return;
   for (let index = 0; index < localList.length; index += 1) {
     const liObject = localList[index];
@@ -74,11 +83,25 @@ function getSavedList() {
     list.appendChild(itemSavedList);
   };
 }
+function moveUp() {
+  
+}
+function moveDonw() {
 
+}
+function buttonUp() {
+  const btnUp = document.getElementById('mover-cima');
+  btnUp.addEventListener('click', moveUp);
+}
+function buttonDown() {
+  const btnDown = document.getElementById('mover-baixo');
+  btnUp.addEventListener('click', moveDown);
+}
 function criaListaTarefas() {
   geraItemList();
   buttonDeleteAll();
-  generateButtonDelete();
+  generateDeleteCompleted();
+  generateDeleteSelected();
   buttonSaveList();
   getSavedList();
 }
