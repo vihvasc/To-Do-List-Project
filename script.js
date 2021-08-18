@@ -27,13 +27,13 @@ function setCompletedTasks(listItem) {
 }
 
 function createTaskList() {
-  const lista = document.getElementById('lista-tarefas');
+  const list = document.getElementById('lista-tarefas');
   const input = document.getElementById('texto-tarefa');
   const inputValue = input.value;
   const listItem = document.createElement('li');
   if (inputValue !== '') {
     listItem.innerText = inputValue;
-    lista.appendChild(listItem);
+    list.appendChild(listItem);
     listItem.className = 'task';
     setCompletedTasks(listItem);
     taskSelector();
@@ -41,5 +41,27 @@ function createTaskList() {
   }
 }
 
-const button = document.getElementById('criar-tarefa');
-button.addEventListener('click', createTaskList);
+function deleteAllListItems() {
+  const list = document.getElementById('lista-tarefas');
+  const allListItems = document.querySelectorAll('.task');
+  for (let listLoop = 0, taskNumber = allListItems.length; listLoop < taskNumber; listLoop += 1) {
+    list.removeChild(allListItems[listLoop]);
+  }
+}
+
+function deleteCompletedItems() {
+  const list = document.getElementById('lista-tarefas');
+  const CompletedItems = document.querySelectorAll('.completed');
+  for (let listLoop = 0, taskNumber = CompletedItems.length; listLoop < taskNumber; listLoop += 1) {
+    list.removeChild(CompletedItems[listLoop]);
+  }
+}
+
+const creationButton = document.getElementById('criar-tarefa');
+creationButton.addEventListener('click', createTaskList);
+
+const deletionButton = document.getElementById('apaga-tudo');
+deletionButton.addEventListener('click', deleteAllListItems);
+
+const deleteCompletedButton = document.getElementById('remover-finalizados');
+deleteCompletedButton.addEventListener('click', deleteCompletedItems);
