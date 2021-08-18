@@ -5,3 +5,27 @@
 .selected {
   background-color: gray;
 }
+
+body {
+  text-align: center;
+  background-image: url(https://st2.depositphotos.com/5050295/10001/v/950/depositphotos_100012704-stock-illustration-notebook-paper-background.jpg);
+  background-size: cover;
+}
+
+#texto-tarefa {
+  width: 300px;
+  border: 1px dotted blueviolet;
+}
+
+h1 {
+  border: 5px dotted blue;
+  display: inline-block;
+  padding: 4px;
+  margin-top: 150px;
+}
+
+p {
+  padding: 0px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
