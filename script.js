@@ -4,8 +4,9 @@ const infoInput = document.getElementById('texto-tarefa');
 const listTasks = document.getElementById('lista-tarefas');
 const arrTasks = document.getElementsByTagName('li');
 const clearAll = document.getElementById('apaga-tudo');
-const riskLine = document.querySelectorAll('.completed');
-const clearDone = document.getElementById('remover-finalizados');
+const completedTasks = document.getElementsByTagName('completed');
+const buttonsDiv = document.getElementById('buttons');
+const buttonSelected = document.getElementById('remover-selecionado');
 
 /*Adicionando novas tarefas REQUISITO 1-7*/
 buttonOne.addEventListener('click', newTask);
@@ -21,7 +22,10 @@ function newTask() {
 }
 /*Mudar o fundo do item MEXER NISSO PRO REQUISITO 8*/
 function changeBackColor(event) {
-  event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+  const selected = document.querySelector('.selected');
+  if (selected) {
+    selected.classList.remove('selected');
+  }
   event.target.classList.add('selected');
 }
 /*se um elemento da lista tem className='selected' os outros nao podem ter. for (let i = 0; i > listTask.length)
@@ -42,11 +46,23 @@ function clearItens() {
   listTasks.innerHTML = '';
 }
 
-/*botao finalizadas REQUISITO 11 - PRECISA TERMINAR PQ NAO TA DANDO CERTO*/
-clearDone.addEventListener('click', finalizadasApagar);
-function finalizadasApagar() {
-  for (let i = 0; i < riskLine.length; i += 1) {
-    const finApag = riskLine[i];
-    listTasks.removeChild(finApag);
+function createButtom() {
+  const buttomClear = document.createElement('button');
+  buttomClear.id = 'remover-finalizados';
+  buttomClear.addEventListener('click', clearCompletedTasks);
+  buttonsDiv.appendChild(buttomClear);
+}
+
+function clearCompletedTasks() {
+  for (let i = 0; i < completedTasks.length; i += 1) {
+    completedTasks[i].remove();
   }
 }
+
+function removeselected() {
+  for (let i = 0; i < selected; i += 1) {
+    selected[i].remove();
+  }
+}
+
+buttonSelected.addEventListener('click', removeselected);
