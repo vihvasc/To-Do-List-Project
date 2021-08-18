@@ -13,15 +13,21 @@
   </header>
   <main>
     <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
-    <input type="text" id="texto-tarefa" placeholder="Adicione uma tarefa aqui">
-    <button id="criar-tarefa">Adicionar</button>
-    <ol id="lista-tarefas"></ol>
-    <button id="remover-selecionado">&#10006</button>
-    <button id="mover-cima">&#9650;</button>
-    <button id="mover-baixo">&#9660;</button>
-    <button id="apaga-tudo">Limpar lista</button>
-    <button id="remover-finalizados">Limpar Completos</button>
-    <button id="salvar-tarefas">Salvar Lista</button>
+    <div class="container">
+      <input type="text" id="texto-tarefa" placeholder="Adicione aqui">
+      <button id="criar-tarefa">Adicionar</button>
+    </div>
+    <div class="container">
+      <ol id="lista-tarefas"></ol>
+    </div>
+    <div class="container">
+      <button id="remover-selecionado">&#10006</button>
+      <button id="mover-cima">&#9650;</button>
+      <button id="mover-baixo">&#9660;</button>
+      <button id="apaga-tudo">Limpar lista</button>
+      <button id="remover-finalizados">Limpar Completos</button>
+      <button id="salvar-tarefas">Salvar Lista</button>
+    </div>
   </main>
   <script src="script.js"></script>
 </body>

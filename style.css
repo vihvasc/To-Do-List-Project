@@ -6,20 +6,38 @@
 
 body {
   font-family: Handlee, cursive;
+  margin-top: 100px;
 }
 
-.completed {
-  text-decoration: line-through solid black;
+header , p {
+  text-align: center;
+}
+
+input {
+  height: 20px;
+  padding: 3px 20px;
+  margin-right: 20px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 li {
   text-transform: capitalize;
 }
 
+.completed {
+  text-decoration: line-through solid black;
+}
+
 button {
   border: none;
   border-radius: 50px;
   padding: 10px 20px;
+  margin-right: 10px;
   cursor: pointer;
   color: white;
   font-family: Handlee, cursive;
