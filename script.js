@@ -50,7 +50,11 @@ function apagarTarefasCompletdas() {
   }
 }
 
+// function salvarTarefas() {
+  
+// }
+
 buttonTarefa.addEventListener('click', criarTarefa);
 buttonApagar.addEventListener('click', apagarTarefas);
 buttonApagarCompletados.addEventListener('click', apagarTarefasCompletdas);
-document.querySelector('#salvar-tarefas').addEventListener('click', salvarTarefas());
+//document.querySelector('#salvar-tarefas').addEventListener('click', salvarTarefas());
