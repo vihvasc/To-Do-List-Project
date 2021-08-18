@@ -7,6 +7,7 @@ const clearAll = document.getElementById('apaga-tudo');
 const completedTasks = document.getElementsByClassName('completed');
 const buttonSelected = document.getElementById('remover-selecionado');
 const anotherTask = document.getElementsByClassName('taskAdd');
+const buttonSave = document.getElementById('salvar-tarefas');
 
 /*Adicionando novas tarefas REQUISITO 1-7*/
 
@@ -63,3 +64,14 @@ function removeselected() {
     selectedtag[0].parentNode.removeChild(selectedtag[0]);
   }
 }
+
+/* BOTÃO SALVAR ITENS */
+buttonSave.addEventListener('click', saveTasks);
+function saveTasks() {
+  const everythingList = listTasks.innerHTML;
+  localStorage.setItem('tasksSave', everythingList);
+}
+
+window.onload = () => {
+  listTasks.innerHTML = localStorage.getItem('tasksSave');
+};
