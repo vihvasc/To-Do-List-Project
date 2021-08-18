@@ -89,6 +89,34 @@ function saveList() {
   }
 }
 
+function moveTaskUp() {
+  const selectedItem = document.querySelector('.selected');
+  if (selectedItem !== null) {
+    const prevItemSibling = selectedItem.previousElementSibling;
+    const selectedItemCln = selectedItem.cloneNode(true);
+    if (prevItemSibling !== null) {
+      list.removeChild(selectedItem);
+      list.insertBefore(selectedItemCln, prevItemSibling);
+      setCompletedTasks(selectedItemCln);
+      taskSelector();
+    }
+  }
+}
+
+function moveTaskDown() {
+  const selectedItem = document.querySelector('.selected');
+  if (selectedItem !== null) {
+    const nextItemSibling = selectedItem.nextElementSibling;
+    if (nextItemSibling !== null) {
+      const nextItemSiblingCln = nextItemSibling.cloneNode(true);
+      list.removeChild(nextItemSibling);
+      list.insertBefore(nextItemSiblingCln, selectedItem);
+      setCompletedTasks(nextItemSiblingCln);
+      taskSelector();
+    }
+  }
+}
+
 const creationButton = document.getElementById('criar-tarefa');
 creationButton.addEventListener('click', createTaskList);
 
@@ -100,3 +128,9 @@ deleteCompletedButton.addEventListener('click', deleteCompletedItems);
 
 const saveListButton = document.getElementById('salvar-tarefas');
 saveListButton.addEventListener('click', saveList);
+
+const moveUpButton = document.getElementById('mover-cima');
+moveUpButton.addEventListener('click', moveTaskUp);
+
+const moveDownButton = document.getElementById('mover-baixo');
+moveDownButton.addEventListener('click', moveTaskDown);
