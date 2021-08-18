@@ -1,3 +1,5 @@
+const list = document.getElementById('lista-tarefas');
+
 function selectorValidator(clickOnTask, taskNumber, liLoop) {
   clickOnTask[liLoop].addEventListener('click', () => {
     for (let liLoop2 = 0; liLoop2 < taskNumber; liLoop2 += 1) {
@@ -26,8 +28,28 @@ function setCompletedTasks(listItem) {
   });
 }
 
+function createSavedList() {
+  const stored = localStorage.length;
+  for (let listLoop = 1, taskNumber = stored; listLoop <= taskNumber; listLoop += 1) {
+    const savedList = localStorage.getItem(`savedList-${listLoop}`);
+    const savedClass = localStorage.getItem(`savedClass-${listLoop}`);
+    const listItem = document.createElement('li');
+    listItem.innerHTML = savedList;
+    listItem.className = 'task';
+    if (savedClass !== undefined) {
+      listItem.classList.add(savedClass);
+    }
+    if (listItem.innerHTML !== '') {
+      list.appendChild(listItem);
+    }
+    setCompletedTasks(listItem);
+    taskSelector();
+  }
+}
+
+createSavedList();
+
 function createTaskList() {
-  const list = document.getElementById('lista-tarefas');
   const input = document.getElementById('texto-tarefa');
   const inputValue = input.value;
   const listItem = document.createElement('li');
@@ -42,7 +64,6 @@ function createTaskList() {
 }
 
 function deleteAllListItems() {
-  const list = document.getElementById('lista-tarefas');
   const allListItems = document.querySelectorAll('.task');
   for (let listLoop = 0, taskNumber = allListItems.length; listLoop < taskNumber; listLoop += 1) {
     list.removeChild(allListItems[listLoop]);
@@ -50,10 +71,21 @@ function deleteAllListItems() {
 }
 
 function deleteCompletedItems() {
-  const list = document.getElementById('lista-tarefas');
   const CompletedItems = document.querySelectorAll('.completed');
   for (let listLoop = 0, taskNumber = CompletedItems.length; listLoop < taskNumber; listLoop += 1) {
     list.removeChild(CompletedItems[listLoop]);
+  }
+}
+
+function saveList() {
+  const toBeSaved = list.childNodes;
+  let saved = '';
+  for (let listLoop = 0, taskNumber = toBeSaved.length; listLoop < taskNumber; listLoop += 1) {
+    saved = toBeSaved[listLoop].innerHTML;
+    localStorage.setItem(`savedList-${listLoop + 1}`, saved);
+    if (toBeSaved[listLoop].classList.contains('completed')) {
+      localStorage.setItem(`savedClass-${listLoop + 1}`, 'completed');
+    }
   }
 }
 
@@ -65,3 +97,6 @@ deletionButton.addEventListener('click', deleteAllListItems);
 
 const deleteCompletedButton = document.getElementById('remover-finalizados');
 deleteCompletedButton.addEventListener('click', deleteCompletedItems);
+
+const saveListButton = document.getElementById('salvar-tarefas');
+saveListButton.addEventListener('click', saveList);
