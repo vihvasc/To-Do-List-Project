@@ -5,6 +5,7 @@ let addButton = document.querySelector('#criar-tarefa');
 let clearButton = document.querySelector('#apaga-tudo')
 let doneButton = document.querySelector('#remover-finalizados')
 let saveButton = document.querySelector('#salvar-tarefas')
+let removeSelectedButton = document.querySelector('#remover-selecionado')
 
 
 function addList(){
@@ -22,10 +23,20 @@ let taskList = document.createElement('li');
 }
 
 function taskHighlight(event){
-      if (event.target.style.backgroundColor == ''){
-        event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+  //removeClassSelected()
+  let selected = event.target;
+      if (selected.style.backgroundColor == ''){
+        selected.style.backgroundColor = 'rgb(128, 128, 128)';
+        // selected.classList.add('selected')
+        //taskItens.classList.remove('selected')
       } 
 }
+// function removeClassSelected(){
+//   let tasks = document.getElementsByTagName('li')
+//   if (tasks.classList.includes('selected')){
+//     tasks.classList.remove('selected')
+//   } 
+// }
 function clearHighlight(event){
   for (let i = 0; i < taskItens.length; i++) {
     if (taskItens[i].style.backgroundColor === 'rgb(128, 128, 128)'){
@@ -51,7 +62,7 @@ function clearList(){
 }
 function clearDoneTasks(){
   const taskList = document.querySelectorAll('.task-item');
-  for (let i = 0; i < taskList.length; i++) {
+  for (let i = 0; i < taskList.length; i += 1) {
    const element = taskList[i];
     if (element.className.includes('completed')){
       ordenedList.removeChild(element);
@@ -95,10 +106,19 @@ function recoveryList(){
   return window.onload;
 }
 }
-
+function removeSelected(){
+  const taskList = document.querySelectorAll('.task-item');
+  for (let i = 0; i < taskList.length; i += 1) {
+    const element = taskList[i];
+     if (element.style.backgroundColor == 'rgb(128, 128, 128)'){
+       ordenedList.removeChild(element)
+     }
+  }
+}
 window.onload = function toDoList(){
 addButton.addEventListener('click', addList)
 clearButton.addEventListener('click', clearList)
+removeSelectedButton.addEventListener('click', removeSelected)
 saveButton.addEventListener('click', saveList)
 doneButton.addEventListener('click', clearDoneTasks)
 ordenedList.addEventListener('click', clearHighlight)
