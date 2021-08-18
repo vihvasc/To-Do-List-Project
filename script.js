@@ -10,10 +10,20 @@ function selectorValidator(clickOnTask, taskNumber, liLoop) {
 }
 
 function taskSelector() {
-  const clickOnTask = document.getElementsByClassName('task');
+  const clickOnTask = document.querySelectorAll('.task');
   for (let taskNumber = clickOnTask.length, liLoop = 0; liLoop < taskNumber; liLoop += 1) {
     selectorValidator(clickOnTask, taskNumber, liLoop);
   }
+}
+
+function setCompletedTasks(listItem) {
+  listItem.addEventListener('dblclick', () => {
+    if (listItem.classList.contains('completed')) {
+      listItem.classList.remove('completed');
+    } else {
+      listItem.classList.add('completed');
+    }
+  });
 }
 
 function createTaskList() {
@@ -25,6 +35,7 @@ function createTaskList() {
     listItem.innerText = inputValue;
     lista.appendChild(listItem);
     listItem.className = 'task';
+    setCompletedTasks(listItem);
     taskSelector();
     input.value = '';
   }
