@@ -4,6 +4,7 @@ let taskInput = document.querySelector('#texto-tarefa');
 let addButton = document.querySelector('#criar-tarefa');
 let clearButton = document.querySelector('#apaga-tudo')
 let doneButton = document.querySelector('#remover-finalizados')
+let saveButton = document.querySelector('#salvar-tarefas')
 
 
 function addList(){
@@ -45,6 +46,8 @@ function lineThrough(event){
 }
 function clearList(){
   ordenedList.innerHTML = '';
+  localStorage.removeItem('tags')
+  localStorage.removeItem('valores')
 }
 function clearDoneTasks(){
   const taskList = document.querySelectorAll('.task-item');
@@ -55,9 +58,48 @@ function clearDoneTasks(){
     }
   }
 }
+let itemsTag = [];
+let itemsValue = [];
 
+function saveList(){
+  const listItems = document.querySelectorAll('.task-item')
+  const listSize = listItems.length
+
+  for (let i = 0; i < listSize; i += 1) {
+    const itemTag = listItems[i].className;
+    itemsTag.push(itemTag);
+    const itemValue = listItems[i].innerText;
+    itemsValue.push(itemValue);
+  }
+  localStorage.setItem('tags', JSON.stringify(itemsTag));
+  localStorage.setItem('valores', JSON.stringify(itemsValue));
+}
+
+function recoveryList(){
+  if (localStorage.length > 0){
+  const recoveryItensTag = JSON.parse(localStorage.getItem('tags'));
+  console.log(recoveryItensTag);
+  const recoveryItensValue = JSON.parse(localStorage.getItem('valores'));
+  console.log(recoveryItensValue);
+  const newListSize = recoveryItensTag.length
+  console.log(newListSize);
+  for (let i = 0; i < newListSize; i += 1) {
+
+    const newlistItem = document.createElement('li')
+    newlistItem.className = recoveryItensTag[i];
+    newlistItem.innerText = recoveryItensValue[i];
+    ordenedList.appendChild(newlistItem);
+    
+  }
+} else {
+  return window.onload;
+}
+}
+
+window.onload = function toDoList(){
 addButton.addEventListener('click', addList)
 clearButton.addEventListener('click', clearList)
+saveButton.addEventListener('click', saveList)
 doneButton.addEventListener('click', clearDoneTasks)
 ordenedList.addEventListener('click', clearHighlight)
 ordenedList.addEventListener('dblclick', lineThrough)
@@ -66,3 +108,5 @@ document.addEventListener('keyup', function(e){
     addButton.click();
   }
 })
+window.reload = recoveryList()
+}
