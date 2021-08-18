@@ -5,6 +5,7 @@ const taskList = document.getElementById('lista-tarefas');
 const buttonClearTasks = document.getElementById('apaga-tudo'); // requisito 10
 const buttonClearCompletedTasks = document.getElementById('remover-finalizados'); // requisito 11
 const buttonRemoveSelectedTask = document.getElementById('remover-selecionado'); // requisito 14
+const buttonSaveTasks = document.getElementById('salvar-tarefas'); // requisito 12
 
 // Criando uma tarefa nova como item list para ser usado na OL depois
 
@@ -45,7 +46,7 @@ function clearTasks() {
   taskList.innerHTML = '';
 }
 
-console.log(taskList);
+// console.log(taskList);
 function clearCompletedTasks() { // requisito 11
   const lists = taskList.children;
   for (let index = lists.length - 1; index >= 0; index -= 1) {
@@ -64,6 +65,10 @@ function removeSelectedTask() {
       completed.remove();
     }
   }
+}
+
+function saveTasks() {
+  localStorage.setItem('Lista-de-Tarefas', taskList.innerHTML);
 }
 
 function listenerButtonAdd() {
@@ -85,11 +90,20 @@ function listenerButtonRemoveSelectedTask() {
   buttonRemoveSelectedTask.addEventListener('click', removeSelectedTask);
 }
 
+function listernerButtonSaveTasks() {
+  // requisito 12
+  buttonSaveTasks.addEventListener('click', saveTasks);
+}
+
 function callAllFunctions() {
   listenerButtonAdd();
   listenerButtonClearTask(); // requisito 10
   listenerButtonClearCompletedTasks(); // requisito 11
   listenerButtonRemoveSelectedTask(); // requisito 14
+  listernerButtonSaveTasks(); // requisito 12
+  const savedLocalStorage = localStorage.getItem('Lista-de-Tarefas');
+  console.log(savedLocalStorage);
+  taskList.innerHTML = savedLocalStorage;
 }
 
 console.log(body);
