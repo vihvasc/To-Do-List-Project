@@ -1,6 +1,6 @@
 const valorDeInput = document.querySelector("#texto-tarefa");
 const listaDeTarefas = document.querySelector("#lista-tarefas");
-const criarElemento = document.createElement("li");
+
 // Montar lista de elementos
 
 function criarElementoTabela(origem) {
@@ -39,5 +39,18 @@ function riscarElemento(origem){
     }else {
         origem.target.classList.add('completed');
     }
-    
-}
+ }
+ // botao de apagar
+ const botaoDeApagar= document.querySelector("#apaga-tudo")
+
+ botaoDeApagar.addEventListener("click", apagarLista);
+
+ function apagarLista(origem){
+     let itensDaLista = document.querySelectorAll("li")
+     console.log(itensDaLista);
+     for(i=0; i<itensDaLista.length; i+=1){
+         listaDeTarefas.removeChild(itensDaLista[i])
+     }
+
+
+ }
