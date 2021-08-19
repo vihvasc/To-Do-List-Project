@@ -6,8 +6,10 @@ const buttonRemove = document.querySelector('#remover-finalizados');
 const buttonSaveTasks = document.querySelector('#salvar-tarefas');
 const buttonUp = document.querySelector('#mover-cima');
 const buttonDown = document.querySelector('#mover-baixo');
+const buttonRemoveTarget = document.querySelector('#remover-selecionado');
 const ol = document.querySelector('#lista-tarefas');
 const listItens = document.getElementsByClassName('list-item');
+
 
 function createTitle() {
   const title = document.createElement('h1');
@@ -26,6 +28,7 @@ function createParagraph() {
 
 createParagraph();
 
+// Função para adicionar tarefas
 function createListItem() {
   const listItem = document.createElement('li');
   listItem.innerHTML = `${input.value}`;
@@ -34,6 +37,7 @@ function createListItem() {
   input.value = '';
 }
 
+// Função para adicionar o target ao clicar no item
 function targetItem(event) {
   for (let index = 0; index < listItens.length; index += 1) {
     if (listItens[index].classList.contains('target')) {
@@ -44,15 +48,18 @@ function targetItem(event) {
   }
 }
 
+// Função para adicionar class completed ao clicar duas vezes no item
 function setCompleted(event) {
   event.target.classList.toggle('completed');
 }
 
+// Função que implementa um botão para limpar tudo
 function clearAll() {
   ol.innerHTML = '';
   localStorage.clear();
 }
 
+// Função que implementa um botão para remover tarefas finalizadas
 function removeFinished() {
   let elements = document.getElementsByClassName('completed');
   let cleaner = [];
@@ -112,31 +119,37 @@ function getTasks() {
   }
 }
 
-function moveUp() {
-  let target = document.querySelector('.target');
-  if (target.classList.contains('target')) {
-    if (target === target.parentElement.firstChild) {
-      alert('Vai subir mais pra onde?');
-    }
-    else {
-      target.parentElement.insertBefore(target, target.previousSibling);
-    }
-  }
-}
-
-function moveDown() {
-  let target = document.querySelector('.target');
-  if (target.classList.contains('target')) {
-    if (target === target.parentElement.lastChild) {
-      alert('Vai descer mais pra onde?');
-    }
-    else {
-      target.parentElement.insertBefore(target.nextSibling, target);
-    }
-  }
-}
-
 getTasks();
+
+// Função que implementa um botão para mover o item para cima
+function moveUp() {
+  const target = document.querySelector('.target');
+  if (target) {
+    const previous = target.previousElementSibling;
+    if (previous) {
+      target.parentElement.insertBefore(target, previous);
+    }
+  }
+}
+
+// Função que implementa um botão para mover o item para baixo
+function moveDown() {
+  const target = document.querySelector('.target');
+  if (target) {
+    const next = target.nextElementSibling;
+    if (next) {
+      target.parentElement.insertBefore(next, target);
+    }
+  }
+}
+
+// Função que implementa um botão para remover o item selecionado
+function removeTarget() {
+  const target = document.querySelector('.target');
+  if (target) {
+    target.remove();
+  }
+}
 
 buttonClear.addEventListener('click', clearAll);
 ol.addEventListener('dblclick', setCompleted);
@@ -146,3 +159,4 @@ buttonRemove.addEventListener('click', removeFinished);
 buttonSaveTasks.addEventListener('click', saveTasks);
 buttonUp.addEventListener('click', moveUp);
 buttonDown.addEventListener('click', moveDown);
+buttonRemoveTarget.addEventListener('click', removeTarget);
