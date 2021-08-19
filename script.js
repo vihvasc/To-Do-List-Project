@@ -12,3 +12,17 @@ function createTask() {
 }
 
 button.addEventListener('click', createTask);
+
+function changeColor (event) {
+    let task = document.getElementsByClassName('taskList');
+    console.log(task)
+    for (let index = 0; index < task.length; index += 1) {
+        task[index].classList.remove('selected');
+    }
+    let selected = event.target;
+    if (selected.className !== 'selected') {
+        selected.classList.add('selected');
+    }
+}
+
+taskList.addEventListener('click', changeColor)
