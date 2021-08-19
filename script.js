@@ -22,59 +22,33 @@ buttonClear.id = 'apaga-tudo';
 buttonClear.innerText = 'Limpar Lista';
 secTion.appendChild(buttonClear);
 
-//-------------------------------------------
-
 function addTarefas() {
   let input = document.getElementById('texto-tarefa');
-  // let textoInput = input.value;
+
   let textoLi = document.createElement('li');
-  textoLi.innerHTML = input.value; //textoInput;
+  textoLi.innerHTML = input.value;
   listaOrdenada.appendChild(textoLi);
   input.value = '';
 }
 
-//Botão adicionar
 let buttonAdicionar = document.getElementById('criar-tarefa');
 buttonAdicionar.addEventListener('click', addTarefas);
 
-
-
-//Colorir Cinza
 let textoLi = document.getElementById('lista-tarefas');
 
-textoLi.addEventListener('click', function(event){
-const element = event.target;
-let classCor = document.querySelector('.colorSelect');
-console.log(classCor);
-if(classCor && classCor !== element){
-  classCor.classList.remove('colorSelect');
-}
-element.classList.toggle('colorSelect');
+textoLi.addEventListener('click', function (event) {
+  const element = event.target;
+  let classCor = document.querySelector('.colorSelect');
+  console.log(classCor);
+  if (classCor && classCor !== element) {
+    classCor.classList.remove('colorSelect');
+  }
+  element.classList.toggle('colorSelect');
+});
 
-
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Risca e Retira risco
 textoLi.addEventListener('dblclick', function (event) {
   event.target.classList.toggle('completed');
 });
-
-//Botrão apaga tudo
 
 buttonClear.addEventListener('click', function (event) {
   let clearList = document.querySelectorAll('li');
