@@ -1,8 +1,8 @@
 .container {
   position: relative;
-  margin: 0 auto;
-  padding: 40px;
-  background-color: aliceblue;
+  margin: 50px auto;
+  padding: 80px 40px;
+  background-color: rgb(212, 213, 214);
   border-radius: 10px;
   width: 800px;
 }
@@ -10,7 +10,7 @@
 .container h1 {
   font-family: fantasy;
   margin-top: 0;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .container p {
@@ -20,6 +20,10 @@
 
 #texto-tarefa {
   padding: 5px 60px 5px 5px;
+}
+
+ol {
+  line-height: 20px;
 }
 
 ol > li {
@@ -44,23 +48,67 @@ ol > li {
 }
 
 #criar-tarefa {
+  background-color: blue;
   display: inline-block;
-  padding: 5px;
-  color: blue;
-  border-radius: 10px;
+  padding: 10px;
+  color: white;
+  font-size: 18px;
+  border-style: none;
+  border-radius: 5px;
+}
+
+#criar-tarefa:hover {
+  transition: 0.1s;
+  cursor: pointer;
+  background-color: rgb(9, 9, 102);
 }
 
 #apaga-tudo {
+  background-color: red;
   display: inline-block;
-  padding: 5px;
-  color: red;
-  border-radius: 10px;
+  padding: 10px;
+  color: white;
+  font-size: 18px;
+  border-style: none;
+  border-radius: 5px;
+}
+
+#apaga-tudo:hover {
+  transition: 0.1s;
+  cursor: pointer;
+  background-color: rgb(112, 9, 9);
 }
 
 #remover-finalizados {
+  background-color: green;
   display: inline-block;
-  margin-left: 10px;
-  padding: 5px;
-  color: green;
-  border-radius: 10px;
+  margin-left: 15px;
+  padding: 10px;
+  color: white;
+  font-size: 18px;
+  border-style: none;
+  border-radius: 5px;
+}
+
+#remover-finalizados:hover {
+  transition: 0.1s;
+  cursor: pointer;
+  background-color: rgb(5, 43, 5);
+}
+
+#salvar-tarefas {
+  background-color: coral;
+  display: inline-block;
+  margin-left: 15px;
+  padding: 10px;
+  color: white;
+  font-size: 18px;
+  border-style: none;
+  border-radius: 5px;
+}
+
+#salvar-tarefas:hover {
+  transition: 0.1s;
+  cursor: pointer;
+  background-color: brown;
 }
