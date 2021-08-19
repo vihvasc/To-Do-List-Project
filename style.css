@@ -1,3 +1,67 @@
+body {
+  width: 1366px;
+  height: 768px;
+  background-color:lightblue;
+  text-align: center;
+  background-image: url(rsz_todoprojeto.jpg);
+  background-size: 1366px;
+  background-repeat: round;
+}
+
+li {
+  text-align: left;  
+}
+
+section {
+  width: 800px;
+  padding-bottom: 1vmax;
+  background-color:whitesmoke;
+  border-radius: 3vmax;
+  border: solid 0.5vmax;
+  border-color: teal;
+  display: inline-block;
+}
+h1 {
+  font-size: 60px;
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-weight: bolder;
+}
+
+#funcionamento {
+  color:white;
+}
+
 .completed {
   text-decoration: line-through;
+}
+
+.navegador {  
+  margin-top: 1vmax;
+}
+
+.button {
+  display: inline-block;  
+  background-color: #ccc;
+  background-image: linear-gradient(top, #eee, #ccc);  
+  border: 1px solid #777;
+  padding: 0 0.5em;
+  margin: auto;
+  font: bold 0.9em Arial, Helvetica;
+  text-decoration: none;
+  color: #333;
+  text-shadow: 0 1px 0 rgba(255,255,255,.8);
+  border-radius: .2em;
+  box-shadow: 0 0 1px 1px rgba(255,255,255,.8) inset, 0 1px 0 rgba(0,0,0,.3);
+}
+
+.button:hover {
+  background-color: #ddd;
+  background-image: linear-gradient(top, #fafafa, #ddd);  
+}
+
+.button:active {
+  box-shadow: 0 0 4px 2px rgba(0,0,0,.3) inset;
+  position: relative;
+  top: 1px;
 }
