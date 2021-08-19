@@ -31,7 +31,7 @@ function selecionado(origem) {
 }
 
 function tarefaFinalizada(origem) {
-  if(origem.target.className == 'completed') origem.target.classList.remove('completed');  
+  if(origem.target.className == 'lista completed') origem.target.classList.remove('completed');  
   else origem.target.classList.add('completed');
 }
 
