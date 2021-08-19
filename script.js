@@ -1,3 +1,14 @@
+window.onload = () => {
+  if (localStorage.getItem(1) !== null) {
+    for (let i = 0; i < localStorage.length; i += 1) {
+      let valor = localStorage.getItem(i+1).split(" ");
+      let frase = valor.slice(0, valor.length - 1);
+      frase = frase.join(" ");
+      let classe = valor[valor.length -1];
+      criarItem(frase, classe);
+    }
+  }
+}
 function deletarOutroSelecionado(elemento, listaElementos) {
   for (let i = 0; i < listaElementos.length; i += 1) {
     if (listaElementos[i] !== elemento) {
@@ -38,11 +49,12 @@ function finalizar(evento) {
   }
 }
 
-function criarItem(texto) {
+function criarItem(texto, classe = '') {
   const ol = document.getElementById('lista-tarefas');
 
   const li = document.createElement('li');
   li.innerText = texto;
+  li.className = classe;
   li.id = ol.querySelectorAll('li').length + 1;
   li.addEventListener('click', mudarFundo);
   li.addEventListener('dblclick', finalizar);
@@ -69,9 +81,20 @@ function apagarTodasTarefas() {
 }
 
 function apagarFinalizadas() {
-  let itemsFinalizados = document.querySelectorAll('.completed');
+  const itemsFinalizados = document.querySelectorAll('.completed');
   for (let i = 0; i < itemsFinalizados.length; i += 1) {
     itemsFinalizados[i].remove();
+  }
+}
+
+function salvarTarefas() {
+  const pegarLista = document.getElementsByTagName('li');
+  let valores = "";
+  let classes = "";
+  for(let i = 0; i < pegarLista.length; i += 1) {
+    valores = pegarLista.item(i).innerText;
+    classes = pegarLista.item(i).className;
+    localStorage.setItem(pegarLista[i].id, valores + " " +classes);
   }
 }
 
@@ -84,6 +107,9 @@ function adicionarEscutadoresBotoes() {
 
   const botao_remover_finalizados = document.getElementById('remover-finalizados');
   botao_remover_finalizados.addEventListener('click', apagarFinalizadas);
+
+  const botao_salvar_tarefas = document.getElementById('salvar-tarefas');
+  botao_salvar_tarefas.addEventListener('click', salvarTarefas);
 }
 
 adicionarEscutadoresBotoes();
