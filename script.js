@@ -4,6 +4,7 @@ window.onload = function () {
   lineTroughtTasks();
   clearAll();
   clearCompletedTasks();
+  saveList();
 };
 
 function createAndAddTask() {
@@ -78,5 +79,19 @@ function clearCompletedTasks() {
     for (let index = 0; index < lineTasks.length; index++) {
       lineTasks[index].remove();
     }
+  }
+}
+
+function saveList() {
+  let button = document.querySelector('#salvar-tarefas');
+  let taskList = document.querySelector('#lista-tarefas');
+  let recover = localStorage.getItem('list');
+
+  button.addEventListener('click', save);
+
+  taskList.innerHTML = recover;
+
+  function save() {
+    localStorage.setItem('list', taskList.innerHTML);
   }
 }
