@@ -3,15 +3,15 @@ let btnApaga = document.querySelector('#apaga-tudo');
 let btnApagaCompletos = document.querySelector('#remover-finalizados');
 
 function criaTarefa() {
-  if(document.querySelector('#texto-tarefa').value == '') alert('digite uma tarefa');
-  else {  
-  let lista = document.querySelector('#lista-tarefas');  
-  let criaLista = document.createElement('li');
-  let texto = document.querySelector('#texto-tarefa').value;
-  criaLista.className = 'lista';
-  criaLista.innerText = texto;
-  lista.appendChild(criaLista);
-  document.querySelector('#texto-tarefa').value = '';
+  if (document.querySelector('#texto-tarefa').value == '') alert('digite uma tarefa');
+  else {
+    let lista = document.querySelector('#lista-tarefas');
+    let criaLista = document.createElement('li');
+    let texto = document.querySelector('#texto-tarefa').value;
+    criaLista.className = 'lista';
+    criaLista.innerText = texto;
+    lista.appendChild(criaLista);
+    document.querySelector('#texto-tarefa').value = '';
   }
   selecionar();
 }
@@ -31,7 +31,7 @@ function selecionado(origem) {
 }
 
 function tarefaFinalizada(origem) {
-  if(origem.target.className == 'lista completed') origem.target.classList.remove('completed');  
+  if(origem.target.className == 'lista completed') origem.target.classList.remove('completed');
   else origem.target.classList.add('completed');
 }
 

@@ -23,7 +23,7 @@ body {
   margin-top: 2px;
   margin-left: 10px;
   background-color: #617ae8;
-  border: 0px;
+  border: 0;
   border-radius: 10px;
   width: 72px;
   height: 58px;
@@ -44,7 +44,7 @@ body {
   margin-left: 12px;
   margin-top: 24px;
   background-color: #617ae8;
-  border: 0px;
+  border: 0;
   border-radius: 10px;
   width: 305px;
   height: 58px;
