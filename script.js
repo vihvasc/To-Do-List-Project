@@ -10,7 +10,6 @@ const buttonRemoveTarget = document.querySelector('#remover-selecionado');
 const ol = document.querySelector('#lista-tarefas');
 const listItens = document.getElementsByClassName('list-item');
 
-
 function createTitle() {
   const title = document.createElement('h1');
   title.innerHTML = 'Minha Lista de Tarefas';
@@ -61,8 +60,8 @@ function clearAll() {
 
 // Função que implementa um botão para remover tarefas finalizadas
 function removeFinished() {
-  let elements = document.getElementsByClassName('completed');
-  let cleaner = [];
+  const elements = document.getElementsByClassName('completed');
+  const cleaner = [];
   for (let element of elements) {
     cleaner.push(element);
   }
@@ -88,10 +87,8 @@ function saveTasks() {
       completed: style.textDecoration.includes('line-through'),
       target: style.backgroundColor.includes('rgb(128, 128, 128)')
     }
-
     tasks.push(objTasks);
   }
-
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
