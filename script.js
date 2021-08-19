@@ -46,22 +46,19 @@ btnRemoveTask.addEventListener('click', () => {
 
 btnMoveUp.addEventListener('click', () => {
   const taskMoveUp = document.querySelector('.selected');
-  if (taskMoveUp !== null && taskMoveUp.previousElementSibling)
-    taskMoveUp.parentNode.insertBefore(
-      taskMoveUp,
-      taskMoveUp.previousElementSibling
-    );
+  if (taskMoveUp && taskMoveUp.previousSibling) {
+    toDoList.insertBefore(taskMoveUp, taskMoveUp.previousSibling);
+  }
 });
 
+// Referência:
 // https://stackoverflow.com/questions/46724542/javascript-move-elements-up-and-down-in-the-list
 
 btnMoveDown.addEventListener('click', () => {
   const taskMoveDown = document.querySelector('.selected');
-  if (taskMoveDown !== null && taskMoveDown.nextElementSibling)
-    taskMoveDown.parentNode.insertBefore(
-      taskMoveDown.nextElementSibling,
-      taskMoveDown
-    );
+  if (taskMoveDown && taskMoveDown.nextSibling) {
+    toDoList.insertBefore(taskMoveDown.nextSibling, taskMoveDown);
+  }
 });
 
 btnDeleteCompletos.addEventListener('click', () => {

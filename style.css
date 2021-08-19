@@ -5,16 +5,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  border: none;  
+  border: none;
 }
 
 body {
-  background-color: rgb(41, 40, 41); 
+  background-color: rgb(41, 40, 41);
 }
 
-header, 
-form, 
-section, 
+header,
+form,
+section,
 footer {
   font-size: 1.2rem;
   min-height: 15vh;
@@ -37,7 +37,7 @@ span {
   color: goldenrod;
 }
 
- input {
+input {
   border: 1px black solid;
   border-radius: 0.25rem;
   padding: 0.5rem;
@@ -46,7 +46,7 @@ span {
   background: white;
 }
 
-  button   {
+button {
   cursor: pointer;
   padding: 0.5rem;
   font-size: 1.5rem;
@@ -103,16 +103,16 @@ button.btn:hover {
 .todo {
   margin: 0.5rem;
   color: black;
-  font-size: 1.2rem;  
+  font-size: 1.2rem;
   min-width: 70%;
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 .itemtask {
-  flex: 1;   
-  justify-content: start;   
+  flex: 1;
+  justify-content: start;
   margin-top: 1rem;
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 .completed {
@@ -120,16 +120,17 @@ button.btn:hover {
 }
 
 .selected {
-  background-color: rgb(128, 128, 128); 
+  background-color: rgb(128, 128, 128);
 }   
 
 .box{
-  display: block;  
-  margin: 0 auto; 
-  width: 50%; 
+  display: block;
+  margin: 0 auto;
+  width: 50%;
   border-radius: 1rem;
-  border: 0.1rem solid goldenrod; 
-  box-shadow: gray; 
-  padding: 2rem; 
-  background-color: white; 
-}  
+  border: 0.1rem solid goldenrod;
+  box-shadow: gray;
+  padding: 2rem;
+  background-color: white;
+}
+
