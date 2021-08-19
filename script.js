@@ -1,5 +1,9 @@
 window.onload = function () {
   createAndAddTask();
+  changeColorOfListItem();
+  lineTroughtTasks();
+  clearAll();
+  clearCompletedTasks();
 };
 
 function createAndAddTask() {
@@ -17,25 +21,62 @@ function createAndAddTask() {
 
     taskInput.value = '';
     taskList.appendChild(task);
-    changeColorOfListItem();
   }
 }
-function changeColorOfListItem() {
-  let listItem = document.querySelectorAll('.tarefa');
-  console.log(listItem);
-  console.log('cheguei na função');
 
-  for (let index = 0; index < listItem.length; index++) {
-    console.log(listItem[index]);
-    listItem[index].addEventListener('click', changeColor);
-  }
+function changeColorOfListItem() {
+  let listItem = document.querySelector('#lista-tarefas');
+
+  listItem.addEventListener('click', changeColor);
 
   function changeColor(originEvent) {
     let grayItem = document.querySelectorAll('.gray-list-item');
 
-    if (grayItem.length > 0) {
-      return originEvent.target.classList.remove('gray-list-item');
+    for (let index = 0; index < grayItem.length; index++) {
+      if (grayItem[index].classList.contains('gray-list-item')) {
+        grayItem[index].classList.remove('gray-list-item');
+      }
     }
+
     originEvent.target.classList.add('gray-list-item');
+  }
+}
+
+function lineTroughtTasks() {
+  let listItem = document.querySelector('#lista-tarefas');
+
+  listItem.addEventListener('dblclick', lineTrought);
+
+  function lineTrought(originEvent) {
+    if (originEvent.target.classList.contains('completed')) {
+      return originEvent.target.classList.remove('completed');
+    }
+    originEvent.target.classList.add('completed');
+  }
+}
+
+function clearAll() {
+  let button = document.querySelector('#apaga-tudo');
+
+  button.addEventListener('click', cleanList);
+
+  function cleanList() {
+    let taskList = document.querySelector('#lista-tarefas');
+
+    taskList.innerHTML = '';
+  }
+}
+
+function clearCompletedTasks() {
+  let button = document.querySelector('#remover-finalizados');
+
+  button.addEventListener('click', cleanTasks);
+
+  function cleanTasks() {
+    let lineTasks = document.querySelectorAll('.completed');
+
+    for (let index = 0; index < lineTasks.length; index++) {
+      lineTasks[index].remove();
+    }
   }
 }
