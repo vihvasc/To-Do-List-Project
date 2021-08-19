@@ -46,7 +46,7 @@ span {
   background: white;
 }
 
-  button  {
+  button   {
   cursor: pointer;
   padding: 0.5rem;
   font-size: 1.5rem;
@@ -103,14 +103,14 @@ button.btn:hover {
 .todo {
   margin: 0.5rem;
   color: black;
-  font-size: 1.2rem; 
+  font-size: 1.2rem;  
   min-width: 70%;
   cursor: pointer; 
 }
 
 .itemtask {
-  flex: 1;  
-  justify-content: start;  
+  flex: 1;   
+  justify-content: start;   
   margin-top: 1rem;
   cursor: pointer; 
 }
@@ -121,15 +121,15 @@ button.btn:hover {
 
 .selected {
   background-color: rgb(128, 128, 128); 
-}  
+}   
 
 .box{
-  display: block; 
+  display: block;  
   margin: 0 auto; 
   width: 50%; 
   border-radius: 1rem;
-  border: 0.10rem solid goldenrod; 
+  border: 0.1rem solid goldenrod; 
   box-shadow: gray; 
   padding: 2rem; 
   background-color: white; 
-} 
+}  
