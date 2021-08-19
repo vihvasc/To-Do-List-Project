@@ -10,7 +10,7 @@ document.getElementById('criar-tarefa').addEventListener('click', function() {
     lista_ordenada.appendChild(li)
     li.innerText = recebe_info.value
     recebe_info.value=''
-    li.classList.add('linha')
+
 })
 
 
