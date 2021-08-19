@@ -9,7 +9,7 @@
 }
 
 body {
-  background-color: rgb(41, 40, 41);  
+  background-color: rgb(41, 40, 41); 
 }
 
 header, 
@@ -37,7 +37,7 @@ span {
   color: goldenrod;
 }
 
-form input {
+ input {
   border: 1px black solid;
   border-radius: 0.25rem;
   padding: 0.5rem;
@@ -46,7 +46,7 @@ form input {
   background: white;
 }
 
-form button {
+  button  {
   cursor: pointer;
   padding: 0.5rem;
   font-size: 1.5rem;
@@ -54,9 +54,9 @@ form button {
   background-color: white;
 }
 
-form button:hover {
+button:hover {
   font-size: 1.7rem;
-} 
+}  
 
 .criar-tarefa {
   color: green;
@@ -83,7 +83,7 @@ form button:hover {
   bottom: 0;
 }
 
-.btn {
+button.btn {
   width: 16rem;
   padding: 1rem;
   background: white;
@@ -95,9 +95,9 @@ form button:hover {
   transition: all 0.2s linear;
 }
 
-.btn:hover {
+button.btn:hover {
   background: goldenrod;
-  color: black
+  color: black;
 }
 
 .todo {
@@ -109,8 +109,8 @@ form button:hover {
 }
 
 .itemtask {
-  flex: 1; 
-  justify-content: start; 
+  flex: 1;  
+  justify-content: start;  
   margin-top: 1rem;
   cursor: pointer; 
 }
@@ -121,15 +121,15 @@ form button:hover {
 
 .selected {
   background-color: rgb(128, 128, 128); 
-} 
+}  
 
 .box{
-  display: block;
-  margin: 0 auto;
-  width: 50%;
+  display: block; 
+  margin: 0 auto; 
+  width: 50%; 
   border-radius: 1rem;
-  border: 0.10rem solid goldenrod;
-  box-shadow: gray;
-  padding: 2rem;
-  background-color: white;
+  border: 0.10rem solid goldenrod; 
+  box-shadow: gray; 
+  padding: 2rem; 
+  background-color: white; 
 } 

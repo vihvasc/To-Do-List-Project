@@ -49,20 +49,24 @@ btnMoveUp.addEventListener('click', () => {
     alert('A tarefa já está no topo!');
   } else {
     toDoList.insertBefore(taskMoveUp, taskMoveUp.previousElementSibling);
-    taskMoveUp.classList.add('selected');
+    // Retorna o anterior https://developer.mozilla.org/en-US/docs/Web/API/Element/previousElementSibling
   }
 });
 
 btnMoveDown.addEventListener('click', () => {
+  console.log('mover baixo task');
   const taskMoveDown = document.querySelector('.selected');
   if (toDoList.lastChild === taskMoveDown && toDoList != null) {
     alert('A tarefa já está por último!');
   } else {
     toDoList.insertBefore(taskMoveDown.nextElementSibling, taskMoveDown);
+    // insere um nó antes do nó de referência como um filho de um nó pai,
+    // https://developer.mozilla.org/pt-BR/docs/Web/API/Node/insertBefore*/
   }
 });
 
 btnDeleteCompletos.addEventListener('click', () => {
+  console.log('apagar completos task');
   const tasksCompletos = document.getElementsByClassName('completed');
   const comprimento = tasksCompletos.length;
   for (let index = 0; index < comprimento; index += 1) {
@@ -71,6 +75,7 @@ btnDeleteCompletos.addEventListener('click', () => {
 });
 
 btnSalvarTasks.addEventListener('click', () => {
+  console.log('salvar task');
   localStorage.setItem('tasks', toDoList.innerHTML);
 });
 
