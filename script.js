@@ -1,19 +1,19 @@
-let listaTarefa = document.querySelector('#lista-tarefas');
+const listaTarefa = document.querySelector('#lista-tarefas');
 
-let button = document.querySelector('#criar-tarefa');
-button.addEventListener('click', function( ) {
-  let textoTarefa = document.querySelector('#texto-tarefa');
-  let criaLi = document.createElement('li');
+const button = document.querySelector('#criar-tarefa');
+button.addEventListener ('click', function( ) {
+  const textoTarefa = document.querySelector('#texto-tarefa');
+  const criaLi = document.createElement('li');
   criaLi.innerHTML = textoTarefa.value;
-  criaLi.className = "item";
+  criaLi.className = 'item';
   listaTarefa.appendChild(criaLi);
   textoTarefa.value = '';
 });
 
 function corTarefa(event) {
-  let backgroundColorPadrao = 'white';
-  let itemListaTarefa = document.querySelectorAll('.item');
-  let selectColor = 'rgb(128, 128, 128)';
+  const backgroundColorPadrao = 'white';
+  const itemListaTarefa = document.querySelectorAll('.item');
+  const selectColor = 'rgb(128, 128, 128)';
   for (let index = 0; index < itemListaTarefa.length; index += 1) {
     if (itemListaTarefa[index].style.backgroundColor !== backgroundColorPadrao) {
       itemListaTarefa[index].style.backgroundColor = backgroundColorPadrao;
@@ -28,15 +28,15 @@ function completTarefa(event) {
 }
 listaTarefa.addEventListener('dblclick', completTarefa);
 
-let buttonApagar = document.querySelector('#apaga-tudo');
-  function apagarLista() {
-    listaTarefa.parentNode.removeChild(listaTarefa);
+const buttonApagar = document.querySelector('#apaga-tudo');
+function apagarLista() {
+  listaTarefa.parentNode.removeChild(listaTarefa);
 }
 buttonApagar.addEventListener('click', apagarLista);
 
-let buttonApagarFinalizados = document.getElementById('remover-finalizados');
+const buttonApagarFinalizados = document.getElementById('remover-finalizados');
 function apagarListaFinalziados() {
-  let itemListaTarefaConcluida = document.querySelectorAll('.completed');
+  const itemListaTarefaConcluida = document.querySelectorAll('.completed');
   let index = '0';
   for (index of itemListaTarefaConcluida) {
     index.remove();

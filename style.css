@@ -4,10 +4,10 @@
 
 h1 {
   color: black;
-  background-color: rgb(91, 194, 54);
+  background-color: rgb(91 , 194 , 54);
 }
 
 .completed {
-  text-decoration: line-through solid rgb(0, 0, 0);
-  color: rgb(99, 97, 97);
+  text-decoration: line-through solid rgb(0 , 0 , 0);
+  color: rgb(99 , 97 , 97);
 }
