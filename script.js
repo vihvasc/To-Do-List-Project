@@ -1,6 +1,7 @@
 const input = document.querySelector('#texto-tarefa');
-const button = document.querySelector('#criar-tarefa');
 const taskList = document.querySelector('#lista-tarefas');
+const taskButton = document.querySelector('#criar-tarefa');
+const clearAllButton = document.querySelector('#apaga-tudo');
 
 function taskCreator() {
   const taskListItem = document.createElement('li');
@@ -28,6 +29,11 @@ function lineThrough(event) {
   }
 }
 
-button.addEventListener('click', taskCreator);
+function cleaner() {
+  taskList.innerText = '';
+}
+
+taskButton.addEventListener('click', taskCreator);
 taskList.addEventListener('click', greyClick);
 taskList.addEventListener('dblclick', lineThrough);
+clearAllButton.addEventListener('click', cleaner);
