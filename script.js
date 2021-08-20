@@ -1,9 +1,11 @@
 const button = document.getElementById('criar-tarefa');
 const inputText = document.getElementById('texto-tarefa');
 const taskList = document.getElementById('lista-tarefas');
+const clearButton = document.getElementById('apaga-tudo');
 
-button.addEventListener('click', addNewTask);s
+button.addEventListener('click', addNewTask);
 taskList.addEventListener('click', selectItem);
+clearButton.addEventListener('click', clearList);
 
 function addNewTask() {
     let novaTarefa = document.createElement('li');
@@ -24,4 +26,8 @@ function selectItem(event) {
     }
   
     event.target.classList.toggle('selected');
+  }
+
+  function clearList(){
+      taskList.innerHTML = '';
   }
