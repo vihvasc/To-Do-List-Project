@@ -17,19 +17,38 @@ function addList(){
 function addClikList(){
     let listItem = document.querySelectorAll("li");
     for(let index = 0; index < listItem.length; index += 1){
-        listItem[index].addEventListener("click", selectItem);
+        listItem[index].addEventListener("click", selectItem); 
+        listItem[index].addEventListener("dblclick", taskCheck); 
+        listItem[index].addEventListener("dblclick", removeTaskCheck);
     }
 
 }
 
 function selectItem(event){
     let listItem = document.querySelector(".selected");
-    console.log(listItem);
-    if(listItem != null){
+    if(listItem){
         listItem.classList.remove("selected");
     }
     event.target.classList.add("selected");
 }
+
+function taskCheck(event){
+    
+    console.log(event);
+}
+
+function removeTaskCheck(event){
+    let listItem = document.querySelector(".completed");
+    console.log(listItem)
+    if(listItem === null){
+        event.target.classList.add("completed");
+    }
+    if(listItem){
+        event.target.classList.remove("completed");
+    }
+}    
+
+
 
 
 
