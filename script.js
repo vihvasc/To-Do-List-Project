@@ -56,13 +56,12 @@ function generateDeleteSelected() {
 function saveLocal() {
   const arraySavedList = [];
   const taskList = document.getElementsByClassName('item-list');
-  const classCompleted = document.getElementsByClassName('completed');
   for (let index = 0; index < taskList.length; index += 1) {
-   if (taskList[index].classList.contains('completed')) {
-    arraySavedList.push({texto:taskList[index].innerText, classe: true});
-   } else {
-    arraySavedList.push({texto:taskList[index].innerText, classe: false});
-   }  
+    if (taskList[index].classList.contains('completed')) {
+      arraySavedList.push({ texto: taskList[index].innerText, classe: true });
+    } else {
+      arraySavedList.push({ texto: taskList[index].innerText, classe: false });
+    }
   }
   localStorage.setItem('myList', JSON.stringify(arraySavedList));
 }
@@ -75,21 +74,21 @@ function getSavedList() {
   if (!localList) return;
   for (let index = 0; index < localList.length; index += 1) {
     const liObject = localList[index];
-    let itemSavedList = document.createElement('li');
+    const itemSavedList = document.createElement('li');
     itemSavedList.innerText = liObject.texto;
     if (liObject.classe) {
       itemSavedList.classList.add('completed');
     }
     list.appendChild(itemSavedList);
-  };
+  }
 }
 function moveUp() {
-  let itemDaLista = document.querySelector('.selected');
-  if(!itemDaLista) {
+  const itemDaLista = document.querySelector('.selected');
+  if (!itemDaLista) {
     return;
   }
   if (itemDaLista.previousElementSibling) {
-  itemDaLista.parentNode.insertBefore(itemDaLista, itemDaLista.previousElementSibling);
+    itemDaLista.parentNode.insertBefore(itemDaLista, itemDaLista.previousElementSibling);
   }
 }
 function buttonUp() {
@@ -97,8 +96,8 @@ function buttonUp() {
   btnUp.addEventListener('click', moveUp);
 }
 function moveDown() {
-  let itemDaLista = document.querySelector('.selected');
-  if(!itemDaLista) {
+  const itemDaLista = document.querySelector('.selected');
+  if (!itemDaLista) {
     return;
   }
   if (itemDaLista.nextElementSibling) {
