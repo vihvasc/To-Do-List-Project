@@ -2,6 +2,8 @@ const newList = document.createElement('ol');
 newList.id = 'lista-tarefas';
 document.body.appendChild(newList);
 
+// adiciona tarefas à lista
+// ta FUNCIONANDO! - não mexe!
 function addNewTask() {
   const addButton = document.querySelector('#criar-tarefa');
   const getInputField = document.querySelector('#task-input');
@@ -11,29 +13,42 @@ function addNewTask() {
   addButton.addEventListener('click', function () {
     const newLine = document.createElement('li');
     newLine.innerText = getInputField.value;
-    newLine.className = 'newTask'
-    newList.appendChild(newLine);
+    newLine.className = 'newTask unSelected unCompleted'
+    newList.appendChild(newLine); 
     getInputField.value = '';
-    selectTask()
+
+    // selectTask();
+    // unSelectTask();
+    // choice();
+    // completedTask();
+    // unCompletedTask();
   }); 
-  
 }
 addNewTask();
 
-function selectTask() {
-  console.log('entrou na funcao')
-  console.log(document.getElementsByClassName('newTask'));
-  const tasks = document.getElementsByClassName('newTask');
-  console.log(tasks.length)
-
-  for (let index = 0; index < tasks.length; index += 1) {
-    tasks[index].addEventListener('click', function () {
-      event.target.style.backgroundColor = 'rgb(128, 128, 128)';
-
-
-    })
-
+function selectTask(event) {
+  if (event.target.classList.contains('unSelected')) {
+    event.target.classList.add('selected');
+    event.target.classList.remove('unSelected');
+  } else {
+    event.target.classList.add('unSelected');
+    event.target.classList.remove('selected');
   }
-
-
 }
+
+newList.addEventListener('click', selectTask);
+
+
+function completedTask(event) {
+  if (event.target.classList.contains('unCompleted')) {
+    event.target.classList.add('completed');
+    event.target.classList.remove('unCompleted');
+  } else {
+    event.target.classList.add('unCompleted');
+    event.target.classList.remove('completed');
+  }
+    // })
+  // index ++;
+}
+
+newList.addEventListener('dblclick', completedTask);
