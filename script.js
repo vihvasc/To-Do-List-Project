@@ -100,8 +100,11 @@ function barraStatus() {
   const barra = document.querySelector('#barra');
   const total = document.getElementsByTagName('li').length;
   const complete = document.getElementsByClassName('completed').length;
+  let div = document.querySelector('#statuscontainer')
   let razao = complete/total *100 + '%'
   barra.style.maxWidth = razao
+  let porce = document.querySelector('#perce')
+  porce.innerText = razao + ' concluidos'
   if (razao === '100%') {
     let acabou = document.createElement('h1')
     acabou.style.fontSize = '1.4em'
