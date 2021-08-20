@@ -1,6 +1,6 @@
-let button = document.querySelector('#criar-tarefa');
 let listaTarefa = document.querySelector('#lista-tarefas');
 
+let button = document.querySelector('#criar-tarefa');
 button.addEventListener('click', function( ) {
   let textoTarefa = document.querySelector('#texto-tarefa');
   let criaLi = document.createElement('li');
@@ -33,3 +33,13 @@ let buttonApagar = document.querySelector('#apaga-tudo');
     listaTarefa.parentNode.removeChild(listaTarefa);
 }
 buttonApagar.addEventListener('click', apagarLista);
+
+let buttonApagarFinalizados = document.getElementById('remover-finalizados');
+function apagarListaFinalziados() {
+  let itemListaTarefaConcluida = document.querySelectorAll('.completed');
+  let index = '0';
+  for (index of itemListaTarefaConcluida) {
+    index.remove();
+  }
+}
+buttonApagarFinalizados.addEventListener('click', apagarListaFinalziados);
