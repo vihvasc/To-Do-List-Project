@@ -3,6 +3,7 @@ const inputText = document.getElementById('texto-tarefa');
 const taskList = document.getElementById('lista-tarefas');
 
 button.addEventListener('click', addNewTask)
+taskList.addEventListener('click', changeBackgroundColor)
 
 function addNewTask() {
     let novaTarefa = document.createElement('li');
@@ -11,4 +12,8 @@ function addNewTask() {
         taskList.appendChild(novaTarefa)
         inputText.value = '';
   }
+}
+
+function changeBackgroundColor(event) {
+    event.target.style.backgroundColor = 'rgb(128,128,128)';
 }
