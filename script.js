@@ -24,11 +24,6 @@ function changeBackgroundColor(e){
         }
         e.target.classList.add('selected');
         e.target.style.backgroundColor = 'rgb(128, 128, 128)';
-
-        if (elementSelected) {
-            elementSelected.classList.remove('selected');
-            elementSelected.style.backgroundColor = 'white';
-        }
     }
 }
 getOl.addEventListener('click', changeBackgroundColor);
