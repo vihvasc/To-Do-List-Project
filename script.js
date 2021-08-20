@@ -2,7 +2,6 @@ const tarefas = [];
 const button = document.querySelector('#criar-tarefa');
 const listaTarefas = document.querySelector('#lista-tarefas');
 
-
 function handleTarefas() {
   const size = tarefas.length - 1;
   const novaTarefa = tarefas[size];
@@ -28,5 +27,15 @@ function greyClick(event) {
   }
 }
 
+function lineThrough(event) {
+  const completed = document.querySelector('.completed');
+  if (!completed) {
+    event.target.classList.add('completed');
+  } else {
+    event.target.classList.remove('completed');
+  }
+}
+
 button.addEventListener('click', handleButton);
 listaTarefas.addEventListener('click', greyClick);
+listaTarefas.addEventListener('dblclick', lineThrough)
