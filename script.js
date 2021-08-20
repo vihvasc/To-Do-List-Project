@@ -33,7 +33,7 @@ createParagraph();
 function createListItem() {
   const listItem = document.createElement('li');
   listItem.innerHTML = `${input.value}`;
-  listItem.classList.add('list-item', 'list-group-item');
+  listItem.classList.add('list-item', 'list-group-item', 'mb-1');
   ol.appendChild(listItem);
   input.value = '';
 }
