@@ -2,7 +2,7 @@ let recebe_info = document.getElementById('texto-tarefa');
 
 
 document.getElementById('criar-tarefa').addEventListener('click', function() {
-    var li = document.createElement('li')
+    let li = document.createElement('li')
     let li_lista = document.getElementsByTagName('li');
     
     li.addEventListener('click', function(){
@@ -12,6 +12,21 @@ document.getElementById('criar-tarefa').addEventListener('click', function() {
         }
     })
 
+    li.addEventListener('dblclick', function() {
+
+        li.classList.add('completed');
+        let lista_riscada = document.getElementsByClassName('completed');
+        for (let index=0; index < lista_riscada.length;index+=1) {
+            lista_riscada[index].addEventListener('dblclick', function(){
+                lista_riscada[index].classList.remove('completed')
+            })
+        }
+        
+        
+        
+    })
+
+    
     //coloca 'li' como filho do 'ol':
     let lista_ordenada = document.getElementById('lista-tarefas');
     lista_ordenada.appendChild(li)
@@ -20,3 +35,4 @@ document.getElementById('criar-tarefa').addEventListener('click', function() {
     recebe_info.value=''
 
 })
+
