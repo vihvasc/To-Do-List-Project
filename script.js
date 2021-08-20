@@ -8,20 +8,13 @@ function addNewTask() {
   const addButton = document.querySelector('#criar-tarefa');
   const getInputField = document.querySelector('#task-input');
   getInputField.id = 'texto-tarefa';
-  const getTask = document.querySelector('#texto-tarefa');
 
   addButton.addEventListener('click', function () {
     const newLine = document.createElement('li');
     newLine.innerText = getInputField.value;
-    newLine.className = 'newTask unSelected unCompleted'
+    newLine.className = 'newTask unSelected unCompleted';
     newList.appendChild(newLine); 
     getInputField.value = '';
-
-    // selectTask();
-    // unSelectTask();
-    // choice();
-    // completedTask();
-    // unCompletedTask();
   }); 
 }
 addNewTask();
@@ -35,9 +28,7 @@ function selectTask(event) {
     event.target.classList.remove('selected');
   }
 }
-
 newList.addEventListener('click', selectTask);
-
 
 function completedTask(event) {
   if (event.target.classList.contains('unCompleted')) {
@@ -47,8 +38,17 @@ function completedTask(event) {
     event.target.classList.add('unCompleted');
     event.target.classList.remove('completed');
   }
-    // })
-  // index ++;
+}
+newList.addEventListener('dblclick', completedTask);
+
+
+function clearTasks() {
+  const addButton = document.querySelector('#apaga-tudo');
+  const tasks = document.getElementsByTagName('li');
+  addButton.addEventListener('click', function () {
+    let allTasks = document.getElementsByTagName('li');
+    newList.remove(allTasks);
+  })
 }
 
-newList.addEventListener('dblclick', completedTask);
+clearTasks();
