@@ -1,7 +1,8 @@
-const addButton = document.getElementById('criar-tarefa'); //botao
-const addInput = document.getElementById('texto-tarefa'); // input
-const listOrd = document.getElementById('lista-tarefas');//lista ordenada
-const taskCreate = document.getElementsByTagName('li');//listas das tarefas criadas
+const addButton = document.getElementById('criar-tarefa');
+const addInput = document.getElementById('texto-tarefa'); 
+const listOrd = document.getElementById('lista-tarefas');
+const taskCreate = document.getElementsByTagName('li');
+const clearFinalist = document.getElementById('remover-finalizados');
 
 function inputTask() {
   addButton.addEventListener('click', function () {
@@ -44,4 +45,15 @@ function styleLine(event) {
 function clearList(){
   location.reload();
 }
+
+function removeThrough(){
+  const throughClear = document.querySelectorAll('.completed');
+
+  for(let deletThrough of throughClear){
+    deletThrough.remove();
+  }
+}
+clearFinalist.addEventListener('click', removeThrough);
+
+
 
