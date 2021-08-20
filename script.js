@@ -2,8 +2,8 @@ const button = document.getElementById('criar-tarefa');
 const inputText = document.getElementById('texto-tarefa');
 const taskList = document.getElementById('lista-tarefas');
 
-button.addEventListener('click', addNewTask)
-taskList.addEventListener('click', changeBackgroundColor)
+button.addEventListener('click', addNewTask);s
+taskList.addEventListener('click', selectItem);
 
 function addNewTask() {
     let novaTarefa = document.createElement('li');
@@ -14,6 +14,14 @@ function addNewTask() {
   }
 }
 
-function changeBackgroundColor(event) {
-    event.target.style.backgroundColor = 'rgb(128,128,128)';
-}
+//Consultei o repositório do Jessé Benevides para resolver esse requisito. Link: https://github.com/tryber/sd-015-b-project-todo-list/pull/107/commits/46afca6df32219c4180238eaf640bb5afdbd0f2f
+
+function selectItem(event) {
+    let selected = document.querySelector('.selected');
+  
+    if (selected && selected !== event.target) {
+      selected.classList.remove('selected');
+    }
+  
+    event.target.classList.toggle('selected');
+  }
