@@ -5,6 +5,8 @@ window.onload = function () {
   clearAll();
   clearCompletedTasks();
   saveList();
+  moveListItems();
+  removeSelected();
 };
 
 function createAndAddTask() {
@@ -93,5 +95,56 @@ function saveList() {
 
   function save() {
     localStorage.setItem('list', taskList.innerHTML);
+  }
+}
+
+function moveListItems() {
+  let buttonUp = document.querySelector('#mover-cima');
+  let buttonDown = document.querySelector('#mover-baixo');
+  let taskList = document.querySelector('#lista-tarefas');
+
+  buttonUp.addEventListener('click', moveUp);
+  buttonDown.addEventListener('click', moveDown);
+
+  function moveUp() {
+    if (document.querySelector('.gray-list-item') == null) {
+      return;
+    }
+
+    let upItem =
+      document.querySelector('.gray-list-item').previousElementSibling;
+    let selected = document.querySelector('.gray-list-item');
+
+    if (upItem == null) {
+      return;
+    }
+
+    upItem.insertAdjacentElement('beforebegin', selected);
+  }
+
+  function moveDown() {
+    if (document.querySelector('.gray-list-item') == null) {
+      return;
+    }
+
+    let downItem = document.querySelector('.gray-list-item').nextElementSibling;
+    let selected = document.querySelector('.gray-list-item');
+
+    if (downItem == null) {
+      return;
+    }
+
+    downItem.insertAdjacentElement('afterend', selected);
+  }
+}
+
+function removeSelected() {
+  let button = document.querySelector('#remover-selecionado');
+
+  button.addEventListener('click', removeItemSelected);
+
+  function removeItemSelected() {
+    let selected = document.querySelector('.gray-list-item');
+    selected.remove();
   }
 }
