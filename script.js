@@ -20,5 +20,12 @@ function clickChange(event) {
   event.target.classList.add('greySelected');
 }
 
+function riskTask(event) {
+  if (event.target.classList.contains('completed')) {
+    event.target.classList.remove('completed');
+  } else event.target.classList.add('completed');
+}
+
 creatTask.addEventListener('click', addItem);
 list.addEventListener('click', clickChange);
+list.addEventListener('dblclick', riskTask);
