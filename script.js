@@ -9,13 +9,13 @@ function addNewTask() {
   const getInputField = document.querySelector('#task-input');
   getInputField.id = 'texto-tarefa';
 
-  addButton.addEventListener('click', function () {
+  addButton.addEventListener('click', () => {
     const newLine = document.createElement('li');
     newLine.innerText = getInputField.value;
     newLine.className = 'newTask unSelected unCompleted';
-    newList.appendChild(newLine); 
+    newList.appendChild(newLine);
     getInputField.value = '';
-  }); 
+  });
 }
 addNewTask();
 
@@ -41,14 +41,12 @@ function completedTask(event) {
 }
 newList.addEventListener('dblclick', completedTask);
 
-
 function clearTasks() {
   const addButton = document.querySelector('#apaga-tudo');
-  const tasks = document.getElementsByTagName('li');
-  addButton.addEventListener('click', function () {
-    let allTasks = document.getElementsByTagName('li');
+  addButton.addEventListener('click', () => {
+    const allTasks = document.getElementsByTagName('li');
     newList.remove(allTasks);
-  })
+  });
 }
 
 clearTasks();

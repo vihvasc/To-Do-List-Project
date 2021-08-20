@@ -1,14 +1,9 @@
-#funcionamento {
-  color: red;
-  background-color: yellow;
-}
-
 .completed {
   text-decoration: line-through;
 }
 
 .selected {
-  background-color: rgb(128, 128, 128);
+  background-color: rgb(128,128,128);
 }
 
 .unSelected {
