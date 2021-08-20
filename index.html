@@ -4,25 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>To-do List</title>
 </head>
 <body>
-    <header id="header"></header>
+    <header id="header" class="container text-center"></header>
 
-    <section id="user-area">
-        <input id="texto-tarefa" type="text" placeholder="Adicione uma tarefa">
-        <button id="criar-tarefa">Criar Tarefa</button>
-        <button id="apaga-tudo">Apagar Tudo</button>
-        <button id="remover-finalizados">Remove Tasks Finalizadas</button>
-        <button id="salvar-tarefas">Salvar Tarefas</button>
-        <button id="mover-cima">Up</button>
-        <button id="mover-baixo">Down</button>
-        <button id="remover-selecionado">Remover Selecionado</button>
+    <section id="user-area" class="container text-center">
+        <input class="input-user" id="texto-tarefa" type="text" placeholder="Ex: Estudar">
+        <button class="btn btn-outline-secondary" id="criar-tarefa">Criar Tarefa</button>
+        <button class="btn btn-outline-secondary" id="apaga-tudo">Apagar Tudo</button>
+        <button class="btn btn-outline-secondary" id="remover-finalizados">Remove Tasks Finalizadas</button>
+        <button class="btn btn-outline-secondary" id="salvar-tarefas">Salvar Tarefas</button>
+        <button class="btn btn-outline-secondary" id="mover-cima">Up</button>
+        <button class="btn btn-outline-secondary" id="mover-baixo">Down</button>
+        <button class="btn btn-outline-secondary" id="remover-selecionado">Remover Selecionado</button>
     </section>
 
-    <section id="tasks">
-        <ol id="lista-tarefas"></ol>
+    <section id="tasks" class="container text-left">
+        <ol id="lista-tarefas" class="list-group list-group-flush mb-5"></ol>
     </section>
     
     <script src="script.js"></script>

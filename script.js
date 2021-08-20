@@ -13,6 +13,7 @@ const listItens = document.getElementsByClassName('list-item');
 function createTitle() {
   const title = document.createElement('h1');
   title.innerHTML = 'Minha Lista de Tarefas';
+  title.classList.add('display-1')
   header.appendChild(title);
 }
 
@@ -22,6 +23,7 @@ function createParagraph() {
   const paragraph = document.createElement('p');
   paragraph.id = 'funcionamento';
   paragraph.innerHTML = 'Clique duas vezes em um item para marcá-lo como completo';
+  paragraph.classList.add('lead');
   header.appendChild(paragraph);
 }
 
@@ -31,7 +33,7 @@ createParagraph();
 function createListItem() {
   const listItem = document.createElement('li');
   listItem.innerHTML = `${input.value}`;
-  listItem.classList.add('list-item');
+  listItem.classList.add('list-item', 'list-group-item');
   ol.appendChild(listItem);
   input.value = '';
 }

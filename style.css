@@ -1,7 +1,18 @@
+body {
+    background-color: #19bec3;
+}
+
 .completed {
     text-decoration: line-through solid rgb(0, 0, 0);
 }
 
 .target {
     background-color: rgb(128, 128, 128);
+}
+
+.input-user {
+    border-radius: 5px;
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
 }
