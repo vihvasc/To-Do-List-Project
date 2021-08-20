@@ -96,17 +96,14 @@ window.onload = function() {
 
 function moveUp() {
     let getClassSelected = document.querySelector('.selected');
-    let getOl1 = document.querySelectorAll('#lista-tarefas');
+    let getOl1 = document.querySelector('#lista-tarefas');
 
     if (getClassSelected) {
         let selectedPreviousSibling = getClassSelected.previousElementSibling;
-        console.log(getClassSelected);
-        for (let i = 0; i < getOl1.length; i += 1) {
-         if (selectedPreviousSibling === null) {
-         } else {
-         getOl1[i].insertBefore(getClassSelected, selectedPreviousSibling);
-         }
-     }
+    if (selectedPreviousSibling === null) {
+    } else {
+         getOl1.insertBefore(getClassSelected, selectedPreviousSibling);
+    }
     }
 }
 function buttonMoveUp() {
@@ -117,21 +114,18 @@ buttonMoveUp()
 
 function moveDown() {
     let getClassSelected1 = document.querySelector('.selected');
-    let getOl2 = document.querySelectorAll('#lista-tarefas');
+    let getOl2 = document.querySelector('#lista-tarefas');
 
     if (getClassSelected1) {
         let selectedNextSibling = getClassSelected1.nextElementSibling;
-        for (let i = 0; i < getOl2.length; i += 1) {
-            if (selectedNextSibling === null){
-            } else {
-            getOl2[i].insertBefore(selectedNextSibling ,getClassSelected1);
-            console.log(getOl2[i]);
-            }
-        }
+    if (selectedNextSibling === null){
+    } else {
+        getOl2.insertBefore(selectedNextSibling ,getClassSelected1);
+    }
     }
 }
 function buttonMoveDown() {
     let = getButtonMoveDown = document.getElementById('mover-baixo');
     getButtonMoveDown.addEventListener('click', moveDown)
 }
-buttonMoveDown()
+buttonMoveDown() 
