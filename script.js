@@ -84,18 +84,30 @@ function getSavedList() {
   };
 }
 function moveUp() {
-  
-}
-function moveDonw() {
-
+  let itemDaLista = document.querySelector('.selected');
+  if(!itemDaLista) {
+    return;
+  }
+  if (itemDaLista.previousElementSibling) {
+  itemDaLista.parentNode.insertBefore(itemDaLista, itemDaLista.previousElementSibling);
+  }
 }
 function buttonUp() {
   const btnUp = document.getElementById('mover-cima');
   btnUp.addEventListener('click', moveUp);
 }
+function moveDown() {
+  let itemDaLista = document.querySelector('.selected');
+  if(!itemDaLista) {
+    return;
+  }
+  if (itemDaLista.nextElementSibling) {
+    itemDaLista.parentNode.insertBefore(itemDaLista.nextElementSibling, itemDaLista);
+  }
+}
 function buttonDown() {
   const btnDown = document.getElementById('mover-baixo');
-  btnUp.addEventListener('click', moveDown);
+  btnDown.addEventListener('click', moveDown);
 }
 function criaListaTarefas() {
   geraItemList();
@@ -104,5 +116,7 @@ function criaListaTarefas() {
   generateDeleteSelected();
   buttonSaveList();
   getSavedList();
+  buttonUp();
+  buttonDown();
 }
 window.onload = criaListaTarefas;
