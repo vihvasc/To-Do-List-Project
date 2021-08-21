@@ -89,9 +89,9 @@ function saveTasks() {
   if (tasks !== null) {
     for (let task = 0; task < tasks.length; task += 1) {
       const currentTasks = tasks[task];
-      const objStoreTask = { 
+      const objStoreTask = {
         task: currentTasks.innerText,
-        class: currentTasks.className
+        class: currentTasks.className,
       };
       storedTasks.push(objStoreTask);
     }
