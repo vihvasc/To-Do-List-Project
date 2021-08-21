@@ -22,10 +22,18 @@ section.appendChild(input)
 
 const btnInserir = document.createElement('button')
 btnInserir.innerText = 'Inserir'
+btnInserir.style.backgroundColor = 'green'
 btnInserir.className = 'btn'
 btnInserir.id = 'criar-tarefa'
 section.appendChild(btnInserir)
 
+const btnApagar = document.createElement('button')
+btnApagar.id = 'apaga-tudo'
+btnApagar.innerText = 'Apagar'
+btnApagar.className = 'btn'
+btnApagar.style.backgroundColor = 'red'
+btnApagar.addEventListener('click', apagao)
+section.appendChild(btnApagar)
 
 btnInserir.addEventListener('click', function(){
     if(input.value === ''){
@@ -38,15 +46,32 @@ btnInserir.addEventListener('click', function(){
 function inserir(){
     let item = document.createElement('li')
     item.innerText = input.value
+    item.addEventListener('dblclick', completed)
     item.addEventListener('click', function() {
         let selected = document.querySelector('.selected')
         if(selected === null){
-            item.className = 'selected'
+            item.classList.add('selected')
         } else {
             selected.classList.remove('selected')
-            item.className = 'selected'
+            item.classList.add('selected')
         }
     })
     list.appendChild(item)
     input.value = ''
+}
+
+function completed(event){
+
+    if(event.target.classList === 'completed'){
+        event.target.classList.remove('completed')
+    } else {
+    event.target.classList.add('completed');
+    }
+}
+
+function apagao(){
+    let tudo = document.querySelectorAll('li')
+    for(let index of tudo){
+        list.removeChild(index)
+    }
 }
