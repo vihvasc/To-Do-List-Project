@@ -1,14 +1,29 @@
-let recebe_info = document.getElementById('texto-tarefa');
+let input = document.querySelector('#texto-tarefa');
+let button = document.querySelector('#criar-tarefa');
+let list = document.querySelector('#lista-tarefas');
 
+function createListItem() {
+    if (input.value !== '') {
+        let li = document.createElement('li');
+        li.innerHTML = input.value;
+        list.appendChild(li);
+        input.value = '';
+    }
+}
 
-document.getElementById('criar-tarefa').addEventListener('click', function() {
-    let li = document.createElement('li');
-    li.addEventListener('click', function(){
-        li.style.backgroundColor = 'rgb(128,128,128)'
-    })
-    let lista_ordenada = document.getElementById('lista-tarefas');
-    lista_ordenada.appendChild(li)
-    li.innerText = recebe_info.value
-    recebe_info.value=''
-    li.classList.add('linha')
-})
+function selectItem(event) {
+    let listItens = document.querySelectorAll('li');
+    for (let index = 0; index < listItens.length; index += 1) {
+        listItens[index].style.backgroundColor = 'white';
+    }
+    event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+}
+
+//function clearItem(event) {
+    //let 
+//}
+
+window.onload = function init() {
+    button.addEventListener('click', createListItem);
+    list.addEventListener('click', selectItem);
+}
