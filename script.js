@@ -32,18 +32,6 @@ function selectTask(event) {
 }
 newList.addEventListener('click', selectTask);
 
-// - BACKUP - BACKUP - BACKUP - BACKUP - BACKUP - BACKUP - BACKUP - BACKUP 
-// function selectTask(event) {
-//   if (event.target.classList.contains('unSelected')) {
-//     event.target.classList.add('selected');
-//     event.target.classList.remove('unSelected');
-//   } else {
-//     event.target.classList.add('unSelected');
-//     event.target.classList.remove('selected');
-//   }
-// }
-// newList.addEventListener('click', selectTask);
-
 function completedTask(event) {
   if (event.target.classList.contains('unCompleted')) {
     event.target.classList.add('completed');
