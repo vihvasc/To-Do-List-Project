@@ -3,14 +3,6 @@ const input = document.getElementById('texto-tarefa');
 const taskList = document.getElementById('lista-tarefas');
 const tasks = document.getElementsByTagName('li');
 
-function createButton(buttonId, buttonText, insertInsideId) {
-  const createButton = document.createElement('button');
-  createButton.id = buttonId;
-  createButton.innerText = buttonText;
-  createButton.style.marginLeft = '5px';
-  body.insertBefore(createButton, document.getElementById(insertInsideId));
-}
-
 function addClass(event) {
   const selectedClass = document.querySelector('.selected');
   if (selectedClass) {
@@ -48,6 +40,14 @@ function checkEnterPressed(event) {
   if (event.key === 'Enter') {
     addTask();
   }
+}
+
+function createButton(buttonId, buttonText, insertInsideId) {
+  const createButton = document.createElement('button');
+  createButton.id = buttonId;
+  createButton.innerText = buttonText;
+  createButton.style.marginLeft = '5px';
+  body.insertBefore(createButton, document.getElementById(insertInsideId));
 }
 
 function createTaskButton() {
