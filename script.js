@@ -13,9 +13,9 @@ function createButton(buttonId, buttonText, insertInsideId) {
 
 function addTask() {
   const createLi = document.createElement('li');
-  // if (input.value === '') {
-  //     return alert('Favor inserir um nome válido para a tarefa!');
-  //   }
+  if (input.value === '') {
+      return alert('Favor inserir um nome válido para a tarefa!');
+    }
   createLi.innerText = input.value;
   createLi.classList.add('tarefa');
   createLi.addEventListener('click', addClass);
@@ -62,7 +62,7 @@ function eraseAll() {
   for (let task = 0; task < createdTasks.length; task += 1) {
     createdTasks[task].remove();
   }
-  localStorage.removeItem('storedTasks');
+  localStorage.removeItem('storedTask');
 }
 
 function createEraseAllButton() {
@@ -90,33 +90,14 @@ function createSaveTasksButton() {
   salvarTarefas.addEventListener('click', saveTasks);
 }
 
-function removeSelected() {
-  let selectedTask = document.querySelectorAll('.selected');
-  for (let task = 0; task < selectedTask.length; task += 1) {
-    selectedTask[task].remove();
-  }
-}
-
-function createRemoveSelectedButton() {
-  createButton('remover-selecionado', 'Remover Selecionado', 'lista-tarefas');
-  const removerSelecionado = document.getElementById('remover-selecionado');
-  removerSelecionado.addEventListener('click', removeSelected);
-}
-
-createTaskButton();
-createSaveTasksButton();
-createEraseAllButton();
-createRemoveFinishedButton();
-createRemoveSelectedButton();
-
 function saveTasks() {
   let storedTasks = [];
   if (tasks !== null) {
     for (let task = 0; task < tasks.length; task += 1) {
       const currentTasks = tasks[task];
       let objStoreTask = { 
-      task: currentTasks.innerText,
-      class: currentTasks.className
+        task: currentTasks.innerText,
+        class: currentTasks.className
       }
       storedTasks.push(objStoreTask);
     }
@@ -139,4 +120,54 @@ function getTasks() {
   }
 }
 
+function createMoveUpButton() {
+  createButton('mover-cima', '🔺', 'lista-tarefas');
+  const moverCima = document.getElementById('mover-cima');
+  moverCima.addEventListener('click', moveUp);
+}
+
+function createMoveDownButton() {
+  createButton('mover-baixo', '🔻', 'lista-tarefas');
+  const moverBaixo = document.getElementById('mover-baixo');
+  moverBaixo.addEventListener('click', moveDown);
+}
+
+
+function moveUp() {
+  for (let task = 0; task < tasks.length; task += 1) {
+    if (tasks[task].classList.contains('selected') && task > 0) {
+      taskList.insertBefore(tasks[task], tasks[task - 1]);
+    }
+  }
+}
+
+function moveDown() {
+  for (let task = 0; task < tasks.length; task += 1) {
+    if (tasks[task].classList.contains('selected') && task < (tasks.length - 1)) {
+      taskList.insertBefore(tasks[task], tasks[task + 2]);
+      return;
+    }
+  }
+}
+
+function removeSelected() {
+  let selectedTask = document.querySelectorAll('.selected');
+  for (let task = 0; task < selectedTask.length; task += 1) {
+    selectedTask[task].remove();
+  }
+}
+
+function createRemoveSelectedButton() {
+  createButton('remover-selecionado', 'Remover Selecionado', 'lista-tarefas');
+  const removerSelecionado = document.getElementById('remover-selecionado');
+  removerSelecionado.addEventListener('click', removeSelected);
+}
+
+createTaskButton();
+createSaveTasksButton();
+createEraseAllButton();
+createMoveUpButton();
+createMoveDownButton();
+createRemoveFinishedButton();
+createRemoveSelectedButton();
 window.addEventListener('load', getTasks);
