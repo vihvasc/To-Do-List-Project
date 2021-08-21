@@ -48,5 +48,17 @@ function clearTasks() {
     newList.remove(allTasks);
   });
 }
-
 clearTasks();
+
+function clearCompleted() {
+  const addButton = document.querySelector('#remover-finalizados');
+  addButton.addEventListener('click', () => {
+    const allCompletedTask = document.querySelectorAll('.completed');
+    for (let index = 0; index < allCompletedTask.length; index += 1) {
+      console.log(allCompletedTask[index]);
+      newList.removeChild(allCompletedTask[index]);
+    }
+  });
+}
+
+clearCompleted();
