@@ -1,11 +1,13 @@
 function changeLiColor (receivedEvent) {
   const tasksList = document.querySelectorAll('#lista-tarefas> *');
   const element = receivedEvent.target;
-  const currentColor = getComputedStyle(receivedEvent.target).getPropertyValue('background-color');
-  for (let index = 0; index < tasksList.length; index += 1) {
-    tasksList[index].style.backgroundColor = ''; 
+  const classOfElement = element.classList;
+  for (index = 0; index < tasksList.length; index += 1) {
+    if (tasksList[index] !== element) {
+      tasksList[index].classList.remove('selected');
+    }
   }
-  (currentColor !== 'rgb(128, 128, 128)') ? element.style.backgroundColor = 'rgb(128, 128, 128)' : element.style.backgroundColor = '';
+  (classOfElement.contains('selected')) ? element.classList.remove('selected') : element.classList.add('selected');  
 }
 
 function createTask() {
@@ -96,3 +98,34 @@ function loadTaskList () {
 }
  
 loadTaskList();
+
+function moveUp () {
+  const listOfTasks = document.querySelectorAll('#lista-tarefas *');
+  const moveUpButton = document.getElementById('mover-cima');
+  moveUpButton.addEventListener('click', () => {
+    const taskSelected = document.querySelector('.selected');
+    if (!taskSelected) return;
+    if (taskSelected.previousSibling) {
+      taskSelected.parentNode.insertBefore(taskSelected, taskSelected.previousSibling);
+    }
+  });
+}
+
+moveUp();
+
+function moveDown () {
+  const listOfTasks = document.querySelectorAll('#lista-tarefas *');
+  const tasksInArray = Array.from(listOfTasks);
+  const moveDownButton = document.getElementById('mover-baixo');
+
+  
+  moveDownButton.addEventListener('click', () => {
+    const taskSelected = document.querySelector('.selected');
+    if (!taskSelected) return;
+    if (taskSelected.nextSibling) {
+     taskSelected.parentNode.insertBefore(taskSelected.nextSibling, taskSelected);
+  }
+  });
+}
+
+moveDown();
