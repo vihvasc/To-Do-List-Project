@@ -121,3 +121,62 @@ function criarBotaoApagaFinalizados() {
   novoBotao.addEventListener('click', apagarElementosFinalizados);
 }
 criarBotaoApagaFinalizados();
+
+// 13 - Adicione dois botões, um com id="mover-cima" e outro com id="mover-baixo", que permitam mover o item selecionado para cima ou para baixo na lista de tarefas
+function moverParaCima() {
+  let elementoSelecionado = document.getElementsByClassName('selected')[0];
+  let elementosLista = document.getElementsByClassName('elemento-lista');
+  const tamanhoLista = elementosLista.length;
+  if (tamanhoLista > 0) {
+    for (let index = 0; index < tamanhoLista; index += 1) {
+      if(index !== 0 && elementoSelecionado === elementosLista[index]) {
+        let ajuda = elementosLista[index-1].innerText;
+        elementosLista[index - 1].innerText = elementoSelecionado.innerText;
+        elementoSelecionado.innerText = ajuda;
+        elementoSelecionado.classList.remove('selected');
+        elementoSelecionado.style.backgroundColor = '#FFFFFF';
+        elementosLista[index - 1].classList.add('selected');
+        elementosLista[index - 1].style.backgroundColor = 'rgb(128, 128, 128)';
+      }
+     }
+  }
+}
+
+function criarBotaoMoverParaCima() {
+  const novoBotao = document.createElement('button');
+  novoBotao.id = 'mover-cima';
+  novoBotao.innerText = 'Mover Para Cima';
+  document.body.appendChild(novoBotao);
+
+  novoBotao.addEventListener('click', moverParaCima);
+}
+criarBotaoMoverParaCima();
+
+function moverParaBaixo() {
+  let elementoSelecionado = document.getElementsByClassName('selected')[0];
+  let elementosLista = document.getElementsByClassName('elemento-lista');
+  const tamanhoLista = elementosLista.length;
+  if (tamanhoLista > 0) {
+    for (let index = 0; index < tamanhoLista; index += 1) {
+      if(index !== tamanhoLista - 1 && elementoSelecionado === elementosLista[index]) {
+        let ajuda = elementosLista[index + 1].innerText;
+        elementosLista[index + 1].innerText = elementoSelecionado.innerText;
+        elementoSelecionado.innerText = ajuda;
+        elementoSelecionado.classList.remove('selected');
+        elementoSelecionado.style.backgroundColor = '#FFFFFF';
+        elementosLista[index + 1].classList.add('selected');
+        elementosLista[index + 1].style.backgroundColor = 'rgb(128, 128, 128)';
+      }
+     }
+  }
+}
+
+function criarBotaoMoverParaBaixo() {
+  const novoBotao = document.createElement('button');
+  novoBotao.id = 'mover-baixo';
+  novoBotao.innerText = 'Mover Para Baixo';
+  document.body.appendChild(novoBotao);
+
+  novoBotao.addEventListener('click', moverParaBaixo);
+}
+criarBotaoMoverParaBaixo();
