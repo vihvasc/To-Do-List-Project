@@ -12,3 +12,14 @@
   background-color: rgb(212, 201, 201);
   }
 
+  #funcionamento {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    font-size: 16px;
+    font-family: 'Gloria Hallelujah';
+    color: rgb(100, 96, 96);
+    background-color: rgb(212, 201, 201);
+    border-radius: 7px;
+  }
+  
