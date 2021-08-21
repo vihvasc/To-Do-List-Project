@@ -20,15 +20,29 @@ function addNewTask() {
 addNewTask();
 
 function selectTask(event) {
-  if (event.target.classList.contains('unSelected')) {
-    event.target.classList.add('selected');
-    event.target.classList.remove('unSelected');
-  } else {
-    event.target.classList.add('unSelected');
-    event.target.classList.remove('selected');
+  const allTasks = document.getElementsByClassName('newTask');
+  for (let index = 0; index < allTasks.length; index += 1) {
+    allTasks[index].classList.add('unSelected');
+    allTasks[index].classList.remove('selected');
+    if (event.target.classList.contains('unSelected')) {
+      event.target.classList.add('selected');
+      event.target.classList.remove('unSelected');
+    }
   }
 }
 newList.addEventListener('click', selectTask);
+
+// - BACKUP - BACKUP - BACKUP - BACKUP - BACKUP - BACKUP - BACKUP - BACKUP 
+// function selectTask(event) {
+//   if (event.target.classList.contains('unSelected')) {
+//     event.target.classList.add('selected');
+//     event.target.classList.remove('unSelected');
+//   } else {
+//     event.target.classList.add('unSelected');
+//     event.target.classList.remove('selected');
+//   }
+// }
+// newList.addEventListener('click', selectTask);
 
 function completedTask(event) {
   if (event.target.classList.contains('unCompleted')) {
@@ -55,12 +69,10 @@ function clearCompleted() {
   addButton.addEventListener('click', () => {
     const allCompletedTask = document.querySelectorAll('.completed');
     for (let index = 0; index < allCompletedTask.length; index += 1) {
-      console.log(allCompletedTask[index]);
       newList.removeChild(allCompletedTask[index]);
     }
   });
 }
-
 clearCompleted();
 
 function removeSelected() {
@@ -68,10 +80,8 @@ function removeSelected() {
   addButton.addEventListener('click', () => {
     const allSelectedTask = document.querySelectorAll('.selected');
     for (let index = 0; index < allSelectedTask.length; index += 1) {
-      console.log(allSelectedTask[index]);
       newList.removeChild(allSelectedTask[index]);
     }
   });
 }
-
 removeSelected();
