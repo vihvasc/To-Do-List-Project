@@ -11,6 +11,10 @@ header , p {
   text-align: center;
 }
 
+p {
+  margin: 10px 10px;
+}
+
 header {
   background-color: lightcoral;
   color: white;
@@ -18,16 +22,17 @@ header {
   font-weight: 900;
 }
 
-p , input , button , ol {
-  margin: 10px;
-}
-
 input {
   width: 300px;
+  margin: 10px 10px;
 }
 
 ol {
   list-style-position: inside;
+}
+
+.selected {
+  background-color: rgb(128, 128, 128);
 }
 
 .completed {
