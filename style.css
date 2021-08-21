@@ -3,11 +3,13 @@ body{
 }
 
 .btn{
+
     border-radius: 50%;
     width: 10%;
     padding: 4px;
     text-align: center;
-
+    margin-bottom: 10px;
+    margin-left: 5px;
 }
 
 #section{
@@ -30,4 +32,10 @@ body{
 
 p {
     font-style: italic;
+}
+
+#texto-tarefa {
+    display: block;
+    margin: auto auto;
+    margin-bottom: 15px;
 }

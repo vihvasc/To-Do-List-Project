@@ -35,6 +35,14 @@ btnApagar.style.backgroundColor = 'red'
 btnApagar.addEventListener('click', apagao)
 section.appendChild(btnApagar)
 
+const btnFinalizado = document.createElement('button')
+btnFinalizado.id = 'remover-finalizados'
+btnFinalizado.innerText = 'finalizado'
+btnFinalizado.className = 'btn'
+btnFinalizado.style.backgroundColor = 'yellow'
+btnFinalizado.addEventListener('click', finalizados)
+section.appendChild(btnFinalizado)
+
 btnInserir.addEventListener('click', function(){
     if(input.value === ''){
         alert('Digite uma tarefa válida!')
@@ -74,4 +82,10 @@ function apagao(){
     for(let index of tudo){
         list.removeChild(index)
     }
+}
+
+function finalizados(){
+    let finalizados = document.querySelectorAll('.completed')
+    for (let index of finalizados)
+    list.removeChild(index)
 }
