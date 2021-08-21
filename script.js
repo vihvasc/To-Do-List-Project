@@ -78,4 +78,24 @@ function riscarElemento(event) {
     elementoDblClick.style.textDecoration = 'line-through solid rgb(0, 0, 0)';
     elementoDblClick.classList.add('completed');
   }
-  }
+}
+
+// 10 - Adicione um botão com id="apaga-tudo" que quando clicado deve apagar todos os itens da lista
+function apagarTodosElementos() {
+  let elementosLista = document.getElementsByClassName('elemento-lista');
+  let listaAtual = document.getElementById('lista-tarefas');
+  const tamanhoLista = elementosLista.length;
+  for (let index = 0; index < tamanhoLista; index += 1) {
+    listaAtual.removeChild(elementosLista[0]);
+   }
+}
+
+function criarBotaoApagaTudo() {
+  const novoBotao = document.createElement('button');
+  novoBotao.id = 'apaga-tudo';
+  novoBotao.innerText = 'Limpa Lista';
+  document.body.appendChild(novoBotao);
+
+  novoBotao.addEventListener('click', apagarTodosElementos);
+}
+criarBotaoApagaTudo();
