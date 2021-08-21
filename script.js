@@ -116,6 +116,18 @@ buttonDown.addEventListener('click', () => {
   }
 });
 
+// Adicionando Requisito 14
+const buttonEraserSelect = document.querySelector('#remover-selecionado');
+buttonEraserSelect.addEventListener('click', () => {
+  const todasListas = document.querySelectorAll('li');
+
+  for (let i = 0; i < todasListas.length; i += 1) {
+    if (todasListas[i] === document.querySelector('.lista[style]')) {
+      todasListas[i].remove();
+    }
+  }
+});
+
 window.onload = function () {
   recuperaLista();
 };
