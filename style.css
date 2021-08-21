@@ -1,6 +1,6 @@
 #contorno {
   border-radius: 7px;
-  background-color: rgb(231, 223, 223); 
+  background-color: rgb(231,223,223);
 }
 
 #titulo {
@@ -9,22 +9,34 @@
   padding: 15px;
   font-size: 25px;
   font-family: 'Gloria Hallelujah';
-  background-color: rgb(212, 201, 201);
-  }
+  background-color: rgb(212,201,201);
+}
 
-  #funcionamento {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    font-size: 16px;
-    font-family: 'Gloria Hallelujah';
-    color: rgb(100, 96, 96);
-    background-color: rgb(212, 201, 201);
-    border-radius: 7px;
-  }
+#funcionamento {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  font-size: 16px;
+  font-family: 'Gloria Hallelujah';
+  color: rgb(100, 96, 96);
+  background-color: rgb(212,201,201);
+  border-radius: 7px;
+}
 
-  #campoTarefa {
-    display: flex;
-    justify-content: center;
-  }
-  
+#campoTarefa {
+  display: flex;
+  justify-content: center;
+}  
+
+#criar-tarefa {
+  padding: 5px;
+  margin: 5px;
+  background-color: rgb(143,111,111);
+  border-color: rgb(143,111,111);
+  color: rgb(231,223,223);
+  border-radius: 5px;
+}
+
+#criar-tarefa:hover {
+  background-color: rgb(129,101,101);
+}
