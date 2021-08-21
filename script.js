@@ -1,6 +1,7 @@
 const button = document.getElementById('criar-tarefa');
 const list = document.getElementById('lista-tarefas');
 const inputValue = document.getElementById('texto-tarefa');
+const clearButton = document.getElementById('apaga-tudo');
 
 button.addEventListener('click', addListItem);
 
@@ -41,4 +42,9 @@ function doneTasks(event) {
   }
 }
 
+function clearAll() {
+  list.innerHTML = '';
+}
+
 list.addEventListener('dblclick', doneTasks);
+clearButton.addEventListener('click', clearAll);
