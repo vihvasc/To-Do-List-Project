@@ -1,0 +1,14 @@
+#contorno {
+  border-radius: 7px;
+  background-color: rgb(231, 223, 223); 
+}
+
+#titulo {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  font-size: 25px;
+  font-family: 'Gloria Hallelujah';
+  background-color: rgb(212, 201, 201);
+  }
+
