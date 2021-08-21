@@ -37,7 +37,6 @@ function criarBotao() {
 
     const novoElementoDaLista = document.createElement('li');
     novoElementoDaLista.addEventListener('click', selecionarElemento);
-    novoElementoDaLista.addEventListener('dblclick', riscarElemento)
     novoElementoDaLista.innerText = textoInput;
     novoElementoDaLista.className = 'elemento-lista';
     listaDeTarefas.appendChild(novoElementoDaLista);
@@ -66,3 +65,4 @@ let elementoClickado = event.target;
 elementoClickado.classList.add('selected')
 elementoClickado.style.backgroundColor = 'rgb(128, 128, 128)';
 }
+
