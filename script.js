@@ -62,3 +62,16 @@ function clearCompleted() {
 }
 
 clearCompleted();
+
+function removeSelected() {
+  const addButton = document.querySelector('#remover-selecionado');
+  addButton.addEventListener('click', () => {
+    const allSelectedTask = document.querySelectorAll('.selected');
+    for (let index = 0; index < allSelectedTask.length; index += 1) {
+      console.log(allSelectedTask[index]);
+      newList.removeChild(allSelectedTask[index]);
+    }
+  });
+}
+
+removeSelected();
