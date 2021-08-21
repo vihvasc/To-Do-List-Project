@@ -1,3 +1,68 @@
 .completed {
   text-decoration: line-through solid black;
 }
+
+.selected {
+  background-color: #0466c8;
+}
+
+body {
+  background-color: #01153b;
+  color: #f1faee;
+  font-family: sans-serif;
+  font-weight: 700;
+  margin: auto 50px;
+}
+
+.home {
+  background-color: #5c677D;
+  border-radius: 10px;
+  padding: 15px 10px 15px 15px;
+  font-size: 20px;
+  margin: 5px;
+  border: 1px solid #dadde4;
+}
+header h1 {
+  font-size: 50px;
+}
+
+#funcionamento {
+  color: #dadde4;
+}
+
+#texto-tarefa {
+  width: 45%;
+  height: 30px;
+  font-size: large;
+  border-radius: 10px;
+}
+
+.button {
+  padding: 5px 10px;
+  display: inline-block;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  color: white;
+  background-color: #0466c8;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px #979dac;
+  margin: 5px 8px;
+}
+
+.button:hover {
+  background-color: #023e7d;
+}
+
+.button:active {
+  background-color: #0466c8;
+  box-shadow: 0 5px #33415c;
+  transform: translateY(3px);
+}
+
+li {
+  background-color: #979dac;
+  border: 1px solid black;
+  padding: 5px;
+}

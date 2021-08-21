@@ -1,3 +1,4 @@
+// Variaveis
 const createTasks = document.querySelector('#criar-tarefa');
 const taskInput = document.querySelector('#texto-tarefa');
 const taskList = document.querySelector('#lista-tarefas');
@@ -6,20 +7,36 @@ const buttonClear = document.querySelector('#apaga-tudo');
 const buttonClearFinalized = document.querySelector('#remover-finalizados');
 const buttonSaveTasks = document.querySelector('#salvar-tarefas');
 
-function removeAllTask() {
-  taskList.innerHTML = '';
+// Funcoes
+// Requisito 5
+function createTask() {
+  const listItem = document.createElement('li');
+
+  listItem.innerHTML = taskInput.value;
+  listItem.classList.add('task');
+  taskList.appendChild(listItem);
+  taskInput.value = '';
 }
 
-function removeFinalized() {
-  const rmCompleted = document.querySelectorAll('li');
-
-  for (let index = 0; index < rmCompleted.length; index += 1) {
-    if (rmCompleted[index].classList.contains('completed')) {
-      rmCompleted[index].remove();
-    }
+// Requisito 7
+function addBackgroundColor(event) {
+  const elemento = event.target;
+  if (elemento.style.backgroundColor === '') {
+    elemento.style.backgroundColor = 'rgb(128, 128, 128)';
   }
 }
 
+// Requisito 8
+function removeBackgroundColor(event) {
+  for (let index = 0; index < taskItem.length; index += 1) {
+    if (taskItem[index].style.backgroundColor === 'rgb(128, 128, 128)') {
+      taskItem[index].style.backgroundColor = '';
+    }
+  }
+  addBackgroundColor(event);
+}
+
+// Requisito 9
 function doubleClick(event) {
   const elemento = event.target;
 
@@ -30,32 +47,24 @@ function doubleClick(event) {
   }
 }
 
-function createTask() {
-  const listItem = document.createElement('li');
-
-  listItem.innerHTML = taskInput.value;
-  listItem.classList.add('task');
-  taskList.appendChild(listItem);
-  taskInput.value = '';
-  taskList.addEventListener('dblclick', doubleClick);
+// Requisito 10 botão remove todas as tarefas
+function removeAllTask() {
+  taskList.innerHTML = '';
 }
 
-function addBackgroundColor(event) {
-  const elemento = event.target;
-  if (elemento.style.backgroundColor === '') {
-    elemento.style.backgroundColor = 'rgb(128, 128, 128)';
-  }
-}
+// requisito 11 botão remove finalizados
+function removeFinalized() {
+  const rmCompleted = document.querySelectorAll('li');
 
-function removeBackgroundColor(event) {
-  for (let index = 0; index < taskItem.length; index += 1) {
-    if (taskItem[index].style.backgroundColor === 'rgb(128, 128, 128)') {
-      taskItem[index].style.backgroundColor = '';
+  for (let index = 0; index < rmCompleted.length; index += 1) {
+    if (rmCompleted[index].classList.contains('completed')) {
+      rmCompleted[index].remove();
     }
   }
-  addBackgroundColor(event);
 }
 
+// link utilizado para resolucao do requisito 12
+// source https://www.w3schools.com/html/html5_webstorage.asp
 function saveTasks() {
   localStorage.setItem('ol', taskList.innerHTML);
 }
@@ -68,8 +77,9 @@ function localStorageOl() {
 
 localStorageOl();
 
-buttonClear.addEventListener('click', removeAllTask);
-buttonClearFinalized.addEventListener('click', removeFinalized);
-createTasks.addEventListener('click', createTask);
+taskList.addEventListener('dblclick', doubleClick);
 taskList.addEventListener('click', removeBackgroundColor);
+createTasks.addEventListener('click', createTask);
+buttonClearFinalized.addEventListener('click', removeFinalized);
 buttonSaveTasks.addEventListener('click', saveTasks);
+buttonClear.addEventListener('click', removeAllTask);

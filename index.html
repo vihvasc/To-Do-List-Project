@@ -8,15 +8,16 @@
   <title>Document</title>
 </head>
 <body>
+  <main class="home">
   <header>
     <h1>Minha Lista de Tarefas</h1>
     <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
+    
   </header>
-  <main>
 
   <section>
-    <input id="texto-tarefa" type="text">
-    <button id="criar-tarefa">Adiciona Tarefa</button>
+    <input id="texto-tarefa" type="text" placeholder="Adicione sua tarefa aqui">
+    <button class='button' id="criar-tarefa">&#9998 Adiciona Tarefa</button>
   </section>
 
   <section>
@@ -24,9 +25,12 @@
   </section>
 
   <section>
-    <button id="apaga-tudo">&#10006; Limpar Todos</button>
-    <button id="remover-finalizados">&#10007; Limpar Finalizados</button>
-    <button id="salvar-tarefas">&#10004; Salvar Tarefas</button>
+    <button class='button' id="remover-selecionado">&#10006</button>
+    <button class='button' id="mover-cima">&#9650</button>
+    <button class='button' id="mover-baixo">&#9660</button>
+    <button class='button' id="remover-finalizados">&#10007 Limpar Completas</button>
+    <button class='button' id="apaga-tudo">&#10006 Limpar Lista</button>
+    <button class='button' id="salvar-tarefas">&#10004 Salvar Lista</button>
   </section>
   </main>
 
