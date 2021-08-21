@@ -51,7 +51,7 @@ function createButton(buttonId, buttonText, insertInsideId) {
 }
 
 function createTaskButton() {
-  createButton('criar-tarefa', '➕', taskList);
+  createButton('criar-tarefa', '➕', 'lista-tarefas');
   const criarTarefa = document.getElementById('criar-tarefa');
   criarTarefa.addEventListener('click', addTask);
   input.addEventListener('keypress', checkEnterPressed);
@@ -66,7 +66,7 @@ function eraseAll() {
 }
 
 function createEraseAllButton() {
-  createButton('apaga-tudo', '🗑️', taskList);
+  createButton('apaga-tudo', '🗑️', 'lista-tarefas');
   const apagaTudo = document.getElementById('apaga-tudo');
   apagaTudo.addEventListener('click', eraseAll);
 }
@@ -79,7 +79,7 @@ function removeFinished() {
 }
 
 function createRemoveFinishedButton() {
-  createButton('remover-finalizados', 'Remover Finalizados', taskList);
+  createButton('remover-finalizados', 'Remover Finalizados', 'lista-tarefas');
   const removerFinalizados = document.getElementById('remover-finalizados');
   removerFinalizados.addEventListener('click', removeFinished);
 }
@@ -100,7 +100,7 @@ function saveTasks() {
 }
 
 function createSaveTasksButton() {
-  createButton('salvar-tarefas', '💾', taskList);
+  createButton('salvar-tarefas', '💾', 'lista-tarefas');
   const salvarTarefas = document.getElementById('salvar-tarefas');
   salvarTarefas.addEventListener('click', saveTasks);
 }
@@ -138,13 +138,13 @@ function moveDown() {
 }
 
 function createMoveUpButton() {
-  createButton('mover-cima', '🔺', taskList);
+  createButton('mover-cima', '🔺', 'lista-tarefas');
   const moverCima = document.getElementById('mover-cima');
   moverCima.addEventListener('click', moveUp);
 }
 
 function createMoveDownButton() {
-  createButton('mover-baixo', '🔻', taskList);
+  createButton('mover-baixo', '🔻', 'lista-tarefas');
   const moverBaixo = document.getElementById('mover-baixo');
   moverBaixo.addEventListener('click', moveDown);
 }
@@ -157,7 +157,7 @@ function removeSelected() {
 }
 
 function createRemoveSelectedButton() {
-  createButton('remover-selecionado', 'Remover Selecionado', taskList);
+  createButton('remover-selecionado', 'Remover Selecionado', 'lista-tarefas');
   const removerSelecionado = document.getElementById('remover-selecionado');
   removerSelecionado.addEventListener('click', removeSelected);
 }
