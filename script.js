@@ -86,11 +86,13 @@ function recuperaLista() { // função para recuperar a lista
 const buttonUp = document.querySelector('#mover-cima');
 const buttonDown = document.querySelector('#mover-baixo');
 
+
+
 buttonUp.addEventListener('click', () => {
   const todasListas = document.querySelectorAll('li');
-
+  const SelectedList = document.querySelector('.lista[style]');
   for (let i = 0; i < todasListas.length; i += 1) {
-    if (todasListas[i] === document.querySelector('.lista[style]')) {
+    if (todasListas[i] === SelectedList) {
       const listaSelecionada = todasListas[i].parentNode; // guarda a referencia do elemento pai
       if (i > 0) {
         const a = i - 1;
@@ -102,9 +104,9 @@ buttonUp.addEventListener('click', () => {
 
 buttonDown.addEventListener('click', () => {
   const todasListas = document.querySelectorAll('li');
-
+  const SelectedList = document.querySelector('.lista[style]');
   for (let i = 0; i < todasListas.length; i += 1) {
-    if (todasListas[i] === document.querySelector('.lista[style]')) {
+    if (todasListas[i] === SelectedList) {
       const listaSelecionada = todasListas[i].parentNode; // guarda a referencia do elemento pai
       if (i < todasListas.length) {
         const a = i + 1;
@@ -120,9 +122,9 @@ buttonDown.addEventListener('click', () => {
 const buttonEraserSelect = document.querySelector('#remover-selecionado');
 buttonEraserSelect.addEventListener('click', () => {
   const todasListas = document.querySelectorAll('li');
-
+  const SelectedList = document.querySelector('.lista[style]');
   for (let i = 0; i < todasListas.length; i += 1) {
-    if (todasListas[i] === document.querySelector('.lista[style]')) {
+    if (todasListas[i] === SelectedList) {
       todasListas[i].remove();
     }
   }
