@@ -180,3 +180,21 @@ function criarBotaoMoverParaBaixo() {
   novoBotao.addEventListener('click', moverParaBaixo);
 }
 criarBotaoMoverParaBaixo();
+
+// 14 - Adicione um botão com id="remover-selecionado" que, quando clicado, remove o item selecionado
+function removerSelecionado() {
+  let elementoSelecionado = document.getElementsByClassName('selected')[0];
+  let listaAtual = document.getElementById('lista-tarefas');
+  listaAtual.removeChild(elementoSelecionado);
+}
+
+
+function criarBotaoRemoverSelecionado() {
+  const novoBotao = document.createElement('button');
+  novoBotao.id = 'remover-selecionado';
+  novoBotao.innerText = 'Remover Selecionado';
+  document.body.appendChild(novoBotao);
+
+  novoBotao.addEventListener('click', removerSelecionado);
+}
+criarBotaoRemoverSelecionado();
