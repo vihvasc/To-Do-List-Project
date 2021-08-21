@@ -15,8 +15,8 @@ buttonAdd.addEventListener('click', () => {
 
 const selectOl = document.querySelector('ol');
 selectOl.addEventListener('click', (event) => {
-  if (event.target.classList.contains('lista')) {
-    const attributeRemove = document.getElementsByTagName('li');
+  if (event.target.classList.contains('lista')) { // se o alvo conter lista
+    const attributeRemove = document.getElementsByTagName('li'); // guardar todas lis para percorrer
     for (let i = 0; i < attributeRemove.length; i += 1) {
       attributeRemove[i].removeAttribute('style');
     }
@@ -64,30 +64,14 @@ saveList.addEventListener('click', () => { // função para salvar a lista
   localStorage.setItem('listaSalva', JSON.stringify(lista));
 });
 
-/* saveList.addEventListener('click', () => { // função para salvar a lista
-  const inputList = document.querySelectorAll('li');
-  const saveClass = [];
-  const lista = [];
-  for (let i = 0; i < inputList.length; i += 1) {
-    if (inputList[i].classList.contains('completed')) {
-      saveClass.push('true');
-    } else {
-      saveClass.push('false');
-    }
-    lista.push(inputList[i].innerText);
-  }
-  localStorage.setItem('classeSalva', JSON.stringify(saveList));
-  localStorage.setItem('listaSalva', JSON.stringify(lista));
-}); */
-
 function recuperaLista() { // função para recuperar a lista
   const listaRecuperada = JSON.parse(localStorage.getItem('listaSalva'));
   const classeRecuperada = JSON.parse(localStorage.getItem('classeSalva'));
   if (listaRecuperada) {
     for (let i = 0; i < listaRecuperada.length; i += 1) {
       const li = document.createElement('li');
-      if(classeRecuperada[i] == 'completed'){
-      li.classList.add('completed')
+      if (classeRecuperada[i] == 'completed') {
+        li.classList.add('completed');
       }
       li.innerText = listaRecuperada[i];
       li.classList.add('lista');
@@ -95,6 +79,42 @@ function recuperaLista() { // função para recuperar a lista
     }
   }
 }
+// Requisito 13
+// Para esse exercicio, usei a pagina do develop MoZila
+// https://developer.mozilla.org/pt-BR/docs/Web/API/Node/insertBefore
+
+const buttonUp = document.querySelector('#mover-cima');
+const buttonDown = document.querySelector('#mover-baixo');
+
+buttonUp.addEventListener('click', () => {
+  const todasListas = document.querySelectorAll('li');
+
+  for (let i = 0; i < todasListas.length; i += 1) {
+    if (todasListas[i] === document.querySelector('.lista[style]')) {
+      const listaSelecionada = todasListas[i].parentNode; // guarda a referencia do elemento pai
+      if (i > 0) {
+        const a = i - 1;
+        listaSelecionada.insertBefore(todasListas[i], todasListas[a]);// insere um novo elemento antes do primeiro filho
+      }
+    }
+  }
+});
+
+buttonDown.addEventListener('click', () => {
+  const todasListas = document.querySelectorAll('li');
+
+  for (let i = 0; i < todasListas.length; i += 1) {
+    if (todasListas[i] === document.querySelector('.lista[style]')) {
+      const listaSelecionada = todasListas[i].parentNode; // guarda a referencia do elemento pai
+      if (i < todasListas.length) {
+        const a = i + 1;
+        if (a < todasListas.length) {
+          listaSelecionada.insertBefore(todasListas[i], todasListas[a].nextSibling);// insere um novo elemento depois do primeiro filho
+        }
+      }
+    }
+  }
+});
 
 window.onload = function () {
   recuperaLista();
