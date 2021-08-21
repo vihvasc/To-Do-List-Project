@@ -10,14 +10,15 @@ function addListItem() {
   list.appendChild(item);
 
   inputValue.value = '';
-  chageBackground();
+  changeBackground();
 }
 
-function chageBackground() {
+// Função criada com base no código da Virginia Alcântara >> https://github.com/tryber/sd-015-b-project-todo-list/blob/virginia-alcantara-todo-list-project/script.js
+function changeBackground() {
   const itens = document.querySelectorAll('li');
 
   for (let i = 0; i < itens.length; i += 1) {
-    itens[i].addEventListener('click', function() {
+    itens[i].addEventListener('click', () => {
       clearBackground();
       itens[i].style.backgroundColor = 'rgb(128,128,128)';
     });
@@ -26,9 +27,18 @@ function chageBackground() {
 
 function clearBackground() {
   const itens = document.querySelectorAll('li');
-  
+
   for (let i = 0; i < itens.length; i += 1) {
     itens[i].style.backgroundColor = 'white';
   }
 }
 
+function doneTasks(event) {
+  if (event.target.classList.contains('completed')) {
+    event.target.classList.remove('completed');
+  } else {
+    event.target.classList.add('completed');
+  }
+}
+
+list.addEventListener('dblclick', doneTasks);
