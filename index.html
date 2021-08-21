@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha lista de tarefas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body oncontextmenu="adicionar()">
+    <header>
+    <h1>Minha Lista de Tarefas</h1>
+    <h3 id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</h3>
+</header>
+<section><div id="calculo">
+    <input type="text" id="texto-tarefa">
+        <button id="criar-tarefa" onclick="adicionar()">Adicionar</button>
+</div> 
+<ol id="lista-tarefas">   
+</ol>          
+</section>
+<footer>
+    <p>&copy; Danilo Fernandes</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
