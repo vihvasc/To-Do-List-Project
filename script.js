@@ -36,6 +36,7 @@ function criarBotao() {
     const listaDeTarefas = document.getElementById('lista-tarefas');
 
     const novoElementoDaLista = document.createElement('li');
+    novoElementoDaLista.addEventListener('dblclick', riscarElemento);
     novoElementoDaLista.addEventListener('click', selecionarElemento);
     novoElementoDaLista.innerText = textoInput;
     novoElementoDaLista.className = 'elemento-lista';
@@ -66,3 +67,15 @@ elementoClickado.classList.add('selected')
 elementoClickado.style.backgroundColor = 'rgb(128, 128, 128)';
 }
 
+// 9 - Clicar duas vezes em um item, faz com que ele seja riscado, indicando que foi completo. Deve ser possível desfazer essa ação clicando novamente duas vezes no item
+function riscarElemento(event) {
+  let elementoDblClick= event.target
+  const styleElemento = elementoDblClick.style.textDecoration;
+  if (styleElemento === 'line-through solid rgb(0, 0, 0)') {
+    elementoDblClick.style.textDecoration = '';
+    elementoDblClick.classList.remove('completed');
+  } else {
+    elementoDblClick.style.textDecoration = 'line-through solid rgb(0, 0, 0)';
+    elementoDblClick.classList.add('completed');
+  }
+  }
