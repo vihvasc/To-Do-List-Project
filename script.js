@@ -11,32 +11,6 @@ function createButton(buttonId, buttonText, insertInsideId) {
   body.insertBefore(createButton, document.getElementById(insertInsideId));
 }
 
-function addTask() {
-  const createLi = document.createElement('li');
-  if (input.value === '') {
-      return alert('Favor inserir um nome válido para a tarefa!');
-    }
-  createLi.innerText = input.value;
-  createLi.classList.add('tarefa');
-  createLi.addEventListener('click', addClass);
-  createLi.addEventListener('dblclick', finishedTask)
-  taskList.appendChild(createLi);
-  input.value = '';
-}
-
-function createTaskButton() {
-  createButton('criar-tarefa', '➕', 'lista-tarefas');
-  const criarTarefa = document.getElementById('criar-tarefa');
-  criarTarefa.addEventListener('click', addTask);
-  input.addEventListener('keypress', checkEnterPressed);
-}
-
-function checkEnterPressed(event) {
-  if (event.key === 'Enter') {
-    addTask();
-  }
-}
-
 function addClass(event) {
   const selectedClass = document.querySelector('.selected');
   if (selectedClass) {
@@ -57,8 +31,34 @@ function finishedTask(event) {
   }
 }
 
+function addTask() {
+  const createLi = document.createElement('li');
+  if (input.value === '') {
+    return alert('Favor inserir um nome válido para a tarefa!');
+  }
+  createLi.innerText = input.value;
+  createLi.classList.add('tarefa');
+  createLi.addEventListener('click', addClass);
+  createLi.addEventListener('dblclick', finishedTask);
+  taskList.appendChild(createLi);
+  input.value = '';
+}
+
+function checkEnterPressed(event) {
+  if (event.key === 'Enter') {
+    addTask();
+  }
+}
+
+function createTaskButton() {
+  createButton('criar-tarefa', '➕', 'lista-tarefas');
+  const criarTarefa = document.getElementById('criar-tarefa');
+  criarTarefa.addEventListener('click', addTask);
+  input.addEventListener('keypress', checkEnterPressed);
+}
+
 function eraseAll() {
-  let createdTasks = document.querySelectorAll('.tarefa');
+  const createdTasks = document.querySelectorAll('.tarefa');
   for (let task = 0; task < createdTasks.length; task += 1) {
     createdTasks[task].remove();
   }
@@ -72,7 +72,7 @@ function createEraseAllButton() {
 }
 
 function removeFinished() {
-  let completedTasks = document.querySelectorAll('.completed');
+  const completedTasks = document.querySelectorAll('.completed');
   for (let task = 0; task < completedTasks.length; task += 1) {
     completedTasks[task].remove();
   }
@@ -84,25 +84,25 @@ function createRemoveFinishedButton() {
   removerFinalizados.addEventListener('click', removeFinished);
 }
 
-function createSaveTasksButton() {
-  createButton('salvar-tarefas', '💾', 'lista-tarefas');
-  const salvarTarefas = document.getElementById('salvar-tarefas');
-  salvarTarefas.addEventListener('click', saveTasks);
-}
-
 function saveTasks() {
-  let storedTasks = [];
+  const storedTasks = [];
   if (tasks !== null) {
     for (let task = 0; task < tasks.length; task += 1) {
       const currentTasks = tasks[task];
-      let objStoreTask = { 
+      const objStoreTask = { 
         task: currentTasks.innerText,
         class: currentTasks.className
-      }
+      };
       storedTasks.push(objStoreTask);
     }
     localStorage.setItem('storedTask', JSON.stringify(storedTasks));
   }
+}
+
+function createSaveTasksButton() {
+  createButton('salvar-tarefas', '💾', 'lista-tarefas');
+  const salvarTarefas = document.getElementById('salvar-tarefas');
+  salvarTarefas.addEventListener('click', saveTasks);
 }
 
 function getTasks() {
@@ -113,25 +113,12 @@ function getTasks() {
       createLi.innerText = restoredTasks[task].task;
       createLi.className = restoredTasks[task].class;
       createLi.addEventListener('click', addClass);
-      createLi.addEventListener('dblclick', finishedTask)
+      createLi.addEventListener('dblclick', finishedTask);
       taskList.appendChild(createLi);
     }
     input.value = '';
   }
 }
-
-function createMoveUpButton() {
-  createButton('mover-cima', '🔺', 'lista-tarefas');
-  const moverCima = document.getElementById('mover-cima');
-  moverCima.addEventListener('click', moveUp);
-}
-
-function createMoveDownButton() {
-  createButton('mover-baixo', '🔻', 'lista-tarefas');
-  const moverBaixo = document.getElementById('mover-baixo');
-  moverBaixo.addEventListener('click', moveDown);
-}
-
 
 function moveUp() {
   for (let task = 0; task < tasks.length; task += 1) {
@@ -150,8 +137,20 @@ function moveDown() {
   }
 }
 
+function createMoveUpButton() {
+  createButton('mover-cima', '🔺', 'lista-tarefas');
+  const moverCima = document.getElementById('mover-cima');
+  moverCima.addEventListener('click', moveUp);
+}
+
+function createMoveDownButton() {
+  createButton('mover-baixo', '🔻', 'lista-tarefas');
+  const moverBaixo = document.getElementById('mover-baixo');
+  moverBaixo.addEventListener('click', moveDown);
+}
+
 function removeSelected() {
-  let selectedTask = document.querySelectorAll('.selected');
+  const selectedTask = document.querySelectorAll('.selected');
   for (let task = 0; task < selectedTask.length; task += 1) {
     selectedTask[task].remove();
   }
