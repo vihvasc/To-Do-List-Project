@@ -99,3 +99,25 @@ function criarBotaoApagaTudo() {
   novoBotao.addEventListener('click', apagarTodosElementos);
 }
 criarBotaoApagaTudo();
+
+// 11 - Adicione um botão com id="remover-finalizados" que quando clicado remove somente os elementos finalizados da sua lista
+function apagarElementosFinalizados() {
+  let elementosLista = document.getElementsByClassName('completed');
+  let listaAtual = document.getElementById('lista-tarefas');
+  const tamanhoLista = elementosLista.length;
+  if (tamanhoLista > 0) {
+    for (let index = 0; index < tamanhoLista; index += 1) {
+      listaAtual.removeChild(elementosLista[0]);
+     }
+  }
+}
+
+function criarBotaoApagaFinalizados() {
+  const novoBotao = document.createElement('button');
+  novoBotao.id = 'remover-finalizados';
+  novoBotao.innerText = 'Remove Finalizados';
+  document.body.appendChild(novoBotao);
+
+  novoBotao.addEventListener('click', apagarElementosFinalizados);
+}
+criarBotaoApagaFinalizados();
