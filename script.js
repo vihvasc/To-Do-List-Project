@@ -27,9 +27,10 @@ function createTask() {
 
 createTask();
 
-function checkCompletedTask (receivedEvent) {
+function checkCompletedTask(receivedEvent) {
   const selectedTask = receivedEvent.target;
-  (!selectedTask.classList.contains('completed')) ? selectedTask.classList.add('completed') : selectedTask.classList.remove('completed');;
+  const classes = selectedTask.classList;
+  (!classes.contains('completed')) ? classes.add('completed') : classes.remove('completed');
 }
 
 function clearTaskList () {
