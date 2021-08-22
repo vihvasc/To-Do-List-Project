@@ -7,15 +7,6 @@ h1 {
   text-align: center;
 }
 
-.center {
-  text-align: center;
-  border: 1px solid black;
-  border-radius: 30%;
-  width: 700px;
-  margin: auto;
-
-}
-
 li {
   list-style-type: none;
   margin: auto;
@@ -26,4 +17,13 @@ li {
 
 .completed {
   text-decoration: line-through;
+}
+
+.center {
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 30%;
+  width: 700px;
+  margin: auto;
+
 }
