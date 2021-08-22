@@ -12,7 +12,7 @@ function changeLiColor(receivedEvent) {
 function checkCompletedTask(receivedEvent) {
   const selectedTask = receivedEvent.target;
   const classes = selectedTask.classList;
-  if (!classes.contains('completed')) ? classes.add('completed') : classes.remove('completed');
+  (!classes.contains('completed')) ? classes.add('completed') : classes.remove('completed');
 }
 
 function createTask() {
