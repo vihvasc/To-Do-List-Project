@@ -1,50 +1,19 @@
-const pageBody = document.getElementsByTagName('body');
-const headerTitle = document.createElement('header');
-const title = document.createElement('h1');
-title.innerText = 'Minha Lista de Tarefas';
-const createSection = document.createElement('section');
-const createParagraph = document.createElement('p');
-createParagraph.innerText = 'Clique duas vezes em um item para marcá-lo como completo';
-createParagraph.id = 'funcionamento';
-const createInput = document.createElement('input');
-createInput.id = 'texto-tarefa';
-const createOrderedList = document.createElement('ol');
-createOrderedList.id = 'lista-tarefas';
-const createButton = document.createElement('button');
-createButton.id = 'criar-tarefa';
-createButton.innerText = 'Adicionar';
-const createInputSectionAndButton = document.createElement('section');
-const createListSection = document.createElement('section');
-const buttonToDeleteTheList = document.createElement('button');
-buttonToDeleteTheList.id = 'apaga-tudo';
-buttonToDeleteTheList.innerText = 'Deletar tudo';
-const buttonDeleteTask = document.createElement('button');
-buttonDeleteTask.id = 'remover-finalizados';
-buttonDeleteTask.innerText = 'Deletar tarefa';
-
-pageBody[0].appendChild(headerTitle);
-headerTitle.appendChild(title);
-pageBody[0].appendChild(createSection);
-pageBody[0].appendChild(createInputSectionAndButton);
-pageBody[0].appendChild(createListSection);
-createSection.appendChild(createParagraph);
-createInputSectionAndButton.appendChild(createInput);
-createListSection.appendChild(createOrderedList);
-createInputSectionAndButton.appendChild(createButton);
-createInputSectionAndButton.appendChild(buttonToDeleteTheList);
-createInputSectionAndButton.appendChild(buttonDeleteTask);
+const orderedList = document.getElementById('lista-tarefas');
+const createButton = document.querySelector('#criar-tarefa');
+const buttonDelete = document.getElementById('apaga-tudo');
+const buttonDeleteTask = document.getElementById('remover-finalizados');
 
 function addedElementToList() {
   const addedValues = document.querySelector('#texto-tarefa');
   const text = addedValues;
   const list = document.createElement('li');
-  createOrderedList.appendChild(list);
+  orderedList.appendChild(list);
   list.innerText = text.value;
   text.value = '';
 }
+
 createButton.addEventListener('click', addedElementToList);
 
-const tarefas = document.getElementById('lista-tarefas');
 const itemDalista = document.getElementsByTagName('li');
 
 function AdicionarCor(event) {
@@ -59,13 +28,13 @@ function AdicionarCor(event) {
   }
 }
 
-tarefas.addEventListener('click', AdicionarCor);
+orderedList.addEventListener('click', AdicionarCor);
 
 function adicionarRisco(event) {
   event.target.classList.toggle('completed');
 }
 
-tarefas.addEventListener('dblclick', adicionarRisco);
+orderedList.addEventListener('dblclick', adicionarRisco);
 
 function deleteList() {
   const information = document.querySelectorAll('li');
@@ -74,7 +43,7 @@ function deleteList() {
   }
 }
 
-buttonToDeleteTheList.addEventListener('click', deleteList);
+buttonDelete.addEventListener('click', deleteList);
 
 function deletarTarefa() {
   const information = document.querySelectorAll('li');
