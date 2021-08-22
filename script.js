@@ -97,7 +97,6 @@ function loadTaskList () {
 loadTaskList();
 
 function moveUp () {
-  const listOfTasks = document.querySelectorAll('#lista-tarefas *');
   const moveUpButton = document.getElementById('mover-cima');
   moveUpButton.addEventListener('click', () => {
     const taskSelected = document.querySelector('.selected');
@@ -111,10 +110,7 @@ function moveUp () {
 moveUp();
 
 function moveDown () {
-  const listOfTasks = document.querySelectorAll('#lista-tarefas *');
-  const tasksInArray = Array.from(listOfTasks);
   const moveDownButton = document.getElementById('mover-baixo');
-
   
   moveDownButton.addEventListener('click', () => {
     const taskSelected = document.querySelector('.selected');
@@ -126,3 +122,14 @@ function moveDown () {
 }
 
 moveDown();
+
+function deleteItem () {
+  const deleteButton = document.getElementById('remover-selecionado');
+
+  deleteButton.addEventListener('click', () => {
+    const itemToDel = document.querySelector('.selected');
+    if(itemToDel) itemToDel.remove();
+  });
+}
+
+deleteItem();
