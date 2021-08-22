@@ -50,3 +50,21 @@ function createButtonClearTasks() {
   buttonClear.innerText = 'Limpar';
 }
 createButtonClearTasks();
+
+function deleteCompletedTasks() {
+  const completedTasks = document.querySelectorAll('.completed');
+  for (let i = 0; i < completedTasks.length; i += 1) {
+    const tasks = completedTasks[i];
+    tasks.remove();
+  }
+}
+
+function createButtonDeleteTasks() {
+  const buttonDelete = document.createElement('button');
+  const section = document.getElementById('buttons');
+  section.appendChild(buttonDelete);
+  buttonDelete.innerText = 'Apagar tarefas concluídas';
+  buttonDelete.id = 'remover-finalizados';
+  buttonDelete.addEventListener('click', deleteCompletedTasks);
+}
+createButtonDeleteTasks();
