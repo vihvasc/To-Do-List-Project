@@ -27,8 +27,8 @@ function createTask() {
     newTask.addEventListener('click', changeLiColor);
     newTask.addEventListener('dblclick', checkCompletedTask);
     inputElement.value = '';
-  });  
-}  
+  });
+}
 createTask();
 
 function clearTaskList() {
