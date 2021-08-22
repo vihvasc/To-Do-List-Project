@@ -1,4 +1,25 @@
 .completed {
-  text-decoration: line-through;
-  
+  text-decoration: line-through solid rgb (0, 0, 0);
+}
+
+.lista {
+  text-align: center;
+}
+
+section {
+  display: flex;
+}
+
+.btnCuster {
+  margin-left: 20px;
+}
+
+.btn {
+  margin: 5px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
