@@ -9,6 +9,11 @@ function changeLiColor(receivedEvent) {
     taskSelected.classList.add('selected');
   }
 }
+function checkCompletedTask(receivedEvent) {
+  const selectedTask = receivedEvent.target;
+  const classes = selectedTask.classList;
+  if (!classes.contains('completed')) ? classes.add('completed') : classes.remove('completed');
+}
 
 function createTask() {
   const actionButton = document.getElementById('criar-tarefa');
@@ -22,33 +27,25 @@ function createTask() {
     newTask.addEventListener('click', changeLiColor);
     newTask.addEventListener('dblclick', checkCompletedTask);
     inputElement.value = '';
-  });
-}
-
+  });  
+}  
 createTask();
 
-function checkCompletedTask(receivedEvent) {
-  const selectedTask = receivedEvent.target;
-  const classes = selectedTask.classList;
-  (!classes.contains('completed')) ? classes.add('completed') : classes.remove('completed');
-}
-
-function clearTaskList () {
+function clearTaskList() {
   const clearButton = document.getElementById('apaga-tudo');
   const taskList = document.querySelector('#lista-tarefas');
   clearButton.addEventListener('click', () => {
     taskList.innerHTML = '';
   });
 }
-
 clearTaskList();
 
-function clearCompleted () {
+function clearCompleted() {
   const clearCompletedButton = document.getElementById('remover-finalizados');
   const completedList = document.getElementsByClassName('completed');
   const taskList = document.getElementById('lista-tarefas');
   let toRemove = [];
-  clearCompletedButton.addEventListener('click', ()=> {
+  clearCompletedButton.addEventListener('click', () => {
     console.log(completedList);
     for (let index = 0; index < completedList.length; index += 1) {
       toRemove.push(completedList[index]);
@@ -60,27 +57,24 @@ function clearCompleted () {
     toRemove = [];
   });
 }
-
 clearCompleted();
 
-function saveTasks () {
+function saveTasks() {
   const saveButton = document.getElementById('salvar-tarefas');
-  
   saveButton.addEventListener('click', () => {
     const tasksToSave = document.querySelectorAll('#lista-tarefas> *');
     const listToStorage = [];
     for (let index = 0; index < tasksToSave.length; index += 1) {
-      let object = {text: tasksToSave[index].innerHTML, class: tasksToSave[index].className};
+      const object = { text: tasksToSave[index].innerHTML, class: tasksToSave[index].className };
       listToStorage.push(object);
     }
     localStorage.setItem('tasks', JSON.stringify(listToStorage));
     JSON.parse(localStorage.getItem('tasks'));
   });
 }
-
 saveTasks();
 
-function loadTaskList () {
+function loadTaskList() {
   const containerToLoad = document.getElementById('lista-tarefas');
   const tasksStore = JSON.parse(localStorage.getItem('tasks'));
   if (tasksStore === null) {
@@ -96,10 +90,9 @@ function loadTaskList () {
     }
   }
 }
- 
 loadTaskList();
 
-function moveUp () {
+function moveUp() {
   const moveUpButton = document.getElementById('mover-cima');
   moveUpButton.addEventListener('click', () => {
     const taskSelected = document.querySelector('.selected');
@@ -109,30 +102,27 @@ function moveUp () {
     }
   });
 }
-
 moveUp();
 
-function moveDown () {
+function moveDown() {
   const moveDownButton = document.getElementById('mover-baixo');
-  
+
   moveDownButton.addEventListener('click', () => {
     const taskSelected = document.querySelector('.selected');
     if (!taskSelected) return;
     if (taskSelected.nextSibling) {
-     taskSelected.parentNode.insertBefore(taskSelected.nextSibling, taskSelected);
-  }
+      taskSelected.parentNode.insertBefore(taskSelected.nextSibling, taskSelected);
+    }
   });
 }
-
 moveDown();
 
-function deleteItem () {
+function deleteItem() {
   const deleteButton = document.getElementById('remover-selecionado');
 
   deleteButton.addEventListener('click', () => {
     const itemToDel = document.querySelector('.selected');
-    if(itemToDel) itemToDel.remove();
+    if (itemToDel) itemToDel.remove();
   });
 }
-
 deleteItem();
