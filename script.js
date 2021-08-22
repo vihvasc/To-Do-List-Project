@@ -32,9 +32,13 @@ function addTask(){
 
 function changeColor(event){
     let index = allTasks.length
+    if(event.target.classList.contains('selected')){
+        event.target.classList.remove('selected')
+        return
+    }
     for(let count = 0;count < index; count += 1){
         if(allTasks[count].classList.contains('selected')){
-            allTasks[count].classList.toggle('selected')
+            allTasks[count].classList.remove('selected')
         }
     }
     event.target.classList.toggle('selected')
