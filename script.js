@@ -70,9 +70,9 @@ function inserir(){
 
 function completed(event){
 
-    if(event.target.classList === 'completed'){
+    if(event.target.classList.contains('completed')){
         event.target.classList.remove('completed')
-    } else {
+    }else{
     event.target.classList.add('completed');
     }
 }
