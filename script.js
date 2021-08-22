@@ -104,3 +104,11 @@ function removeItem(){
         }
     }
 }
+function loadItensListeners(){
+    var itens = document.querySelectorAll('.task')
+    for(let index = 0; index < itens.length; index += 1){
+        itens[index].addEventListener('click', changeColor)
+        itens[index].addEventListener('dblclick', taskDone)
+    }
+}
+loadItensListeners();
