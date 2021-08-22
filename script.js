@@ -1,13 +1,11 @@
 function changeLiColor (receivedEvent) {
-  const tasksList = document.querySelectorAll('#lista-tarefas> *');
-  const element = receivedEvent.target;
-  const classOfElement = element.classList;
-  for (index = 0; index < tasksList.length; index += 1) {
-    if (tasksList[index] !== element) {
-      tasksList[index].classList.remove('selected');
-    }
+  const taskSelected = receivedEvent.target;
+  if (!taskSelected) return;
+  const taskList = document.querySelectorAll('#lista-tarefas *');
+  for(let index = 0; index < taskList.length; index += 1) {
+    if (taskList[index] !== taskSelected) taskList[index].classList.remove('selected');
   }
-  (classOfElement.contains('selected')) ? element.classList.remove('selected') : element.classList.add('selected');  
+  (!taskSelected.classList.contains('selected')) ? taskSelected.classList.add('selected') : false;
 }
 
 function createTask() {
@@ -29,8 +27,7 @@ createTask();
 
 function checkCompletedTask (receivedEvent) {
   const selectedTask = receivedEvent.target;
-  const classOfElement = selectedTask.className;
-  (classOfElement !== 'completed') ? selectedTask.classList.add('completed') : selectedTask.classList.remove('completed');
+  (!selectedTask.classList.contains('completed')) ? selectedTask.classList.add('completed') : selectedTask.classList.remove('completed');;
 }
 
 function clearTaskList () {

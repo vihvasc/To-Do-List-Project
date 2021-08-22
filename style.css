@@ -17,6 +17,9 @@ body {
   color: rgb(242, 200, 246);
   background-color: rgb(212, 129, 177);
   padding: 30px;
+  display: flex;
+  justify-content: baseline;
+  flex-wrap: wrap;
 }
 
 #tasks-container *{
@@ -49,4 +52,20 @@ label {
 
 .selected {
   background-color: rgb(128, 128, 128);
+}
+
+#remover-selecionado, #apaga-tudo, #remover-finalizados {
+  background-color: rgb(255, 118, 105);
+}
+
+#mover-cima, #mover-baixo {
+  background-color: rgb(91, 154, 252);
+}
+
+#salvar-tarefas {
+  background-color: rgb(185, 232, 202);
+}
+
+#criar-tarefa {
+  background-color: rgb(162, 225, 241);
 }
