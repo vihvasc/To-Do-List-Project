@@ -1,6 +1,7 @@
 const input = document.getElementById('texto-tarefa');
 const button = document.getElementById('criar-tarefa');
 const ol = document.getElementById('lista-tarefas');
+const botaoLimpar = document.getElementById('apaga-tudo');
 
 function colorPaint(event) {
   const click = event.target;
@@ -25,3 +26,9 @@ button.addEventListener('click', () => {
 const adiciona = document.querySelector('button#criar-tarefa, button#apaga-tudo');
 adiciona.style.background = 'rgb(79, 146, 255)';
 adiciona.style.color = 'white';
+
+const apagar = document.getElementsByTagName('ol');
+botaoLimpar.addEventListener('click', apagaTudo);
+function apagaTudo() {
+  apagar[0].innerHTML = '';
+}
