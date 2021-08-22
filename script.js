@@ -1,15 +1,34 @@
-let createTask = document.querySelector('#criar-tarefa');
-let textTask = document.querySelector('#texto-tarefa');
-let taskList = document.querySelector('#lista-tarefas');
+let criar = document.querySelector('#criar-tarefa');
+let texto = document.querySelector('#texto-tarefa');
+let lista = document.querySelector('#lista-tarefas');
 
-createTask.addEventListener('click', generateTask);
+criar.addEventListener('click', generateTask);
 
 function generateTask(){
-    let task = document.createElement('li');
-    taskList.appendChild(task);
-    task.innerHTML=textTask.value;
-    textTask.value='';
+    var task = document.createElement('li');
+    lista.appendChild(task);
+    task.innerHTML=texto.value;
+    texto.value='';
 }
+
+lista.addEventListener('click', selected);
+
+function selected(filho){
+    let selecionador = document.querySelector('.selected')
+    if (!selecionador){
+      filho.target.classList.add('selected');
+    }
+    else{
+        selecionador.classList.remove('selected');
+        filho.target.classList.add('selected');
+    }
+}
+
+
+
+
+
+
 
 
 
