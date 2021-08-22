@@ -14,5 +14,18 @@ let list = document.getElementById("lista-tarefas");
         input.value = "";
       }
       
-      let buttonAddTarefa = document.getElementById("criar-tarefa");
-      buttonAddTarefa.addEventListener("click", addTarefa);
+    let buttonAddTarefa = document.getElementById("criar-tarefa");
+    buttonAddTarefa.addEventListener("click", addTarefa);
+    
+    function changeBackgroundItem(evento) {
+    let itemsTarefa = list;
+    let itemList = document.querySelectorAll(".itemList");
+      
+        if (itemList) {
+          for (let index = 0; index < itemList.length; index += 1) {
+            itemList[index].classList.remove("selected");
+          }
+          evento.target.classList.add("selected");
+        }
+      }
+    list.addEventListener("click", changeBackgroundItem);
