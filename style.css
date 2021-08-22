@@ -1,21 +1,21 @@
 body {
-  background-color: rgb(35 ,19 ,43);
+  background-color: rgb(35 , 19 , 43);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #section-header {
-  border: 2px solid rgb(88 ,48 ,252);
+  border: 2px solid rgb(88 , 48 , 252);
   border-radius: 20px;
-  color: rgb(46 ,61 ,242);
-  background-color: rgb(133 ,147 ,245);
+  color: rgb(46 , 61 , 242);
+  background-color: rgb(133 , 147 , 245);
   text-align: center;
 }
 
 #section-main {
-  border: 2px solid rgb(235 ,155 ,162);
+  border: 2px solid rgb(235 , 155 , 162);
   border-radius: 20px;
-  color: rgb(242 ,200 ,246);
-  background-color: rgb(212 ,129 ,177);
+  color: rgb(242 , 200 , 246);
+  background-color: rgb(212 , 129 , 177);
   padding: 30px;
   display: flex;
   justify-content: baseline;
@@ -23,7 +23,7 @@ body {
 }
 
 #tasks-container * {
-  color: rgb(197 ,255 ,255);
+  color: rgb(197 , 255 , 255);
 }
 
 #texto-tarefa {
@@ -33,10 +33,10 @@ body {
 
 button {
   padding: 8px;
-  background-color: rgb(212 ,104 ,152);
+  background-color: rgb(212 , 104 , 152);
   font-size: 12px;
   border-radius: 15px;
-  border: 0.5px solid rgb(88 ,48 ,252);
+  border: 0.5px solid rgb(88 , 48 , 252);
   box-shadow: none;
 }
 
@@ -47,25 +47,25 @@ label {
 }
 
 .completed {
-  text-decoration: line-through solid rgb(0 ,0 ,0);
+  text-decoration: line-through solid rgb(0, 0, 0);
 }
 
 .selected {
-  background-color: rgb(128 ,128 ,128);
+  background-color: rgb(128, 128, 128);
 }
 
 #remover-selecionado, #apaga-tudo, #remover-finalizados {
-  background-color: rgb(255, 118, 105);
+  background-color: rgb(255 , 118 , 105);
 }
 
 #mover-cima, #mover-baixo {
-  background-color: rgb(91, 154, 252);
+  background-color: rgb(91 , 154 , 252);
 }
 
 #salvar-tarefas {
-  background-color: rgb(185, 232, 202);
+  background-color: rgb(185 , 232 , 202);
 }
 
 #criar-tarefa {
-  background-color: rgb(162, 225, 241);
+  background-color: rgb(162 , 225 , 241);
 }
