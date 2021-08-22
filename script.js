@@ -57,19 +57,19 @@ criarListaDeTarefas();
 // 7 - Clicar em um item da lista deve alterar a cor de fundo do item para cinza rgb(128,128,128)
 // 8 - Não deve ser possível selecionar mais de um elemento da lista ao mesmo tempo
 function selecionarElemento(event) {
-const elementoAtual = document.querySelector('.selected');
-if (elementoAtual) {
-  elementoAtual.style.backgroundColor = '#FFFFFF'
-  elementoAtual.classList.remove('selected');
-}
-let elementoClickado = event.target;
-elementoClickado.classList.add('selected')
-elementoClickado.style.backgroundColor = 'rgb(128, 128, 128)';
+  const elementoAtual = document.querySelector('.selected');
+  if (elementoAtual) {
+    elementoAtual.style.backgroundColor = '#FFFFFF';
+    elementoAtual.classList.remove('selected');
+  }
+  let elementoClickado = event.target;
+  elementoClickado.classList.add('selected');
+  elementoClickado.style.backgroundColor = 'rgb(128, 128, 128)';
 }
 
 // 9 - Clicar duas vezes em um item, faz com que ele seja riscado, indicando que foi completo. Deve ser possível desfazer essa ação clicando novamente duas vezes no item
 function riscarElemento(event) {
-  let elementoDblClick= event.target
+  let elementoDblClick = event.target;
   const styleElemento = elementoDblClick.style.textDecoration;
   if (styleElemento === 'line-through solid rgb(0, 0, 0)') {
     elementoDblClick.style.textDecoration = '';
@@ -82,12 +82,12 @@ function riscarElemento(event) {
 
 // 10 - Adicione um botão com id="apaga-tudo" que quando clicado deve apagar todos os itens da lista
 function apagarTodosElementos() {
-  let elementosLista = document.getElementsByClassName('elemento-lista');
-  let listaAtual = document.getElementById('lista-tarefas');
+  const elementosLista = document.getElementsByClassName('elemento-lista');
+  const listaAtual = document.getElementById('lista-tarefas');
   const tamanhoLista = elementosLista.length;
   for (let index = 0; index < tamanhoLista; index += 1) {
     listaAtual.removeChild(elementosLista[0]);
-   }
+  }
 }
 
 function criarBotaoApagaTudo() {
@@ -102,13 +102,13 @@ criarBotaoApagaTudo();
 
 // 11 - Adicione um botão com id="remover-finalizados" que quando clicado remove somente os elementos finalizados da sua lista
 function apagarElementosFinalizados() {
-  let elementosLista = document.getElementsByClassName('completed');
-  let listaAtual = document.getElementById('lista-tarefas');
+  const elementosLista = document.getElementsByClassName('completed');
+  const listaAtual = document.getElementById('lista-tarefas');
   const tamanhoLista = elementosLista.length;
   if (tamanhoLista > 0) {
     for (let index = 0; index < tamanhoLista; index += 1) {
       listaAtual.removeChild(elementosLista[0]);
-     }
+    }
   }
 }
 
@@ -124,13 +124,13 @@ criarBotaoApagaFinalizados();
 
 // 13 - Adicione dois botões, um com id="mover-cima" e outro com id="mover-baixo", que permitam mover o item selecionado para cima ou para baixo na lista de tarefas
 function moverParaCima() {
-  let elementoSelecionado = document.getElementsByClassName('selected')[0];
-  let elementosLista = document.getElementsByClassName('elemento-lista');
+  const elementoSelecionado = document.getElementsByClassName('selected')[0];
+  const elementosLista = document.getElementsByClassName('elemento-lista');
   const tamanhoLista = elementosLista.length;
   if (tamanhoLista > 0) {
     for (let index = 0; index < tamanhoLista; index += 1) {
-      if(index !== 0 && elementoSelecionado === elementosLista[index]) {
-        let ajuda = elementosLista[index-1].innerText;
+      if (index !== 0 && elementoSelecionado === elementosLista[index]) {
+        const ajuda = elementosLista[index - 1].innerText;
         elementosLista[index - 1].innerText = elementoSelecionado.innerText;
         elementoSelecionado.innerText = ajuda;
         elementoSelecionado.classList.remove('selected');
@@ -138,7 +138,7 @@ function moverParaCima() {
         elementosLista[index - 1].classList.add('selected');
         elementosLista[index - 1].style.backgroundColor = 'rgb(128, 128, 128)';
       }
-     }
+    }
   }
 }
 
@@ -153,13 +153,13 @@ function criarBotaoMoverParaCima() {
 criarBotaoMoverParaCima();
 
 function moverParaBaixo() {
-  let elementoSelecionado = document.getElementsByClassName('selected')[0];
-  let elementosLista = document.getElementsByClassName('elemento-lista');
+  const elementoSelecionado = document.getElementsByClassName('selected')[0];
+  const elementosLista = document.getElementsByClassName('elemento-lista');
   const tamanhoLista = elementosLista.length;
   if (tamanhoLista > 0) {
     for (let index = 0; index < tamanhoLista; index += 1) {
-      if(index !== tamanhoLista - 1 && elementoSelecionado === elementosLista[index]) {
-        let ajuda = elementosLista[index + 1].innerText;
+      if (index !== tamanhoLista - 1 && elementoSelecionado === elementosLista[index]) {
+        const ajuda = elementosLista[index + 1].innerText;
         elementosLista[index + 1].innerText = elementoSelecionado.innerText;
         elementoSelecionado.innerText = ajuda;
         elementoSelecionado.classList.remove('selected');
@@ -167,7 +167,7 @@ function moverParaBaixo() {
         elementosLista[index + 1].classList.add('selected');
         elementosLista[index + 1].style.backgroundColor = 'rgb(128, 128, 128)';
       }
-     }
+    }
   }
 }
 
@@ -183,11 +183,10 @@ criarBotaoMoverParaBaixo();
 
 // 14 - Adicione um botão com id="remover-selecionado" que, quando clicado, remove o item selecionado
 function removerSelecionado() {
-  let elementoSelecionado = document.getElementsByClassName('selected')[0];
-  let listaAtual = document.getElementById('lista-tarefas');
+  const elementoSelecionado = document.getElementsByClassName('selected')[0];
+  const listaAtual = document.getElementById('lista-tarefas');
   listaAtual.removeChild(elementoSelecionado);
 }
-
 
 function criarBotaoRemoverSelecionado() {
   const novoBotao = document.createElement('button');
