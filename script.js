@@ -3,6 +3,10 @@ const addInput = document.getElementById('texto-tarefa');
 const listOrd = document.getElementById('lista-tarefas');
 const taskCreate = document.getElementsByTagName('li');
 const clearFinalist = document.getElementById('remover-finalizados');
+const deletList = document.getElementById('apaga-tudo');
+const moverCima = document.getElementById('mover-cima');
+const moverBaixo = document.getElementById('mover-baixo');
+
 
 function inputTask() {
   addButton.addEventListener('click', function () {
@@ -31,6 +35,7 @@ function removeSelector() {
   }
 }
 
+// requisito 9
 function styleLine(event) {
   if (event.target.classList.contains('completed')) {
     event.target.classList.remove('completed');
@@ -42,10 +47,14 @@ function styleLine(event) {
 }
  listOrd.addEventListener('dblclick', styleLine);
 
-function clearList(){
-  location.reload();
-}
+// requisito 10
 
+function clearList(){
+  listOrd.innerHTML = "";
+}
+deletList.addEventListener('click', clearList);
+
+// requisito 11
 function removeThrough(){
   const throughClear = document.querySelectorAll('.completed');
 
@@ -54,6 +63,24 @@ function removeThrough(){
   }
 }
 clearFinalist.addEventListener('click', removeThrough);
+
+// requisito 12
+
+const buttonSaveTasks = document.getElementById('salvar-tarefas');
+
+function tarefasListasaved(){
+  let orderedList = listOrd.innerHTML
+  localStorage.setItem('list-save', orderedList);
+}
+
+buttonSaveTasks.addEventListener('click', tarefasListasaved);
+
+window.onload = () =>{
+ listOrd.innerHTML = localStorage.getItem('list-save');
+}
+
+// requisito 13
+
 
 
 
