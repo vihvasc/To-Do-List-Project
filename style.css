@@ -1,0 +1,22 @@
+body{
+  background-color: rgb(235, 235, 235);
+  color: rgb(92, 92, 92);
+}
+.box{
+  width: 500px;
+}
+.list-group-item{
+  border-left-width: 50%;
+}
+.input-container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 70%;
+}
+.list-box{
+  min-height: 300px;
+  border: 1px solid rgb(226, 224, 224);
+  border-radius: 6px;
+  background-color: rgb(241, 241, 241);
+}

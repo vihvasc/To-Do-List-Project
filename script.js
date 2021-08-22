@@ -6,13 +6,14 @@ let clearButton = document.querySelector('#apaga-tudo')
 let doneButton = document.querySelector('#remover-finalizados')
 let saveButton = document.querySelector('#salvar-tarefas')
 let removeSelectedButton = document.querySelector('#remover-selecionado')
+let moveUpButton = document.querySelector('#mover-cima')
 
 
 function addList(){
 let task = taskInput.value
 let taskList = document.createElement('li');
   taskList.innerHTML = task;
-  taskList.className = 'task-item'
+  taskList.className = 'task-item list-group-item'
   taskList.style.backgroundColor = '';
  if (taskInput.value == ''){
   alert('Por favor adicione uma tarefa primeiro!');
@@ -23,20 +24,12 @@ let taskList = document.createElement('li');
 }
 
 function taskHighlight(event){
-  //removeClassSelected()
   let selected = event.target;
-      if (selected.style.backgroundColor == ''){
-        selected.style.backgroundColor = 'rgb(128, 128, 128)';
-        // selected.classList.add('selected')
-        //taskItens.classList.remove('selected')
-      } 
+  if (selected.style.backgroundColor == ''){
+      selected.style.backgroundColor = 'rgb(128, 128, 128)';
+  } 
 }
-// function removeClassSelected(){
-//   let tasks = document.getElementsByTagName('li')
-//   if (tasks.classList.includes('selected')){
-//     tasks.classList.remove('selected')
-//   } 
-// }
+
 function clearHighlight(event){
   for (let i = 0; i < taskItens.length; i++) {
     if (taskItens[i].style.backgroundColor === 'rgb(128, 128, 128)'){
@@ -48,11 +41,11 @@ function clearHighlight(event){
 function lineThrough(event){
   if (event.target.style.textDecoration == ''){
     event.target.style.textDecoration = 'line-through solid rgb(0, 0, 0)';
-    event.target.className = 'task-item completed'
+    event.target.className = 'task-item list-group-item completed'
   } 
   else if (event.target.style.textDecoration == 'line-through solid rgb(0, 0, 0)'){
     event.target.style.textDecoration = '';
-    event.target.className = 'task-item'
+    event.target.className = 'task-item list-group-item'
   } 
 }
 function clearList(){
@@ -89,11 +82,8 @@ function saveList(){
 function recoveryList(){
   if (localStorage.length > 0){
   const recoveryItensTag = JSON.parse(localStorage.getItem('tags'));
-  console.log(recoveryItensTag);
   const recoveryItensValue = JSON.parse(localStorage.getItem('valores'));
-  console.log(recoveryItensValue);
   const newListSize = recoveryItensTag.length
-  console.log(newListSize);
   for (let i = 0; i < newListSize; i += 1) {
 
     const newlistItem = document.createElement('li')
@@ -115,6 +105,7 @@ function removeSelected(){
      }
   }
 }
+
 window.onload = function toDoList(){
 addButton.addEventListener('click', addList)
 clearButton.addEventListener('click', clearList)

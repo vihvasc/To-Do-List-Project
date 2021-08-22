@@ -4,33 +4,45 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="bootstrap-5.1.0-dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
   <title>To do List</title>
 </head>
+
 <body>
-  <section>
-  <header> Minha Lista de Tarefas </header>
-  <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo </p>
-  <input id="texto-tarefa" type="text" placeholder="Digite sua tarefa!">
-  <button id="criar-tarefa">Adicionar</button>
-  <div>
-    <button id="remover-finalizados">Remover concluidos</button>
-    <button id="remover-selecionado">Remover selecionado</button>
+  <div class="header">
+    <header class="container mb-3 mt-4 text-center ">
+      <h1 class="display-3">Minha Lista de Tarefas</h1>
+    </header>
   </div>
-  
-  </section>
-  <main>
-    <section>
-     
-        <div>
-          <ol id="lista-tarefas">
-          </ol>
+
+  <div class="container text-center mb-3 input-container">
+    <div class="mb-3 input-container">
+      <p class="lead" id="funcionamento">Clique duas vezes em um item para marcá-lo como completo!</p>
+      <div>
+        <div class="input-group mb-3">
+        <input class="form-control" id="texto-tarefa" type="text" placeholder="Digite sua tarefa!">
+        <button class="btn btn-outline-secondary" id="criar-tarefa">Adicionar</button>
         </div>
-        <button id="apaga-tudo">Limpar lista</button>
-        <button id="salvar-tarefas">Salvar</button>
-    </section>
-    
-  </main>
+      </div>
+    </div>
+
+    <div class="mb-3 box">
+      <button class="btn btn-primary" id="remover-selecionado">Remover selecionado</button>
+      <button class="btn btn-warning" id="remover-finalizados">Remover concluidos</button>
+    </div>
+    <div class="mb-3 box list-box">
+      <ol id="lista-tarefas" class="mb-3 list-group list-group-numbered text-start">
+      </ol>
+    </div>     
+    <div class="">
+      <button class="btn btn-danger" id="apaga-tudo">Limpar lista</button>
+      <button class="btn btn-secondary rounded-pill" id="mover-cima">Mover pra cima</button>
+      <button class="btn btn-secondary rounded-pill" id="mover-baixo">Mover pra baixo</button>
+      <button class="btn btn-success" id="salvar-tarefas">Salvar</button>
+    </div>
+  </div>  
+  
   <script src="script.js"></script>
 </body>
 </html>
