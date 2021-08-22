@@ -23,6 +23,15 @@ function selected(filho){
         filho.target.classList.add('selected');
     }
 }
+    lista.addEventListener('dblclick', trought);
+
+    function trought(children) {
+        if (children.target.classList.contains('completed')){
+        children.target.classList.remove('completed');
+    }   else {
+        children.target.classList.add('completed');
+    }
+}
 
 
 
