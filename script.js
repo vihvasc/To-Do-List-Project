@@ -1,11 +1,13 @@
-function changeLiColor (receivedEvent) {
+function changeLiColor(receivedEvent) {
   const taskSelected = receivedEvent.target;
   if (!taskSelected) return;
   const taskList = document.querySelectorAll('#lista-tarefas *');
-  for(let index = 0; index < taskList.length; index += 1) {
+  for (let index = 0; index < taskList.length; index += 1) {
     if (taskList[index] !== taskSelected) taskList[index].classList.remove('selected');
   }
-  (!taskSelected.classList.contains('selected')) ? taskSelected.classList.add('selected') : false;
+  if (!taskSelected.classList.contains('selected')) {
+    taskSelected.classList.add('selected');
+  }
 }
 
 function createTask() {
