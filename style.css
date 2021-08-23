@@ -4,13 +4,60 @@
   box-sizing: border-box;
 } */
 
+html {
+  background-color: rgb(76, 164, 109);
+  padding: 50px 200px;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  font-family: 'Ubuntu';
+  color: rgb(35, 36, 37);
+  background-color: rgb(234, 237, 240);
+  padding: 10px;
+  border-radius: 20px;
+  width: 800px;
+}
+
+button {
+  margin-left: 5px;
+  padding: 5px;
+}
+
 div {
   display: inline-block;
 }
+
+#main-header {
+  text-align: center;
+}
+#input-itens {
+  display: flex;
+  justify-content: center;
+}
+
+#button-container {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+
+#list-container {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+#texto-tarefa {
+  height: 20px;
+  width: 215px;
+}
+
 .selected {
   background-color: rgb(128, 128, 128);
 }
 
 .completed {
   text-decoration: line-through;
+  color: rgb(76, 164, 109);
 }

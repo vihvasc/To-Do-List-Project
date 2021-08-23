@@ -18,14 +18,6 @@ const clearCompletedtasksButton = document.getElementById(
   'remover-finalizados'
 );
 
-// Adiciona Eventos
-inputButton.addEventListener('click', addNewTask);
-taskList.addEventListener('click', selectItem);
-taskList.addEventListener('dblclick', completeItem);
-clearListButton.addEventListener('click', clearList);
-clearCompletedtasksButton.addEventListener('click', clearCompletedsTasks);
-removeSelectedTaskButton.addEventListener('click', removeSelectedTask);
-
 // Cria o input para adicionar Tarefas
 function createInput() {
   let inputContainer = document.getElementById('input-container');
@@ -100,3 +92,66 @@ function removeSelectedTask() {
     selectedTask.remove();
   }
 }
+
+// Move uma task para cima
+function moveTaskUp() {
+  let selected = document.querySelector('.selected');
+  if (selected) {
+    let target = selected.previousElementSibling;
+    let lista = selected.parentElement;
+
+    if (target) {
+      lista.insertBefore(selected, target);
+    }
+  }
+}
+
+// Move uma task para baixo
+function moveTaskDown() {
+  let selected = document.querySelector('.selected');
+  if (selected) {
+    let target = selected.nextElementSibling;
+    let lista = selected.parentElement;
+
+    if (target) {
+      lista.insertBefore(target, selected);
+    }
+  }
+}
+// Move uma task para cima sem o insert before
+// function moveTaskUp() {
+//   let selected = document.querySelector('.selected');
+//   if (selected) {
+//     let target = selected.previousElementSibling;
+
+//     if (target) {
+//       let aux = target.outerHTML;
+//       target.outerHTML = selected.outerHTML;
+//       selected.outerHTML = aux;
+//     }
+//   }
+// }
+
+// Move uma task para baixo sem o insert before
+// function moveTaskDown() {
+//   let selected = document.querySelector('.selected');
+//   if (selected) {
+//     let target = selected.nextElementSibling;
+
+//     if (target) {
+//       let aux = target.outerHTML;
+//       target.outerHTML = selected.outerHTML;
+//       selected.outerHTML = aux;
+//     }
+//   }
+// }
+
+// Adiciona Eventos
+inputButton.addEventListener('click', addNewTask);
+taskList.addEventListener('click', selectItem);
+taskList.addEventListener('dblclick', completeItem);
+clearListButton.addEventListener('click', clearList);
+clearCompletedtasksButton.addEventListener('click', clearCompletedsTasks);
+removeSelectedTaskButton.addEventListener('click', removeSelectedTask);
+moveUpButton.addEventListener('click', moveTaskUp);
+moveDownButton.addEventListener('click', moveTaskDown);
