@@ -1,3 +1,7 @@
 #funcionamento {
   opacity: 40%;
 }
+
+.tarefa-selecionada {
+  background-color: rgb(128, 128, 128);
+}
