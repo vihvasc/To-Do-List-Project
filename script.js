@@ -43,10 +43,8 @@ function riscaItenLista(event) {
 }
 
 // funçao para apagar todos os itens da lista.
-
 function apagaListaDeItem() {
-
-  const lista = document.getElementById('lista-tarefas');
+  const lista = document.getElementById('lista-tarefas'); // https://developer.mozilla.org/pt-BR/docs/Web/API/Node/removeChild
   while (lista.firstChild) {
     lista.removeChild(lista.firstChild);
   }
@@ -54,3 +52,27 @@ function apagaListaDeItem() {
 const delButton = document.getElementById('apaga-tudo');
 
 delButton.addEventListener('click', apagaListaDeItem);
+
+// funçao para apagar tarefa selecionada
+function apagaItemSelecionado() {
+  const listaDeTarefa = document.getElementById('lista-tarefas');
+  const selected = document.querySelector('.selected');
+
+  listaDeTarefa.removeChild(selected);
+}
+const deletaSelecionadoButton = document.getElementById('remover-selecionado');
+
+deletaSelecionadoButton.addEventListener('click', apagaItemSelecionado);
+
+// // funçao ppara apagar as tarefas ja executadas as que estao riscada
+// function apagaItemExecutados() {
+//   for (let index = 0; index < listaTarefa.length; index += 1) {
+//     if (listaTarefa[index].classList.contains('completed')) {
+//       const selecionadoTarefa = document.querySelector('.completed');
+//       selecionadoTarefa.classList.remove('completed');
+//     }
+//   }
+// }
+// const removeFinalizadosButton = document.getElementById('remover-finalizados');
+
+// removeFinalizadosButton.addEventListener('click', apagaItemExecutados);
