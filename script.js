@@ -1,18 +1,28 @@
-const getValueInputText = document.getElementById('texto-tarefa');
-const createElementLi = document.getElementById('lista-tarefas');
-const getButton = document.getElementById('criar-tarefa');
+const getColors = document.querySelectorAll('.color');
+let getPixels = document.querySelectorAll('.pixel')
 
-getButton.addEventListener('click', () => {
-  let elementLi = document.createElement('li')
-  
-  elementLi.addEventListener('click', () => {
-    elementLi.style.backgroundColor = 'rgb(128, 128, 128)'
-  })
-  
-  elementLi.innerText += getValueInputText.value
+for (let index = 0; index < getPixels.length; index += 1) {
+  getPixels[index].style.backgroundColor = 'white';
+}
 
-  createElementLi.appendChild(elementLi)
+for (let index = 0; index < getColors.length; index += 1) {
 
-  getValueInputText.value = ''
+  getColors[index].addEventListener('click', function() {
 
-});
+    if (getColors[index].className !== 'selected') {
+      for (let index = 0; index < getColors.length; index += 1) {
+        getColors[index].classList.remove('selected');
+      };
+    };
+
+    getColors[index].classList.add('selected')
+
+    for (let pixel = 0; pixel < getPixels.length; pixel += 1) {
+      getPixels[pixel].addEventListener('click', function() {
+        getPixels[pixel].style.backgroundColor = getColors[index].style.backgroundColor
+      })
+    }
+
+  });
+
+};
