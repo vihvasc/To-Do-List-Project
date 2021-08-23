@@ -4,21 +4,35 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
   <title>Todo List</title>
 </head>
 <body>
-  <header>Minha Lista de Tarefas</header>
-  <p id="funcionamento"><i>Clique duas vezes em um item para marcá-lo como completo.</i></p>
-  <input type="text" id="texto-tarefa">
-  <button id="criar-tarefa">Incluir</button>
-  <button id="apaga-tudo">Apagar</button>
-  <button id="remover-finalizados">Apagar finalizados</button>
-  <button id="remover-selecionado">Apagar selecionados</button>
-  <button id="salvar-tarefas">Salvar tarefas</button>
-  <button id="mover-cima">UP</button>
-  <button id="mover-baixo">DOWN</button>
-  <ol id="lista-tarefas"></ol>
+  <header class="container text-center title">
+    <h1>Minha Lista de Tarefas</h1>
+    <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo.</p>
+  </header>
+  <div class="container talks">
+    <div class="container button">
+      <button class="btn btn-primary" id="apaga-tudo">Apagar</button>
+      <button class="btn btn-primary" id="remover-finalizados">Apagar finalizados</button>
+      <button class="btn btn-primary" id="remover-selecionado">Apagar selecionados</button>
+      <button class="btn btn-primary" id="salvar-tarefas">Salvar tarefas</button>
+      <button class="btn btn-primary" id="mover-cima">UP</button>
+      <button class="btn btn-primary" id="mover-baixo">DOWN</button>
+    </div>
+    <div class="container button div-input">
+      <input type="text" id="texto-tarefa">
+      <button class="btn btn-primary" id="criar-tarefa">Incluir</button>
+    </div>
+  </div>
+  <div class="container">
+    <ol id="lista-tarefas" class="container lista">
+
+    </ol>
+  </div>
   <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 </body>
 </html>

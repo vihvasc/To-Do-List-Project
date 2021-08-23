@@ -27,7 +27,10 @@ function geraItemList() {
   buttonAdcItemList.addEventListener('click', adicionaItemLista);
 }
 function deleteAllLis() {
-  list.remove(list.lastChild);
+  const myItemsList = document.querySelectorAll('.item-list');
+  for (let index = 0; index < myItemsList.length; index += 1) {
+    myItemsList[index].remove();
+  }
 }
 function buttonDeleteAll() {
   const buttonDeleteAllItens = document.getElementById('apaga-tudo');
@@ -76,6 +79,9 @@ function getSavedList() {
     const liObject = localList[index];
     const itemSavedList = document.createElement('li');
     itemSavedList.innerText = liObject.texto;
+    itemSavedList.className = 'item-list';
+    itemSavedList.addEventListener('click', selecionaItemLista);
+    itemSavedList.addEventListener('dblclick', riscaItemLista);
     if (liObject.classe) {
       itemSavedList.classList.add('completed');
     }

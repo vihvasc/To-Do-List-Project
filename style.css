@@ -1,5 +1,9 @@
+body {
+  background-color:rgb(99, 125, 126);
+}
 .selected {
-  background-color: grey;
+  background-color: cadetblue;
+  border-radius: 5%;
 }
 
 .item-list {
@@ -7,5 +11,41 @@
 }
 
 .completed {
-  text-decoration: line-through solid black;
+  text-decoration: line-through solid cadetblue;
+}
+.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(55, 94, 95);
+  color: rgb(194, 191, 191);
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.talks {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(55, 94, 95);
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding-top: 5px;
+}
+.button {
+  display: flex;
+  justify-content: center;
+  
+}
+.button button {
+  margin: 2px;
+  background-color: rgb(53, 66, 66);
+  border: none;
+  color: rgb(194, 191, 191);
+}
+.div-input {
+  margin: 5px;
+}
+.lista {
+  display: flex;
+  flex-direction: column;
 }
