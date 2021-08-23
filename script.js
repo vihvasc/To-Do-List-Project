@@ -1,9 +1,31 @@
 const valorDeInput = document.querySelector('#texto-tarefa');
 const listaDeTarefas = document.querySelector('#lista-tarefas');
 
+// somente um selecionado
+function somenteUm() {
+  const elementoSelecionado = document.querySelectorAll('.select');
+  if (elementoSelecionado.length !== 0) {
+    elementoSelecionado[0].classList.remove('select');
+  }
+}
+// Mudar a cordo fundo ao clickar no item
+
+function mudarCorDeFundo(origem) {
+  somenteUm();
+  origem.target.classList.add('select');
+}
+// riscar elemento
+
+function riscarElemento(origem) {
+  if (origem.target.classList.contains('completed')) {
+    origem.target.classList.remove('completed');
+  } else {
+    origem.target.classList.add('completed');
+  }
+}
 // Montar lista de elementos
 
-function criarElementoTabela(origem) {
+function criarElementoTabela() {
   const criarElemento = document.createElement('li');
   criarElemento.innerText = valorDeInput.value;
   listaDeTarefas.appendChild(criarElemento);
@@ -16,61 +38,36 @@ function criarElementoTabela(origem) {
 const botaoDeAtualização = document.querySelector('#criar-tarefa');
 botaoDeAtualização.addEventListener('click', criarElementoTabela);
 
-// Mudar a cordo fundo ao clickar no item
-
-function mudarCorDeFundo(origem) {
-  somenteUm();
-  origem.target.classList.add('select');
-}
-
-// somente um selecionado
-function somenteUm(origem) {
-  const elementoSelecionado = document.querySelectorAll('.select');
-  if (elementoSelecionado.length != 0) {
-    elementoSelecionado[0].classList.remove('select');
-  }
-}
-
-// riscar elemento
-
-function riscarElemento(origem) {
-  if (origem.target.classList.contains('completed')) {
-    origem.target.classList.remove('completed');
-  } else {
-    origem.target.classList.add('completed');
-  }
-}
 // botao de apagar
 const botaoDeApagar = document.querySelector('#apaga-tudo');
 
-botaoDeApagar.addEventListener('click', apagarLista);
-
-function apagarLista(origem) {
+function apagarLista() {
   const itensDaLista = document.querySelectorAll('li');
   console.log(itensDaLista);
-  for (i = 0; i < itensDaLista.length; i += 1) {
-    listaDeTarefas.removeChild(itensDaLista[i]);
+  for (let int = 0; int < itensDaLista.length; int += 1) {
+    listaDeTarefas.removeChild(itensDaLista[int]);
   }
 }
+
+botaoDeApagar.addEventListener('click', apagarLista);
 
 // botão para remover os finalizados
 
 const bRemoverOsFinalizados = document.querySelector('#remover-finalizados');
 
-bRemoverOsFinalizados.addEventListener('click', removF);
-
-function removF(origem) {
+function removF() {
   const itensDaListaCompletado = document.querySelectorAll('li.completed');
-  for (i = 0; i < itensDaListaCompletado.length; i += 1) {
+  for (let i = 0; i < itensDaListaCompletado.length; i += 1) {
     listaDeTarefas.removeChild(itensDaListaCompletado[i]);
   }
 }
+
+bRemoverOsFinalizados.addEventListener('click', removF);
+
 // Salvar itens
 const bSalvar = document.querySelector('#salvar-tarefas');
 
-bSalvar.addEventListener('click', salvarTabela);
-
-function salvarTabela(origem) {
+function salvarTabela() {
   const listaLi = document.querySelectorAll('li');
 
   const salve = [];
@@ -86,32 +83,31 @@ function salvarTabela(origem) {
   localStorage.setItem('key1', JSON.stringify(salve));
 }
 
+bSalvar.addEventListener('click', salvarTabela);
+
 // voltar o salve
 
 const loadList = JSON.parse(localStorage.getItem('key1'));
+function loadTabela() {
+  for (let i = 0; i < loadList.length; i += 1) {
+    const criarElemento = document.createElement('li');
+    criarElemento.innerText = loadList[i].texto;
+    criarElemento.addEventListener('click', mudarCorDeFundo);
+    criarElemento.addEventListener('dblclick', riscarElemento);
+    if (loadList[i].class) {
+      criarElemento.classList.add('completed');
+    }
+    listaDeTarefas.appendChild(criarElemento);
+  }
+}
 
 if (localStorage.length > 0) {
-  function loadTabela(origem) {
-    for (let i = 0; i < loadList.length; i += 1) {
-      const criarElemento = document.createElement('li');
-      criarElemento.innerText = loadList[i].texto;
-
-      criarElemento.addEventListener('click', mudarCorDeFundo);
-      criarElemento.addEventListener('dblclick', riscarElemento);
-
-      if (loadList[i].class) {
-        criarElemento.classList.add('completed');
-      }
-      listaDeTarefas.appendChild(criarElemento);
-    }
-  }
-
   window.onload = loadTabela;
 }
 
 // fonte https://stackoverflow.com/questions/34913953/move-an-element-one-place-up-or-down-in-the-dom-tree-with-javascript
 // botão de subir iten
-function subirIten(origem) {
+function subirIten() {
   const textoItemAtual = document.querySelector('.select');
   if (!textoItemAtual) return;
   if (textoItemAtual.previousElementSibling) {
@@ -125,10 +121,12 @@ bSubirItem.addEventListener('click', subirIten);
 
 // botão de descer iten
 
-function descerIten(origem) {
+function descerIten() {
   const textoItemAtual = document.querySelector('.select');
+  const siblingTexto = textoItemAtual.nextElementSibling;
+  const parentTexto = textoItemAtual.parentNode;
   if (!textoItemAtual) return;
-  if (textoItemAtual.nextElementSibling) textoItemAtual.parentNode.insertBefore(textoItemAtual.nextElementSibling, textoItemAtual);
+  if (siblingTexto) parentTexto.insertBefore(siblingTexto, textoItemAtual);
 }
 
 const bDescerItem = document.querySelector('#mover-baixo');
@@ -139,10 +137,10 @@ bDescerItem.addEventListener('click', descerIten);
 
 const bRemoverItem = document.querySelector('#remover-selecionado');
 
-function rItem(origem){
-    const textoItemAtual = document.querySelector('.select');
-    if (!textoItemAtual) return;
-    textoItemAtual.remove();
+function rItem() {
+  const textoItemAtual = document.querySelector('.select');
+  if (!textoItemAtual) return;
+  textoItemAtual.remove();
 }
 
 bRemoverItem.addEventListener('click', rItem);
