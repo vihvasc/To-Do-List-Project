@@ -112,3 +112,31 @@ if (localStorage.length > 0) {
 
     window.onload = loadTabela
 }
+
+// fonte https://stackoverflow.com/questions/34913953/move-an-element-one-place-up-or-down-in-the-dom-tree-with-javascript
+// botão de subir itens
+function subirIten(origem) {
+   
+    let textoItemAtual = document.querySelector(".select")
+    if (!textoItemAtual) return;
+    if(textoItemAtual.previousElementSibling){
+    textoItemAtual.parentNode.insertBefore(textoItemAtual, textoItemAtual.previousElementSibling);
+    }
+}
+
+const bSubirItem = document.querySelector("#mover-cima");
+
+bSubirItem.addEventListener("click", subirIten);
+
+// botão de descer itens
+
+function descerIten(origem){
+    let textoItemAtual = document.querySelector("li.select")
+    if (!textoItemAtual) return;
+    if(textoItemAtual.nextElementSibling)
+    textoItemAtual.parentNode.insertBefore(textoItemAtual.nextElementSibling, textoItemAtual);
+}
+
+const bDescerItem = document.querySelector("#mover-baixo");
+
+bDescerItem.addEventListener("click", descerIten);
