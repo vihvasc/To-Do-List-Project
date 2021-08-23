@@ -97,20 +97,20 @@ const buttonSaveTasks = document.getElementById('salvar-tarefas');
 
 function saveIndex() {
   const list = ol.children;
-  const saveIndex = [];
+  const savesIndex = [];
   for (let index = 0; index < list.length; index += 1) {
     if (list[index].classList.contains('completed')) {
-      saveIndex.push(index);
+      savesIndex.push(index);
     } else {
-      saveIndex.push('amora');
+      savesIndex.push('amora');
     }
   }
-  return saveIndex;
+  return savesIndex;
 }
 
 function saveTasks() {
-  const saveLi = [];
   const list = document.querySelectorAll('li');
+  const saveLi = [];
   for (let index = 0; index < list.length; index += 1) {
     saveLi.push(list[index].innerText);
   }
@@ -142,4 +142,3 @@ function recoveryTasks() {
 window.onload = () => {
   recoveryTasks();
 };
-console.log(ol.children);
