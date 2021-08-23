@@ -110,7 +110,7 @@ if (localStorage.length > 0) {
 }
 
 // fonte https://stackoverflow.com/questions/34913953/move-an-element-one-place-up-or-down-in-the-dom-tree-with-javascript
-// botão de subir itens
+// botão de subir iten
 function subirIten(origem) {
   const textoItemAtual = document.querySelector('.select');
   if (!textoItemAtual) return;
@@ -123,7 +123,7 @@ const bSubirItem = document.querySelector('#mover-cima');
 
 bSubirItem.addEventListener('click', subirIten);
 
-// botão de descer itens
+// botão de descer iten
 
 function descerIten(origem) {
   const textoItemAtual = document.querySelector('.select');
