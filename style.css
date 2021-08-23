@@ -1,6 +1,10 @@
+
+
 #contorno {
   border-radius: 7px;
   background-color: rgb(231, 223, 223);
+  margin: 15%;
+ 
 }
 
 #titulo {
