@@ -123,9 +123,9 @@ bSubirItem.addEventListener('click', subirIten);
 
 function descerIten() {
   const textoItemAtual = document.querySelector('.select');
+  if (!textoItemAtual) return;
   const siblingTexto = textoItemAtual.nextElementSibling;
   const parentTexto = textoItemAtual.parentNode;
-  if (!textoItemAtual) return;
   if (siblingTexto) parentTexto.insertBefore(siblingTexto, textoItemAtual);
 }
 
