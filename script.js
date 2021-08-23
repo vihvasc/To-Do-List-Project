@@ -79,7 +79,7 @@ function salvarTabela(origem) {
         let inforDaLista = listaLi[i].innerText
 
         if (listaLi[i].classList.contains("completed")) {
-            salve.push({ texto: inforDaLista, class: "completo" })
+            salve.push({ texto: inforDaLista, class: "completed" })
         } else {
             salve.push({ texto: inforDaLista, class: "" })
         }
@@ -92,20 +92,23 @@ function salvarTabela(origem) {
 
 let loadList = JSON.parse(localStorage.getItem("key1"))
 
-function loadTabela(origem) {
+if (localStorage.length > 0) {
 
-    for (let i = 0; i < loadList.length; i += 1) {
-        let criarElemento = document.createElement("li");
-        criarElemento.innerText = loadList[i].texto;
+    function loadTabela(origem) {
 
-        criarElemento.addEventListener("click", mudarCorDeFundo);
-        criarElemento.addEventListener("dblclick", riscarElemento);
+        for (let i = 0; i < loadList.length; i += 1) {
+            let criarElemento = document.createElement("li");
+            criarElemento.innerText = loadList[i].texto;
 
-        if (loadList[i].class) {
-            criarElemento.classList.add("completed")
-        };
-        listaDeTarefas.appendChild(criarElemento);
+            criarElemento.addEventListener("click", mudarCorDeFundo);
+            criarElemento.addEventListener("dblclick", riscarElemento);
+
+            if (loadList[i].class) {
+                criarElemento.classList.add("completed");
+            }
+            listaDeTarefas.appendChild(criarElemento);
+        }
     }
-}
 
-window.onload = loadTabela
+    window.onload = loadTabela
+}
