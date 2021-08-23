@@ -21,9 +21,9 @@ window.onload = function () {
       function changeClass(event) {
         let dbclick = event.target;
         if (dbclick.className === 'task completed') {
-          dbclick.classList.remove('completed')
+          dbclick.classList.remove('completed');
         } else {
-          dbclick.classList.add('completed')
+          dbclick.classList.add('completed');
         }
       }
 
