@@ -21,10 +21,14 @@ function generateTask(){
   })
 }
 
-function paintBackgroundTask(task){
-  let classTask=document.querySelectorAll(".tarefa");
-  for(i=0; i<classTask.length; i+=1){
-    classTask[i]=task;
-    task.target.style.backgroundColor="rgb(128, 128, 128)";
-  }
+function paintBackgroundTask(event){
+  let classTask=document.querySelector(".selected")
+    if(classTask){
+    classTask.classList.remove("selected");
+    }
+    event.target.classList.add("selected");
 }
+
+
+
+
