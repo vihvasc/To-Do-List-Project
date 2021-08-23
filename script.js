@@ -51,7 +51,7 @@ function clearAll() {
 // Função entendida e construída com base no código do Gabriel Alves
 // https://github.com/tryber/sd-015-b-project-todo-list/blob/gabriel-alves-todo-list-project/script.js
 function removeDones() {
-  let done = document.getElementsByClassName('completed');
+  const done = document.getElementsByClassName('completed');
   const i = 0;
 
   while (done.length > 0) {
@@ -61,4 +61,4 @@ function removeDones() {
 
 list.addEventListener('dblclick', doneTasks);
 clearButton.addEventListener('click', clearAll);
-clearDone.addEventListener('click', removeDones)
+clearDone.addEventListener('click', removeDones);
