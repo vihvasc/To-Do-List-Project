@@ -64,15 +64,16 @@ const deletaSelecionadoButton = document.getElementById('remover-selecionado');
 
 deletaSelecionadoButton.addEventListener('click', apagaItemSelecionado);
 
-// // funçao ppara apagar as tarefas ja executadas as que estao riscada
-// function apagaItemExecutados() {
-//   for (let index = 0; index < listaTarefa.length; index += 1) {
-//     if (listaTarefa[index].classList.contains('completed')) {
-//       const selecionadoTarefa = document.querySelector('.completed');
-//       selecionadoTarefa.classList.remove('completed');
-//     }
-//   }
-// }
-// const removeFinalizadosButton = document.getElementById('remover-finalizados');
+// funçao para remover as tarefas já executadas.
+function apagaExecutados() {
 
-// removeFinalizadosButton.addEventListener('click', apagaItemExecutados);
+  const executados = document.getElementsByClassName('completed'); // https://stackoverflow.com/questions/4777077/removing-elements-by-class-name
+
+  while (executados.length > 0) {
+    executados[0].parentNode.removeChild(executados[0]);
+  }
+}  
+
+const deletaExecutadosButton = document.getElementById('remover-finalizados');
+
+deletaExecutadosButton.addEventListener('click', apagaExecutados);
