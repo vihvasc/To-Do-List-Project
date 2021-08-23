@@ -1,6 +1,7 @@
 const btnAdicionar = document.getElementById('criar-tarefa');
 const listaDeTarefas = document.getElementById('lista-tarefas');
 const btnApagarTd = document.getElementById('apaga-tudo');
+const btnApagarConcluidos = document.getElementById('remover-finalizados');
 
 function trocaCorDaTarefa(event) {
   const tarefaAnterior = document.querySelector('.tarefa-selecionada');
@@ -39,7 +40,15 @@ function adicionaTarefa() {
 btnAdicionar.addEventListener('click', adicionaTarefa);
 
 function btnApagaTarefas() {
-  const lista = document.getElementById('lista-tarefas');
-  lista.innerHTML = '';
+  listaDeTarefas.innerHTML = '';
 }
 btnApagarTd.addEventListener('click', btnApagaTarefas);
+
+function apagaTarefasConcluidas() {
+  const concluidos = listaDeTarefas.getElementsByClassName('completed');
+  for (let i = concluidos.length - 1; i >= 0; i -= 1) {
+    concluidos[i].remove();
+  }
+}
+
+btnApagarConcluidos.addEventListener('click', apagaTarefasConcluidas);
