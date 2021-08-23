@@ -29,12 +29,10 @@ function addListItem() {
   const item = document.createElement('li');
   item.innerHTML = inputValue.value;
   list.appendChild(item);
-  
+
   inputValue.value = '';
   changeBackground();
 }
-
-
 
 function doneTasks(event) {
   if (event.target.classList.contains('completed')) {
@@ -53,7 +51,7 @@ function clearAll() {
 function removeDones() {
   const done = document.getElementsByClassName('completed');
   const i = 0;
-  
+
   while (done.length > 0) {
     done[i].remove();
   }
