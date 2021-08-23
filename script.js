@@ -3,7 +3,8 @@ let section = document.getElementById("section-1");
 let createButton = document.createElement("button");
 let button = section.appendChild(createButton);
 button.id = "criar-tarefa";
-button.innerText = "Adicionar";
+button.className = "container";
+button.innerText = "Add";
 
 /*EVENTO-CLICK-BOTÃO-DESAPARECER INPUT-ADICIONAR NA LISTA A TAREFA*/
 let button1 = document.getElementById("criar-tarefa");
@@ -24,7 +25,7 @@ listLi.addEventListener("click",newColor1);
 
 function newColor1 (event){
     let classList = document.getElementsByClassName("tasks");
-    let newColor = "rgb(128, 128, 128)";
+    let newColor = "#B0C4DE ";
     for (let index =0 ; index < classList.length ; index += 1){
         classList[index].style.backgroundColor = "";
     }

@@ -6,9 +6,92 @@
 
 .tasks{
     background-color: white;
+    font-size: 35px;
+    font-weight: 700;
+    color: #363636;
+    background-color: #66CDAA;
+    
 }
 
 .completed{
    text-decoration: line-through;
    color: solid rgb(0, 0, 0);
+}
+
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    font-family: "Amatic SC";
+    color: #363636;
+    font-size: 35px;
+    width: 600px;
+    margin: auto;
+}
+
+header h1 {
+    background-color:#9ACD32 ;
+    border-radius: 20%;
+    padding: 5%;
+}
+
+
+header p {
+    font-style:oblique;
+    margin: 5px;
+    font-size: 33px;
+    background-color:#9ACD32 ;
+    border-radius: 30%;
+
+}
+
+
+body{
+    font-family: "Amatic SC";
+    background-image: url("foto1.jpeg");
+}
+
+section{
+    
+    width: 600px;
+    margin: auto;
+    margin-top: 80px;
+    background-color: #66CDAA;
+    border-radius: 10%;
+    
+}
+
+ol{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-1{
+    display: flex;
+    justify-content: center;
+}
+
+input{
+    width: 500px;
+    height: 27px;
+    font-size: 22px;
+    margin-left: 378px;
+    margin-top: 23px;
+    margin-bottom: 50px;
+    background-color:#B0C4DE ;
+    
+}
+
+button{
+    background-color: #9ACD32 ;
+    color:black ;
+    font-style: bold;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 10px;
+}
+
+.input{
+    display: flex;
 }
