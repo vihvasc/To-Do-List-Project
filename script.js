@@ -4,15 +4,12 @@ const inputValue = document.getElementById('texto-tarefa');
 const clearButton = document.getElementById('apaga-tudo');
 const clearDone = document.getElementById('remover-finalizados');
 
-button.addEventListener('click', addListItem);
+function clearBackground() {
+  const itens = document.querySelectorAll('li');
 
-function addListItem() {
-  const item = document.createElement('li');
-  item.innerHTML = inputValue.value;
-  list.appendChild(item);
-
-  inputValue.value = '';
-  changeBackground();
+  for (let i = 0; i < itens.length; i += 1) {
+    itens[i].style.backgroundColor = 'white';
+  }
 }
 
 // Função construída e entendida com base no código da Virginia Alcântara
@@ -28,13 +25,16 @@ function changeBackground() {
   }
 }
 
-function clearBackground() {
-  const itens = document.querySelectorAll('li');
-
-  for (let i = 0; i < itens.length; i += 1) {
-    itens[i].style.backgroundColor = 'white';
-  }
+function addListItem() {
+  const item = document.createElement('li');
+  item.innerHTML = inputValue.value;
+  list.appendChild(item);
+  
+  inputValue.value = '';
+  changeBackground();
 }
+
+
 
 function doneTasks(event) {
   if (event.target.classList.contains('completed')) {
@@ -51,9 +51,9 @@ function clearAll() {
 // Função entendida e construída com base no código do Gabriel Alves
 // https://github.com/tryber/sd-015-b-project-todo-list/blob/gabriel-alves-todo-list-project/script.js
 function removeDones() {
-  let done = document.getElementsByClassName('completed');
+  const done = document.getElementsByClassName('completed');
   const i = 0;
-
+  
   while (done.length > 0) {
     done[i].remove();
   }
@@ -61,4 +61,5 @@ function removeDones() {
 
 list.addEventListener('dblclick', doneTasks);
 clearButton.addEventListener('click', clearAll);
-clearDone.addEventListener('click', removeDones)
+clearDone.addEventListener('click', removeDones);
+button.addEventListener('click', addListItem);
