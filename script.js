@@ -19,14 +19,6 @@ function toDoList() {
 
     event.target.style.backgroundColor = 'rgb(128,128,128)';
     event.target.classList.add('selected');
-
-    butaoApagar.addEventListener('click', function () {
-      const listaTarefas = document.getElementById('lista-tarefas');
-      
-      if (listaTarefas.parentNode) {
-      listaTarefas.parentNode.removeChild(listaTarefas);
-      }
-    });
   });
 
   li.addEventListener('dblclick', function (event) {
@@ -39,7 +31,21 @@ function toDoList() {
       event.target.classList.add('completed');
     }      
   });
+
+  // butaoApagar.addEventListener('click', function () {
+  //   li.innerText = '';
+  // });
 }
+
+butaoApagar.addEventListener('click', function () {
+  const listaTarefas = document.getElementById('lista-tarefas');
+  
+  if (listaTarefas.parentNode) {
+  listaTarefas.parentNode.removeChild(listaTarefas);
+  }else {
+    listaTarefas.parentNode.createElement(listaTarefas)
+  }
+});
 
 butaoCriar.addEventListener('click', toDoList);
   
