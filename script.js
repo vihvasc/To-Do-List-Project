@@ -33,25 +33,25 @@ function somenteUm(origem) {
 
 // riscar elemento
 
-function riscarElemento(origem){
-    if (origem.target.classList.contains('completed')){
+function riscarElemento(origem) {
+    if (origem.target.classList.contains('completed')) {
         origem.target.classList.remove('completed');
-    }else {
+    } else {
         origem.target.classList.add('completed');
     }
- }
- // botao de apagar
- const botaoDeApagar= document.querySelector("#apaga-tudo")
+}
+// botao de apagar
+const botaoDeApagar = document.querySelector("#apaga-tudo")
 
- botaoDeApagar.addEventListener("click", apagarLista);
+botaoDeApagar.addEventListener("click", apagarLista);
 
- function apagarLista(origem){
-     let itensDaLista = document.querySelectorAll("li")
-     console.log(itensDaLista);
-     for(i=0; i<itensDaLista.length; i+=1){
-         listaDeTarefas.removeChild(itensDaLista[i])
-     }
- }
+function apagarLista(origem) {
+    let itensDaLista = document.querySelectorAll("li")
+    console.log(itensDaLista);
+    for (i = 0; i < itensDaLista.length; i += 1) {
+        listaDeTarefas.removeChild(itensDaLista[i])
+    }
+}
 
 // botão para remover os finalizados
 
@@ -59,9 +59,53 @@ const bRemoverOsFinalizados = document.querySelector("#remover-finalizados");
 
 bRemoverOsFinalizados.addEventListener("click", removF);
 
-function removF(origem){
+function removF(origem) {
     let itensDaListaCompletado = document.querySelectorAll("li.completed");
-    for(i=0; i<itensDaListaCompletado.length; i +=1){
+    for (i = 0; i < itensDaListaCompletado.length; i += 1) {
         listaDeTarefas.removeChild(itensDaListaCompletado[i])
     }
 }
+// Salvar itens
+const bSalvar = document.querySelector("#salvar-tarefas");
+
+bSalvar.addEventListener("click", salvarTabela);
+
+function salvarTabela(origem) {
+    let listaLi = document.querySelectorAll("li");
+
+
+    let salve = []
+    for (let i = 0; i < listaLi.length; i += 1) {
+        let inforDaLista = listaLi[i].innerText
+
+        if (listaLi[i].classList.contains("completed")) {
+            salve.push({ texto: inforDaLista, class: "completo" })
+        } else {
+            salve.push({ texto: inforDaLista, class: "" })
+        }
+
+    }
+    localStorage.setItem("key1", JSON.stringify(salve))
+}
+
+// voltar o salve
+
+let loadList = JSON.parse(localStorage.getItem("key1"))
+
+function loadTabela(origem) {
+
+    for (let i = 0; i < loadList.length; i += 1) {
+        let criarElemento = document.createElement("li");
+        criarElemento.innerText = loadList[i].texto;
+
+        criarElemento.addEventListener("click", mudarCorDeFundo);
+        criarElemento.addEventListener("dblclick", riscarElemento);
+
+        if (loadList[i].class) {
+            criarElemento.classList.add("completed")
+        };
+        listaDeTarefas.appendChild(criarElemento);
+    }
+}
+
+window.onload = loadTabela
