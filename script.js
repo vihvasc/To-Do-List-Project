@@ -41,3 +41,16 @@ function riscaItenLista(event) {
     event.target.classList.add('completed');
   }
 }
+
+// funçao para apagar todos os itens da lista.
+
+function apagaListaDeItem() {
+
+  const lista = document.getElementById('lista-tarefas');
+  while (lista.firstChild) {
+    lista.removeChild(lista.firstChild);
+  }
+}
+const delButton = document.getElementById('apaga-tudo');
+
+delButton.addEventListener('click', apagaListaDeItem);
