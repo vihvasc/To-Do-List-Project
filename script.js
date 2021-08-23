@@ -1,5 +1,6 @@
 const btnAdicionar = document.getElementById('criar-tarefa');
 const listaDeTarefas = document.getElementById('lista-tarefas');
+const btnApagarTd = document.getElementById('apaga-tudo');
 
 function trocaCorDaTarefa(event) {
   const tarefaAnterior = document.querySelector('.tarefa-selecionada');
@@ -36,3 +37,9 @@ function adicionaTarefa() {
 }
 
 btnAdicionar.addEventListener('click', adicionaTarefa);
+
+function btnApagaTarefas() {
+  const lista = document.getElementById('lista-tarefas');
+  lista.innerHTML = '';
+}
+btnApagarTd.addEventListener('click', btnApagaTarefas);
