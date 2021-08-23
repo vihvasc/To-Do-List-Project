@@ -1,3 +1,11 @@
 .completed {
   text-decoration: line-through;
 }
+
+#remover-finalizados {
+  margin-left: 4px;
+}
+
+#salvar-tarefas {
+  margin-left: 4px;
+}

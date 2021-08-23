@@ -1,3 +1,13 @@
+window.onload = function savedTasks() {
+  if (localStorage !== null) {
+    const ol = document.querySelector('.lista');
+    for (let i = 0; i < localStorage.length; i += 1) {
+      const taskSaved = localStorage.getItem([i]);
+      ol.innerHTML += taskSaved;
+    }
+  }
+};
+
 function clearAllTasks() {
   const ol = document.getElementById('lista-tarefas');
   ol.innerHTML = '';
@@ -68,3 +78,21 @@ function createButtonDeleteTasks() {
   buttonDelete.addEventListener('click', deleteCompletedTasks);
 }
 createButtonDeleteTasks();
+
+function saveTasks() {
+  const allTasks = document.getElementsByTagName('li');
+  for (let i = 0; i < allTasks.length; i += 1) {
+    const task = allTasks[i];
+    localStorage.setItem([i], task.outerHTML);
+  }
+}
+
+function createButtonSavetasks() {
+  const buttonSave = document.createElement('button');
+  const section = document.getElementById('buttons');
+  section.appendChild(buttonSave);
+  buttonSave.innerText = 'Salvar tarefas';
+  buttonSave.id = 'salvar-tarefas';
+  buttonSave.addEventListener('click', saveTasks);
+}
+createButtonSavetasks();
