@@ -2,7 +2,9 @@ const botaoAdicionar = document.querySelector('#criar-tarefa');
 const input = document.querySelector('#texto-tarefa');
 const lista = document.getElementById('lista-tarefas');
 const botaoApagar = document.querySelector('#apaga-tudo');
-const botaoFinalizados = document.querySelector('#remover-finalizados')
+const botaoFinalizados = document.querySelector('#remover-finalizados');
+const botaoSalvarTarefas = document.querySelector('#salvar-tarefas');
+const botaoRemoveSelecionado = document.querySelector('#remover-selecionado');
 let filhoDaLista = document.createElement('li');
 let classeDoFilhoDaLista = document.querySelector('.list');
 
@@ -75,8 +77,44 @@ function interacaoBotaoFinalizados() {
 	let classCompleted = document.querySelectorAll('.completed');
 	
 	if (classCompleted) {
-		for (let index = 0; index < classCompleted.length; index++) {
+		for (let index = 0; index < classCompleted.length; index += 1) {
 			classCompleted[index].remove();
 		}
 	}
 }
+
+// Acima eu percorri meu array atravez de uma condição, para que se eu clicar no botão "Remover Finalizados" com o evento criado na função "selecionandoComDoisClicks", remover apenas os itens selecionados com a classe "completed".
+
+
+
+botaoSalvarTarefas.addEventListener('click', interacaoBotaoSalvarTarefas);
+function interacaoBotaoSalvarTarefas() {
+
+	const tagLi = document.querySelectorAll('.list');
+	// const a = JSON.stringify(tagLiHTML);
+	if (tagLi) {
+		for (let index = 0; index < tagLi.length; index += 1) {
+			// console.log('oi')
+			const tagLiHTML = tagLi.innerHTML;
+			localStorage.setItem('chaveItensSalvos', JSON.stringify(tagLi));
+			// localStorage.setItem('chave', tagLiHTML)
+		}
+			
+	}	
+
+}
+
+// fiz um for pra percorrer tudo o que tiver, (percorrer todas as tags li), para conseguir salvar todas.
+
+
+
+botaoRemoveSelecionado.addEventListener('click', interacaoBotaoRemoverSelecionados);
+function interacaoBotaoRemoverSelecionados() {
+	let classSelecionado = document.querySelector('.selected')
+
+	if (classSelecionado) {
+		classSelecionado.remove()
+	}
+}
+
+// aqui eu busquei meu botao com o queryselector la em cima nas constantes, e depois busquei a classe que fiz "selected", para que se tiver a classe selected, eu remover clacando no botao com o addEventListener
