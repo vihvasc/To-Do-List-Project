@@ -1,28 +1,18 @@
-const getColors = document.querySelectorAll('.color');
-let getPixels = document.querySelectorAll('.pixel')
+let textoTarefa = document.getElementById('texto-tarefa');
+let addElementoListaTarefas = document.getElementById('lista-tarefas');
+const btnCriarTarefa = document.getElementById('criar-tarefa');
 
-for (let index = 0; index < getPixels.length; index += 1) {
-  getPixels[index].style.backgroundColor = 'white';
-}
+btnCriarTarefa.addEventListener('click', function() {
+  let elementLi = document.createElement('li')
 
-for (let index = 0; index < getColors.length; index += 1) {
+  elementLi.innerText += textoTarefa.value
 
-  getColors[index].addEventListener('click', function() {
+  addElementoListaTarefas.appendChild(elementLi)
 
-    if (getColors[index].className !== 'selected') {
-      for (let index = 0; index < getColors.length; index += 1) {
-        getColors[index].classList.remove('selected');
-      };
-    };
+  textoTarefa.value = ''
 
-    getColors[index].classList.add('selected')
+  elementLi.addEventListener('click', () => {
+    elementLi.style.backgroundColor = 'rgb(128, 128, 128)'
+  })
 
-    for (let pixel = 0; pixel < getPixels.length; pixel += 1) {
-      getPixels[pixel].addEventListener('click', function() {
-        getPixels[pixel].style.backgroundColor = getColors[index].style.backgroundColor
-      })
-    }
-
-  });
-
-};
+})

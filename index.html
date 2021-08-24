@@ -5,57 +5,27 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="./style.css">
-
-  <title>Trybe - Project: Todo List</title>
+  <link rel="stylesheet" href="style.css">
+  
+  <title>Trybe: Projeto - todo-list</title>
 </head>
 <body>
+
   <header>
-    <h1 id="title">Paleta de Cores</h1>
+    <h1>Minha Lista de Tarefas</h1>
   </header>
+  
+  <p id="funcionamento">
+    Clique duas vezes em um item para marcá-lo como completo
+  </p>
 
-  <div id="color-palette" class="colors">
-    <div class="color color-01 selected" style="background-color: black"></div>
-    <div class="color color-02" style="background-color: blue;"></div>
-    <div class="color color-03" style="background-color:orange;"></div>
-    <div class="color color-04" style="background-color: gray;"></div>
-  </div>
+  <input type="text" name="texto-tarefa" id="texto-tarefa">
 
-  <div class="pixel-board">
-    <div class="pixel"></div>
-    <div class="pixel"></div>
-    <div class="pixel"></div>
-    <div class="pixel"></div>
-    <div class="pixel"></div>
-  </div>
-  <div class="pixel-board">
-    <div class="pixel"></div>
-    <div class="pixel"></div>
-    <div class="pixel"></div>
-    <div class="pixel"></div>
-    <div class="pixel"></div>
-  </div>
-  <div class="pixel-board">
-    <div class="pixel"></div>
-    <div class="pixel"></div>
-    <div class="pixel"></div>
-    <div class="pixel"></div>
-    <div class="pixel"></div>
-  </div>
-  <div class="pixel-board">
-    <div class="pixel"></div>
-    <div class="pixel"></div>
-    <div class="pixel"></div>
-    <div class="pixel"></div>
-    <div class="pixel"></div>
-  </div>
-  <div class="pixel-board">
-    <div class="pixel"></div>
-    <div class="pixel"></div>
-    <div class="pixel"></div>
-    <div class="pixel"></div>
-    <div class="pixel"></div>
-  </div>
+  <ol id="lista-tarefas">
+
+  </ol>
+
+  <button id="criar-tarefa">Criar Tarefa</button>
 
   <script src="./script.js"></script>
 </body>
