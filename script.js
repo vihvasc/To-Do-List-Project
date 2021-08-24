@@ -22,11 +22,9 @@ let list = document.getElementById('lista-tarefas');
 list.addEventListener('click', changeBg);
 function changeBg(event) {
     let selecionado = document.querySelector('.item-list');
-
     if (selecionado && selecionado !== event.target) {
-      selecionado.classList.remove('item-list');
+        selecionado.classList.remove('item-list');
     }
-
     event.target.classList.toggle('item-list');
   }
     
