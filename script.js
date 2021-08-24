@@ -10,9 +10,10 @@
      document.getElementById('lista-tarefas').appendChild(tarefa);
  }
 
- function mudarCorDeFundo(color) {
+ function mudarCorDeFundo() {
      const label = document.querySelector('.tarefa');
-     label.style.background = color;
- }
+     label.style.backgroundColor = rgb(128, 128, 128);
+}
+
+document.querySelector('.tarefa').addEventListener('click', mudarCorDeFundo);
  
- document.querySelector('.tarefa').addEventListener('onClick', mudarCorDeFundo('rgb(128,128,128)'));
