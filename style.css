@@ -72,3 +72,7 @@ h2{
 }
 
 /* Essa estilizacao tive como referencia um dos cursos de html/css que estou fazendo a parte. Gostei muito do suo do linear-gradient e resolvi adotar nesse projeto. Tentei deixar a paleta de cores um pouco suave tbm, combinando tons de azul com branco, e deixando uma sombra no titulo e subtitulos para dar uma destacada neles */
+
+.selected{
+    background-color: rgb(128, 128, 128);
+}

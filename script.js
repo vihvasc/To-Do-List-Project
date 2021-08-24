@@ -4,14 +4,27 @@ window.onload = function(){
         let li = document.createElement('LI');
         let inputValue = document.lista.tarefa.value;
         let inputText = document.createTextNode(inputValue);
-    
-        li.appendChild(inputText);
-        document.querySelector('ol').appendChild(li);
-        document.lista.tarefa.value = "";
-        li.classList.add('list');
-        li.addEventListener("click", function(){
-            li.style.backgroundColor = "rgb(128, 128, 128)";
-        });
+
+        // Condicao para nao adicionar campo vazio
+        if(inputValue){
+            li.appendChild(inputText);
+            document.querySelector('ol').appendChild(li);
+            document.lista.tarefa.value = "";
+            li.classList.add('list');
+        }
+
+        // evento - Muda cor de fundo quando clica na tarefa
+        function mudaCor(){
+            const listaLi = document.querySelectorAll('.selected');
+            if (listaLi[0] === undefined){
+                li.classList.toggle('selected');
+            }else{
+                listaLi[0].classList.remove('selected');
+                li.classList.toggle('selected');
+            }
+        
+        }
+        li.addEventListener("click", mudaCor);
     }
     
     // evento - Adiciona tarefa
