@@ -48,8 +48,11 @@
   const btnApagarCompletos = document.querySelector('#remover-finalizados');
   function apagaTarefasCompletas() {
     const completos = document.getElementsByClassName('descricao completed');
-    for (let i = concluidos.length - 1; i >= 0; i -= 1) {
+    for (let i = completos.length - 1; i >= 0; i -= 1) {
       completos[i].remove();
     }
   }
   btnApagarCompletos.addEventListener('click', apagaTarefasCompletas);
+
+  
+  
