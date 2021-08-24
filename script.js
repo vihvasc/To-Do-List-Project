@@ -6,8 +6,8 @@ const taskItem = document.getElementsByClassName('task');
 const buttonClear = document.querySelector('#apaga-tudo');
 const buttonClearFinalized = document.querySelector('#remover-finalizados');
 const buttonSaveTasks = document.querySelector('#salvar-tarefas');
+const buttonRemoveSelected = document.querySelector('#remover-selecionado');
 
-// Funcoes
 // Requisito 5
 function createTask() {
   const listItem = document.createElement('li');
@@ -23,6 +23,7 @@ function addBackgroundColor(event) {
   const elemento = event.target;
   if (elemento.style.backgroundColor === '') {
     elemento.style.backgroundColor = 'rgb(128, 128, 128)';
+    elemento.classList.add('selected');
   }
 }
 
@@ -31,6 +32,7 @@ function removeBackgroundColor(event) {
   for (let index = 0; index < taskItem.length; index += 1) {
     if (taskItem[index].style.backgroundColor === 'rgb(128, 128, 128)') {
       taskItem[index].style.backgroundColor = '';
+      taskItem[index].classList.remove('selected');
     }
   }
   addBackgroundColor(event);
@@ -77,6 +79,19 @@ function localStorageOl() {
 
 localStorageOl();
 
+// requisito 14
+function removeSelect() {
+  const lis = document.querySelectorAll('li');
+
+  for (let i = 0; i < lis.length; i += 1) {
+    if (lis[i] === document.querySelector('.selected')) {
+      lis[i].remove();
+    }
+  }
+}
+
+//-------------------------------------------------------------------------------------------------
+buttonRemoveSelected.addEventListener('click', removeSelect);
 taskList.addEventListener('dblclick', doubleClick);
 taskList.addEventListener('click', removeBackgroundColor);
 createTasks.addEventListener('click', createTask);

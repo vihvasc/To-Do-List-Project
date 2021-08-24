@@ -2,10 +2,6 @@
   text-decoration: line-through solid black;
 }
 
-.selected {
-  background-color: #0466c8;
-}
-
 body {
   background-color: #01153b;
   color: #f1faee;
@@ -15,13 +11,14 @@ body {
 }
 
 .home {
-  background-color: #5c677D;
+  background-color: #5c677d;
   border-radius: 10px;
   padding: 15px 10px 15px 15px;
   font-size: 20px;
   margin: 5px;
   border: 1px solid #dadde4;
 }
+
 header h1 {
   font-size: 50px;
 }
