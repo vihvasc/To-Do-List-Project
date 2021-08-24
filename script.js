@@ -3,7 +3,6 @@ function addTask() {
     let listItems = document.getElementById('lista-tarefas');
     let createListItem = document.createElement('li');
     createListItem.textContent = inputValue;
-    createListItem.className = 'taskListed';
     listItems.appendChild(createListItem);
     let clearInputValue = document.getElementById('texto-tarefa');
     clearInputValue.value = "";
@@ -11,7 +10,10 @@ function addTask() {
 }
 
 function changeBackground(event) {
-    event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+    if (document.getElementsByClassName('selected').length !== 0) {
+        document.getElementsByClassName('selected')[0].classList.remove('selected');
+    }
+    event.target.classList.add('selected');
 }
 
 
