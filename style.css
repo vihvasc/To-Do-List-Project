@@ -1,22 +1,22 @@
 .completed {
-  text-decoration: line-through solid black;
+  text-decoration: line-through solid rgb(0, 0, 0);
 }
 
 body {
-  background-color: #01153b;
-  color: #f1faee;
+  background-color: rgb(0, 21, 59);
+  color: rgb(241, 250, 238);
   font-family: sans-serif;
   font-weight: 700;
   margin: auto 50px;
 }
 
 .home {
-  background-color: #5c677d;
+  background-color: rgb(92, 103, 125);
   border-radius: 10px;
   padding: 15px 10px 15px 15px;
   font-size: 20px;
-  margin: 5px;
-  border: 1px solid #dadde4;
+  margin: 5px 300px;
+  border: 1px solid rgb(241, 250, 238);
 }
 
 header h1 {
@@ -24,7 +24,8 @@ header h1 {
 }
 
 #funcionamento {
-  color: #dadde4;
+  color: rgb(241, 250, 238);
+  opacity: 0.8;
 }
 
 #texto-tarefa {
@@ -40,11 +41,11 @@ header h1 {
   font-size: 20px;
   cursor: pointer;
   text-align: center;
-  color: white;
-  background-color: #0466c8;
+  color: rgb(241, 250, 238);
+  background-color: rgb(4, 102, 200);
   border: none;
   border-radius: 15px;
-  box-shadow: 0 5px #979dac;
+  box-shadow: 0 5px rgb(151, 157, 172);
   margin: 5px 8px;
 }
 
@@ -53,13 +54,13 @@ header h1 {
 }
 
 .button:active {
-  background-color: #0466c8;
-  box-shadow: 0 5px #33415c;
+  background-color: rgb(4, 102, 200);
+  box-shadow: 0 5px rgb(51, 65, 92);
   transform: translateY(3px);
 }
 
 li {
-  background-color: #979dac;
-  border: 1px solid black;
+  background-color: rgb(151, 157, 172);
+  border: 1px solid rgb(0, 0, 0);
   padding: 5px;
 }
