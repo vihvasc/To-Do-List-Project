@@ -9,3 +9,9 @@ function addButton() {
     ordernedList.appendChild(listaCriada);
     document.getElementById("texto-tarefa").value = "";
 }
+ let buttonRemover = document.getElementById("apaga-tudo");
+ buttonRemover.addEventListener("click", remButton);
+ function remButton () {
+     let list = document.getElementById("lista-tarefas");
+     list.innerHTML = '';  
+}
