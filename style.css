@@ -5,9 +5,7 @@ label {
     border: solid rgb(0, 0, 0);
     border-bottom-width: 0,5px;   
 }
-.descricao {
-    margin-left: 2px;
-}
+
 .bg {
     background-color: rgb(128, 128, 128);
 }

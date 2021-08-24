@@ -4,7 +4,7 @@
      const input = document.getElementById('texto-tarefa');
      const tarefa = document.createElement('label');
      tarefa.classList.add('tarefa');
-     tarefa.innerHTML = `<div class=descricao>${input.value}</div>`                        
+     tarefa.innerHTML = `<div class="texto">${input.value}</div>`
      input.value = "";
           
      document.getElementById('lista-tarefas').appendChild(tarefa);
@@ -14,29 +14,27 @@
 
  // Mudar Cor de Fundo
 
- document.querySelector('.tarefa').addEventListener('click', mudarCorDeFundo);
- document.querySelector('.descricao').addEventListener('dblclick', riscarCompletos);
+ document.querySelector('#lista-tarefas').addEventListener('click', mudarCorDeFundo);
+ document.querySelector('#lista-tarefas').addEventListener('dblclick', riscarCompletos);
 
  function mudarCorDeFundo(e) {
   const listItem = document.querySelector('.tarefa');
-  if (listItem.className === 'tarefa bg' || listItem.className === 'descricao bg') {
-       e.target.classList.remove('bg')
-   } else if (listItem.className === 'tarefa') {
-       e.target.classList.add('bg')
-       console.log(e.target);
-   }   
- }
- 
+  e.target = listItem.classList.add('bg');
+  console.log('um click', e.target)
+
+  listItem.removeEventListener('click', mudarCorDeFundo);
+}
+  
  // Riscar Tarefas Completas
 
  function riscarCompletos(e) {
-    const listItem = document.querySelector('.descricao');
-    if (listItem.className === 'descricao completed') {
-        e.target.classList.remove('completed')
-     } else if (listItem.className === 'descricao') {
-        e.target.classList.add('completed')
-     }
+    const textItem = document.querySelector('.texto');
+    e.target = textItem.classList.add('completed');
+    console.log('dois clicks', e.target)
+
+    textItem.removeEventListener('dblclick', riscarCompletos);
  }
+    
  
  // Apagar Todas as Tarefas
   
