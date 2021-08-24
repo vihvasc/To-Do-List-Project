@@ -22,6 +22,8 @@ window.onload = function(){
                 listaLi[0].classList.remove('selected');
                 li.classList.toggle('selected');
             }
+            // Tomei como base a logica do Paulo Flora para entender este requisito
+            // Repositorio dele: https://github.com/tryber/sd-015-b-project-todo-list/tree/paulo-flora-todo-list-project
         
         }
         li.addEventListener("click", mudaCor);
