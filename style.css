@@ -44,3 +44,58 @@
 #criar-tarefa:hover {
   background-color: rgb(129, 101, 101);
 }
+
+#section {
+  display: flex;
+  justify-content: space-between;
+}
+
+#campo-tarefas {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  font-family: 'Gloria Hallelujah';
+  font-size: 18px;
+}
+
+#botoes {
+  display: flex;
+  justify-content: space-around;
+  padding: 5px;
+  margin: 5px;
+}
+
+#botoes #apaga-tudo {
+  background-color: rgb(143, 111, 111);
+  border-color: rgb(143, 111, 111);
+  color: rgb(231, 223, 223);
+  border-radius: 5px;
+}
+
+#botoes #remover-finalizados {
+  background-color: rgb(143, 111, 111);
+  border-color: rgb(143, 111, 111);
+  color: rgb(231, 223, 223);
+  border-radius: 5px;
+}
+
+#botoes #salvar-tarefas {
+  background-color: rgb(143, 111, 111);
+  border-color: rgb(143, 111, 111);
+  color: rgb(231, 223, 223);
+  border-radius: 5px;
+}
+
+#botoes #mover-cima {
+  background-color: rgb(143, 111, 111);
+  border-color: rgb(143, 111, 111);
+  color: rgb(231, 223, 223);
+  border-radius: 5px;
+}
+
+#botoes #mover-baixo {
+  background-color: rgb(143, 111, 111);
+  border-color: rgb(143, 111, 111);
+  color: rgb(231, 223, 223);
+  border-radius: 5px;
+}
