@@ -66,14 +66,31 @@ deletaSelecionadoButton.addEventListener('click', apagaItemSelecionado);
 
 // funçao para remover as tarefas já executadas.
 function apagaExecutados() {
-
   const executados = document.getElementsByClassName('completed'); // https://stackoverflow.com/questions/4777077/removing-elements-by-class-name
 
   while (executados.length > 0) {
     executados[0].parentNode.removeChild(executados[0]);
   }
-}  
-
+}
 const deletaExecutadosButton = document.getElementById('remover-finalizados');
 
 deletaExecutadosButton.addEventListener('click', apagaExecutados);
+
+// funçao para salvar lista
+function saveList() {
+
+  localStorage.clear();
+  const listaSalva = document.getElementById('lista-tarefas');
+  localStorage.setItem('listaDeTarefas', listaSalva.innerHTML);
+}
+const saveListaButton = document.getElementById('salvar-tarefas');
+
+saveListaButton.addEventListener('click', saveList);
+
+// Função para puxar lista salva na ultima sessão
+function newSession() {
+  const listaSalva = document.getElementById('lista-tarefas');
+  listaSalva.innerHTML = localStorage.getItem('listaDeTarefas');
+}
+
+window.onload = newSession;
