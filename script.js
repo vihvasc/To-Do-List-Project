@@ -1,5 +1,6 @@
 const button = document.getElementById('criar-tarefa');
 const taskList = document.getElementById('lista-tarefas');
+const local = JSON.parse(localStorage.getItem('taskList'));
 
 function createTask() {
   const task = document.createElement('li');
@@ -50,3 +51,53 @@ function finalizedRemove() {
 
 const finalizedButton = document.getElementById('remover-finalizados');
 finalizedButton.addEventListener('click', finalizedRemove);
+
+function objectifyTasks (value) {
+  const taskValues = { 
+    text: value.innerText,
+    class: value.className
+  };
+  return taskValues;
+}
+
+function saveTasks() {
+  localStorage.clear();
+  const listElement = document.getElementsByTagName('li');
+  const taskArray = [];
+
+  for (let index = 0; index < listElement.length; index += 1) {
+    const taskToObject = objectifyTasks(listElement[index]);
+    taskArray.push(taskToObject);
+    console.log(listElement[index]);
+  }
+  localStorage.setItem('taskList', JSON.stringify(taskArray));
+}
+
+const saveButton = document.getElementById('salvar-tarefas');
+saveButton.addEventListener('click', saveTasks);
+
+function generateLocal() {
+  for (let index = 0; index < local.length; index += 1) {
+    const task = document.createElement('li');
+
+    task.innerText = local[index].text;
+    task.className = local[index].class;
+    taskList.appendChild(task);
+  }
+}
+
+function checkLocal() {
+  if (local !== null) {
+    generateLocal();
+  }
+}
+
+checkLocal();
+
+function removeSelected() {
+  const selected = document.querySelector(".selected");
+  selected.remove();
+}
+
+const removeSelectedButton = document.getElementById('remover-selecionado');
+removeSelectedButton.addEventListener('click', removeSelected);
