@@ -1,22 +1,22 @@
 .completed {
-  text-decoration: line-through solid rgb(0, 0, 0);
+  text-decoration: line-through solid black;
 }
 
 body {
-  background-color: rgb(0, 21, 59);
-  color: rgb(241, 250, 238);
+  background-color: rgb(0 , 21 , 59);
+  color: rgb(241 , 250 , 238);
   font-family: sans-serif;
   font-weight: 700;
   margin: auto 50px;
 }
 
 .home {
-  background-color: rgb(92, 103, 125);
+  background-color: rgb(92 , 103 , 125);
   border-radius: 10px;
   padding: 15px 10px 15px 15px;
   font-size: 20px;
   margin: 5px 300px;
-  border: 1px solid rgb(241, 250, 238);
+  border: 1px solid rgb(241 , 250 , 238);
 }
 
 header h1 {
@@ -24,7 +24,7 @@ header h1 {
 }
 
 #funcionamento {
-  color: rgb(241, 250, 238);
+  color: rgb(241 , 250 , 238);
   opacity: 0.8;
 }
 
@@ -41,26 +41,26 @@ header h1 {
   font-size: 20px;
   cursor: pointer;
   text-align: center;
-  color: rgb(241, 250, 238);
-  background-color: rgb(4, 102, 200);
+  color: rgb(241 , 250 , 238);
+  background-color: rgb(4 , 102 , 200);
   border: none;
   border-radius: 15px;
-  box-shadow: 0 5px rgb(151, 157, 172);
+  box-shadow: 0 5px rgb(151 , 157 , 172);
   margin: 5px 8px;
 }
 
 .button:hover {
-  background-color: #023e7d;
+  background-color: rgb(2 , 62 , 125);
 }
 
 .button:active {
-  background-color: rgb(4, 102, 200);
-  box-shadow: 0 5px rgb(51, 65, 92);
+  background-color: rgb(4 , 102 , 200);
+  box-shadow: 0 5px rgb(51 , 65 , 92);
   transform: translateY(3px);
 }
 
 li {
-  background-color: rgb(151, 157, 172);
-  border: 1px solid rgb(0, 0, 0);
+  background-color: rgb(151 , 157 , 172);
+  border: 1px solid black;
   padding: 5px;
 }
