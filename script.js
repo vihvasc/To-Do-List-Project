@@ -44,7 +44,7 @@ function apagarListaFinalizados() {
     filhosCompletos.parentNode.removeChild(filhosCompletos);
   }
 }
-btnFinalizados.addEventListener('click', apagarListaFinalizados)
+btnFinalizados.addEventListener('click', apagarListaFinalizados);
 
 // Referencias utilizadas
 // https://www.w3schools.com/jsref/met_document_getelementsbyclassname.asp
