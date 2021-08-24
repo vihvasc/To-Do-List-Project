@@ -1,11 +1,11 @@
 const btnCreate = document.getElementById('criar-tarefa');
 const list = document.getElementById('lista-tarefas');
-const listItem = document.querySelectorAll('li');
 
 function createList() {
   const criarItem = document.createElement('li');
   const inputTarefas = document.getElementById('texto-tarefa');
   criarItem.innerText = inputTarefas.value;
+  criarItem.className = 'item';
   list.appendChild(criarItem);
   inputTarefas.value = '';
 }
@@ -13,14 +13,19 @@ function createList() {
 btnCreate.addEventListener('click', createList);
 
 function mudaCor(event) {
-  const corInicial = 'white';
-  const corCinza = 'rgb(128, 128, 128)';
-  for (let index = 0; index < listItem.length; index += 1) {
-    if (listItem[index].style.backgroundColor !== corInicial) {
-      listItem[index].style.backgroundColor === corInicial
+  const listinha = document.querySelectorAll('.item');
+  const colorSelected = 'lista-Selecionados';
+  for (let index = 0; index < listinha.length; index += 1) {
+    if (listinha[index].classList.contains(colorSelected)) {
+      listinha[index].classList.remove(colorSelected);
     }
   }
-  event.target.style.backgroundColor = corCinza;
+  event.target.classList.add(colorSelected);
 }
 
 list.addEventListener('click', mudaCor);
+
+function completaTarefa(event) {
+  event.target.classList.toggle('completed');
+}
+list.addEventListener('dblclick', completaTarefa);
