@@ -1,37 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="style.css">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <header>Minha Lista de Tarefas</header>
-    
-    <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <main class="container">
+      <header>Minha Lista de Tarefas</header>
 
-    <input id="texto-tarefa">
+      <p id="funcionamento">
+        Clique duas vezes em um item para marcá-lo como completo
+      </p>
 
-    <button id="criar-tarefa">Adicionar</button>
+      <div class="input-group mb-3">
+        <input
+          id="texto-tarefa"
+          type="text"
+          class="form-control"
+          aria-label="Recipient's username"
+          aria-describedby="button-addon2"
+        />
+        <button id="criar-tarefa" class="btn btn-info" type="button">
+          Adicionar
+        </button>
+      </div>
 
-    <button id="apaga-tudo">Limpar Lista</button>
+      <div class="div-buttons">
+        <button id="apaga-tudo" class="btn btn-info">Limpar Lista</button>
 
-    <button id="remover-finalizados">Remover Tarefas Completedadas</button>
+        <button id="remover-finalizados" class="btn btn-info">
+          Remover Tarefas Completedadas
+        </button>
 
-    <button id="remover-selecionado">Remove Tarefa Selecionada</button>
+        <button id="remover-selecionado" class="btn btn-info">
+          Remove Tarefa Selecionada
+        </button>
 
-    <button id="salvar-tarefas">Salvar Tarefas</button>
+        <button id="salvar-tarefas" class="btn btn-info">Salvar Tarefas</button>
+      </div>
 
-    <ol id="lista-tarefas">Lista de Tarefas</ol>
+      <ol id="lista-tarefas">
+        Lista de Tarefas
+      </ol>
 
-    <button id="mover-cima">UP</button>
+      <div class="up-and-down">
+        <button id="mover-cima" class="btn btn-primary">
+          UP <i class="fas fa-arrow-up"></i>
+        </button>
 
-    <button id="mover-baixo">DOWN</button>
-
-
+        <button id="mover-baixo" class="btn btn-primary">
+          DOWN <i class="fas fa-arrow-down"></i>
+        </button>
+      </div>
+    </main>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

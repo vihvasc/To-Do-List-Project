@@ -4,7 +4,35 @@
 }
 
 body {
-  background-color: rgb(66 , 253 , 78);
+  /* background-color: rgb(66 , 253 , 78); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aqua !important;
+}
+
+main {
+  border: 5px solid black;
+  display: flex wrap;
+  align-items: center;
+  justify-content:center;
+  text-align: center;
+  margin-top: 100px;
+
+  backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 12px;
+    border: 1px solid rgba(209, 213, 219, 0.3);
+}
+
+ol {
+  list-style: none;
+}
+
+.div-buttons{
+  display: flex;
+  justify-content: space-between;
 }
 
 header {
@@ -20,4 +48,9 @@ header {
 .completed {
   text-decoration: line-through solid;
   color: black;
+}
+
+.btn-primary {
+  width: 200px;
+  height: 30  px;
 }

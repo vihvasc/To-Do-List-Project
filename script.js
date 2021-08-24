@@ -20,7 +20,6 @@ function selectTask(event) {
     list[index].classList.remove('selected');
   }
   event.target.classList.add('selected');
-  console.log('cheguei na function selecttask');
 }
 
 function riskTask(event) {
@@ -72,6 +71,7 @@ function removeSelectedTask() {
 
 function saveTasks() {
   // requisito 12
+  console.log(taskList.innerHTML);
   localStorage.setItem('Lista-de-Tarefas', taskList.innerHTML);
 }
 
