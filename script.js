@@ -1,6 +1,7 @@
 const creatTask = document.getElementById('criar-tarefa');
 const list = document.getElementById('lista-tarefas');
 const allLi = document.getElementsByTagName('li');
+const eraseList = document.getElementById('apaga-tudo');
 
 function addItem() {
   const input = document.getElementById('texto-tarefa').value;
@@ -9,6 +10,10 @@ function addItem() {
 
   document.getElementById('lista-tarefas').innerHTML = addToList;
   document.getElementById('texto-tarefa').value = '';
+}
+
+function removeAllItens() {
+  list.innerHTML = '';
 }
 
 function clickChange(event) {
@@ -29,3 +34,4 @@ function riskTask(event) {
 creatTask.addEventListener('click', addItem);
 list.addEventListener('click', clickChange);
 list.addEventListener('dblclick', riskTask);
+eraseList.addEventListener('click', removeAllItens);
