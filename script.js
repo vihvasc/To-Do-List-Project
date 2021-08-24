@@ -7,6 +7,8 @@ const buttonClear = document.querySelector('#apaga-tudo');
 const buttonClearFinalized = document.querySelector('#remover-finalizados');
 const buttonSaveTasks = document.querySelector('#salvar-tarefas');
 const buttonRemoveSelected = document.querySelector('#remover-selecionado');
+const buttonMoveUp = document.querySelector('#mover-cima');
+const buttonMoveDown = document.querySelector('#mover-baixo');
 
 // Requisito 5
 function createTask() {
@@ -79,8 +81,41 @@ function localStorageOl() {
 
 localStorageOl();
 
-// requisito 14
-function removeSelect() {
+// requisito 13
+// consultei repositorio de jose erivam para resolução desse requisito com sua autorização.
+// source https://github.com/tryber/sd-015-b-project-todo-list/pull/87/files
+function moveUp() {
+  const lis = document.querySelectorAll('li');
+
+  for (let i = 0; i < lis.length; i += 1) {
+    if (lis[i] === document.querySelector('.selected')) {
+      const liSelected = lis[i].parentNode;
+      if (i > 0) {
+        const a = i - 1;
+        liSelected.insertBefore(lis[i], lis[a]);
+      }
+    }
+  }
+}
+
+function moveDown() {
+  const lis = document.querySelectorAll('li');
+
+  for (let i = 0; i < lis.length; i += 1) {
+    if (lis[i] === document.querySelector('.selected')) {
+      const liSelected = lis[i].parentNode;
+      if (i < lis.length) {
+        const a = i + 1;
+        if (a < lis.length) {
+          liSelected.insertBefore(lis[i], lis[a].nextSibling);
+        }
+      }
+    }
+  }
+}
+
+// requisito 14 botão remove selecionado
+function removeSelected() {
   const lis = document.querySelectorAll('li');
 
   for (let i = 0; i < lis.length; i += 1) {
@@ -91,7 +126,9 @@ function removeSelect() {
 }
 
 //-------------------------------------------------------------------------------------------------
-buttonRemoveSelected.addEventListener('click', removeSelect);
+buttonMoveUp.addEventListener('click', moveUp);
+buttonMoveDown.addEventListener('click', moveDown);
+buttonRemoveSelected.addEventListener('click', removeSelected);
 taskList.addEventListener('dblclick', doubleClick);
 taskList.addEventListener('click', removeBackgroundColor);
 createTasks.addEventListener('click', createTask);
