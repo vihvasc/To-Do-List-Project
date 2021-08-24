@@ -52,10 +52,10 @@ function finalizedRemove() {
 const finalizedButton = document.getElementById('remover-finalizados');
 finalizedButton.addEventListener('click', finalizedRemove);
 
-function objectifyTasks (value) {
-  const taskValues = { 
+function objectifyTasks(value) {
+  const taskValues = {
     text: value.innerText,
-    class: value.className
+    class: value.className,
   };
   return taskValues;
 }
@@ -95,7 +95,7 @@ function checkLocal() {
 checkLocal();
 
 function removeSelected() {
-  const selected = document.querySelector(".selected");
+  const selected = document.querySelector('.selected');
   selected.remove();
 }
 
