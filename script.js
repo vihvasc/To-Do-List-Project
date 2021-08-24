@@ -26,6 +26,14 @@ window.onload = function(){
         }
         li.addEventListener("click", mudaCor);
     }
+    // evento - Remove todas as tarefas
+    const botaoLimpar = document.querySelector('#apaga-tudo');
+
+    botaoLimpar.addEventListener("click", function(){
+        document.querySelector('ol').innerHTML = '';
+    });
+
+    
     
     // evento - Adiciona tarefa
     const botaoAdicionar = document.querySelector("#criar-tarefa");
