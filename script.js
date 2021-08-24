@@ -2,10 +2,19 @@ const inputo = document.getElementById("texto-tarefa");
 const listaDeTarefas = document.getElementById("lista-tarefas");
 const botao = document.getElementById("criar-tarefa");
 const listaLi = document.getElementsByTagName("li");
-
+// const riscado = listaLi
 botao.addEventListener("click", coletaInput);
 botao.addEventListener("click", limpaInput);
 listaDeTarefas.addEventListener("click", mudaCorFundoCinza);
+// listaDeTarefas.addEventListener("dblclick", desriscador);
+listaDeTarefas.addEventListener("dblclick", riscador);
+
+for (let i = 0; i < listaLi.length; i += 1) {
+    listaDeTarefas.addEventListener("dblclick", riscador);
+    
+}
+
+
 
 function coletaInput(){
     const textoUser = inputo.value;
@@ -21,10 +30,28 @@ function mudaCorFundoCinza(mudaCor){
     mudaCor.target.style.backgroundColor = "rgb(128, 128, 128)";
 }
 function limpaCor(){
-    
     for (let i = 0; i < listaLi.length; i += 1){
         listaLi[i].style.backgroundColor = "";
     }
 }
+function riscador (event){
+    const elemento = event.target;
+    if (elemento.className === "completed"){
+        elemento.classList.remove("completed")
+        }
+        else{
+            event.target.classList.add('completed');
+        }
+    }
+        
+       
+    // }
+
+// function desriscador (evento){
+    
+//     // for (let i = 0; i < listaLi.length; i += 1){
+//         evento.target.classList.remove('completed');
+//     }
+// }
 
 // codigo feito com a ajuda de Denis Jonathan - Turma 15 - Tribo B
