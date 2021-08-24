@@ -31,9 +31,15 @@ function finishedTask(e) {
 }
 
 function changeBackgroundColorTask(e) {
+  const allLi = document.getElementsByTagName('li');
+  for (let i = 0; i < allLi.length; i += 1) {
+    const li = allLi[i];
+    li.id = '';
+  }
   if (e.target.style.backgroundColor === '') {
     e.target.style.backgroundColor = 'rgb(128, 128, 128)';
   }
+  e.target.id = 'selected';
 }
 
 function createdTask() {
@@ -96,3 +102,42 @@ function createButtonSavetasks() {
   buttonSave.addEventListener('click', saveTasks);
 }
 createButtonSavetasks();
+
+const list = document.querySelector('.lista');
+
+function moveTaskUp() {
+  const li = list.querySelector('#selected');
+  if (li === null) {
+    alert('Por favor, selecione uma tarefa');
+  } else if (li.previousElementSibling === null) {
+    alert('Essa tarefa já está no topo!');
+  } else {
+    const liAbove = li.previousElementSibling;
+    list.insertBefore(li, liAbove);
+  }
+}
+
+function moveTaskDown() {
+  const li = list.querySelector('#selected');
+  if (li === null) {
+    alert('Por favor, selecione uma tarefa');
+  } else if (li.nextElementSibling == null) {
+    alert('Essa tarefa já é a última da lista!');
+  } else {
+    const liBelow = li.nextElementSibling;
+    list.insertBefore(li, liBelow.nextElementSibling);
+  }
+}
+
+function createButtonMove() {
+  const buttonUp = document.createElement('button');
+  buttonUp.id = 'mover-cima';
+  const buttonDown = document.createElement('button');
+  buttonDown.id = 'mover-baixo';
+  const section = document.querySelector('#buttons');
+  buttonUp.addEventListener('click', moveTaskUp);
+  buttonDown.addEventListener('click', moveTaskDown);
+  section.appendChild(buttonUp);
+  section.appendChild(buttonDown);
+}
+createButtonMove();
