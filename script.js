@@ -1,16 +1,15 @@
-let inputo = document.getElementById("texto-tarefa");
-let listaDeTarefas = document.getElementById("lista-tarefas");
-let botao = document.getElementById("criar-tarefa");
-let listaLi = document.getElementsByTagName("li");
-
+const inputo = document.getElementById("texto-tarefa");
+const listaDeTarefas = document.getElementById("lista-tarefas");
+const botao = document.getElementById("criar-tarefa");
+const listaLi = document.getElementsByTagName("li");
 
 botao.addEventListener("click", coletaInput);
 botao.addEventListener("click", limpaInput);
 listaDeTarefas.addEventListener("click", mudaCorFundoCinza);
 
 function coletaInput(){
-    let textoUser = inputo.value;
-    let listaDoInputDoUsuario = document.createElement("li");
+    const textoUser = inputo.value;
+    const listaDoInputDoUsuario = document.createElement("li");
     listaDoInputDoUsuario.innerText = textoUser;
     listaDeTarefas.appendChild(listaDoInputDoUsuario);
 }
@@ -18,5 +17,14 @@ function limpaInput(){
     inputo.value = "";
 }
 function mudaCorFundoCinza(mudaCor){
-mudaCor.target.style.backgroundColor = "rgb(128, 128, 128)"
+    limpaCor();
+    mudaCor.target.style.backgroundColor = "rgb(128, 128, 128)";
 }
+function limpaCor(){
+    
+    for (let i = 0; i < listaLi.length; i += 1){
+        listaLi[i].style.backgroundColor = "";
+    }
+}
+
+// codigo feito com a ajuda de Denis Jonathan - Turma 15 - Tribo B
