@@ -141,3 +141,16 @@ function createButtonMove() {
   section.appendChild(buttonDown);
 }
 createButtonMove();
+
+function createButtonRemoveSelectedTask() {
+  const button = document.createElement('button');
+  button.id = 'remover-selecionado';
+  button.innerText = 'Apagar selecionada';
+  const section = document.querySelector('#buttons');
+  button.addEventListener('click', () => {
+    const taskSelected = document.querySelector('#selected');
+    taskSelected.remove();
+  });
+  section.appendChild(button);
+}
+createButtonRemoveSelectedTask();
