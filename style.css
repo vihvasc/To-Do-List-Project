@@ -1,5 +1,3 @@
-
-
 #contorno {
   border-radius: 7px;
   background-color: rgb(231, 223, 223);
@@ -47,18 +45,54 @@
 
 #section {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  padding: 10px 0;
+  font-family: 'Gloria Hallelujah';
+  font-size: 18px;
 }
 
-#apaga-tudo {
+#botoes {
+  display: flex;
+  justify-content: space-around;
   padding: 5px;
   margin: 5px;
+}
+
+#botoes #apaga-tudo {
   background-color: rgb(143, 111, 111);
   border-color: rgb(143, 111, 111);
   color: rgb(231, 223, 223);
   border-radius: 5px;
 }
 
-#apaga-tudo:hover {
-  background-color: rgb(129, 101, 101);
+#botoes #remover-finalizados {
+  background-color: rgb(143, 111, 111);
+  border-color: rgb(143, 111, 111);
+  color: rgb(231, 223, 223);
+  border-radius: 5px;
+}
+
+#botoes #salvar-tarefas {
+  background-color: rgb(143, 111, 111);
+  border-color: rgb(143, 111, 111);
+  color: rgb(231, 223, 223);
+  border-radius: 5px;
+}
+
+#botoes #mover-cima {
+  background-color: rgb(143, 111, 111);
+  border-color: rgb(143, 111, 111);
+  color: rgb(231, 223, 223);
+  border-radius: 5px;
+}
+
+#botoes #mover-baixo {
+  background-color: rgb(143, 111, 111);
+  border-color: rgb(143, 111, 111);
+  color: rgb(231, 223, 223);
+  border-radius: 5px;
+}
+
+.completed {
+  text-decoration: line-through solid black;
 }
