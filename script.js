@@ -6,6 +6,8 @@ createButton('^', 'mover-cima', 'button-container'); // Cria botão para mover t
 createButton('v', 'mover-baixo', 'button-container'); // Cria botão para mover task para baixo
 createButton('Limpar Lista', 'apaga-tudo', 'button-container'); // Cria botão para apagar todas tarefas
 createButton('Limpar Completos', 'remover-finalizados', 'button-container'); // Cria botão para apagar tarefas completadas
+createButton('Salvar Tarefas', 'salvar-tarefas', 'button-container'); // Cria botão para salvar as tarefas
+createButton('Limpa Storage', 'limpa-storage', 'button-container');
 
 const inputButton = document.getElementById('criar-tarefa');
 const input = document.getElementById('texto-tarefa');
@@ -17,6 +19,8 @@ const clearListButton = document.getElementById('apaga-tudo');
 const clearCompletedtasksButton = document.getElementById(
   'remover-finalizados'
 );
+const saveTaskButton = document.getElementById('salvar-tarefas');
+const clearStorageButton = document.getElementById('limpa-storage');
 
 // Cria o input para adicionar Tarefas
 function createInput() {
@@ -37,6 +41,7 @@ function createButton(buttonText, buttonId, parentId) {
   buttonParent.appendChild(button);
 }
 
+//Restaura as Tasks do local S
 // Adiciona uma nova tarefa na lista
 function addNewTask() {
   let newtask = document.createElement('li');
@@ -146,6 +151,37 @@ function moveTaskDown() {
 //   }
 // }
 
+// Salva as tasks no Local Storage
+function saveTasks() {
+  let tasks = document.querySelectorAll('.list-item');
+  for (let i in tasks) {
+    task = {
+      info: tasks[i].outerHTML,
+    };
+    localStorage.setItem(i, JSON.stringify(task));
+  }
+}
+
+// Restaura as tasks salvas no Local Storage
+function restoreSavedTasks() {
+  for (let i = 0; i < localStorage.length; i += 1) {
+    let storageItem = JSON.parse(localStorage.getItem(i));
+    let task = document.createElement('li');
+    if (storageItem) {
+      taskList.appendChild(task);
+      task.outerHTML = storageItem.info;
+    }
+  }
+}
+
+//Remove todo conteúdo do Local Storage
+function removeSavedTasks() {
+  localStorage.clear();
+}
+
+// Recupera as tasks salvas no Storage
+restoreSavedTasks();
+
 // Adiciona Eventos
 inputButton.addEventListener('click', addNewTask);
 taskList.addEventListener('click', selectItem);
@@ -155,3 +191,5 @@ clearCompletedtasksButton.addEventListener('click', clearCompletedsTasks);
 removeSelectedTaskButton.addEventListener('click', removeSelectedTask);
 moveUpButton.addEventListener('click', moveTaskUp);
 moveDownButton.addEventListener('click', moveTaskDown);
+saveTaskButton.addEventListener('click', saveTasks);
+clearStorageButton.addEventListener('click', removeSavedTasks);
