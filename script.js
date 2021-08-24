@@ -14,26 +14,30 @@
 
  // Mudar Cor de Fundo
 
- function mudarCorDeFundo() {
-     const listItem = document.querySelector('.tarefa');
-     if (listItem.className === 'tarefa bg') {
-         listItem.classList.remove('bg')
-     } else if (listItem.className === 'tarefa') {
-         listItem.classList.add('bg')
-     }
- }
+ document.querySelector('.tarefa').addEventListener('click', mudarCorDeFundo);
+ document.querySelector('.descricao').addEventListener('dblclick', riscarCompletos);
 
+ function mudarCorDeFundo(e) {
+  const listItem = document.querySelector('.tarefa');
+  if (listItem.className === 'tarefa bg' || listItem.className === 'descricao bg') {
+       e.target.classList.remove('bg')
+   } else if (listItem.className === 'tarefa') {
+       e.target.classList.add('bg')
+       console.log(e.target);
+   }   
+ }
+ 
  // Riscar Tarefas Completas
 
- function riscarCompletos() {
+ function riscarCompletos(e) {
     const listItem = document.querySelector('.descricao');
-     if (listItem.className === 'descricao completed') {
-        listItem.classList.remove('completed')
+    if (listItem.className === 'descricao completed') {
+        e.target.classList.remove('completed')
      } else if (listItem.className === 'descricao') {
-        listItem.classList.add('completed')
+        e.target.classList.add('completed')
      }
  }
-
+ 
  // Apagar Todas as Tarefas
   
  const btnApagarTudo = document.querySelector('#apaga-tudo');
@@ -48,7 +52,7 @@
   const btnApagarCompletos = document.querySelector('#remover-finalizados');
   function apagaTarefasCompletas() {
     const completos = document.getElementsByClassName('descricao completed');
-    for (let i = completos.length - 1; i >= 0; i -= 1) {
+    for (let i = completos.length-1; i >= 0; i -= 1) {
       completos[i].remove();
     }
   }
