@@ -12,10 +12,12 @@ function mudaCor(event) {
 }
 event.target.style.background = corCinza;
 }
+
 // Requisito 10
 function apagaTudo (evento) {
   listaTarefa.innerHTML = ''
 }
+
 // Requisito 5 e 6
 document.getElementById('criar-tarefa').addEventListener('click', function () {
   const li = document.createElement('li');
@@ -29,15 +31,6 @@ document.getElementById('criar-tarefa').addEventListener('click', function () {
   li.addEventListener('dblclick', classeCompleted);
   document.getElementById('apaga-tudo').addEventListener('click', apagaTudo);
 });
-// Requisito 9
-function classeCompleted(event) {
-  const itemClicado = event.target;
-  if (itemClicado.className === 'completed') {
-    itemClicado.classList.remove('completed');
-  } else {
-    itemClicado.classList.add('completed');
-  }
-}
 
 // Requisito 11
 
@@ -45,8 +38,21 @@ function removeItensCompleted() {
   let itemCompleted = document.querySelector('.completed');
   //A declaração abaixo foi usada com base na referência > https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/while
   while (itemCompleted) {
-    itemCompleted.remove();
-    itemCompleted = document.querySelector('.completed');
+  itemCompleted = document.querySelector('.completed');
+  if (itemCompleted) {
+  itemCompleted.remove();
+  }
   }
 }
+
+// Requisito 9
+function classeCompleted(event) {
+  const itemClicado = event.target;
+  console.log(itemClicado.className, itemClicado.className.indexOf('completed'));
+  if (itemClicado.className.indexOf('completed') !== -1) {
+  itemClicado.classList.remove('completed');
+  } else {
+  itemClicado.classList.add('completed');
+}
 botaoRemoverFinalizados.addEventListener('click', removeItensCompleted);
+}
