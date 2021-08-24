@@ -8,12 +8,11 @@ label {
 .descricao {
     margin-left: 2px;
 }
-.delete {
-    float: right;
-    margin: 2px;
+.bg {
+    background-color: rgb(128, 128, 128);
 }
 
 .completed {
-    text-decoration:  solid rgb(0, 0, 0);
+    text-decoration:  line-through solid rgb(0, 0, 0);
 }
 

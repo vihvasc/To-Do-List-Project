@@ -9,12 +9,17 @@
      
      document.getElementById('lista-tarefas').appendChild(tarefa);
      document.querySelector('.tarefa').addEventListener('click', mudarCorDeFundo);
+     document.querySelector('.tarefa').addEventListener('dblclick', riscarCompletos);
  }
 
  function mudarCorDeFundo() {
      const listItem = document.querySelector('.tarefa');
-     listItem.style.backgroundColor = 'rgb(128, 128, 128)';
-}
+     listItem.classList.add('bg');
+ }
 
+ function riscarCompletos() {
+    const listItem = document.querySelector('.tarefa');
+    listItem.classList.add('completed');
+ }
 
  
