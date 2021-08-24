@@ -1,4 +1,5 @@
 const btnCreate = document.getElementById('criar-tarefa');
+const btnErase = document.getElementById('apaga-tudo');
 const list = document.getElementById('lista-tarefas');
 
 function createList() {
@@ -29,3 +30,8 @@ function completaTarefa(event) {
   event.target.classList.toggle('completed');
 }
 list.addEventListener('dblclick', completaTarefa);
+
+function apagaTudo() {
+  list.innerHTML = '';
+}
+btnErase.addEventListener('click', apagaTudo);
