@@ -25,6 +25,15 @@ function taskComplete(event) {
     }
 }
 
+let clearButton = document.getElementById('apaga-tudo');
+clearButton.addEventListener('click', clearList);
+
+function clearList() {
+    let listedTasks = document.querySelectorAll('li');
+    for (let i = 0; i < listedTasks.length; i += 1) {
+        listedTasks[i].remove();
+    }
+}
 
 
 
