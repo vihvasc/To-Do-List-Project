@@ -48,7 +48,8 @@ function clearTasks() {
 }
 
 // console.log(taskList);
-function clearCompletedTasks() { // requisito 11
+function clearCompletedTasks() {
+  // requisito 11
   const lists = taskList.children;
   for (let index = lists.length - 1; index >= 0; index -= 1) {
     const completed = lists[index];
@@ -79,9 +80,9 @@ function moveUp() {
   // requisito 13
   const selectedTask = document.querySelector('.selected');
   if (selectedTask) {
-    const previouslyPostion = selectedTask.previousElementSibling;
-    if (previouslyPostion) {
-      previouslyPostion.insertAdjacentElement('beforebegin', selectedTask);
+    const previouslyPosition = selectedTask.previousElementSibling;
+    if (previouslyPosition) {
+      previouslyPosition.insertAdjacentElement('beforebegin', selectedTask);
     }
   }
 }
@@ -131,6 +132,10 @@ function listenerButtonMoveDown() {
   buttonMoveDown.addEventListener('click', moveDown);
 }
 
+function bgColor() {
+  body.style.backgroundColor = 'aqua';
+}
+
 function callAllFunctions() {
   listenerButtonAdd();
   listenerButtonClearTask(); // requisito 10
@@ -142,8 +147,8 @@ function callAllFunctions() {
   taskList.innerHTML = savedLocalStorage; // requisito 12
   listenerButtonMoveUp(); // requisito 13
   listenerButtonMoveDown(); // requisito 13
+  bgColor();
 }
-
 console.log(body);
 
 window.onload = callAllFunctions;
