@@ -8,12 +8,13 @@
      input.value = "";                        
      
      document.getElementById('lista-tarefas').appendChild(tarefa);
+     document.querySelector('.tarefa').addEventListener('click', mudarCorDeFundo);
  }
 
  function mudarCorDeFundo() {
-     const label = document.querySelector('.tarefa');
-     label.style.backgroundColor = rgb(128, 128, 128);
+     const listItem = document.querySelector('.tarefa');
+     listItem.style.backgroundColor = 'rgb(128, 128, 128)';
 }
 
-document.querySelector('.tarefa').addEventListener('click', mudarCorDeFundo);
+
  
