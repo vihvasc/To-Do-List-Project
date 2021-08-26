@@ -83,6 +83,27 @@ function clearListButton() {
   div.appendChild(button);
 }
 
+function removeCompletedButton() {
+  const taskList = document.getElementById('lista-tarefas');
+  const div = document.getElementById('buttons-div');
+  const button = document.createElement('button');
+  const items = taskList.getElementsByTagName('li');
+  button.id = 'remover-finalizados';
+  button.innerText = 'Remover Finalizados';
+
+  button.addEventListener('click', () => {
+    for (let i = 0; i < items.length; i += 1) {
+      const actualItem = items[i];
+      if (actualItem.className === 'completed') {
+        taskList.removeChild(items[i]);
+        i -= 1;
+      }
+    }
+  });
+
+  div.appendChild(button);
+}
+
 function todoList() {
   addTagById('header', 'header', '');
   addTitle();
@@ -95,6 +116,7 @@ function todoList() {
   addListItem();
   addTagById('div', 'buttons-div', '');
   clearListButton();
+  removeCompletedButton();
 }
 
 window.onload = todoList();
