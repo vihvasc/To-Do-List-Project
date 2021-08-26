@@ -18,11 +18,12 @@
  document.querySelector('#lista-tarefas').addEventListener('dblclick', riscarCompletos);
 
  function mudarCorDeFundo(e) {
-  const listItem = document.querySelector('.tarefa');
-  e.target = listItem.classList.add('bg');
-  console.log('um click', e.target)
-
-  listItem.removeEventListener('click', mudarCorDeFundo);
+  const listItems = document.querySelectorAll('.tarefa');
+  for (let i = 0; i < listItems.length; i+=1) {
+    if (listItems[i].classList.contains('bg')) {
+      listItems[i].classList.remove('bg')
+    } 
+  } e.target.classList.add('bg');
 }
   
  // Riscar Tarefas Completas
@@ -30,9 +31,8 @@
  function riscarCompletos(e) {
     const textItem = document.querySelector('.texto');
     e.target = textItem.classList.add('completed');
-    console.log('dois clicks', e.target)
-
-    textItem.removeEventListener('dblclick', riscarCompletos);
+    
+   
  }
     
  
