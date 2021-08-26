@@ -12,7 +12,6 @@ function selectListItem(ol, li) {
     });
     li.style.backgroundColor = 'rgb(128, 128, 128)';
   });
-
 }
 
 function addTaskButton() {
@@ -44,10 +43,10 @@ function addTitle() {
   header.appendChild(h1);
 }
 
-function completedTask(li) {
+function completedTask(li) { 
   li.addEventListener('dblclick', () => {
     if (li.className !== 'completed') {
-      li.className = 'completed'
+      li.className = 'completed';
     } else {
       li.className = 'incompleted';
     }
@@ -72,6 +71,18 @@ function addListItem() {
   });
 }
 
+function clearListButton() {
+  const div = document.getElementById('buttons-div');
+  const button = document.createElement('button');
+  button.innerText = 'Apaga Tudo';
+  button.id = 'apaga-tudo';
+  button.addEventListener('click', () => {
+    const ol = document.getElementById('lista-tarefas');
+    ol.innerHTML = '';
+  });
+  div.appendChild(button);
+}
+
 function todoList() {
   addTagById('header', 'header', '');
   addTitle();
@@ -82,6 +93,8 @@ function todoList() {
   addOrderedList();
   addTaskButton();
   addListItem();
+  addTagById('div', 'buttons-div', '');
+  clearListButton();
 }
 
 window.onload = todoList();
